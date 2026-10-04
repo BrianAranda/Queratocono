@@ -1,0 +1,169 @@
+    % Para eliminar la sangría
+    [leftmargin=*]
+
+    % Links en texto
+    \href{}{\textcolor{blue}{}}
+
+    % Comillas
+    ``''
+
+    % Cita bibliográfica (clave de Zotero en partes/bibliografia.bib)
+    ~\cite{}
+
+    % Varias citas juntas
+    ~\cite{,}
+
+    % Referencia a figura / tabla / sección
+    Figura~\ref{fig:}
+    Tabla~\ref{tabla:}
+    Sección~\ref{sec:}
+
+    % Nota al pie
+    \footnote{}
+
+    % Página apaisada (Gantt, flujo de caja, etc.)
+    \begin{landscape}
+        \thispagestyle{empty}
+        \begin{figure}[H] \centering
+            \makebox[\linewidth][c]{\hspace*{1 cm}\includegraphics[width=1.3\linewidth]{}}
+            \caption{}
+            \label{fig:}
+        \end{figure}
+    \end{landscape}
+
+    % Items con puntos
+    \begin{itemize}[label=\textbullet]
+        \item 
+    \end{itemize}
+
+    % Items con numeros con )
+    \begin{enumerate}[label=\textbf{\arabic*)}] 
+        \item
+    \end{enumerate}
+
+    % Items con letras misnusculas con )
+    \begin{enumerate}[label=\textbf{\alph*)}] 
+        \item
+    \end{enumerate}
+
+    % Imagen unica 
+    \begin{figure}[H] \centering
+        \includegraphics[width=0.5\linewidth]{}
+        \caption{ } 
+        \label{ }
+    \end{figure}
+
+    \begin{figure}
+        \centering
+        \resizebox{0.75\textwidth}{!}{\input{img/nrz}}
+        \caption{}
+        \label{}
+    \end{figure}
+
+    % Link
+    \begin{center}
+        \par \vspace{0.25 cm} \textbf{Para el desarrollo de esta experiencia se utilizó el siguiente} 
+        \href{}
+        {\textcolor{blue}{Google Colab.}}
+    \vspace{0.25 cm}
+    \end{center}
+    
+    % Doble imagen
+    \begin{figure} [H] \centering
+        \begin{subfigure} [H] {0.45 \linewidth} \centering
+            \includegraphics[width=\linewidth]{}
+            \caption{}
+            \label{}
+        \end{subfigure}
+        \hspace{0.05 \linewidth}
+        \begin{subfigure} [H] {0.45 \linewidth} \centering
+            \includegraphics[width=\linewidth]{}
+            \caption{}
+            \label{}
+        \end{subfigure}
+        \caption{}
+        \label{}
+    \end{figure}
+
+    % Imagen triple
+    \begin{figure}[H]\centering
+        \begin{subfigure}[b]{0.3\textwidth} 
+            \includegraphics[width=\textwidth]{} 
+            % \caption{}
+            % \label{fig:}
+        \end{subfigure}
+        \hfill % Espacio horizontal entre imágenes
+        \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth]{} 
+            % \caption{}
+            % \label{fig:}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth]{} 
+            % \caption{}
+            % \label{fig:}
+        \end{subfigure}
+        % \caption{}
+        % \label{}
+    \end{figure}
+
+    % Texto e imagen
+    \begin{minipage}{0.5\textwidth}
+        
+    \end{minipage}
+    \begin{minipage}{0.5\textwidth}
+         \includegraphics[width=\linewidth]{}
+    \end{minipage}
+
+    % Tablas de las god
+    \begin{table} [H] \centering
+        \begin{tblr}{
+            cells={ valign = m , halign = c },  % Alineación por defecto: izquierda
+            colspec = {QQQQQ},                  % Define 5 columnas
+            rowsep = 10 pt,                     % Espaciado entre filas
+            colsep = 10 pt,                     % Espaciado entre columnas
+            hlines,                             % Líneas horizontales
+            vlines                              % Líneas verticales
+        }
+
+            % Aca va la tabla 
+              
+        \end{tblr}
+        \caption{}  % El nombre de la tabla
+        \label{}    % El tag de la tabla para la referencia
+    \end{table}
+
+    % idem pero una linea 
+    \begin{table} [H] \centering
+        \begin{tblr}{
+            cells={ valign = m , halign = l }, colspec = {QQQ}, rowsep = 10 pt, colsep = 10 pt, hlines, vlines,
+            column{1}= {bg=gray!15}, row{1} = {bold, halign=c} }
+
+            % Aca va la tabla 
+              
+        \end{tblr}
+        \caption{}  % El nombre de la tabla
+        \label{}    % El tag de la tabla para la referencia
+    \end{table}
+
+    % Tablas que se cortan entre páginas si es necesario
+    \begin{longtblr}[
+        caption = {esto es el titulo de la tabla},
+        label = {tab:etiqueta_para_referenciar}
+        ]{
+            cells={ valign = m , halign = c }, 
+            colspec = {Q Q[11 cm] Q}, 
+            rowsep = 3 pt, 
+            colsep = 5 pt,           
+            hlines, vlines,                             
+            row{1}={bg=gray!15, font=\bfseries}
+        }
+
+            aa & aa & aa \\
+
+    \end{longtblr}
+
+    % Para envolver las longtblr para que quede mejor aveces
+    \begingroup \setstretch{1.1}
+    \endgroup

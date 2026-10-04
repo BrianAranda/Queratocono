@@ -1,0 +1,116 @@
+\newpage
+\phantomsection
+\chapter{Desarrollo}
+
+\phantomsection
+\section{Definición de marca personal}
+
+    \phantomsection
+    \subsection{Presentación de identidad corporativa: KERALYTIX}
+
+        En el marco del desarrollo del producto, se definió la marca KERALYTIX como identidad corporativa del proyecto. El isotipo que la acompaña se muestra en la Figura~\ref{fig:logo_keralytix}.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.45\textwidth]{img/logo_keralytix.png}
+            \caption{Logotipo de la marca KERALYTIX.}
+            \label{fig:logo_keralytix}
+        \end{figure}
+
+    \phantomsection
+    \subsection{El nombre: composición y motivación}
+
+        \begin{itemize}[leftmargin=*]
+            \item \textbf{Composición morfológica:} El nombre KERALYTIX es un neologismo creado a partir de la fusión de dos pilares semánticos. Por un lado, la raíz \textbf{``Kera-''} (del griego \textit{keras}, relativo a la córnea), que delimita su campo de acción anatómico y clínico. Por otro, el sufijo \textbf{``-lytix''} (derivado de \textit{Analytics}), que expone el motor tecnológico del proyecto: el análisis profundo de datos.
+        \end{itemize}
+
+    \phantomsection
+    \subsection{El logotipo (isotipo)}
+
+        El logotipo (Figura~\ref{fig:logo_keralytix}) fue diseñado para abstraer la dualidad del producto (medicina y tecnología), alejándose de los clichés visuales médicos (como la silueta de un ojo con pestañas) para enfocarse en la precisión de los datos.
+
+        \begin{itemize}[leftmargin=*]
+            \item \textbf{Topografía y ectasia:} La estructura base está formada por curvas de nivel, simulando directamente los mapas de elevación anterior y posterior obtenidos de equipos como el Pentacam. La deformación asimétrica que rompe la esfericidad perfecta de los anillos hacia un vértice inferior representa visualmente la patología: el queratocono.
+
+            \item \textbf{Red neuronal y detección de anomalías:} Los puntos sólidos negros distribuidos estratégicamente sobre las curvas representan los nodos del modelo de Inteligencia Artificial (algoritmo XAI). La decisión arquitectónica de \textbf{no unir estos nodos con líneas} garantiza una lectura visual limpia y sin ruido, simbolizando que la IA es capaz de detectar anomalías y extraer características clave (\textit{features}) de manera precisa, directa y sin ofuscar la información clínica subyacente.
+
+            \item \textbf{Estética monocromática:} El uso de líneas continuas en negro sólido de alta calidad asegura que el símbolo mantenga su legibilidad técnica tanto en la interfaz oscura (\textit{dark mode}) del \textit{software}, como en los informes técnicos impresos en papel que recibirá el especialista.
+        \end{itemize}
+
+    \phantomsection
+    \subsection{Identidad de marca y posicionamiento}
+
+        \begin{itemize}[leftmargin=*]
+            \item \textbf{Propuesta de valor (\textit{tagline}):} La bajada ``DIAGNÓSTICO DE QUERATOCONO IMPULSADO POR IA'' en un solo renglón ancla la abstracción del logo. Actúa como una declaración funcional que no deja margen a interpretaciones erróneas, un requisito clave en la comunicación de productos médicos.
+
+            \item \textbf{Posicionamiento:} La identidad visual define a KERALYTIX como una herramienta de grado médico: aséptica, rigurosa y altamente tecnológica.
+
+            \item \textbf{Perfil de mercado:} La marca está calibrada para un entorno B2B. Su estética inspira la confianza y previsibilidad que exige un gerente de un hospital o un sistema de salud pública al adquirir tecnología, al mismo tiempo que posee el atractivo moderno y ágil que busca el oftalmólogo independiente en su consultorio privado.
+        \end{itemize}
+
+\phantomsection
+\section{Relevamiento clínico y análisis exploratorio de datos (EDA)}
+
+    Tal como se planteó en la primera fase de la propuesta metodológica, se buscó establecer contacto con diferentes centros de salud y profesionales dedicados al área de oftalmología, con el fin de reunir las muestras locales anonimizadas que permitan validar el modelo en la realidad regional. Por el momento no se llegó a concretar exitosamente un vínculo con el cual obtener datos, por lo que, de forma provisoria, el trabajo se continúa sobre los datos públicos del \textit{dataset} disponible en Zenodo~\cite{zenodo}.
+
+    \phantomsection
+    \subsection{Centros de salud y profesionales contactados}
+
+        Los centros de salud y profesionales contactados hasta la fecha se detallan en la Tabla~\ref{tabla:centros_contactados}.
+
+        \begin{longtblr}[
+            caption = Centros de salud y profesionales de oftalmología contactados,
+            label = tabla:centros_contactados
+            ]{
+                cells={ valign = m, halign = l },
+                colspec = {Q[l, 9.5 cm] Q[l, 5.5 cm]},
+                rowsep = 4 pt,
+                colsep = 5 pt,
+                hlines,
+                vlines,
+                row{1}={bg=gray!15, font=\bfseries, halign = c}
+            }
+
+            Centro de salud o profesional & Localidad \\
+
+            Centro de Ojos Misiones Alta Complejidad & Posadas \\
+
+            Clínica de Ojos Cáceres Zorrilla & Posadas \\
+
+            Clínica de Ojos Maldonado Bas & Córdoba \\
+
+            Universidad Hospital Italiano & Buenos Aires \\
+
+            Dr. Oscar Mallo & Buenos Aires \\
+
+            Clínica de Ojos Córdoba & Córdoba \\
+
+            Clínica de Ojos Dr. Nano & Buenos Aires \\
+
+            Clínica Vidavas & Perú \\
+
+            Clínica de Ojos Dr. Santiago Barreyro & Posadas \\
+
+        \end{longtblr}
+
+        Estos contactos representan el punto de partida para la conformación del lote de muestras locales anonimizadas previsto en la propuesta metodológica, cuya validación constituye un requisito para contrastar el rendimiento del modelo con la realidad clínica regional.
+
+    \phantomsection
+    \subsection{Conjunto de datos de trabajo}
+
+        Ante la ausencia de muestras locales, el punto de partida del análisis corresponde al \textit{dataset} CornOrb~\cite{zenodo}, disponible en Zenodo. Este recurso reúne $1.454$ ojos de $744$ pacientes ($889$ normales y $565$ queratocónicos) estudiados con un equipo Orbscan~3 en centros de oftalmología de Argelia. Para cada ojo se proporcionan cuatro mapas corneales (axial, anterior, posterior y paquimetría), junto con anotaciones clínicas estructuradas: edad, sexo, astigmatismo, K max, paquimetría, asfericidad y etiqueta diagnóstica. Todos los datos se encuentran anonimizados y preprocesados en imágenes PNG y archivos CSV estandarizados, listos para su utilización directa en investigación con aprendizaje profundo.
+
+    \phantomsection
+    \subsection{Análisis exploratorio de datos}
+
+        Sobre esta fuente de información se realiza el análisis exploratorio de datos (EDA), con el objetivo de caracterizar la muestra y evaluar la calidad de la información antes de proceder al entrenamiento del modelo. En particular, se busca:
+
+        \begin{itemize}[leftmargin=*]
+            \item Verificar la integridad y la consistencia de las imágenes de los mapas corneales, así como su estandarización en formato y resolución.
+
+            \item Analizar la distribución de las clases (ojos normales frente a ojos queratocónicos) para detectar desbalances que puedan condicionar el entrenamiento.
+
+            \item Caracterizar la distribución de las variables clínicas (edad, astigmatismo, K max, paquimetría y asfericidad), identificando valores faltantes o atípicos.
+        \end{itemize}
+
+        Los resultados de este análisis orientarán el preprocesamiento y la segmentación de las imágenes previstos en la propuesta metodológica, y serán complementados con las muestras locales en cuanto se concreten los acuerdos con los centros relevados.

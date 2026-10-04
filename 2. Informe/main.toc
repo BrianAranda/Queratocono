@@ -1,0 +1,62 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{Contextualización}{5}{chapter*.1}%
+\contentsline {section}{Análisis del problema}{5}{chapter*.1}%
+\contentsline {section}{Antecedentes}{7}{section*.3}%
+\contentsline {section}{Justificación}{9}{section*.4}%
+\contentsline {section}{Objetivos}{10}{section*.5}%
+\contentsline {section}{Marco Teórico}{11}{section*.6}%
+\contentsline {subsection}{Queratocono: fisiopatología y diagnóstico}{11}{section*.7}%
+\contentsline {subsection}{Inteligencia Artificial en medicina: estado del arte}{11}{section*.8}%
+\contentsline {subsection}{Redes neuronales convolucionales para procesamiento de imágenes}{12}{section*.9}%
+\contentsline {subsection}{Aprendizaje profundo multimodal}{12}{section*.10}%
+\contentsline {subsection}{Explicabilidad de la Inteligencia Artificial (XAI)}{13}{section*.11}%
+\contentsline {subsection}{\textit {Software} como producto médico y marco regulatorio}{13}{section*.12}%
+\contentsline {subsection}{Sistema ABCD de Belin para estratificación de riesgo}{14}{section*.13}%
+\contentsline {section}{Propuesta metodológica}{15}{section*.14}%
+\contentsline {subsection}{Cronograma de Actividades}{17}{section*.14}%
+\contentsline {chapter}{Análisis de Producto de Mercado}{18}{chapter*.16}%
+\contentsline {section}{Estudio de mercado}{18}{chapter*.16}%
+\contentsline {subsection}{Descripción del área geográfica que abarca el mercado del proyecto}{18}{section*.17}%
+\contentsline {subsection}{Descripción de los bienes y/o servicios que provea el proyecto}{18}{section*.18}%
+\contentsline {subsection}{Descripción de los usuarios y usos posibles}{19}{section*.20}%
+\contentsline {subsection}{Análisis de demanda}{19}{section*.20}%
+\contentsline {subsection}{Análisis de la oferta}{19}{section*.21}%
+\contentsline {subsection}{Análisis de precios}{21}{section*.22}%
+\contentsline {subsection}{Análisis de la comercialización}{21}{section*.23}%
+\contentsline {subsubsection}{Definición del producto requerido por los consumidores potenciales}{21}{section*.23}%
+\contentsline {subsubsection}{Estrategia de comunicación de los consumidores potenciales}{22}{section*.23}%
+\contentsline {subsubsection}{Estrategia de venta y distribución del producto}{22}{section*.23}%
+\contentsline {paragraph}{Distribución y acceso:}{22}{section*.23}%
+\contentsline {paragraph}{Canales de venta:}{22}{section*.23}%
+\contentsline {subsection}{Estudio de factibilidad y viabilidad del proyecto}{23}{section*.24}%
+\contentsline {paragraph}{Viabilidad técnica}{23}{section*.24}%
+\contentsline {paragraph}{Viabilidad jurídica}{23}{section*.24}%
+\contentsline {paragraph}{Viabilidad operativa}{23}{section*.24}%
+\contentsline {paragraph}{Viabilidad económica}{23}{section*.24}%
+\contentsline {paragraph}{Viabilidad técnica}{24}{section*.24}%
+\contentsline {paragraph}{Viabilidad jurídica}{24}{section*.24}%
+\contentsline {paragraph}{Viabilidad operativa}{24}{section*.24}%
+\contentsline {paragraph}{Viabilidad económica}{25}{section*.24}%
+\contentsline {section}{Presupuesto}{25}{section*.25}%
+\contentsline {subsection}{Recursos materiales}{25}{section*.26}%
+\contentsline {subsection}{Recursos humanos}{25}{section*.27}%
+\contentsline {subsection}{Recursos económicos}{27}{section*.28}%
+\contentsline {subsection}{Distribución financiera}{29}{section*.29}%
+\contentsline {subsection}{Flujo de caja}{30}{figure.caption.31}%
+\contentsline {section}{Gestión de riesgos}{31}{section*.32}%
+\contentsline {subsection}{Criterios de ponderación}{31}{section*.33}%
+\contentsline {subsection}{Riesgos identificados}{32}{section*.34}%
+\contentsline {subsection}{Planes de acción}{34}{section*.35}%
+\contentsline {subsection}{Impacto temporal}{35}{section*.36}%
+\contentsline {chapter}{Desarrollo}{37}{chapter*.38}%
+\contentsline {section}{Definición de marca personal}{37}{section*.39}%
+\contentsline {subsection}{Presentación de identidad corporativa: KERALYTIX}{37}{section*.40}%
+\contentsline {subsection}{El nombre: composición y motivación}{37}{section*.42}%
+\contentsline {subsection}{El logotipo (isotipo)}{37}{section*.43}%
+\contentsline {subsection}{Identidad de marca y posicionamiento}{38}{section*.44}%
+\contentsline {section}{Relevamiento clínico y análisis exploratorio de datos (EDA)}{38}{section*.45}%
+\contentsline {subsection}{Centros de salud y profesionales contactados}{38}{section*.46}%
+\contentsline {subsection}{Conjunto de datos de trabajo}{39}{section*.47}%
+\contentsline {subsection}{Análisis exploratorio de datos}{39}{section*.48}%
+\contentsline {section}{Referencias}{41}{section*.49}%
+\contentsline {chapter}{Anexo de Imágenes}{44}{chapter*.51}%

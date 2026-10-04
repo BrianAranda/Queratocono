@@ -1,0 +1,61 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+The style file: IEEEtran.bst
+Reallocating 'name_of_file' (item size: 1) to 20 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'wiz_functions' (item size: 4) to 6000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Database file #1: partes/bibliografia.bib
+-- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty journal in zenodo
+Warning--empty year in medicina_ia
+
+Done.
+You've used 36 entries,
+            4087 wiz_defined-function locations,
+            1024 strings with 15768 characters,
+and the built_in function-call counts, 21094 in all, are:
+= -- 1760
+> -- 452
+< -- 81
++ -- 234
+- -- 95
+* -- 1103
+:= -- 3303
+add.period$ -- 73
+call.type$ -- 36
+change.case$ -- 41
+chr.to.int$ -- 117
+cite$ -- 38
+duplicate$ -- 1692
+empty$ -- 1672
+format.name$ -- 112
+if$ -- 4814
+int.to.chr$ -- 0
+int.to.str$ -- 36
+missing$ -- 324
+newline$ -- 201
+num.names$ -- 22
+pop$ -- 857
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 1639
+stack$ -- 0
+substring$ -- 500
+swap$ -- 1302
+text.length$ -- 42
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 36
+warning$ -- 2
+while$ -- 52
+width$ -- 38
+write$ -- 412
+(There were 2 warnings)
