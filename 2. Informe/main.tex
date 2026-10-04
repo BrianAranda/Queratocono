@@ -1,0 +1,33 @@
+\documentclass[11 pt,a4paper,twoside,openany]{book}      
+\input{packages}                            
+\input{formato}                    
+\begin{document}
+    
+    % Titulo  
+    \input{partes/titulo}
+
+    % Resumen y palabras clave
+    \input{partes/resumen}
+
+    % Indice
+    \setcounter{page}{1}
+    \tableofcontents
+    \newpage \listoffigures
+    \newpage \listoftables
+
+    % Parte A - Proyecto Técnico
+    \input{partes/desarrollo_A}
+
+    % Parte B - Análisis de Producto de Mercado
+    \input{partes/desarrollo_B}
+
+    % Bibliografía unificada
+    \clearpage
+    \phantomsection
+    \renewcommand{\bibname}{Referencias}
+    \input{partes/referencias_unificadas}
+
+    % Anexo de imágenes
+    \input{partes/anexo_imagenes}
+        
+\end{document}

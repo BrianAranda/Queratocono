@@ -1,0 +1,1 @@
+{"rule":"MORFOLOGIK_RULE_ES","sentence":"^\\QPara la conversión de los PDF con comentarios a .md se utilizó pdfannots\\E$"}
