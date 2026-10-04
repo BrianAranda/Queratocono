@@ -1,0 +1,1 @@
+Esta carpeta está dedicada a los código de Colab relacionados a cada presentación.

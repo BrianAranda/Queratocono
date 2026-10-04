@@ -1,0 +1,1 @@
+¿Sabias que en español los acentos van siempre para la derecha? Se llama acento agudo y el acento para hacia la izquierda, conocido como acento grave, carece completamente de uso en español acutual.
