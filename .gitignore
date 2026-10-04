@@ -1,1 +1,12 @@
 build/
+# Auxiliares de LaTeX (por si se compila sin build/)
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lot
+*.toc
+*.out
