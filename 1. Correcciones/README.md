@@ -1,1 +1,1 @@
-Esta carpeta está dedicada a las correcciones y retroalimentaciones de cada entrega de trabajo práctico
+Esta carpeta está dedicada a las correcciones y retroalimentaciones de cada entrega de trabajo práctico.
