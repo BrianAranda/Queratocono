@@ -1,0 +1,10 @@
+{
+    // LTeX+: corregir solo LaTeX y Markdown (deja afuera .bib, que viene de Zotero)
+    "ltex.enabled": ["latex", "markdown"],
+
+    // Archivos generados en build/ (.bbl, .aux, .log...): abrirlos como texto
+    // plano para que LTeX+ no los revise
+    "files.associations": {
+        "**/build/**": "plaintext"
+    }
+}

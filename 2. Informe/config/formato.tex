@@ -14,6 +14,10 @@
 % \spacing{1.5}
 \setstretch{1.5}
 
+% No estirar espacios verticales para igualar el final de cada página
+% (book con twoside usa \flushbottom por defecto → Underfull \vbox)
+\raggedbottom
+
 % Eliminar espaciado de enumerate e itemize
 \setlist[enumerate,itemize]{itemsep=0pt, topsep=0pt}
 

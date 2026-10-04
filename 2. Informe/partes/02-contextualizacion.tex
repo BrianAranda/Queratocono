@@ -1,4 +1,3 @@
-\newpage
 \chapter{Contextualización}
 
 \section{Análisis del problema}
@@ -35,9 +34,9 @@
 
     \subsection*{Indicadores cuantitativos}
 
-        Se estima que afecta a más de $23,7$ millones de personas a nivel mundial, con una prevalencia global de $289$ casos por cada $100.000$ habitantes~\cite{prevalencia_kc}. A pesar de los avances en imagenología corneal, la detección de estadios subclínicos es un desafío dado que los sistemas de IA alcanzan una sensibilidad del $90\%$ en estos casos, frente al $98,6\%$ en casos ya manifiestos, es decir que uno de cada diez ojos con queratocono subclínico pasa desapercibido, contra menos de dos de cada cien con deformación mas avanzada~\cite{sensibilidad_ia_subclinica}.
+        Se estima que afecta a más de 23,7 millones de personas a nivel mundial, con una prevalencia global de 289 casos por cada 100.000 habitantes~\cite{prevalencia_kc}. A pesar de los avances en imagenología corneal, la detección de estadios subclínicos es un desafío dado que los sistemas de IA alcanzan una sensibilidad del 90\,\% en estos casos, frente al 98,6\,\% en casos ya manifiestos, es decir que uno de cada diez ojos con queratocono subclínico pasa desapercibido, contra menos de dos de cada cien con deformación más avanzada~\cite{sensibilidad_ia_subclinica}.
         
-        Esta dificultad se traduce en demoras diagnósticas de hasta $2,9$ años entre la primera consulta optométrica y la derivación oftalmológica~\cite{demora_diagnostica}, retraso que resulta crítico considerando que hasta el $88\%$ de los casos de ectasia corneal post-quirúrgica\footnote{Adelgazamiento y encurvamiento progresivo de la córnea posterior a una cirugía refractiva, cuando el tejido remanente pierde la resistencia necesaria para sostener la presión intraocular. Puede llegar a requerir un trasplante.} se atribuyen a ojos queratocónicos que no fueron detectados a tiempo~\cite{falsos_negativos_ectasia}.
+        Esta dificultad se traduce en demoras diagnósticas de hasta 2,9 años entre la primera consulta optométrica y la derivación oftalmológica~\cite{demora_diagnostica}, retraso que resulta crítico considerando que hasta el 88\,\% de los casos de ectasia corneal postquirúrgica\footnote{Adelgazamiento y encorvamiento progresivo de la córnea posterior a una cirugía refractiva, cuando el tejido remanente pierde la resistencia necesaria para sostener la presión intraocular. Puede llegar a requerir un trasplante.} se atribuyen a ojos queratocónicos que no fueron detectados a tiempo~\cite{falsos_negativos_ectasia}.
 
     \subsection*{Impacto local}
     
@@ -47,9 +46,9 @@
         
     \subsection*{Riesgos de implementación y barreras normativas}
     
-        Al tratarse de una aplicación en el ámbito de la salud, la implementación de este sistema conlleva riesgos críticos que deben ser tenidos en cuenta. La integración de modelos de IA exige una rigurosa validación externa o local. Este proceso es fundamental para contrastar el rendimiento del algoritmo con la realidad clínica diaria, permitiendo evaluar y documentar de manera rigurosa la fiabilidad y eficacia del sistema bajo las condiciones y recursos de nuestra región.
+        Al tratarse de una aplicación en el ámbito de la salud, la implementación de este sistema conlleva riesgos críticos que deben ser tenidos en cuenta. La integración de modelos de IA exige una rigurosa validación externa o local. Este proceso es fundamental para contrastar el rendimiento del algoritmo con la realidad clínica diaria. Esto permite evaluar y documentar de manera rigurosa la fiabilidad y eficacia del sistema bajo las condiciones y recursos de nuestra región.
     
-        Por otro lado, la Disposición ANMAT 9688/19 establece en su artículo 26 que todo \textit{software} que se encuadre en la definición de producto médico debe inscribirse en el Registro de Productores y Productos de Tecnología Médica~\cite{dispo_9688}, requisito que alcanza directamente a este sistema. La inscripción no certifica por sí sola que el producto sea seguro, si no que exige presentar los ensayos que respaldan el informe de Requisitos Esenciales de Seguridad y Eficacia, con una profundidad que depende de la clase de riesgo asignada según la Disposición 2318/02~\cite{dispo_2318}.
+        Por otro lado, la Disposición ANMAT 9688/19 establece en su artículo 26 que todo \textit{software} que se encuadre en la definición de producto médico debe inscribirse en el Registro de Productores y Productos de Tecnología Médica~\cite{dispo_9688}, requisito que alcanza directamente a este sistema. La inscripción no certifica por sí sola que el producto sea seguro, sino que exige presentar los ensayos que respaldan el informe de Requisitos Esenciales de Seguridad y Eficacia, con una profundidad que depende de la clase de riesgo asignada según la Disposición 2318/02~\cite{dispo_2318}.
         
         La responsabilidad legal de los datos locales recae en los oftalmólogos consultados, en su labor de anonimizar los estudios provistos. Por otro lado, los datos presentes en los \textit{datasets} internacionales~\cite{kaggle,zenodo,insight} ya vienen anonimizados previamente para su uso, garantizando la transparencia y validación clínica según las normativas de protección de datos personales~\cite{ley_25326}.
 
@@ -60,9 +59,9 @@
     \par\vspace{-0.25 cm}
     \subsection*{Redes neuronales recurrentes (RNN)}
 
-        Un antecedente fundamental es el modelo de aprendizaje profundo multimodal presentado por Shafi Balal en el congreso ESCRS 2025, abordando la problemática de que los médicos no pueden predecir con certeza qué pacientes progresan hacia estadios graves y cuáles son estables, saturando los servicios con seguimientos frecuentes. Su sistema utiliza redes neuronales recurrentes para analizar datos de sólo dos visitas, logrando clasificar a los pacientes en grupos de bajo o alto riesgo de progresión a dos años~\cite{shafi_balal}.
+        Un antecedente fundamental es el modelo de aprendizaje profundo multimodal presentado por Shafi Balal en el congreso ESCRS 2025, abordando la problemática de que los médicos no pueden predecir con certeza qué pacientes progresan hacia estadios graves y cuáles son estables, saturando los servicios con seguimientos frecuentes. Su sistema utiliza redes neuronales recurrentes para analizar datos de solo dos visitas, logrando clasificar a los pacientes en grupos de bajo o alto riesgo de progresión a dos años~\cite{shafi_balal}.
 
-        Este trabajo demuestra dos cosas: es posible construir modelos predictivos con una cantidad reducida de información clínica y que es viable estratificar el riesgo de progresión. Esto es relevante puesto que valida uno de los fines del trabajo propuesto, la estratificación. Además, verifica que no precisamos de un banco de datos de validación extenso con muestras locales.
+        Este trabajo demuestra dos cosas: es posible construir modelos predictivos con una cantidad reducida de información clínica y que es viable estratificar el riesgo de progresión. Esto es relevante, puesto que valida uno de los fines del trabajo propuesto, la estratificación. Además, verifica que no precisamos de un banco de datos de validación extenso con muestras locales.
 
     \par\vspace{-0.1 cm}
     \subsection*{Redes neuronales convolucionales (CNN)}
@@ -88,7 +87,7 @@
 
     \subsection*{\textit{Foundation Models}}
 
-        Otro antecedente relevante es RETFound, el primer modelo fundacional en oftalmología, entrenado mediante aprendizaje autosupervisado (\textit{masked autoencoder}) sobre $1,6$ millones de imágenes retinianas no etiquetadas, logrando superar a modelos preentrenados en ImageNet en tareas de diagnóstico y pronóstico con una cantidad reducida de datos etiquetados~\cite{retfound}. Esta línea de trabajo fue posteriormente extendida por el \textit{Global RETFound Consortium}, que propuso un modelo fundacional médico de alcance global~\cite{retfound_global}.
+        Otro antecedente relevante es RETFound, el primer modelo fundacional en oftalmología, entrenado mediante aprendizaje autosupervisado (\textit{masked autoencoder}) sobre 1,6 millones de imágenes retinianas no etiquetadas, logrando superar a modelos preentrenados en ImageNet en tareas de diagnóstico y pronóstico con una cantidad reducida de datos etiquetados~\cite{retfound}. Esta línea de trabajo fue posteriormente extendida por el \textit{Global RETFound Consortium}, que propuso un modelo fundacional médico de alcance global~\cite{retfound_global}.
         
         Este tipo de modelos demuestra que es posible reducir significativamente la dependencia de grandes volúmenes de datos etiquetados mediante preentrenamiento a gran escala. Sin embargo, su implementación requiere capacidad de cómputo y acceso a \textit{datasets} masivos que exceden el alcance y las limitaciones de desarrollo del presente trabajo, por lo que su exploración se plantea como trabajo futuro.
 
@@ -125,7 +124,7 @@
             
             KERAFound / AEYE
             & Investigaciones académicas con transición a herramientas de diagnóstico. 
-            & Diseñados para sistemas internacionales de alta gama, sin adecuación regulatorias. \\
+            & Diseñados para sistemas internacionales de alta gama, sin adecuación regulatoria. \\
             
             \textbf{Nuestro proyecto }
             & Enfoque integral: detección temprana y estratificación de riesgo en un sistema abierto y accesible. RNN y CNN.
@@ -155,7 +154,7 @@
 
         Al no existir datos económicos sistematizados sobre el queratocono en Argentina, se plantea un análisis del costo de los estudios necesarios para la herramienta propuesta frente al de los tratamientos correspondientes a etapas avanzadas de la enfermedad. Para ello, tomamos en cuenta el nomenclador nacional de prácticas oftalmológicas de 2025~\cite{nomenclador_cao}, sin considerar reducciones de como por ejemplo obras sociales.
         
-        Mientras que un estudio de topografía o tomografía corneal ronda los $\$\,150.000$, los procedimientos quirúrgicos representan un salto gigantesco en costo. El \textit{cross-linking} corneal y el implante de anillos intracorneales oscilan entre $3$ y $3,3$ millones de pesos por ojo, mientras que un trasplante de córnea puede superar los $10$ millones de pesos por ojo considerando los costos de importación del tejido, cirugía y seguimiento postoperatorio. 
+        Mientras que un estudio de topografía o tomografía corneal ronda los \$\,150.000, los procedimientos quirúrgicos representan un salto gigantesco en costo. El \textit{cross-linking} corneal y el implante de anillos intracorneales oscilan entre 3 y 3,3 millones de pesos por ojo, mientras que un trasplante de córnea puede superar los 10 millones de pesos por ojo considerando los costos de importación del tejido, cirugía y seguimiento postoperatorio. 
         
         Bajo este escenario, un sistema de detección temprana que evite o retrase la progresión hacia estas instancias quirúrgicas representaría un ahorro potencial considerable tanto para el paciente como para el sistema de salud, además de reducir la carga sobre los servicios de oftalmología especializada al filtrar los casos de bajo riesgo mediante una primera evaluación asistida.
 
@@ -255,7 +254,7 @@
         
         La primera etapa corresponde al desarrollo y entrenamiento, que abarca los primeros seis meses y se centra en la elaboración del algoritmo, su primera verificación y refinamiento. Desde el inicio de este ciclo se definen los requisitos regulatorios, legales y de calidad, estableciendo las políticas de trazabilidad y la estructura del informe técnico necesarios para la futura certificación del sistema como producto médico. Asimismo, en esta fase se realiza la consolidación de la base de datos mediante la recopilación y unificación de \textit{datasets} internacionales de carácter público o privado \cite{kaggle,zenodo,insight}, que aportarán el volumen masivo de imágenes topográficas requerido para constituir la fuente principal del entrenamiento algorítmico. 
     
-        Paralelamente, se desarrollan acuerdos de colaboración con centros oftalmológicos locales para conformar un \textit{dataset} de alrededor de $150$ muestras locales, estrictamente anonimizadas desde su origen en cumplimiento con los lineamientos de confidencialidad y protección de datos, con el fin de validar posteriormente el modelo. Se construye un módulo de estandarización de formatos para las exportaciones del equipo Pentacam, extrayendo y llevando a una misma escala los mapas clave: elevación anterior y posterior, curvatura sagital y tangencial, y espesor corneal. Dicho diseño facilita, como línea de trabajo futuro, la incorporación de interfaces de compatibilidad para otros equipos del mercado, tales como Sirius y GALILEI\textsuperscript{\textregistered}. 
+        Paralelamente, se desarrollan acuerdos de colaboración con centros oftalmológicos locales para conformar un \textit{dataset} de alrededor de 150 muestras locales, estrictamente anonimizadas desde su origen en cumplimiento con los lineamientos de confidencialidad y protección de datos, con el fin de validar posteriormente el modelo. Se construye un módulo de estandarización de formatos para las exportaciones del equipo Pentacam, extrayendo y llevando a una misma escala los mapas clave: elevación anterior y posterior, curvatura sagital y tangencial, y espesor corneal. Dicho diseño facilita, como línea de trabajo futuro, la incorporación de interfaces de compatibilidad para otros equipos del mercado, tales como Sirius y GALILEI\textsuperscript{\textregistered}. 
     
         Las imágenes se preprocesan para su segmentación, y luego se experimentaría con arquitecturas multimodales para la extracción de características espaciales. El modelo seleccionado se entrenará exhaustivamente por \textit{fine-tuning} para maximizar la identificación de patrones morfológicos sutiles del queratocono, y se estratificará el riesgo tomando el sistema ABCD de Belin como referencia. Finalmente, se verifica la robustez del modelo enfrentándolo a datos presentes en los \textit{datasets} internacionales y locales, priorizando la reducción de los falsos negativos.
 
@@ -271,7 +270,7 @@
             
         La tercera etapa correspondería a la validación clínica y pruebas de usuario, que abarcaría otros dos meses tras la integración. En esta fase se realizará una auditoría del rendimiento del sistema utilizando métricas clínicas y evaluando el esfuerzo humano requerido. 
     
-        Se llevará a cabo una verificación externa utilizando la totalidad del conjunto de $150$ topografías locales reservado para pruebas (no utilizado durante el entrenamiento), calculando un intervalo de confianza estadístico del $90\%$ sobre las métricas de sensibilidad y especificidad. Se realizarán ajustes de experiencia de usuario e interfaz basados en la retroalimentación y pruebas de usabilidad realizadas con el personal médico.
+        Se llevará a cabo una verificación externa utilizando la totalidad del conjunto de 150 topografías locales reservado para pruebas (no utilizado durante el entrenamiento), calculando un intervalo de confianza estadístico del 90\,\% sobre las métricas de sensibilidad y especificidad. Se realizarán ajustes de experiencia de usuario e interfaz basados en la retroalimentación y pruebas de usabilidad realizadas con el personal médico.
 
      \subsection*{Cuarta fase}
         
@@ -420,12 +419,12 @@
                 Competidor & Inversión inicial & Modelo de facturación \\
                 
                 Sistemas Tradicionales (Oculus/Ziemer) 
-                & USD $ \$\,20.000$ a USD $ \$\,40.000$ por equipo + software 
+                & USD \$\,20.000 a USD \$\,40.000 por equipo + software 
                 & Licencia cerrada e inflexible \\
 
                 Referente IA Local (Entelai) 
                 & No requiere hardware propio 
-                & SaaS / Pay-per-scan: $\approx \$\,3.790 + IVA$ por informe~\cite{entelai} \\
+                & SaaS / Pay-per-scan: $\approx$\,\$\,3.790 + IVA por informe~\cite{entelai} \\
 
                 \textbf{Nuestra Propuesta} 
                 & No requiere hardware nuevo. Procesa imágenes de cualquier equipo estándar 
@@ -436,11 +435,11 @@
             \subsubsection*{Estructura de costos del proyecto}
             
             \begin{itemize}[leftmargin=*]
-                \item \textbf{Infraestructura Mensual:} Aproximadamente $ \$\,41.600\:ARS$. Esto incluye el servidor VPS (KVM 4 de Hostinger a $\approx \$\, 23.300$) y la plataforma de entrenamiento (Google Colab Pro a $\approx \$\,18.300$ con impuestos incluidos).  
+                \item \textbf{Infraestructura Mensual:} Aproximadamente \$\,41.600 ARS. Esto incluye el servidor VPS (KVM 4 de Hostinger a $\approx$\,\$\,23.300) y la plataforma de entrenamiento (Google Colab Pro a $\approx$\,\$\,18.300 con impuestos incluidos).  
     
-                \item \textbf{Validación Médica:} El costo operativo por hora de un especialista para auditoría de datos es de $\approx\$\,30.000 \: ARS$.  
+                \item \textbf{Validación Médica:} El costo operativo por hora de un especialista para auditoría de datos es de $\approx$\,\$\,30.000 ARS.  
     
-                \item \textbf{Barrera Regulatoria (ANMAT):} El registro del producto Clase II cuesta $\$\,52.000 \:ARS$, pero la habilitación inicial de la empresa como fabricante/importador requiere un pago único de $ \$\,1.523.100 \:ARS$.
+                \item \textbf{Barrera Regulatoria (ANMAT):} El registro del producto Clase II cuesta \$\,52.000 ARS, pero la habilitación inicial de la empresa como fabricante/importador requiere un pago único de \$\,1.523.100 ARS.
             \end{itemize}
 
         \phantomsection
@@ -501,7 +500,7 @@
         
             \subsubsection*{Criterios de ponderación}
         
-            \paragraph{Viabilidad técnica} (40\% de influencia) Determina si el equipo de desarrollo cuenta con los recursos y experiencia para cumplir los requisitos.
+            \paragraph{Viabilidad técnica} (40\,\% de influencia) Determina si el equipo de desarrollo cuenta con los recursos y experiencia para cumplir los requisitos.
         
             \begin{itemize}
                 \item \textbf{Accesibilidad de tecnologías y datos:} Evaluar la facilidad para obtener \textit{hardware} de entrenamiento, herramientas de \textit{software} y el acceso a los datasets multimodales.
@@ -513,7 +512,7 @@
                 \item \textbf{Mantenibilidad del sistema:} La facilidad con la que el software puede ser actualizado, corregido o adaptado a nuevas versiones o cambios en los formatos de salida de los equipos de diagnóstico.
             \end{itemize}
         
-            \paragraph{Viabilidad jurídica} (25\% de influencia) Para asegurar el cumplimiento normativo respecto a la salud.
+            \paragraph{Viabilidad jurídica} (25\,\% de influencia) Para asegurar el cumplimiento normativo respecto a la salud.
         
             \begin{itemize}
                 \item \textbf{Cumplimiento de normativas ANMAT:} Factibilidad de registrar el software como producto médico (SaMD) bajo las disposiciones 2318/02 \cite{dispo_2318} y 9688/19 \cite{dispo_9688}, clasificándolo como clase II.  
@@ -524,7 +523,7 @@
             \end{itemize}
 
             \vspace{-0.5 cm}
-            \paragraph{Viabilidad operativa} (20\% de influencia) Analizar si el sistema se utilizará y funcionará al instalarse.
+            \paragraph{Viabilidad operativa} (20\,\% de influencia) Analizar si el sistema se utilizará y funcionará al instalarse.
         
             \begin{itemize}
                 \item \textbf{Predisposición y aceptación del usuario:} Nivel de apertura de los oftalmólogos para adoptar herramientas de IA como apoyo diagnóstico.  
@@ -535,7 +534,7 @@
             \end{itemize}
 
             \vspace{-0.5 cm}
-            \paragraph{Viabilidad económica} (15\% de influencia) Evalúa la rentabilidad y la capacidad de solventar los gastos.
+            \paragraph{Viabilidad económica} (15\,\% de influencia) Evalúa la rentabilidad y la capacidad de solventar los gastos.
         
             \begin{itemize}
                 \item \textbf{Costos directos de desarrollo e implementación:} Incluye licencias de plataformas de desarrollo (Colab Pro por ejemplo), \textit{hosting} VPS y los aranceles de ANMAT.  
@@ -599,13 +598,13 @@
             Al tratarse de un software como producto médico, los insumos requeridos son exclusivamente digitales. Afortunadamente, se obtendrán a través de vías institucionales o de código abierto, por lo que no representan un costo económico:
 
             \begin{itemize}
-                \item \textbf{Muestras locales:} Lote de $150$ imágenes de topografías corneales anonimizadas, provistas por el consultorio médico asociado para realizar la validación clínica local de los algoritmos.
+                \item \textbf{Muestras locales:} Lote de 150 imágenes de topografías corneales anonimizadas, provistas por el consultorio médico asociado para realizar la validación clínica local de los algoritmos.
     
                 \item \textbf{Datasets de información:} Bases de datos públicas e internacionales con casos de queratocono, las cuales se utilizarán en la etapa de entrenamiento inicial de la Inteligencia Artificial.
             \end{itemize}
 
             \begin{itemize}
-                \item \textbf{Computadoras portátiles (\textit{Notebooks}):} Se requiere \textit{hardware} estándar para las tareas de programación y desarrollo local durante la ejecución del proyecto, así como para eventuales ajustes o mantenimientos futuros. Tomando como referencia equipos con procesador Intel Core i7 y 16 GB de RAM, el valor de mercado actual ronda entre los $\$\,1.800.000$ y $\$\,2.100.000$ ARS por unidad. Teniendo en cuenta que se planea adquirir estos equipo para el desarrollo exclusivo de este proyecto, uno por cada integrante, el costo total estimado es de $\$\,4.200.000$.
+                \item \textbf{Computadoras portátiles (\textit{Notebooks}):} Se requiere \textit{hardware} estándar para las tareas de programación y desarrollo local durante la ejecución del proyecto, así como para eventuales ajustes o mantenimientos futuros. Tomando como referencia equipos con procesador Intel Core i7 y 16 GB de RAM, el valor de mercado actual ronda entre los \$\,1.800.000 y \$\,2.100.000 ARS por unidad. Teniendo en cuenta que se planea adquirir estos equipo para el desarrollo exclusivo de este proyecto, uno por cada integrante, el costo total estimado es de \$\,4.200.000.
             \end{itemize}
 
         \phantomsection
@@ -618,9 +617,9 @@
                 Los valores calculados a continuación se basan en los honorarios recomendados por el Consejo Profesional de Ciencias Informáticas de Córdoba \cite{honorarios_profesionales_cordoba}. Sin embargo, para garantizar la viabilidad del proyecto, se asignaron retribuciones simbólicas basadas en el valor de un salario Mínimo Vital y Móvil (SMVM) \cite{cita:SMVM} en proporción a una jornada laboral de cuatro horas diarias.
                 
                 \begin{itemize}
-                    \item \textbf{Programador Inteligencia Artificial:} Este rol es el principal encargado del desarrollo y entrenamiento del modelo en la primer fase del proyecto. Con una participación de 9 meses y dedicación del 50\%, el costo total, basado en su retribución simbólica, estimado es de $\$\,3.171.600$.
+                    \item \textbf{Programador Inteligencia Artificial:} Este rol es el principal encargado del desarrollo y entrenamiento del modelo en la primer fase del proyecto. Con una participación de 9 meses y dedicación del 50\,\%, el costo total, basado en su retribución simbólica, estimado es de \$\,3.171.600.
         
-                    \item \textbf{Desarrollador Web Full Stack:} Este rol comienza a desarrollarse en la segunda fase del proyecto, correspondiente a la implementación e integración. Se encargará del desarrollo del \textit{backend} y \textit{frontend} de la aplicación. Con una participación de 2 meses y dedicación del 50\% el costo total, basado en su retribución simbólica, estimado es de $\$\,704.800$.
+                    \item \textbf{Desarrollador Web Full Stack:} Este rol comienza a desarrollarse en la segunda fase del proyecto, correspondiente a la implementación e integración. Se encargará del desarrollo del \textit{backend} y \textit{frontend} de la aplicación. Con una participación de 2 meses y dedicación del 50\,\% el costo total, basado en su retribución simbólica, estimado es de \$\,704.800.
                 \end{itemize}
     
             \subsubsection*{Recursos humanos adicionales}
@@ -628,9 +627,9 @@
                 Los valores calculados a continuación se basan en el salario mediano de dichos roles (\cite{cita:salario_marketing} y  \cite{cita:salario_UX_UI}).
                 
                 \begin{itemize}
-                    \item \textbf{Diseñador UX y UI:} Su actividad se centrará en la segunda fase, de implementación e integración junto a los desarrolladores web, diseñando interfaces intuitivas y amigables para que sea simple de usar para usuarios no técnicos. Con una participación de 1 meses y dedicación del 30\% el costo total estimado es de $\$\,480.800$.
+                    \item \textbf{Diseñador UX y UI:} Su actividad se centrará en la segunda fase, de implementación e integración junto a los desarrolladores web, diseñando interfaces intuitivas y amigables para que sea simple de usar para usuarios no técnicos. Con una participación de 1 meses y dedicación del 30\,\% el costo total estimado es de \$\,480.800.
         
-                    \item \textbf{Especialista en marketing digital:} Este perfil se enfocará en la creación de compañas de marketing digital y en realizar sugerencias  en cuanto a la información presentada en \textit{newsletters}, \textit{webinars} y congresos científicos. Con una participación de 1 meses de dedicación del 20\% el costo total estimado es de $\$\,162.000$.
+                    \item \textbf{Especialista en marketing digital:} Este perfil se enfocará en la creación de compañas de marketing digital y en realizar sugerencias  en cuanto a la información presentada en \textit{newsletters}, \textit{webinars} y congresos científicos. Con una participación de 1 meses de dedicación del 20\,\% el costo total estimado es de \$\,162.000.
                 \end{itemize}
 
             \vspace{-0.25 cm}
@@ -652,11 +651,11 @@
             
                 Profesión / función en el proyecto & Cant. & Costo mensual real c/u & Retribución simbólica & Meses de partic. & \% de dedic. & Costo total \\
             
-                Programador IA & 2 & $\$\,3.783.577,52$ & $\$\,352.400,00$ & 9 & 50 & $\$\,3.171.600,00$ \\
+                Programador IA & 2 & \$\,3.783.577,52 & \$\,352.400,00 & 9 & 50 & \$\,3.171.600,00 \\
             
-                Desarrollador Web Full Stack & 2 & $\$\,3.453.169,23$ & $\$\,352.400,00$ & 2 & 50 & $\$\,704.800,00$ \\
+                Desarrollador Web Full Stack & 2 & \$\,3.453.169,23 & \$\,352.400,00 & 2 & 50 & \$\,704.800,00 \\
             
-                \SetCell[c=6]{r} TOTAL & & & & & & $\$\,3.876.400,00$ \\
+                \SetCell[c=6]{r} TOTAL & & & & & & \$\,3.876.400,00 \\
             
             \end{longtblr}
 
@@ -678,13 +677,13 @@
             
                 Profesión u oficio & Función en el proyecto & Costo total mensual & Meses de partic. & \% de dedic. & Costo total \\
             
-                Diseñador web & Diseño de las interfaces UI/UX & $\$\,1.600.000,00$ & 1 & 30 & $\$\,480.000,00$ \\
+                Diseñador web & Diseño de las interfaces UI/UX & \$\,1.600.000,00 & 1 & 30 & \$\,480.000,00 \\
             
-                Idóneo & Marketing digital & $\$\,810.000,00$ & 1 & 20 & $\$\,162.000,00$ \\
+                Idóneo & Marketing digital & \$\,810.000,00 & 1 & 20 & \$\,162.000,00 \\
             
-                \SetCell[c=5]{r} TOTAL & & & & & $\$\,642.000,00$ \\
+                \SetCell[c=5]{r} TOTAL & & & & & \$\,642.000,00 \\
             
-                \SetCell[c=5]{r} TOTAL DE RECURSOS HUMANOS & & & & & $\$\,4.518.400,00$ \\
+                \SetCell[c=5]{r} TOTAL DE RECURSOS HUMANOS & & & & & \$\,4.518.400,00 \\
             
             \end{longtblr}
 
@@ -695,15 +694,15 @@
     
             \begin{itemize}
                 \vspace{0.25 cm}
-                \item \textbf{Licenciado en Oftalmología - Consultor:} Se tomará como referencia el valor de hora médica definida por el colegio de médicos de la provincia de Misiones \cite{cita:honorario_oftalmólogo}, con un costo de $\$\,129.000$ ARS por hora médica y un tiempo de estimado de 40 horas, distribuidas a lo largo de aproximadamente 2 meses. Se elige este valor ya que, para fines de este proyecto, no se realizarán consultas clínicas de rutina si no que se realizará tareas de alta complejidad fuera del consultorio, como por ejemplo validación de datos y pruebas de experiencia de usuario. 
+                \item \textbf{Licenciado en Oftalmología - Consultor:} Se tomará como referencia el valor de hora médica definida por el colegio de médicos de la provincia de Misiones \cite{cita:honorario_oftalmólogo}, con un costo de \$\,129.000 ARS por hora médica y un tiempo de estimado de 40 horas, distribuidas a lo largo de aproximadamente 2 meses. Se elige este valor ya que, para fines de este proyecto, no se realizarán consultas clínicas de rutina si no que se realizará tareas de alta complejidad fuera del consultorio, como por ejemplo validación de datos y pruebas de experiencia de usuario. 
     
-                \item \textbf{Abogado - Consultor:} Ayudará en el asesoramiento legal en cuanto a encuadre gratulatorio de ANMAT, redacción de términos y condiciones de uso del software y registro de propiedad intelectual. Basándonos en los valores establecidos por el colegio de abogados de la provincia de Misiones \cite{cita:honorario_abogado} el costo total estimado es de $\$\,387.640$, teniendo el valor de un salario Mínimo Vital y Móvil (SMVM) \cite{cita:SMVM}, cuatro consultas formales de un valor de $20\%$ de un SMVM y la redacción de documentos por el valor del $30\%$ de un SMVM.
+                \item \textbf{Abogado - Consultor:} Ayudará en el asesoramiento legal en cuanto a encuadre gratulatorio de ANMAT, redacción de términos y condiciones de uso del software y registro de propiedad intelectual. Basándonos en los valores establecidos por el colegio de abogados de la provincia de Misiones \cite{cita:honorario_abogado} el costo total estimado es de \$\,387.640, teniendo el valor de un salario Mínimo Vital y Móvil (SMVM) \cite{cita:SMVM}, cuatro consultas formales de un valor de 20\,\% de un SMVM y la redacción de documentos por el valor del 30\,\% de un SMVM.
     
-                \item \textbf{Google Colaboratory (Pro):} Entorno \textit{Cloud} con acceso a GPUs para el entrenamiento de los modelos de IA. Su costo de suscripción es de aproximadamente $\$\,18.300$ ARS mensuales ( $\$\,10$ USD + impuestos país).
+                \item \textbf{Google Colaboratory (Pro):} Entorno \textit{Cloud} con acceso a GPUs para el entrenamiento de los modelos de IA. Su costo de suscripción es de aproximadamente \$\,18.300 ARS mensuales ( \$\,10 USD + impuestos país).
     
-                \item \textbf{Suscripción a \textit{Claude Code}:} herramienta para acelerar el desarrollo del sistema de análisis de topografías corneales mediante la automatización de la escritura, refactorización y depuración del código. dicha suscripción tiene un valor de aproximadamente $\$\,31.600$ ($\$\,20$ USD + impuestos país) por mes.
+                \item \textbf{Suscripción a \textit{Claude Code}:} herramienta para acelerar el desarrollo del sistema de análisis de topografías corneales mediante la automatización de la escritura, refactorización y depuración del código. dicha suscripción tiene un valor de aproximadamente \$\,31.600 (\$\,20 USD + impuestos país) por mes.
     
-                \item \textbf{Servidor VPS:} Infraestructura virtual para el despliegue de la API \textit{backend} y el \textit{frontend}. Su costo ronda los $\$\,41.600$ ARS mensuales.
+                \item \textbf{Servidor VPS:} Infraestructura virtual para el despliegue de la API \textit{backend} y el \textit{frontend}. Su costo ronda los \$\,41.600 ARS mensuales.
             \end{itemize}
 
             \newpage
@@ -723,32 +722,32 @@
             
                 Descripción & Costo mensual & Meses de partic. & Costo total \\
             
-                Google Colaboratory & $\$\,18.300,00$ & 12 & $\$\,219.600,00$ \\
+                Google Colaboratory & \$\,18.300,00 & 12 & \$\,219.600,00 \\
             
-                Suscripción Claude Code & $\$\,31.000,00$ & 12 & $\$\,372.000,00$ \\
+                Suscripción Claude Code & \$\,31.000,00 & 12 & \$\,372.000,00 \\
             
-                VPS & $\$\,41.600,00$ & 6 & $\$\,249.600,00$ \\
+                VPS & \$\,41.600,00 & 6 & \$\,249.600,00 \\
             
-                Abogado - Consultor & $\$\,96.910,00$ & 4 & $\$\,387.640,00$ \\
+                Abogado - Consultor & \$\,96.910,00 & 4 & \$\,387.640,00 \\
             
-                Lic. Oftalmología - Consultor & $\$\,1.720.000,00$ & 3 & $\$\,5.160.000,00$ \\
+                Lic. Oftalmología - Consultor & \$\,1.720.000,00 & 3 & \$\,5.160.000,00 \\
             
-                \SetCell[c=3]{r} TOTAL & & & $\$\,6.388.840,00$ \\
+                \SetCell[c=3]{r} TOTAL & & & \$\,6.388.840,00 \\
             
             \end{longtblr}
 
             Comprende la logística y movilidad física para las reuniones con el oftalmólogo colaborador, pago de la inscripción del software como producto médico, autorización de la empresa fabricante frente al ANMAT y costos pertinentes para la divulgación del producto en el congreso nacional de oftalmología.
     
             \begin{itemize}
-                \item \textbf{Traslado desarrolladores hacia clínica de oftalmólogo colaborador (Oberá - Alem):} Considerando el viaje en colectivo, el costo aproximado es de $\$\,5.000$ ARS por viaje, dependiendo de la empresa. Teniendo en cuanta dos viajes, considerando viaje de ida y regreso, da un total de $\$\,20.000$.
+                \item \textbf{Traslado desarrolladores hacia clínica de oftalmólogo colaborador (Oberá - Alem):} Considerando el viaje en colectivo, el costo aproximado es de \$\,5.000 ARS por viaje, dependiendo de la empresa. Teniendo en cuanta dos viajes, considerando viaje de ida y regreso, da un total de \$\,20.000.
     
-                \item \textbf{Registro del producto ante el ANMAT:} Se registrará el software como producto médico clase 2 ante el ANMAT, este registro es un pago único de $\$\,52.000$ ARS.
+                \item \textbf{Registro del producto ante el ANMAT:} Se registrará el software como producto médico clase 2 ante el ANMAT, este registro es un pago único de \$\,52.000 ARS.
     
-                \item \textbf{Autorización de funcionamiento de empresa fabricante de productos médicos frente a la ANMAT:} Puesto que, las actividades de fabricación o importación de productos médicos, solo pueden efectuarse si se cuenta con esta autorización previa, siendo un pago único de $\$\,1.523.100$.
+                \item \textbf{Autorización de funcionamiento de empresa fabricante de productos médicos frente a la ANMAT:} Puesto que, las actividades de fabricación o importación de productos médicos, solo pueden efectuarse si se cuenta con esta autorización previa, siendo un pago único de \$\,1.523.100.
     
-                \item \textbf{Traslado de desarrolladores al congreso nacional de oftalmología (Oberá - Buenos Aires):} Considerando el boleto de colectivo de larga distancia y traslado urbano, el costo aproximado es de $\$\,85.000$ ARS por viaje, dependiendo de la empresa de transporte. Teniendo en cuanta dos viajes, considerando viaje de ida y regreso, da un subtotal de $\$\,340.000$ y teniendo en cuenta un rango de $\$\,160.000$ de costos de transporte urbano y viáticos el total alcanzaría los $\$\,500.000$.
+                \item \textbf{Traslado de desarrolladores al congreso nacional de oftalmología (Oberá - Buenos Aires):} Considerando el boleto de colectivo de larga distancia y traslado urbano, el costo aproximado es de \$\,85.000 ARS por viaje, dependiendo de la empresa de transporte. Teniendo en cuanta dos viajes, considerando viaje de ida y regreso, da un subtotal de \$\,340.000 y teniendo en cuenta un rango de \$\,160.000 de costos de transporte urbano y viáticos el total alcanzaría los \$\,500.000.
     
-                \item \textbf{Inscripción al congreso nacional de oftalmología:} Dado que, el Congreso Nacional de Oftalmología (CNO) es el principal encuentro científico y académico para médicos oftalmólogos y profesionales de la salud visual a nivel nacional, se considera pertinente su inscripción al mismo. Para personas técnicas que presenten una carta de recomendación de un oftalmólogo matriculado, el costo es de $\$\,24.000$ aproximadamente.
+                \item \textbf{Inscripción al congreso nacional de oftalmología:} Dado que, el Congreso Nacional de Oftalmología (CNO) es el principal encuentro científico y académico para médicos oftalmólogos y profesionales de la salud visual a nivel nacional, se considera pertinente su inscripción al mismo. Para personas técnicas que presenten una carta de recomendación de un oftalmólogo matriculado, el costo es de \$\,24.000 aproximadamente.
             \end{itemize}
 
             \begin{longtblr}[
@@ -767,17 +766,17 @@
             
                 Descripción & Costo total \\
             
-                Traslado (4) desarrolladores hacia clínica de oftalmólogo colaborador (Oberá / Leandro N. Alem) & $\$\,20.000,00$ \\
+                Traslado (4) desarrolladores hacia clínica de oftalmólogo colaborador (Oberá / Leandro N. Alem) & \$\,20.000,00 \\
             
-                Regulación clase 2 - ANMAT & $\$\,52.000,00$ \\
+                Regulación clase 2 - ANMAT & \$\,52.000,00 \\
             
-                Autorización de funcionamiento de empresa fabricante de productos médicos frente a la ANMAT & $\$\,1.523.100,00$ \\
+                Autorización de funcionamiento de empresa fabricante de productos médicos frente a la ANMAT & \$\,1.523.100,00 \\
             
-                Traslado (4) al congreso nacional de oftalmología (Oberá / Buenos Aires) & $\$\,500.000,00$ \\
+                Traslado (4) al congreso nacional de oftalmología (Oberá / Buenos Aires) & \$\,500.000,00 \\
             
-                Inscripción a congreso nacional de oftalmología & $\$\,24.000,00$ \\
+                Inscripción a congreso nacional de oftalmología & \$\,24.000,00 \\
             
-                \SetCell[c=1]{r} TOTAL & $\$\,2.119.100,00$ \\
+                \SetCell[c=1]{r} TOTAL & \$\,2.119.100,00 \\
             
             \end{longtblr}
 
@@ -788,9 +787,9 @@
         
             Durante el análisis financiero realizado, se identifica una fuerte inversión inicial seguida de una escalabilidad comercial basada en un modelo de suscripción (SaaS). Cabe aclarar que el desarrollo del proyecto se elabora en el ámbito de la Facultad de Ingeniería de Oberá (UNaM), lo que permite prescindir de costos de infraestructura como alquiler, servicios básicos y equipamiento de espacio de trabajo, ya que estos se encuentran cubiertos por la institución. Durante los primeros 10 meses del proyecto, el flujo de caja operativo es estrictamente negativo, ya que al no existir un producto comercializable aún, no se registran ingresos por ventas.
 
-            Para asegurar la viabilidad del proyecto durante su fase inicial, se apalanca el flujo de caja con un préstamo estratégico de $\$\,20.000.000$ ARS del Fondo de Crédito Misiones, el cual cuenta con una tasa subsidiada (TNA del $28\%$) y 6 meses de gracia para el pago de capital.
+            Para asegurar la viabilidad del proyecto durante su fase inicial, se apalanca el flujo de caja con un préstamo estratégico de \$\,20.000.000 ARS del Fondo de Crédito Misiones, el cual cuenta con una tasa subsidiada (TNA del 28\,\%) y 6 meses de gracia para el pago de capital.
         
-            A partir del mes 11, el sistema se lanza comercialmente con un modelo de suscripción accesible de $\$\,150.000$ mensuales, logrando la adhesión del oftalmólogo colaborador como primer subscriptor. Durante los primeros tres años, la estrategia de captación se enfoca en sumar progresivamente de 2 a 3 clínicas cabecera, equipadas con tomógrafos corneales, dentro de las principales urbes de Misiones, como Posadas, Oberá y Eldorado.
+            A partir del mes 11, el sistema se lanza comercialmente con un modelo de suscripción accesible de \$\,150.000 mensuales, logrando la adhesión del oftalmólogo colaborador como primer subscriptor. Durante los primeros tres años, la estrategia de captación se enfoca en sumar progresivamente de 2 a 3 clínicas cabecera, equipadas con tomógrafos corneales, dentro de las principales urbes de Misiones, como Posadas, Oberá y Eldorado.
             
             Finalmente, entre el cuarto y el sexto año, la proyección financiera escala de manera conservadora hasta alcanzar un máximo de 9 suscripciones activas, dejando vía libre hacia un crecimiento a nivel nacional.
 
