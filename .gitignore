@@ -10,3 +10,7 @@ build/
 *.lot
 *.toc
 *.out
+
+# Salida de compilación (se regenera)
+*.synctex.gz
+2. Informe/main.pdf

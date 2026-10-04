@@ -235,12 +235,12 @@
         
         En Argentina, la regulación de los SaMD está a cargo de la ANMAT, que establece las disposiciones 2318/02 y 9688/19 \cite{dispo_2318,dispo_9688} para la clasificación y registro de productos médicos. Según el nivel de riesgo asociado a la función que cumple el software, se clasifica en Clase I (bajo riesgo), Clase II (riesgo medio) o Clase III (alto riesgo).
 
-        Para el proyecto propuesto, el registro como producto Clase II implica la necesidad de demostrar la seguridad y eficacia del sistema mediante validación clínica, así como el cumplimiento de la normativa de protección de datos personales (Ley 25.326 \cite{ley_25326}) para garantizar la anonimización de las muestras y el consentimiento informado de los pacientes. El cumplimiento normativo no es simplemente un requisito administrativo, sino que forma parte integral del diseño del sistema, ya que desde las etapas iniciales de desarrollo se deben implementar mecanismos de seguridad, trazabilidad y auditoría que permitan demostrar ante el organismo regulador que el producto cumple con los estándares de calidad y seguridad requeridos para su uso en el ámbito clínico.
+        Para el proyecto propuesto, el registro como producto Clase II implica la necesidad de demostrar la seguridad y eficacia del sistema mediante validación clínica, así como el cumplimiento de la normativa de protección de datos personales (Ley 25.326 \cite{ley_25326}) para garantizar la anonimización de las muestras y el consentimiento informado de los pacientes. El cumplimiento normativo no es simplemente un requisito administrativo, sino que forma parte integral del diseño del sistema, ya que desde las etapas iniciales de desarrollo se deben implementar mecanismos de seguridad, trazabilidad y auditoría. Esto para demostrar ante el organismo regulador que el producto cumple con los estándares de calidad y seguridad requeridos para su uso en el ámbito clínico.
 
     \phantomsection
     \subsection{Sistema ABCD de Belin para estratificación de riesgo}
 
-        El sistema ABCD de Belin es un método de clasificación del queratocono que evalúa la córnea en cuatro dimensiones: A (elevación anterior), B (elevación posterior), C (curvatura corneal) y D (espesor corneal o paquimetría). Cada parámetro se puntúa en una escala que permite una estratificación objetiva de la severidad de la enfermedad y su riesgo de progresión. Este sistema supera las limitaciones del análisis convencional de mapas topográficos, que depende exclusivamente de la interpretación visual del especialista, al integrar múltiples parámetros objetivos en una evaluación unificada que facilita la comparabilidad de los resultados con estudios publicados y la aceptación del sistema por parte de la comunidad oftalmológica. Al basar la estratificación en un sistema validado y ampliamente reconocido, el proyecto se posiciona como una herramienta complementaria al flujo de trabajo clínico existente y no como un reemplazo del criterio médico especializado.
+        El sistema ABCD de Belin es un método de clasificación del queratocono que evalúa la córnea en cuatro dimensiones: A (elevación anterior), B (elevación posterior), C (curvatura corneal) y D (espesor corneal o paquimetría). Cada parámetro se puntúa en una escala que permite una estratificación objetiva de la severidad de la enfermedad y su riesgo de progresión. Este sistema supera las limitaciones del análisis convencional de mapas topográficos, que depende exclusivamente de la interpretación visual del especialista. Al integrar múltiples parámetros objetivos en una evaluación unificada que facilita la comparabilidad de los resultados con estudios publicados y la aceptación del sistema por parte de la comunidad oftalmológica. Al basar la estratificación en un sistema validado y ampliamente reconocido, el proyecto se posiciona como una herramienta complementaria al flujo de trabajo clínico existente y no como un reemplazo del criterio médico especializado.
 
         En el contexto del sistema propuesto, el algoritmo de IA se entrenará para predecir los valores del sistema ABCD a partir de las imágenes topográficas, entregando como resultado una clasificación de riesgo que el oftalmólogo puede utilizar como herramienta de apoyo para determinar la necesidad de tratamiento o seguimiento. La adopción de este sistema como referencia clínica permite alinearse con los estándares internacionales de diagnóstico del queratocono, facilitando la comparabilidad de los resultados con estudios publicados y mejorando la aceptación del sistema por parte de la comunidad oftalmológica.
 
@@ -248,11 +248,11 @@
 \phantomsection
 \section{Propuesta metodológica}
 
-    El desarrollo del proyecto se organizaría en etapas secuenciales que abarcaría desde la obtención de datos hasta el despliegue del sistema como \textit{software} como producto médico, con una duración total estimada de 4 meses. Esta propuesta se adaptaría a la metodología CRISP-DM combinada con un desarrollo incremental, dado que el proyecto avanza mediante ciclos iterativos de entendimiento y preparación de datos, modelado, evaluación y despliegue, en lugar de seguir un esquema secuencial clásico tipo cascada.
+    El desarrollo del proyecto se organizaría en etapas secuenciales que abarcaría desde la obtención de datos hasta el despliegue del sistema como \textit{software} como producto médico, con una duración total estimada de 4 meses. Esta propuesta se adaptaría a la metodología CRISP-DM combinado con un desarrollo incremental, dado que el proyecto avanza mediante ciclos iterativos de entendimiento y preparación de datos, modelado, evaluación y despliegue, en lugar de seguir un esquema secuencial clásico tipo cascada.
 
-    \subsection*{Primer fase}
+    \subsection*{Primera fase}
         
-        La primera etapa corresponde al desarrollo y entrenamiento, que abarca los primeros seis meses y se centra en la elaboración del algoritmo, su primera verificación y refinamiento. Desde el inicio de este ciclo se definen los requisitos regulatorios, legales y de calidad, estableciendo las políticas de trazabilidad y la estructura del informe técnico necesarios para la futura certificación del sistema como producto médico. Asimismo, en esta fase se realiza la consolidación de la base de datos mediante la recopilación y unificación de \textit{datasets} internacionales de carácter público o privado \cite{kaggle,zenodo,insight}, que aportarán el volumen masivo de imágenes topográficas requerido para constituir la fuente principal del entrenamiento algorítmico. 
+        La primera etapa corresponde al desarrollo y entrenamiento, que abarca los primeros seis meses y se centra en la elaboración del algoritmo, su primera verificación y refinamiento. Desde el inicio de este ciclo se definen los requisitos regulatorios, legales y de calidad, estableciendo las políticas de trazabilidad y la estructura del informe técnico necesaria para la futura certificación del sistema como producto médico. Asimismo, en esta fase se realiza la consolidación de la base de datos mediante la recopilación y unificación de \textit{datasets} internacionales de carácter público o privado \cite{kaggle,zenodo,insight}, que aportarán el volumen masivo de imágenes topográficas requerido para constituir la fuente principal del entrenamiento algorítmico. 
     
         Paralelamente, se desarrollan acuerdos de colaboración con centros oftalmológicos locales para conformar un \textit{dataset} de alrededor de 150 muestras locales, estrictamente anonimizadas desde su origen en cumplimiento con los lineamientos de confidencialidad y protección de datos, con el fin de validar posteriormente el modelo. Se construye un módulo de estandarización de formatos para las exportaciones del equipo Pentacam, extrayendo y llevando a una misma escala los mapas clave: elevación anterior y posterior, curvatura sagital y tangencial, y espesor corneal. Dicho diseño facilita, como línea de trabajo futuro, la incorporación de interfaces de compatibilidad para otros equipos del mercado, tales como Sirius y GALILEI\textsuperscript{\textregistered}. 
     
@@ -262,7 +262,7 @@
         
         La segunda etapa corresponde a la implementación e integración, que abarcaría dos meses tras el desarrollo. En esta fase el modelo se encapsulará en una plataforma de \textit{software}, estableciendo las bases para su monitoreo a largo plazo en producción. 
     
-        Se desarrollará el \textit{backend} para la lógica del servidor y creación de APIs utilizando el \textit{framework} FastAPI, y se implementan herramientas de explicabilidad para proporcionar evidencia visual que fundamenta la predicción. 
+        Se desarrollará el \textit{backend} para la lógica del servidor y creación de API utilizando el \textit{framework} FastAPI, y se implementan herramientas de explicabilidad para proporcionar evidencia visual que fundamenta la predicción. 
         
         Paralelamente, se diseñará y programará el \textit{frontend} con una interfaz de usuario amigable y multiplataforma utilizando React, capaz de generar informes detallados con los niveles de fiabilidad de la inferencia.
 
@@ -274,7 +274,7 @@
 
      \subsection*{Cuarta fase}
         
-        Finalmente, en la cuarta etapa de certificación regulatoria y despliegue (con una duración de dos meses), se consolidará la alineación legal y normativa que estableció los lineamientos del proyecto desde su inicio. Se realizará la revisión y el cierre del informe técnico, las decisiones de arquitectura y las políticas de calidad durante todo el ciclo de desarrollo. Un abogado consultor auditará esta documentación y acompañará el proceso formal de inscripción del sistema como producto médico Clase II ante la ANMAT. Asimismo, se someterán a control final y aprobación los contratos de confidencialidad, los términos de uso con limitación de responsabilidad clínica y los consentimientos informados, validando el cumplimiento estricto de la Ley N° 25.326 de Protección de Datos Personales de cara a la puesta en marcha de la infraestructura.
+        Finalmente, en la cuarta etapa de certificación regulatoria y despliegue (con una duración de dos meses), se consolidará la alineación legal y normativa que estableció los lineamientos del proyecto desde su inicio. Se realizará la revisión y el cierre del informe técnico, las decisiones de arquitectura y las políticas de calidad durante todo el ciclo de desarrollo. Un abogado consultor auditará esta documentación y acompañará el proceso formal de inscripción del sistema como producto médico Clase II ante la ANMAT. Asimismo, se someterán a control final y aprobación los contratos de confidencialidad, los términos de uso con limitación de responsabilidad clínica y los consentimientos informados, validando el cumplimiento estricto de la Ley N.º 25.326 de Protección de Datos Personales de cara a la puesta en marcha de la infraestructura.
     
         Se desplegará la arquitectura de \textit{software} en el servidor VPS bajo los protocolos de seguridad correspondientes, con asesoramiento del oftalmólogo consultor para garantizar la correcta integración con las exportaciones de datos de los topógrafos. 
         
@@ -292,7 +292,7 @@
     \phantomsection
     \subsection{Descripción del área geográfica que abarca el mercado del proyecto}
     
-        El mercado objetivo se localiza en la Provincia de Misiones, Argentina. Se enfoca principalmente en los centros urbanos con mayor infraestructura oftalmológica (como Posadas, Oberá y Eldorado), donde se concentran las clínicas privadas y hospitales públicos que cuentan con equipos de diagnóstico de alta complejidad (Pentacam, Sirius, etc.). Al ser los lugares de mayor densidad poblacional de la provincia, en ellos se concentra la mayor parte del diagnostico oftalmológico, en donde se pretende implementar un soporte para la diferenciar entre la enfermedades oculares comunes y el queratocono. 
+        El mercado objetivo se localiza en la Provincia de Misiones, Argentina. Se enfoca principalmente en los centros urbanos con mayor infraestructura oftalmológica (como Posadas, Oberá y Eldorado), donde se concentran las clínicas privadas y hospitales públicos que cuentan con equipos de diagnóstico de alta complejidad (Pentacam, Sirius, etc.). Al ser los lugares de mayor densidad poblacional de la provincia, en ellos se concentra la mayor parte del diagnóstico oftalmológico, en donde se pretende implementar un soporte para la diferencia entre las enfermedades oculares comunes y el queratocono. 
 
     \phantomsection
     \subsection{Descripción de los bienes y/o servicios que provea el proyecto}
@@ -332,7 +332,7 @@
 
         \subsection{Análisis de demanda}
         
-            Aunque no se manifieste una demanda excesiva de una herramienta de soporte a la decisión por parte de los profesionales, existe una necesidad creciente por la misma, resultante de la naturaliza subjetiva de los análisis  de los estudios. Estos son dependientes de la experiencia de los oftalmólogos, lo cual aumenta la probabilidad de cometer errores en la detección, sobre todo en etapas subclínicas, es decir, etapas iniciales donde la manifestación suele confundirse con enfermedades mas comunes y menos nocivas~\cite{deteccion_temprana}. 
+            Aunque no se manifieste una demanda excesiva de una herramienta de soporte a la decisión por parte de los profesionales, existe una necesidad creciente por la misma, resultante de la naturaleza subjetiva de los análisis  de los estudios. Estos son dependientes de la experiencia de los oftalmólogos, lo cual aumenta la probabilidad de cometer errores en la detección, sobre todo en etapas subclínicas, es decir, etapas iniciales donde la manifestación suele confundirse con enfermedades más comunes y menos nocivas~\cite{deteccion_temprana}. 
             
             En este apartado el producto ofrece la capacidad de mitigar dicha subjetividad al actuar como una ``segunda opinión experta'', reduciendo la dependencia de la experiencia del médico de turno, garantizando un diagnóstico preciso y estandarizado independientemente de quién evalúe el estudio.
             
@@ -437,7 +437,7 @@
             \begin{itemize}[leftmargin=*]
                 \item \textbf{Infraestructura Mensual:} Aproximadamente \$\,41.600 ARS. Esto incluye el servidor VPS (KVM 4 de Hostinger a $\approx$\,\$\,23.300) y la plataforma de entrenamiento (Google Colab Pro a $\approx$\,\$\,18.300 con impuestos incluidos).  
     
-                \item \textbf{Validación Médica:} El costo operativo por hora de un especialista para auditoría de datos es de $\approx$\,\$\,30.000 ARS.  
+                \item \textbf{Validación Médica:} El costo operativo de un especialista para auditoría de datos es de $\approx$\,\$\,30.000 ARS/hora.  
     
                 \item \textbf{Barrera Regulatoria (ANMAT):} El registro del producto Clase II cuesta \$\,52.000 ARS, pero la habilitación inicial de la empresa como fabricante/importador requiere un pago único de \$\,1.523.100 ARS.
             \end{itemize}
@@ -528,7 +528,7 @@
             \begin{itemize}
                 \item \textbf{Predisposición y aceptación del usuario:} Nivel de apertura de los oftalmólogos para adoptar herramientas de IA como apoyo diagnóstico.  
                 
-                \item \textbf{Facilidad de uso e interfaz:} Evaluación de si la curva de aprendizaje de la aplicación es lo suficientemente baja para el personal médico con poca experiencia en el uso de herramientas digitales.  
+                \item \textbf{Facilidad de uso e interfaz:} Evaluación de sí la curva de aprendizaje de la aplicación es lo suficientemente baja para el personal médico con poca experiencia en el uso de herramientas digitales.  
                 
                 \item \textbf{Integración al flujo de trabajo:} Determinar si el sistema agiliza o entorpece la consulta diaria del especialista. 
             \end{itemize}
@@ -541,7 +541,7 @@
                 
                 \item \textbf{Costos de validación clínica:} Honorarios de los especialistas médicos por las horas dedicadas a auditar el sistema o consultas pertinentes.  
                 
-                \item \textbf{Relación costo beneficio:} Compara el esfuerzo económico invertido frente al valor o ahorro que el proyecto generará a largo plazo a los especialistas.
+                \item \textbf{Relación costo benefició:} Compara el esfuerzo económico invertido frente al valor o ahorro que el proyecto generará a largo plazo a los especialistas.
             \end{itemize}
         
             \subsubsection*{Análisis por criterio}
@@ -551,9 +551,9 @@
             \begin{itemize}
                 \item \textbf{Accesibilidad de tecnologías y datos:} El queratocono dispone de \textit{datasets} públicos y privados de mayor accesibilidad, junto a una disponibilidad de datos locales alta.
         
-                \item \textbf{Capacidad técnica del equipo:} El desarrollo posee implementaciones previas similares en un ambito académico en herramientas e implementación por parte del equipo.
+                \item \textbf{Capacidad técnica del equipo:} El desarrollo posee implementaciones previas similares en un ámbito académico en herramientas e implementación por parte del equipo.
         
-                \item \textbf{Interoperabilidad:} El queratocono utiliza mapas y datos topográficos mas estandarizados.
+                \item \textbf{Interoperabilidad:} El queratocono utiliza mapas y datos topográficos más estandarizados.
         
                 \item \textbf{Mantenibilidad del sistema:} Se presenta mayor en el queratocono dada la menor demanda de almacenamiento y procesamiento.
             \end{itemize}
@@ -575,7 +575,7 @@
                 
                 \item \textbf{Facilidad de uso e interfaz:} La interfaz busca ser intuitiva para personal no técnico.
                 
-                \item \textbf{Integración al flujo de trabajo:} El sistema de queratocono se podría insertar mas fluidamente en la consulta dado el carácter mas digital de los equipos.
+                \item \textbf{Integración al flujo de trabajo:} El sistema de queratocono se podría insertar más fluidamente en la consulta dado el carácter más digital de los equipos.
             \end{itemize}
         
             \paragraph{Viabilidad económica}
@@ -585,7 +585,7 @@
                 
                 \item \textbf{Costos de validación clínica:} Menor en costo y tiempo para el queratocono.
                 
-                \item \textbf{Relación costo beneficio:} El queratocono evitaría trasplantes y proporcionaría una identificación temprana con un software de menor mantenimiento.
+                \item \textbf{Relación costo benefició:} El queratocono evitaría trasplantes y proporcionaría una identificación temprana con un software de menor mantenimiento.
             \end{itemize}
 
     \vspace{-0.5 cm}
@@ -610,14 +610,14 @@
         \phantomsection
         \subsection{Recursos humanos}
 
-            El desarrollo del proyecto sera llevado a cabo tanto por mano de recursos humanos propios, como también por parte de personal adicional o externo para las áreas de marketing y diseño. La estructura de los recursos humanos es la siguiente:
+            El desarrollo del proyecto será llevado a cabo tanto por mano de recursos humanos propios, como también por parte de personal adicional o externo para las áreas de marketing y diseño. La estructura de los recursos humanos es la siguiente:
     
             \subsubsection*{Recursos humanos propios}
     
                 Los valores calculados a continuación se basan en los honorarios recomendados por el Consejo Profesional de Ciencias Informáticas de Córdoba \cite{honorarios_profesionales_cordoba}. Sin embargo, para garantizar la viabilidad del proyecto, se asignaron retribuciones simbólicas basadas en el valor de un salario Mínimo Vital y Móvil (SMVM) \cite{cita:SMVM} en proporción a una jornada laboral de cuatro horas diarias.
                 
                 \begin{itemize}
-                    \item \textbf{Programador Inteligencia Artificial:} Este rol es el principal encargado del desarrollo y entrenamiento del modelo en la primer fase del proyecto. Con una participación de 9 meses y dedicación del 50\,\%, el costo total, basado en su retribución simbólica, estimado es de \$\,3.171.600.
+                    \item \textbf{Programador Inteligencia Artificial:} Este rol es el principal encargado del desarrollo y entrenamiento del modelo en la primera fase del proyecto. Con una participación de 9 meses y dedicación del 50\,\%, el costo total, basado en su retribución simbólica, estimado es de \$\,3.171.600.
         
                     \item \textbf{Desarrollador Web Full Stack:} Este rol comienza a desarrollarse en la segunda fase del proyecto, correspondiente a la implementación e integración. Se encargará del desarrollo del \textit{backend} y \textit{frontend} de la aplicación. Con una participación de 2 meses y dedicación del 50\,\% el costo total, basado en su retribución simbólica, estimado es de \$\,704.800.
                 \end{itemize}
@@ -694,13 +694,13 @@
     
             \begin{itemize}
                 \vspace{0.25 cm}
-                \item \textbf{Licenciado en Oftalmología - Consultor:} Se tomará como referencia el valor de hora médica definida por el colegio de médicos de la provincia de Misiones \cite{cita:honorario_oftalmólogo}, con un costo de \$\,129.000 ARS por hora médica y un tiempo de estimado de 40 horas, distribuidas a lo largo de aproximadamente 2 meses. Se elige este valor ya que, para fines de este proyecto, no se realizarán consultas clínicas de rutina si no que se realizará tareas de alta complejidad fuera del consultorio, como por ejemplo validación de datos y pruebas de experiencia de usuario. 
+                \item \textbf{Licenciado en Oftalmología - Consultor:} Se tomará como referencia el valor de hora médica definida por el colegio de médicos de la provincia de Misiones \cite{cita:honorario_oftalmólogo}, con un costo de \$\,129.000 ARS por hora médica y un tiempo de estimado de 40 horas, distribuidas a lo largo de aproximadamente 2 meses. Se elige este valor, ya que, para fines de este proyecto, no se realizarán consultas clínicas de rutina, sino que se realizará tareas de alta complejidad fuera del consultorio, como por ejemplo validación de datos y pruebas de experiencia de usuario. 
     
                 \item \textbf{Abogado - Consultor:} Ayudará en el asesoramiento legal en cuanto a encuadre gratulatorio de ANMAT, redacción de términos y condiciones de uso del software y registro de propiedad intelectual. Basándonos en los valores establecidos por el colegio de abogados de la provincia de Misiones \cite{cita:honorario_abogado} el costo total estimado es de \$\,387.640, teniendo el valor de un salario Mínimo Vital y Móvil (SMVM) \cite{cita:SMVM}, cuatro consultas formales de un valor de 20\,\% de un SMVM y la redacción de documentos por el valor del 30\,\% de un SMVM.
     
-                \item \textbf{Google Colaboratory (Pro):} Entorno \textit{Cloud} con acceso a GPUs para el entrenamiento de los modelos de IA. Su costo de suscripción es de aproximadamente \$\,18.300 ARS mensuales ( \$\,10 USD + impuestos país).
+                \item \textbf{Google Colaboratory (Pro):} Entorno \textit{Cloud} con acceso a GPU para el entrenamiento de los modelos de IA. Su costo de suscripción es de aproximadamente \$\,18.300 ARS mensuales (\$\,10 USD + impuesto país).
     
-                \item \textbf{Suscripción a \textit{Claude Code}:} herramienta para acelerar el desarrollo del sistema de análisis de topografías corneales mediante la automatización de la escritura, refactorización y depuración del código. dicha suscripción tiene un valor de aproximadamente \$\,31.600 (\$\,20 USD + impuestos país) por mes.
+                \item \textbf{Suscripción a \textit{Claude Code}:} herramienta para acelerar el desarrollo del sistema de análisis de topografías corneales mediante la automatización de la escritura, refactorización y depuración del código. Dicha suscripción tiene un valor de aproximadamente \$\,31.600 (\$\,20 USD + impuesto país) por mes.
     
                 \item \textbf{Servidor VPS:} Infraestructura virtual para el despliegue de la API \textit{backend} y el \textit{frontend}. Su costo ronda los \$\,41.600 ARS mensuales.
             \end{itemize}
@@ -739,13 +739,13 @@
             Comprende la logística y movilidad física para las reuniones con el oftalmólogo colaborador, pago de la inscripción del software como producto médico, autorización de la empresa fabricante frente al ANMAT y costos pertinentes para la divulgación del producto en el congreso nacional de oftalmología.
     
             \begin{itemize}
-                \item \textbf{Traslado desarrolladores hacia clínica de oftalmólogo colaborador (Oberá - Alem):} Considerando el viaje en colectivo, el costo aproximado es de \$\,5.000 ARS por viaje, dependiendo de la empresa. Teniendo en cuanta dos viajes, considerando viaje de ida y regreso, da un total de \$\,20.000.
+                \item \textbf{Traslado desarrolladores hacia clínica de oftalmólogo colaborador (Oberá - Alem):} Considerando el viaje en colectivo, el costo aproximado es de \$\,5.000 ARS por viaje, dependiendo de la empresa. Teniendo en cuenta dos viajes, considerando viaje de ida y regreso, da un total de \$\,20.000.
     
                 \item \textbf{Registro del producto ante el ANMAT:} Se registrará el software como producto médico clase 2 ante el ANMAT, este registro es un pago único de \$\,52.000 ARS.
     
                 \item \textbf{Autorización de funcionamiento de empresa fabricante de productos médicos frente a la ANMAT:} Puesto que, las actividades de fabricación o importación de productos médicos, solo pueden efectuarse si se cuenta con esta autorización previa, siendo un pago único de \$\,1.523.100.
     
-                \item \textbf{Traslado de desarrolladores al congreso nacional de oftalmología (Oberá - Buenos Aires):} Considerando el boleto de colectivo de larga distancia y traslado urbano, el costo aproximado es de \$\,85.000 ARS por viaje, dependiendo de la empresa de transporte. Teniendo en cuanta dos viajes, considerando viaje de ida y regreso, da un subtotal de \$\,340.000 y teniendo en cuenta un rango de \$\,160.000 de costos de transporte urbano y viáticos el total alcanzaría los \$\,500.000.
+                \item \textbf{Traslado de desarrolladores al congreso nacional de oftalmología (Oberá - Buenos Aires):} Considerando el boleto de colectivo de larga distancia y traslado urbano, el costo aproximado es de \$\,85.000 ARS por viaje, dependiendo de la empresa de transporte. Teniendo en cuenta dos viajes, considerando viaje de ida y regreso, da un subtotal de \$\,340.000 y teniendo en cuenta un rango de \$\,160.000 de costos de transporte urbano y viáticos el total alcanzaría los \$\,500.000.
     
                 \item \textbf{Inscripción al congreso nacional de oftalmología:} Dado que, el Congreso Nacional de Oftalmología (CNO) es el principal encuentro científico y académico para médicos oftalmólogos y profesionales de la salud visual a nivel nacional, se considera pertinente su inscripción al mismo. Para personas técnicas que presenten una carta de recomendación de un oftalmólogo matriculado, el costo es de \$\,24.000 aproximadamente.
             \end{itemize}
@@ -785,7 +785,7 @@
         \subsection{Distribución financiera}
         \label{sec:distribucion_financiera}
         
-            Durante el análisis financiero realizado, se identifica una fuerte inversión inicial seguida de una escalabilidad comercial basada en un modelo de suscripción (SaaS). Cabe aclarar que el desarrollo del proyecto se elabora en el ámbito de la Facultad de Ingeniería de Oberá (UNaM), lo que permite prescindir de costos de infraestructura como alquiler, servicios básicos y equipamiento de espacio de trabajo, ya que estos se encuentran cubiertos por la institución. Durante los primeros 10 meses del proyecto, el flujo de caja operativo es estrictamente negativo, ya que al no existir un producto comercializable aún, no se registran ingresos por ventas.
+            Durante el análisis financiero realizado, se identifica una fuerte inversión inicial seguida de una escalabilidad comercial basada en un modelo de suscripción (SaaS). Cabe aclarar que el desarrollo del proyecto se elabora en el ámbito de la Facultad de Ingeniería de Oberá (UNaM), lo que permite prescindir de costos de infraestructura como alquiler, servicios básicos y equipamiento de espacio de trabajo. Estos se encuentran cubiertos por la institución. Durante los primeros 10 meses del proyecto, el flujo de caja operativo es estrictamente negativo, puesto que al no existir un producto comercializable aún, no se registran ingresos por ventas.
 
             Para asegurar la viabilidad del proyecto durante su fase inicial, se apalanca el flujo de caja con un préstamo estratégico de \$\,20.000.000 ARS del Fondo de Crédito Misiones, el cual cuenta con una tasa subsidiada (TNA del 28\,\%) y 6 meses de gracia para el pago de capital.
         
@@ -908,7 +908,7 @@
             La clasificación del impacto se realiza de la siguiente forma:
     
                 \begin{itemize}
-                    \item \textbf{Bajo (0 al 7):} Es probable que los eventos de bajo riesgo no sucedan y, si suceden, no tendrán consecuencias significativas para el proyecto. Baja prioridad en el plan de gestión de riesgos.
+                    \item \textbf{Bajo (0 al 7):} Es probable que los eventos de bajo riesgo no sucedan y, si suceden, no tendrán consecuencias relevantes para el proyecto. Baja prioridad en el plan de gestión de riesgos.
     
                     \item \textbf{Medio (8 al 13):} Los eventos de riesgo medio son una molestia y pueden causar contratiempos en el proyecto. No se deben ignorar estos riesgos, pero tampoco es necesario que sean la principal prioridad.
     
@@ -918,7 +918,7 @@
         \phantomsection
         \subsection{Riesgos identificados}
     
-            En base a lo mencionado anteriormente, se identificaron los riesgos y su impacto en el proyecto como se puede observar en la Tabla~\ref{riesgos}.
+            Con base en lo mencionado anteriormente, se identificaron los riesgos y su impacto en el proyecto como se puede observar en la Tabla~\ref{riesgos}.
 
                 \vspace{0.2 cm}
                 \begin{longtblr}[
@@ -992,7 +992,7 @@
             
                 \item \textbf{Sesgo y falta de generalización (Alto)}
                 
-                    \textbf{Mitigación:} Se implementarán técnicas de \textit{Data Augmentation} (aumento de datos) para enriquecer artificialmente las muestras locales disponibles, mejorando la robustez del modelo de \textit{Deep Learning}. Además se implementará seguimiento al entrenamiento para prevenir \textit{overfitting} y \textit{underfitting} de los datos internacionales disponibles así como reentrenamiento continuo y monitoreo de deriva.
+                    \textbf{Mitigación:} Se implementarán técnicas de \textit{Data Augmentation} (aumento de datos) para enriquecer artificialmente las muestras locales disponibles, mejorando la robustez del modelo de \textit{Deep Learning}. Además, se implementará seguimiento al entrenamiento para prevenir \textit{overfitting} y \textit{underfitting} de los datos internacionales disponibles así como reentrenamiento continuo y monitoreo de deriva.
     
                     \textbf{Contingencia:} En caso de detectar un alto índice de falsos negativos durante las pruebas, se programarán sesiones intensivas con el oftalmólogo consultor para analizar exclusivamente los mapas de calor (XAI) de los casos erróneos. Esto permitirá identificar qué patrones morfológicos sutiles está ignorando la IA para proceder a un reentrenamiento focalizado y ajuste de la clasificación.
     
@@ -1033,7 +1033,7 @@
             
             \textbf{R5 (Subestimación de costos)} impacta principalmente en lo financiero y no en el cronograma técnico de desarrollo. Sin embargo, puede generar una afectación indirecta si se activa su contingencia, ya que gestionar una asociación estratégica o una ronda de financiamiento externo consume tiempo adicional que podría postergar puntualmente la etapa de certificación regulatoria y lanzamiento.
             
-            \textbf{R6 (Demora de la certificación)} no afecta el cronograma de desarrollo técnico, ya que su propia descripción aclara que los retrasos burocráticos posponen únicamente el uso clínico formal y comercial del producto, permitiendo que el desarrollo continúe en paralelo. 
+            \textbf{R6 (Demora de la certificación)} no afecta el cronograma de desarrollo técnico, puesto que su propia descripción aclara que los retrasos burocráticos posponen únicamente el uso clínico formal y comercial del producto, permitiendo que el desarrollo continúe en paralelo. 
             
             \textbf{R7 (Resistencia de adopción)} recae más sobre el alcance que sobre el tiempo, reduciendo la cantidad de casos disponibles durante la validación en lugar de extender directamente su duración, salvo que sea necesario reclutar centros o profesionales adicionales, lo que generaría una demora acotada. 
             
