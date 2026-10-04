@@ -1,13 +1,13 @@
-\documentclass[11 pt,a4paper,twoside,openany]{book}      
-\input{packages}                            
-\input{formato}                    
+\documentclass[11 pt,a4paper,twoside,openany]{book}
+\input{config/packages}
+\input{config/formato}
 \begin{document}
-    
-    % Titulo  
-    \input{partes/titulo}
+
+    % Titulo
+    \input{partes/00-titulo}
 
     % Resumen y palabras clave
-    \input{partes/resumen}
+    \input{partes/01-resumen}
 
     % Indice
     \setcounter{page}{1}
@@ -15,19 +15,17 @@
     \newpage \listoffigures
     \newpage \listoftables
 
-    % Parte A - Proyecto Técnico
-    \input{partes/desarrollo_A}
+    % Contextualización (Proyecto técnico y Análisis de Producto de Mercado)
+    \input{partes/02-contextualizacion}
 
-    % Parte B - Análisis de Producto de Mercado
-    \input{partes/desarrollo_B}
-
-    % Bibliografía unificada
+    % Bibliografía
     \clearpage
     \phantomsection
     \renewcommand{\bibname}{Referencias}
-    \input{partes/referencias_unificadas}
+    \bibliographystyle{IEEEtran}
+    \bibliography{partes/bibliografia}
 
     % Anexo de imágenes
-    \input{partes/anexo_imagenes}
-        
+    \input{partes/anexo}
+
 \end{document}

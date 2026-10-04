@@ -38,14 +38,14 @@
 \usepackage{pdflscape}      % Para rotar la página
 \usepackage{rotating}       % Permite rotar figuras y tablas
 
+% Citas: ordena y comprime números ([9, 10], [11]–[13])
+\usepackage{cite}
+
 % Hipervínculos y navegación
 \usepackage[hidelinks]{hyperref}    % Enlaces sin color ni marco visible
 \usepackage{bookmark}               % Mejora la navegación en el PDF
 \usepackage{titlesec}       % Para redefinir títulos y secciones
-\usepackage{etoolbox}
-\usepackage{multibib}
-\newcites{A}{Bibliografía}
-\newcites{B}{Referencias}
+\usepackage{etoolbox}       % \patchcmd para el título de la bibliografía
 
 % Tablas avanzadas
 \usepackage{array}          % Mejoras en tablas

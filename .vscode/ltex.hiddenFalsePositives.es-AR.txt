@@ -1,1 +1,2 @@
 {"rule":"MORFOLOGIK_RULE_ES","sentence":"^\\QPara la conversión de los PDF con comentarios a .md se utilizó pdfannots\\E$"}
+{"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\QEl sistema procesa de forma automatizada imágenes topográficas y tomográficas corneales provenientes de equipos de diagnóstico como Pentacam o Sirius , combinándolas con datos clínicos estructurados del paciente para generar una predicción diagnóstica fundamentada.\\E$"}

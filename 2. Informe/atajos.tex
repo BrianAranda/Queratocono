@@ -1,6 +1,36 @@
     % Para eliminar la sangría
     [leftmargin=*]
-    
+
+    % Links en texto
+    \href{}{\textcolor{blue}{}}
+
+    % Comillas
+    ``''
+
+    % Cita bibliográfica (clave de Zotero en partes/bibliografia.bib)
+    ~\cite{}
+
+    % Varias citas juntas
+    ~\cite{,}
+
+    % Referencia a figura / tabla / sección
+    Figura~\ref{fig:}
+    Tabla~\ref{tabla:}
+    Sección~\ref{sec:}
+
+    % Nota al pie
+    \footnote{}
+
+    % Página apaisada (Gantt, flujo de caja, etc.)
+    \begin{landscape}
+        \thispagestyle{empty}
+        \begin{figure}[H] \centering
+            \makebox[\linewidth][c]{\hspace*{1 cm}\includegraphics[width=1.3\linewidth]{}}
+            \caption{}
+            \label{fig:}
+        \end{figure}
+    \end{landscape}
+
     % Items con puntos
     \begin{itemize}[label=\textbullet]
         \item 
@@ -117,20 +147,23 @@
         \label{}    % El tag de la tabla para la referencia
     \end{table}
 
+    % Tablas que se cortan entre páginas si es necesario
     \begin{longtblr}[
-        caption = titulo tabla,
-        label = etiqueta
+        caption = {esto es el titulo de la tabla},
+        label = {tab:etiqueta_para_referenciar}
         ]{
             cells={ valign = m , halign = c }, 
             colspec = {Q Q[11 cm] Q}, 
-            rowsep = 5 pt,        
-            colsep = 7.5 pt,           
-            hlines,              
-            vlines,                             
+            rowsep = 3 pt, 
+            colsep = 5 pt,           
+            hlines, vlines,                             
             row{1}={bg=gray!15, font=\bfseries}
         }
 
             aa & aa & aa \\
 
     \end{longtblr}
-    
+
+    % Para envolver las longtblr para que quede mejor aveces
+    \begingroup \setstretch{1.1}
+    \endgroup

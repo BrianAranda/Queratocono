@@ -1,8 +1,0 @@
-add_cus_dep('aux', 'bbl', 0, 'run_bibtex_on_aux');
-sub run_bibtex_on_aux {
-    my ($base_name, $path) = fileparse($_[0]);
-    pushd $path;
-    my $return = system("bibtex", $base_name);
-    popd;
-    return $return;
-}
