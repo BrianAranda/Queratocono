@@ -117,3 +117,4 @@ scipy
 seaborn
 ipynb
 chi
+VisionFM

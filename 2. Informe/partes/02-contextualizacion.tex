@@ -40,7 +40,7 @@
 
     \subsection*{Impacto local}
     
-        En la provincia de Misiones, se ha reportado un aumento de casos de queratocono en la ciudad de Oberá~\cite{misiones}. El problema real es que la infraestructura diagnostica se concentra en Posadas y Alem donde, para un paciente de zonas remotas de la provincia, una consulta podría ser su única oportunidad de detección dados los costos de traslado. Lo que evidencia la relevancia regional de la problemática. 
+        En la provincia de Misiones, se ha reportado un aumento de casos de queratocono en la ciudad de Oberá~\cite{misiones}. El problema real es que la infraestructura diagnóstica se concentra en Posadas y Alem donde, para un paciente de zonas remotas de la provincia, una consulta podría ser su única oportunidad de detección dados los costos de traslado, lo que evidencia la relevancia regional de la problemática. 
         
         Un soporte a la decisión clínica actuaría como una herramienta de ayuda para referenciar los criterios de evaluación, pudiendo reducir el riesgo de errores diagnósticos y permitiendo intervenciones oportunas para preservar la visión de los pacientes.
         
@@ -75,19 +75,19 @@
     
         En el ámbito local, no existen competidores directos con un software como producto médico específico para queratocono en Argentina. El referente más cercano es Entelai~\cite{entelai}, una \textit{startup} líder en el país en la aplicación de IA para el análisis de imágenes médicas, cuyo modelo de validación asistida permite a los médicos procesar informes con rapidez. A nivel internacional, proyectos como KERAFound y el sistema multi-agente AEYE~\cite{aeye} están evolucionando desde la investigación académica hacia las herramientas comerciales de aplicación.
     
-        Mediante estos antecedentes se demuestra que es posible predecir de la enfermedad y estratificar su riesgo basándose en imágenes topográficas y datos clínicos relevantes. Además, la industria está interesada en la adopción de aplicaciones médicas para el apoyo en el flujo de trabajo e investigar estas herramientas.
+        Mediante estos antecedentes se demuestra que es posible predecir la enfermedad y estratificar su riesgo basándose en imágenes topográficas y datos clínicos relevantes. Además, la industria está interesada en la adopción de aplicaciones médicas para el apoyo en el flujo de trabajo e investigar estas herramientas.
 
     \subsection*{\textit{Vision Transformers}}
 
-        En paralelo al uso de arquitecturas convolucionales, distintos trabajos recientes han incorporado \textit{Vision Transformers} (VT) para el análisis de queratocono, superando las limitaciones de las CNN en la captura de dependencias espaciales de largo alcance dentro de la imagen corneal. 
+        En paralelo al uso de arquitecturas convolucionales, distintos trabajos recientes han incorporado \textit{Vision Transformers} (ViT) para el análisis de queratocono, superando las limitaciones de las CNN en la captura de dependencias espaciales de largo alcance dentro de la imagen corneal. 
 
         Abdelmotaal et al. presentaron un modelo híbrido Transformer-CNN para la detección automática de queratocono a partir de videos de deformación corneal dinámica basados en Scheimpflug~\cite{abdelmotaal_vit}, mientras que otro trabajo propuso la fusión de múltiples modelos preentrenados junto con una arquitectura transformer para la clasificación de imágenes corneales~\cite{vit_fusion_kcn}. Asimismo, se desarrolló un modelo transformer multi-fuente que integra topografía, aberrometría y datos tabulares para predecir la progresión de la enfermedad~\cite{vit_multisource}. 
         
         Estos antecedentes evidencian una tendencia hacia arquitecturas más complejas que las CNN tradicionales. Sin embargo, dado el volumen de datos disponibles y las limitaciones de desarrollo del presente trabajo, la adopción de \textit{Vision Transformers} resulta como una alternativa a explorar pero no obligatoria, siendo una limitación del enfoque actual o una línea de trabajo futura.
 
-    \subsection*{\textit{Foundation Models}}
+    \subsection*{Modelos fundacionales}
 
-        Otro antecedente relevante es RETFound, el primer modelo fundacional en oftalmología, entrenado mediante aprendizaje autosupervisado (\textit{masked autoencoder}) sobre 1,6 millones de imágenes retinianas no etiquetadas, logrando superar a modelos preentrenados en ImageNet en tareas de diagnóstico y pronóstico con una cantidad reducida de datos etiquetados~\cite{retfound}. Esta línea de trabajo fue posteriormente extendida por el \textit{Global RETFound Consortium}, que propuso un modelo fundacional médico de alcance global~\cite{retfound_global}.
+        Otro antecedente relevante es RETFound, el primer modelo fundacional (\textit{foundation model}) en oftalmología, entrenado mediante aprendizaje autosupervisado (\textit{masked autoencoder}) sobre 1,6 millones de imágenes retinianas no etiquetadas, logrando superar a modelos preentrenados en ImageNet en tareas de diagnóstico y pronóstico con una cantidad reducida de datos etiquetados~\cite{retfound}. Esta línea de trabajo fue posteriormente extendida por el \textit{Global RETFound Consortium}, que propuso un modelo fundacional médico de alcance global~\cite{retfound_global}.
         
         Este tipo de modelos demuestra que es posible reducir significativamente la dependencia de grandes volúmenes de datos etiquetados mediante preentrenamiento a gran escala. Sin embargo, su implementación requiere capacidad de cómputo y acceso a \textit{datasets} masivos que exceden el alcance y las limitaciones de desarrollo del presente trabajo, por lo que su exploración se plantea como trabajo futuro.
 
@@ -150,7 +150,7 @@
 
     \subsection*{Impacto económico}
 
-        Al no existir datos económicos sistematizados sobre el queratocono en Argentina, se plantea un análisis del costo de los estudios necesarios para la herramienta propuesta frente al de los tratamientos correspondientes a etapas avanzadas de la enfermedad. Para ello, tomamos en cuenta el nomenclador nacional de prácticas oftalmológicas de 2025~\cite{nomenclador_cao}, sin considerar reducciones de como por ejemplo obras sociales.
+        Al no existir datos económicos sistematizados sobre el queratocono en Argentina, se plantea un análisis del costo de los estudios necesarios para la herramienta propuesta frente al de los tratamientos correspondientes a etapas avanzadas de la enfermedad. Para ello, tomamos en cuenta el nomenclador nacional de prácticas oftalmológicas de 2025~\cite{nomenclador_cao}, sin considerar descuentos como, por ejemplo, los de las obras sociales.
         
         Mientras que un estudio de topografía o tomografía corneal ronda los \$\,150.000, los procedimientos quirúrgicos representan un salto gigantesco en costo. El \textit{cross-linking} corneal y el implante de anillos intracorneales oscilan entre 3 y 3,3 millones de pesos por ojo, mientras que un trasplante de córnea puede superar los 10 millones de pesos por ojo considerando los costos de importación del tejido, cirugía y seguimiento postoperatorio. 
         
@@ -221,6 +221,8 @@
 
             \item La validación clínica con muestras locales de distintos centros de salud de la región, a partir de las solicitudes ya iniciadas (ver capítulo Desarrollo).
 
+            \item La adaptación de modelos fundacionales al análisis de la topografía corneal, que requiere conjuntos de datos del segmento anterior del ojo y una capacidad de cómputo que exceden el alcance del PFI.
+
             \item La compatibilidad con otros equipos de diagnóstico, como Pentacam\textsuperscript{\scriptsize\textregistered}{} o Sirius\textsuperscript{\scriptsize\textregistered}{}, condicionada a la obtención de sus archivos de exportación.
 
             \item La inscripción del sistema como producto médico ante la ANMAT y su lanzamiento comercial, cuya planificación se desarrolla en el capítulo Análisis de Producto de Mercado.
@@ -236,12 +238,12 @@
         
         La enfermedad tiene un inicio típico en la segunda década de la vida y puede progresar hasta la tercera o cuarta década, momento en el que generalmente se estabiliza. La detección temprana es especialmente crítica porque el queratocono se presenta y avanza rápidamente en edades jóvenes, y su manifestación inicial puede confundirse con miopía o astigmatismo común, lo que retrasa la intervención oportuna~\cite{kcn_edad}.
 
-        El diagnóstico se basa en la evaluación de múltiples parámetros corneales obtenidos mediante tomógrafos de Scheimpflug (como el Pentacam), topógrafos de Placido (como el Sirius) o sistemas de barrido por hendidura (como el Orbscan, con el que se obtuvieron los datos utilizados en este trabajo). Entre los parámetros clínicos más relevantes se encuentran la curvatura keratométrica (Km), el espesor corneal mínimo (paquimetría), el ``\textit{Differential Surface Elevation}'' (DSE) y los índices del sistema ABCD de Belin, que permite una estratificación de riesgo basada en la elevación anterior, la elevación posterior y el espesor corneal~\cite{kcn_parametros}.
+        El diagnóstico se basa en la evaluación de múltiples parámetros corneales obtenidos mediante tomógrafos de Scheimpflug (como el Pentacam), topógrafos de Placido (como el Sirius) o sistemas de barrido por hendidura (como el Orbscan, con el que se obtuvieron los datos utilizados en este trabajo). Entre los parámetros clínicos más relevantes se encuentran la curvatura queratométrica (Km), el espesor corneal mínimo (paquimetría), el ``\textit{Differential Surface Elevation}'' (DSE) y los índices del sistema ABCD de Belin, que permite una estratificación de riesgo basada en la elevación anterior, la elevación posterior y el espesor corneal~\cite{kcn_parametros}.
 
     \phantomsection
     \subsection{Inteligencia Artificial en medicina: estado del arte}
 
-        La aplicación de la Inteligencia Artificial en el ámbito médico ha experimentado un crecimiento exponencial en la última década, impulsada por la disponibilidad de grandes volúmenes de datos clínicos y el avance en técnicas de aprendizaje automático. En particular, los sistemas de soporte a la decisión clínica basados en IA han demostrado capacidad para asistir a los profesionales de salud en la interpretación de imágenes médicas, la estratificación de riesgo y la planificación de tratamientos~\cite{medicina_ia}. Estos sistemas \textbf{no reemplazan al médico}, sino que complementan su labor proporcionando un análisis objetivo y reproducible que puede ser verificado y validado por el especialista antes de tomar una decisión clínica.
+        La aplicación de la Inteligencia Artificial en el ámbito médico ha experimentado un crecimiento exponencial en la última década, impulsada por la disponibilidad de grandes volúmenes de datos clínicos y el avance en técnicas de aprendizaje automático. En particular, los sistemas de soporte a la decisión clínica basados en IA han demostrado capacidad para asistir a los profesionales de salud en la interpretación de imágenes médicas, la estratificación de riesgo y la planificación de tratamientos~\cite{medicina_ia}. Estos sistemas no reemplazan al médico, sino que complementan su labor proporcionando un análisis objetivo y reproducible que puede ser verificado y validado por el especialista antes de tomar una decisión clínica.
 
         En el campo de la oftalmología, se han desarrollado múltiples modelos de IA para la detección de patologías oculares como la retinopatía diabética, el glaucoma y, más recientemente, el queratocono, como el modelo de Shafi Balal y KeratoDetect~\cite{shafi_balal,kerato_detect}. Sin embargo, la mayoría de estas soluciones se encuentran en fase de investigación y no han sido implementadas en sistemas operacionales reales, menos aún en contextos regionales como el de Misiones, donde la accesibilidad a equipos de diagnóstico de alta gama es limitada y la demanda de herramientas asistidas por tecnología es creciente.
 
@@ -254,16 +256,27 @@
 
         Entre las arquitecturas más utilizadas se encuentran \textit{EfficientNet-B7}, que ofrece un equilibrio óptimo entre precisión y eficiencia computacional mediante el escalado compuesto de profundidad, resolución y ancho de banda, siendo particularmente adecuado para imágenes médicas donde se requiere alta resolución para capturar detalles sutiles. \textit{ResNet}, por su parte, utiliza conexiones residuales que permiten entrenar redes muy profundas sin el problema de la degradación, facilitando la extracción de características de alta complejidad en imágenes de topografía corneal. 
         
-        Por otro lado, los \textit{Vision Transformers} (VT) constituyen una alternativa basada en mecanismos de atención que captura relaciones globales en la imagen, potencialmente útil para analizar la topografía corneal como un todo integrado. Para incorporar exportaciones de equipos de diferentes fabricantes, pueden emplearse algoritmos de visión artificial como \textit{YOLOv8} para la segmentación y recorte automático de las regiones de interés, llevándolas a una escala común antes de la entrada al modelo predictivo. En el prototipo esta etapa no resulta necesaria, ya que CornOrb provee los mapas ya recortados y estandarizados.
+        Por otro lado, los ViT constituyen una alternativa basada en mecanismos de atención que captura relaciones globales en la imagen, potencialmente útil para analizar la topografía corneal como un todo integrado. Para incorporar exportaciones de equipos de diferentes fabricantes, pueden emplearse algoritmos de visión artificial como \textit{YOLOv8} para la segmentación y recorte automático de las regiones de interés, llevándolas a una escala común antes de la entrada al modelo predictivo. En el prototipo esta etapa no resulta necesaria, ya que CornOrb provee los mapas ya recortados y estandarizados.
 
     \phantomsection
     \subsection{Aprendizaje profundo multimodal}
 
-        El enfoque multimodal combina diferentes tipos de datos de entrada para mejorar la precisión diagnóstica. En el contexto del queratocono, esto implica integrar imágenes topográficas, como mapas de elevación anterior y posterior, curvatura sagital y tangencial, paquimetría junto con datos clínicos estructurados como edad, graduación, queratometría y espesor corneal. 
-        
+        El enfoque multimodal combina diferentes tipos de datos de entrada para mejorar la precisión diagnóstica. En el contexto del queratocono, esto implica integrar los mapas corneales, como los de elevación anterior y posterior, curvatura y paquimetría, con datos clínicos estructurados del paciente, como la edad, el astigmatismo, la curvatura máxima y el espesor corneal. En el caso de este trabajo, las fuentes son los cuatro mapas que provee el equipo Orbscan y las variables clínicas que los acompañan en el conjunto de datos utilizado.
+
         La combinación de estas fuentes de información permite al modelo capturar patrones que serían imperceptibles al analizar cada modalidad por separado. Por ejemplo, un mapa de elevación posterior puede mostrar una protrusión subclínica que, combinada con un espesor corneal reducido en una zona específica, fortalece la predicción de queratocono en etapas tempranas donde ninguno de los dos indicadores por sí solo resultaría concluyente.
 
-        La arquitectura multimodal típica consta de una rama convolucional para el procesamiento de imágenes, una rama de capas densas para datos clínicos estructurados, y una capa de fusión que integra las representaciones aprendidas de ambas ramas antes de la clasificación final. Este enfoque permite que cada rama aprenda las características más relevantes de su tipo de datos, mientras que la capa de fusión captura las interacciones entre ambas modalidades. El resultado es un modelo más robusto y generalizable, capaz de mantener su precisión ante la variabilidad inherentemente presente en los datos clínicos provenientes de diferentes equipos, protocolos y poblaciones de pacientes.
+        Una revisión sistemática sobre la combinación de imágenes médicas con datos de la historia clínica distingue tres estrategias de fusión, según el momento en que se unen ambas fuentes~\cite{huang_fusion}. En la fusión temprana, los datos se combinan antes de ingresar al modelo; en la fusión tardía, cada modalidad se analiza con un modelo independiente y solo se combinan sus predicciones finales; y en la fusión conjunta, una red convolucional extrae características de la imagen que se unen con las variables clínicas dentro de la misma red, de modo que ambas partes aprenden en simultáneo. Esta última es la estrategia adoptada en este trabajo: una rama convolucional procesa los mapas corneales, una rama de capas densas procesa los datos clínicos y una capa de fusión integra ambas representaciones antes de la clasificación final. Así, cada rama aprende las características más relevantes de su tipo de dato, mientras que la capa de fusión captura las interacciones entre ambos.
+
+    \phantomsection
+    \subsection{Modelos fundacionales y multimodales en oftalmología}
+
+        Los modelos fundacionales son modelos de IA entrenados sobre volúmenes muy grandes y diversos de datos, en general sin etiquetas, mediante aprendizaje autosupervisado, es decir, aprendiendo a partir de la propia estructura de los datos. Una vez entrenados, pueden adaptarse a muchas tareas distintas con una cantidad reducida de datos etiquetados. En medicina, se plantea que estos modelos lleguen a interpretar de forma flexible distintas combinaciones de modalidades, como imágenes, historias clínicas, resultados de laboratorio o texto médico, dando lugar a una IA médica de propósito general~\cite{moor_gmai}.
+
+        La oftalmología es una de las especialidades donde esta línea avanzó con mayor rapidez. RETFound, descrito en la sección Antecedentes, fue el primer modelo fundacional del área y trabaja exclusivamente con imágenes de retina~\cite{retfound}. Posteriormente, VisionFM extendió este enfoque a múltiples modalidades: fue preentrenado con 3,4 millones de imágenes de más de 500.000 personas, abarcando ocho tipos de estudios oftalmológicos (entre ellos retinografía, tomografía de coherencia óptica, lámpara de hendidura y ecografía), y alcanzó, en su validación interna, un área bajo la curva ROC promedio de 0,950 en el diagnóstico de ocho categorías de enfermedades oculares~\cite{visionfm}. Esta métrica mide la capacidad del modelo para distinguir casos sanos de casos enfermos, siendo 1 el valor ideal.
+
+        Sin embargo, una revisión sistemática reciente de diez modelos fundacionales en oftalmología indica que ocho de ellos se centran en enfermedades de la retina, mientras que las aplicaciones al segmento anterior del ojo se limitan a tumores de la superficie ocular~\cite{jin_fm_oftalmologia}. La misma revisión señala como barreras para su adopción clínica la falta de interpretabilidad, la elevada demanda de cómputo, la integración con los sistemas clínicos existentes y la necesidad de validación por parte de los especialistas.
+
+        Estos antecedentes son relevantes para el presente trabajo por dos motivos. En primer lugar, confirman el valor de combinar múltiples fuentes de información y de reutilizar conocimiento previamente aprendido, principios que el prototipo puede aplicar a menor escala: la rama convolucional puede partir de una red preentrenada (aprendizaje por transferencia) y se combina con los datos clínicos del paciente. En segundo lugar, muestran que los mapas de topografía corneal, centrales para el diagnóstico del queratocono, aún no forman parte de los modelos fundacionales disponibles. Por ello, y dado el volumen de datos y de cómputo que requieren, su desarrollo o adaptación para el queratocono se plantea como una línea de trabajo futuro (ver sección Alcance y limitaciones).
 
     \phantomsection
     \subsection{Explicabilidad de la Inteligencia Artificial (XAI)}
@@ -279,20 +292,19 @@
         
         En Argentina, la regulación de los SaMD está a cargo de la ANMAT, que establece las disposiciones N.º 2318/2002 y N.º 9688/2019~\cite{dispo_2318,dispo_9688} para la clasificación y registro de productos médicos. Según el nivel de riesgo asociado a la función que cumple el software, se clasifica en Clase I (bajo riesgo), Clase II (riesgo medio) o Clase III (alto riesgo).
 
-        Para el proyecto propuesto, el registro como producto Clase II implica la necesidad de demostrar la seguridad y eficacia del sistema mediante validación clínica, así como el cumplimiento de la normativa de protección de datos personales (Ley N.º 25.326 (2000)~\cite{ley_25326}) para garantizar la anonimización de las muestras y el consentimiento informado de los pacientes. El cumplimiento normativo no es simplemente un requisito administrativo, sino que forma parte integral del diseño del sistema, ya que desde las etapas iniciales de desarrollo se deben implementar mecanismos de seguridad, trazabilidad y auditoría. Esto para demostrar ante el organismo regulador que el producto cumple con los estándares de calidad y seguridad requeridos para su uso en el ámbito clínico.
+        Para el proyecto propuesto, el registro como producto Clase II implica la necesidad de demostrar la seguridad y eficacia del sistema mediante validación clínica, así como el cumplimiento de la normativa de protección de datos personales (Ley N.º 25.326 (2000)~\cite{ley_25326}) para garantizar la anonimización de las muestras y el consentimiento informado de los pacientes. El cumplimiento normativo no es simplemente un requisito administrativo, sino que forma parte integral del diseño del sistema, ya que desde las etapas iniciales de desarrollo se deben implementar mecanismos de seguridad, trazabilidad y auditoría que permitan demostrar ante el organismo regulador que el producto cumple con los estándares de calidad y seguridad requeridos para su uso en el ámbito clínico.
 
     \phantomsection
     \subsection{Sistema ABCD de Belin para estratificación de riesgo}
 
-        El sistema ABCD de Belin es un método de clasificación del queratocono que evalúa la córnea en cuatro dimensiones: A (elevación anterior), B (elevación posterior), C (curvatura corneal) y D (espesor corneal o paquimetría). Cada parámetro se puntúa en una escala que permite una estratificación objetiva de la severidad de la enfermedad y su riesgo de progresión. Este sistema supera las limitaciones del análisis convencional de mapas topográficos, que depende exclusivamente de la interpretación visual del especialista. Al integrar múltiples parámetros objetivos en una evaluación unificada que facilita la comparabilidad de los resultados con estudios publicados y la aceptación del sistema por parte de la comunidad oftalmológica. Al basar la estratificación en un sistema validado y ampliamente reconocido, el proyecto se posiciona como una herramienta complementaria al flujo de trabajo clínico existente y no como un reemplazo del criterio médico especializado.
+        El sistema ABCD de Belin es un método de clasificación del queratocono que evalúa la córnea en cuatro dimensiones: A (elevación anterior), B (elevación posterior), C (curvatura corneal) y D (espesor corneal o paquimetría). Cada parámetro se puntúa en una escala que permite una estratificación objetiva de la severidad de la enfermedad y su riesgo de progresión. Este sistema supera las limitaciones del análisis convencional de mapas topográficos, que depende exclusivamente de la interpretación visual del especialista, ya que integra múltiples parámetros objetivos en una evaluación unificada, lo que facilita la comparabilidad de los resultados con estudios publicados y la aceptación del sistema por parte de la comunidad oftalmológica. Al basar la estratificación en un sistema validado y ampliamente reconocido, el proyecto se posiciona como una herramienta complementaria al flujo de trabajo clínico existente y no como un reemplazo del criterio médico especializado.
 
         Predecir los valores del sistema ABCD a partir de los mapas corneales permitiría que el sistema propuesto entregue, además de la detección, una clasificación de la severidad alineada con los estándares internacionales de diagnóstico. Sin embargo, entrenar un modelo con ese fin requiere estudios etiquetados con dichos índices, con los que no cuenta el conjunto de datos utilizado. Por este motivo, la estratificación basada en el sistema ABCD se plantea como una línea de trabajo futuro (ver sección Alcance y limitaciones).
 
-\clearpage
 \phantomsection
 \section{Propuesta metodológica}
 
-    La propuesta se adapta a la metodología CRISP-DM combinado con un desarrollo incremental, dado que el proyecto avanza mediante ciclos iterativos de entendimiento y preparación de datos, modelado, evaluación y despliegue, en lugar de seguir un esquema secuencial clásico tipo cascada.
+    La propuesta se adapta a la metodología CRISP-DM combinada con un desarrollo incremental, dado que el proyecto avanza mediante ciclos iterativos de entendimiento y preparación de datos, modelado, evaluación y despliegue, en lugar de seguir un esquema secuencial clásico tipo cascada.
 
     La planificación distingue dos horizontes. El primero corresponde al PFI y abarca las dos primeras fases, que culminan en el prototipo descrito en la sección Alcance y limitaciones. El segundo corresponde a la proyección del producto: las fases tres y cuatro, necesarias para llevar el prototipo al uso clínico y comercial, y que quedan fuera del alcance del PFI.
 
@@ -325,7 +337,7 @@
     \vspace{0.25 cm}
     \subsection{Cronograma de actividades}
 
-        La Tabla~\ref{tabla:cronograma} resume la distribución temporal de las fases, y el detalle de las actividades se presenta en el Diagrama de Gantt de la Figura~\ref{fig:anexo_gannt}.
+        La Tabla~\ref{tabla:cronograma} resume la distribución temporal de las fases, y el detalle de las actividades se presenta en el Diagrama de Gantt de la Figura~\ref{fig:anexo_gantt}, por mes. En azul, las actividades del PFI (de octubre de 2026 a enero de 2027); en gris, la reserva de contingencia (febrero y marzo de 2027); y en naranja, las fases de la proyección del producto.
 
         \begingroup \setstretch{1.1}
         \begin{longtblr}[
@@ -361,12 +373,12 @@
     \phantomsection
     \subsection{Descripción del área geográfica que abarca el mercado del proyecto}
     
-        El mercado objetivo se localiza en la Provincia de Misiones, Argentina. Se enfoca principalmente en los centros urbanos con mayor infraestructura oftalmológica (como Posadas, Oberá y Eldorado), donde se concentran las clínicas privadas y hospitales públicos que cuentan con equipos de diagnóstico de alta complejidad (Pentacam, Sirius, etc.). Al ser los lugares de mayor densidad poblacional de la provincia, en ellos se concentra la mayor parte del diagnóstico oftalmológico, en donde se pretende implementar un soporte para la diferencia entre las enfermedades oculares comunes y el queratocono. 
+        El mercado objetivo se localiza en la Provincia de Misiones, Argentina. Se enfoca principalmente en los centros urbanos con mayor infraestructura oftalmológica (como Posadas, Oberá y Eldorado), donde se concentran las clínicas privadas y hospitales públicos que cuentan con equipos de diagnóstico de alta complejidad (Pentacam, Sirius, etc.). Al ser los lugares de mayor densidad poblacional de la provincia, en ellos se concentra la mayor parte del diagnóstico oftalmológico, en donde se pretende implementar un soporte para la diferenciación entre las enfermedades oculares comunes y el queratocono. 
 
     \phantomsection
     \subsection{Descripción de los bienes y/o servicios que provea el proyecto}
     
-        El proyecto proveerá un \textit{software} como producto médico que ofrece un servicio de soporte a la decisión clínica, el cual busca disminuir subjetividades por parte del especialista sirviendo como una ``segunda opinión experta''. Donde las funciones principales incluirían:
+        El proyecto proveerá un \textit{software} como producto médico que ofrece un servicio de soporte a la decisión clínica, el cual busca disminuir subjetividades por parte del especialista sirviendo como una ``segunda opinión experta''. Sus funciones principales son:
         
         \begin{itemize}[leftmargin=*]
             \item \textbf{Análisis automatizado:} Procesamiento de imágenes de mapas topográficos y datos clínicos.
@@ -542,7 +554,7 @@
         
             \subsubsection{Estrategia de venta y distribución del producto}
         
-                La estrategia de venta y distribución para el software se centra en un modelo de servicio digital escalable, diseñado para integrarse de manera directa en el flujo de trabajo del oftalmológico actual. El objetivo es facilitar el acceso al soporte diagnóstico mediante una infraestructura en la nube práctica, rápida y eficaz, planteando a la herramienta como un complemento para el equipamiento diagnóstico tradicional.
+                La estrategia de venta y distribución para el software se centra en un modelo de servicio digital escalable, diseñado para integrarse de manera directa en el flujo de trabajo actual del oftalmólogo. El objetivo es facilitar el acceso al soporte diagnóstico mediante una infraestructura en la nube práctica, rápida y eficaz, planteando a la herramienta como un complemento para el equipamiento diagnóstico tradicional.
 
             \vspace{-0.5 cm}
             \paragraph{Distribución y acceso:}
@@ -722,7 +734,7 @@
     
             \subsubsection*{Recursos humanos adicionales}
                 
-                Los valores calculados a continuación se basan en el salario mediano de dichos roles (\cite{cita:salario_marketing} y  \cite{cita:salario_UX_UI}).
+                Los valores calculados a continuación se basan en el salario mediano de dichos roles~\cite{cita:salario_marketing,cita:salario_UX_UI}.
                 
                 \begin{itemize}
                     \item \textbf{Diseñador UX y UI:} Su actividad se centrará en la segunda fase, de implementación e integración junto a los desarrolladores web, diseñando interfaces intuitivas y amigables para que sea simple de usar para usuarios no técnicos. Con una participación de 1 mes y una dedicación del 30\,\% el costo total estimado es de \$\,480.000.
@@ -830,12 +842,12 @@
             \end{longtblr}
             \endgroup
 
-            Comprende la logística y movilidad física para las reuniones con el oftalmólogo colaborador, pago de la inscripción del software como producto médico, autorización de la empresa fabricante frente al ANMAT y costos pertinentes para la divulgación del producto en el congreso nacional de oftalmología.
+            Comprende la logística y movilidad física para las reuniones con el oftalmólogo colaborador, pago de la inscripción del software como producto médico, autorización de la empresa fabricante frente a la ANMAT y costos pertinentes para la divulgación del producto en el congreso nacional de oftalmología.
     
             \begin{itemize}
                 \item \textbf{Traslado desarrolladores hacia clínica de oftalmólogo colaborador (Oberá - Alem):} Considerando el viaje en colectivo, el costo aproximado es de \$\,5.000 ARS por viaje, dependiendo de la empresa. Teniendo en cuenta dos viajes, considerando viaje de ida y regreso, da un total de \$\,20.000.
     
-                \item \textbf{Registro del producto ante el ANMAT:} Se registrará el software como producto médico clase 2 ante el ANMAT, este registro es un pago único de \$\,52.000 ARS.
+                \item \textbf{Registro del producto ante la ANMAT:} Se registrará el software como producto médico Clase II ante la ANMAT; este registro es un pago único de \$\,52.000 ARS.
     
                 \item \textbf{Autorización de funcionamiento de empresa fabricante de productos médicos frente a la ANMAT:} Puesto que, las actividades de fabricación o importación de productos médicos, solo pueden efectuarse si se cuenta con esta autorización previa, siendo un pago único de \$\,1.523.100.
     
@@ -861,7 +873,7 @@
             
                 Traslado (4) desarrolladores hacia clínica de oftalmólogo colaborador (Oberá / Leandro N. Alem) & \$\,20.000,00 \\
             
-                Regulación clase 2 - ANMAT & \$\,52.000,00 \\
+                Registro de producto médico Clase II - ANMAT & \$\,52.000,00 \\
             
                 Autorización de funcionamiento de empresa fabricante de productos médicos frente a la ANMAT & \$\,1.523.100,00 \\
             
@@ -883,25 +895,29 @@
 
             Para asegurar la viabilidad del proyecto durante su fase inicial, se apalanca el flujo de caja con un préstamo estratégico de \$\,20.000.000 ARS del Fondo de Crédito Misiones, el cual cuenta con una tasa subsidiada (TNA del 28\,\%) y 6 meses de gracia para el pago de capital.
         
-            A partir del mes 11, el sistema se lanza comercialmente con un modelo de suscripción accesible de \$\,150.000 mensuales, logrando la adhesión del oftalmólogo colaborador como primer subscriptor. Durante los primeros tres años, la estrategia de captación se enfoca en sumar progresivamente de 2 a 3 clínicas cabecera, equipadas con tomógrafos corneales, dentro de las principales urbes de Misiones, como Posadas, Oberá y Eldorado.
+            A partir del mes 11, el sistema se lanza comercialmente con un modelo de suscripción accesible de \$\,150.000 mensuales, logrando la adhesión del oftalmólogo colaborador como primer suscriptor. Durante los primeros tres años, la estrategia de captación se enfoca en sumar progresivamente de 2 a 3 clínicas cabecera, equipadas con tomógrafos corneales, dentro de las principales urbes de Misiones, como Posadas, Oberá y Eldorado.
             
             Finalmente, entre el cuarto y el sexto año, la proyección financiera escala de manera conservadora hasta alcanzar un máximo de 9 suscripciones activas, dejando vía libre hacia un crecimiento a nivel nacional.
 
-            \begin{figure}[H]
+        \phantomsection
+        \subsection{Flujo de caja}
+
+            Las Figuras~\ref{fig:flujo_meses} y~\ref{fig:flujo_anios} muestran la evolución del flujo de caja durante los primeros doce meses y los primeros seis años del proyecto, respectivamente. El detalle de los ingresos y egresos que los componen se presenta en las Figuras~\ref{fig:anexo_caja_desarrollo} y~\ref{fig:anexo_caja_años} del Anexo.
+
+            \begin{figure}[tbp]
                 \centering
                 \makebox[\linewidth][c]{\hspace*{1 cm}\includegraphics[height=0.28\textheight]{img/flujo_meses_grafico.pdf}}
                 \caption{Gráfico de flujo de caja correspondiente a los primeros doce meses.}
+                \label{fig:flujo_meses}
             \end{figure}
 
-            \begin{figure}[H]
+            \begin{figure}[tbp]
                 \centering
                 \makebox[\linewidth][c]{\hspace*{1 cm}\includegraphics[height=0.28\textheight]{img/flujo_años_grafico.pdf}}
                 \caption{Gráfico de flujo de caja correspondiente a los primeros seis años.}
+                \label{fig:flujo_anios}
             \end{figure}
 
-            \subsection{Flujo de caja}
-                Ver Figuras~\ref{fig:anexo_caja_desarrollo} y \ref{fig:anexo_caja_años} del Anexo.
-            
     \phantomsection     
     \section{Gestión de riesgos}
 
