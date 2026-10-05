@@ -95,17 +95,16 @@
 
         Los antecedentes abordan de forma aislada los dos objetivos que este trabajo se propone integrar: la detección temprana y la estratificación del riesgo. Ninguno las combina, ni contempla el marco regulatorio local, para un sistema pensado para el flujo de trabajo del oftalmólogo.
 
+        \begingroup \setstretch{1.1}
         \begin{longtblr}[
             caption = Tabla comparativa de antecedentes y aporte diferencial de la propuesta,
             label = tabla_antecedentes_comparativa
             ]{
-                cells={ valign = m, halign = l }, 
-                colspec = {Q[c, 2.25 cm] Q[l, 6.5 cm] Q[l, 6.5 cm]}, 
-                rowsep = 5 pt,        
-                colsep = 5 pt,           
-                hlines,              
-                vlines,                             
-                row{1}={bg=gray!15, font=\bfseries, halign = c}
+                colspec = {Q[c,m,2.75cm] X[l,m] X[l,m]},
+                cells = {font=\small},
+                row{1} = {bg=gray!15, font=\small\bfseries, halign=c},
+                hlines, vlines,
+                rowsep = 3pt, colsep = 5pt
             }
             
             Referencia & Aporte & Limitación \\
@@ -131,20 +130,19 @@
             & Desarrollo acotado a las normativas de la ANMAT. Necesidad de validación con muestras locales. \\
             
         \end{longtblr}
+        \endgroup
         
 \phantomsection
-\par\vspace{-0.5 cm}
+\par\vspace{-0.75 cm}
 \section{Justificación}
 
     El proyecto se justifica por tres razones fundamentales que lo distinguen de las soluciones existentes y que responden a una necesidad concreta no resuelta en el mercado actual.
 
-    \begin{itemize}
-        \item En primer lugar, la accesibilidad, el sistema se enfoca en datos provenientes de equipos disponibles localmente, como Pentacam y Sirius, no limitándose a \textit{hardware} de altísima gama, lo que facilita su adopción en centros de salud de la región donde la infraestructura diagnóstica puede ser variada.
+    En primer lugar, la accesibilidad, el sistema se enfoca en datos provenientes de equipos disponibles localmente, como Pentacam y Sirius, no limitándose a \textit{hardware} de altísima gama, lo que facilita su adopción en centros de salud de la región donde la infraestructura diagnóstica puede ser variada.
     
-        \item En segundo lugar, la independencia y los costos, el proyecto propone un modelo de \textit{software} independiente, rompiendo con los ecosistemas cerrados y costosos de marcas como OCULUS\textsuperscript{\textregistered} o Topcon\textsuperscript{\textregistered}, cuyos sistemas de análisis dependen obligatoriamente de la adquisición de dispositivos propietarios, lo que genera una barrera de entrada para los que ya cuentan con equipos de otros fabricantes.
+    Seguidamente, la independencia y los costos, el proyecto propone un modelo de \textit{software} independiente, rompiendo con los ecosistemas cerrados y costosos de marcas como OCULUS\textsuperscript{\textregistered} o Topcon\textsuperscript{\textregistered}, cuyos sistemas de análisis dependen obligatoriamente de la adquisición de dispositivos propietarios, lo que genera una barrera de entrada para los que ya cuentan con equipos de otros fabricantes.
     
-        \item En tercer lugar, la relevancia local, el proyecto aborda una problemática con evidencia clínica real en la región, con un aumento reportado de casos de queratocono en Oberá \cite{misiones}, lo que genera una necesidad concreta de herramientas diagnósticas asistidas por tecnología que no se encuentran disponibles en el mercado nacional.
-    \end{itemize}
+    Por último, la relevancia local, el proyecto aborda una problemática con evidencia clínica real en la región, con un aumento reportado de casos de queratocono en Oberá \cite{misiones}, lo que genera una necesidad concreta de herramientas diagnósticas asistidas por tecnología que no se encuentran disponibles en el mercado nacional.
     
     La solución técnica propuesta busca mitigar la subjetividad inherente a la interpretación de mapas corneales, reduciendo la dependencia de la experiencia del médico de turno y garantizando un diagnóstico más preciso y estandarizado independientemente de quién evalúe el estudio.
     
@@ -167,7 +165,6 @@
     
         Desarrollar un sistema de soporte a la decisión clínica, basado en algoritmos de inteligencia artificial sobre imágenes y datos topográficos, dirigido a los oftalmólogos para la detección temprana y estratificación de riesgo del queratocono.
 
-    \par\vspace{-0.15 cm}
     \subsection*{Objetivos específicos}
     
         \begin{enumerate}[label=\textbf{\arabic*)},leftmargin=*]
@@ -353,17 +350,16 @@
 
             El mercado global está dominado por un grupo reducido de empresas que comercializan sistemas cerrados, los cuales analizan y reestructuran los datos provenientes de los mismos equipos sin realizar predicciones ni diagnósticos sobre los mismos, donde el software de análisis depende obligatoriamente de tener sus dispositivos propietarios. A nivel nacional, no existen competidores directos con un software como producto médico específico para queratocono. La Tabla~\ref{tabla:oferta_cualitativa} resume las características cualitativas de los competidores identificados.
 
+            \begingroup \setstretch{1.1}
             \begin{longtblr}[
                 caption = Características cualitativas de la oferta competitiva,
                 label = tabla:oferta_cualitativa
                 ]{
-                    cells={ valign = m, halign = l }, 
-                    colspec = {Q[l, 3 cm] Q[l, 6 cm] Q[l, 6 cm]}, 
-                    rowsep = 4 pt,        
-                    colsep = 5 pt,           
-                    hlines,              
-                    vlines,                             
-                    row{1}={bg=gray!15, font=\bfseries, halign = c}
+                    colspec = {Q[l,m,3.5cm] X[l,m] X[l,m]},
+                    cells = {font=\small},
+                    row{1} = {bg=gray!15, font=\small\bfseries, halign=c},
+                    hlines, vlines,
+                    rowsep = 3pt, colsep = 5pt
                 }
                 
                 Competidor & Descripción & Limitación \\
@@ -397,23 +393,23 @@
                 & Desarrollo acotado a normativas ANMAT. Necesidad de validación local. \\
                 
             \end{longtblr}
+            \endgroup
 
         \phantomsection
         \subsection{Análisis de precios}
 
             La Tabla~\ref{tabla:precios_cuantitativa} presenta la comparativa de precios y costos de los competidores identificados, diferenciando entre inversión inicial, modelo de facturación y costo por uso.
 
+            \begingroup \setstretch{1.1}
             \begin{longtblr}[
                 caption = Comparativa de precios y costos de la oferta competitiva,
                 label = tabla:precios_cuantitativa
                 ]{
-                    cells={ valign = m, halign = l }, 
-                    colspec = {Q[l, 3.5 cm] Q[l, 4 cm] Q[l, 4.5 cm]}, 
-                    rowsep = 4 pt,        
-                    colsep = 5 pt,           
-                    hlines,              
-                    vlines,                             
-                    row{1}={bg=gray!15, font=\bfseries, halign = c}
+                    colspec = {Q[l,m,4cm] X[l,m] X[l,m]},
+                    cells = {font=\small},
+                    row{1} = {bg=gray!15, font=\small\bfseries, halign=c},
+                    hlines, vlines,
+                    rowsep = 3pt, colsep = 5pt
                 }
                 
                 Competidor & Inversión inicial & Modelo de facturación \\
@@ -431,6 +427,7 @@
                 & Suscripción mensual SaaS \\
                 
             \end{longtblr}
+            \endgroup
 
             \subsubsection*{Estructura de costos del proyecto}
             
@@ -633,20 +630,17 @@
                 \end{itemize}
 
             \vspace{-0.25 cm}
+            \begingroup \setstretch{1.1}
             \begin{longtblr}[
                 caption = Recursos humanos propios que intervendrán en el proyecto,
                 label = tabla:rrhh_propios
                 ]{
-                    cells={ valign = m, font = \footnotesize },
-                    colspec = {
-                    Q[l, 3.9 cm] Q[c, 1.2 cm] Q[r, 2.25 cm] Q[r, 2.25 cm] Q[c, 1.5 cm] Q[c, 1.3 cm] Q[r, 2.2 cm] 
-                    },
-                    rowsep = 4 pt,
-                    colsep = 3 pt,
-                    hlines,
-                    vlines,
-                    row{1}={bg=gray!15, font=\bfseries\footnotesize, halign = c},
-                    row{4}={bg=gray!15, font=\bfseries\footnotesize}
+                    colspec = {X[l,m] Q[c,m,1cm] Q[r,m,2.3cm] Q[r,m,2.1cm] Q[c,m,1.4cm] Q[c,m,1.2cm] Q[r,m,2.3cm]},
+                    cells = {font=\footnotesize},
+                    row{1} = {bg=gray!15, font=\footnotesize\bfseries, halign=c},
+                    row{4} = {bg=gray!15, font=\footnotesize\bfseries},
+                    hlines, vlines,
+                    rowsep = 3pt, colsep = 3pt
                 }
             
                 Profesión / función en el proyecto & Cant. & Costo mensual real c/u & Retribución simbólica & Meses de partic. & \% de dedic. & Costo total \\
@@ -658,21 +652,20 @@
                 \SetCell[c=6]{r} TOTAL & & & & & & \$\,3.876.400,00 \\
             
             \end{longtblr}
+            \endgroup
 
             \vspace{-0.75 cm}
+            \begingroup \setstretch{1.1}
             \begin{longtblr}[
                 caption = Recursos humanos adicionales requeridos en el proyecto,
                 label = tabla:rrhh_adicionales
                 ]{
-                    cells={ valign = m, font = \small },
-                    colspec = {Q[l, 2.4 cm] Q[l, 4.6 cm] Q[r, 2.5 cm] Q[c, 1.5 cm] Q[c, 1.4 cm] Q[r, 2.3 cm]},
-                    rowsep = 4 pt,
-                    colsep = 4 pt,
-                    hlines,
-                    vlines,
-                    row{1}={bg=gray!15, font=\bfseries\small, halign = c},
-                    row{4}={bg=gray!15, font=\bfseries\small},
-                    row{5}={bg=gray!15, font=\bfseries\small}
+                    colspec = {Q[l,m,2.4cm] X[l,m] Q[r,m,2.5cm] Q[c,m,1.5cm] Q[c,m,1.4cm] Q[r,m,2.3cm]},
+                    cells = {font=\small},
+                    row{1} = {bg=gray!15, font=\small\bfseries, halign=c},
+                    row{4,5} = {bg=gray!15, font=\small\bfseries},
+                    hlines, vlines,
+                    rowsep = 3pt, colsep = 5pt
                 }
             
                 Profesión u oficio & Función en el proyecto & Costo total mensual & Meses de partic. & \% de dedic. & Costo total \\
@@ -686,6 +679,7 @@
                 \SetCell[c=5]{r} TOTAL DE RECURSOS HUMANOS & & & & & \$\,4.518.400,00 \\
             
             \end{longtblr}
+            \endgroup
 
         \phantomsection
         \subsection{Recursos económicos}
@@ -704,20 +698,18 @@
     
                 \item \textbf{Servidor VPS:} Infraestructura virtual para el despliegue de la API \textit{backend} y el \textit{frontend}. Su costo ronda los \$\,41.600 ARS mensuales.
             \end{itemize}
-
-            \newpage
+            
+            \begingroup \setstretch{1.1}
             \begin{longtblr}[
                 caption = Consultoría y servicios tecnológicos a contratar,
                 label = tabla:consultoria_servicios
                 ]{
-                    cells={ valign = m, font = \small },
-                    colspec = {Q[l, 6 cm] Q[r, 2.8 cm] Q[c, 2.6 cm] Q[r, 2.8 cm]},
-                    rowsep = 4 pt,
-                    colsep = 5 pt,
-                    hlines,
-                    vlines,
-                    row{1}={bg=gray!15, font=\bfseries\small, halign = c},
-                    row{7}={bg=gray!15, font=\bfseries\small}
+                    colspec = {X[l,m] Q[r,m,2.8cm] Q[c,m,2.6cm] Q[r,m,2.8cm]},
+                    cells = {font=\small},
+                    row{1} = {bg=gray!15, font=\small\bfseries, halign=c},
+                    row{7} = {bg=gray!15, font=\small\bfseries},
+                    hlines, vlines,
+                    rowsep = 3pt, colsep = 5pt
                 }
             
                 Descripción & Costo mensual & Meses de partic. & Costo total \\
@@ -735,6 +727,7 @@
                 \SetCell[c=3]{r} TOTAL & & & \$\,6.388.840,00 \\
             
             \end{longtblr}
+            \endgroup
 
             Comprende la logística y movilidad física para las reuniones con el oftalmólogo colaborador, pago de la inscripción del software como producto médico, autorización de la empresa fabricante frente al ANMAT y costos pertinentes para la divulgación del producto en el congreso nacional de oftalmología.
     
@@ -750,18 +743,17 @@
                 \item \textbf{Inscripción al congreso nacional de oftalmología:} Dado que, el Congreso Nacional de Oftalmología (CNO) es el principal encuentro científico y académico para médicos oftalmólogos y profesionales de la salud visual a nivel nacional, se considera pertinente su inscripción al mismo. Para personas técnicas que presenten una carta de recomendación de un oftalmólogo matriculado, el costo es de \$\,24.000 aproximadamente.
             \end{itemize}
 
+            \begingroup \setstretch{1.1}
             \begin{longtblr}[
                 caption = {Costos de movilidad, logística, inscripción a congresos y matriculación},
                 label = tabla:otros_costos
                 ]{
-                    cells={ valign = m, font = \small },
-                    colspec = {Q[l, 11.5 cm] Q[r, 3 cm]},
-                    rowsep = 4 pt,
-                    colsep = 5 pt,
-                    hlines,
-                    vlines,
-                    row{1}={bg=gray!15, font=\bfseries\small, halign = c},
-                    row{7}={bg=gray!15, font=\bfseries\small}
+                    colspec = {X[l,m] Q[r,m,3cm]},
+                    cells = {font=\small},
+                    row{1} = {bg=gray!15, font=\small\bfseries, halign=c},
+                    row{7} = {bg=gray!15, font=\small\bfseries},
+                    hlines, vlines,
+                    rowsep = 3pt, colsep = 5pt
                 }
             
                 Descripción & Costo total \\
@@ -779,6 +771,7 @@
                 \SetCell[c=1]{r} TOTAL & \$\,2.119.100,00 \\
             
             \end{longtblr}
+            \endgroup
 
         \vspace{-0.5 cm}
         \phantomsection
@@ -816,17 +809,16 @@
             
             Para realizar el análisis de riesgos del proyecto, se toma como parámetros de evaluación a los siguientes criterios. En primer lugar, se contempla la probabilidad de ocurrencia de los riesgos mostrada en la Tabla~\ref{riesgos_prob}.
     
+                \begingroup \setstretch{1.1}
                 \begin{longtblr}[
                     caption = Escala de probabilidad de ocurrencia de riesgos,
                     label = riesgos_prob
                     ]{
-                        cells={ valign = m , halign = c }, 
-                        colspec = {Q Q Q[l]}, 
-                        rowsep = 4 pt,        
-                        colsep = 5 pt,           
-                        hlines,              
-                        vlines,                             
-                        row{1}={bg=gray!15, font=\bfseries, halign = c}
+                        colspec = {Q[c,m,2.5cm] Q[c,m,2.5cm] X[l,m]},
+                        cells = {font=\small},
+                        row{1} = {bg=gray!15, font=\small\bfseries, halign=c},
+                        hlines, vlines,
+                        rowsep = 3pt, colsep = 5pt
                     }
             
                         Cualitativa & Cuantitativa & Descripción \\ 
@@ -838,20 +830,20 @@
                         Remota      & 1 & El hecho de que este riesgo ocurra es una posibilidad remota \\
             
                 \end{longtblr}
+                \endgroup
         
             Por otro lado, la gravedad de los mismos dada por la Tabla~\ref{riesgos_grav}.
     
+                \begingroup \setstretch{1.1}
                 \begin{longtblr}[
                     caption = Escala de gravedad de ocurrencia de riesgos,
                     label = riesgos_grav
                     ]{
-                        cells={ valign = m , halign = c }, 
-                        colspec = {Q Q Q[l, 9 cm]}, 
-                        rowsep = 4 pt,        
-                        colsep = 5 pt,           
-                        hlines,              
-                        vlines,                             
-                        row{1}={bg=gray!15, font=\bfseries, halign = c}
+                        colspec = {Q[c,m,2.5cm] Q[c,m,2.5cm] X[l,m]},
+                        cells = {font=\small},
+                        row{1} = {bg=gray!15, font=\small\bfseries, halign=c},
+                        hlines, vlines,
+                        rowsep = 3pt, colsep = 5pt
                     }
             
                         Cualitativa & Cuantitativa & Descripción \\ 
@@ -867,33 +859,26 @@
                         Insignificante & 1 & El riesgo generará pocas consecuencias si ocurriera \\
             
                 \end{longtblr}
+                \endgroup
     
             A partir de estos criterios es posible calcular el impacto de los riesgos realizando la multiplicación de la probabilidad por la gravedad, la escala del impacto se observa en la Tabla~\ref{riesgos_imp}.
             
+                \begingroup \setstretch{1.1}
                 \begin{longtblr}[
                     caption = Escala de impacto de riesgos considerando probabilidad y gravedad,
                     label = riesgos_imp
                     ]{
-                        cells={ valign = m , halign = c }, 
-                        colspec = {Q[2.25 cm] Q[2.25 cm] Q[2.25 cm] Q[2.25 cm] Q[2.25 cm] Q[2.25 cm]}, 
-                        rowsep = 2.5 pt,        
-                        colsep = 5 pt,           
-                        hlines,              
-                        vlines,                             
-                        row{1}={bg=gray!15, font=\bfseries},
-                        column{1}={bg=gray!15, font=\bfseries},
-                        cell{2}{2,3,4} = {bg=red!25},
-                        cell{2}{5} = {bg=orange!30},
-                        cell{2}{6} = {bg=green!25},
-                        cell{3}{2,3} = {bg=red!25},
-                        cell{3}{4,5} = {bg=orange!30},
-                        cell{3}{6} = {bg=green!25},
-                        cell{4}{2} = {bg=red!25},
-                        cell{4}{3,4} = {bg=orange!30},
-                        cell{4}{5,6} = {bg=green!25},
-                        cell{5}{2,3} = {bg=orange!30},
-                        cell{5}{4,5,6} = {bg=green!25},
+                        colspec = {X[c,m] X[c,m] X[c,m] X[c,m] X[c,m] X[c,m]},
+                        cells = {font=\small},
+                        row{1} = {bg=gray!15, font=\small\bfseries, halign=c},
+                        column{1} = {bg=gray!15, font=\small\bfseries},
+                        cell{2}{2,3,4} = {bg=red!25}, cell{2}{5} = {bg=orange!30}, cell{2}{6} = {bg=green!25},
+                        cell{3}{2,3} = {bg=red!25}, cell{3}{4,5} = {bg=orange!30}, cell{3}{6} = {bg=green!25},
+                        cell{4}{2} = {bg=red!25}, cell{4}{3,4} = {bg=orange!30}, cell{4}{5,6} = {bg=green!25},
+                        cell{5}{2,3} = {bg=orange!30}, cell{5}{4,5,6} = {bg=green!25},
                         cell{6}{2,3,4,5,6} = {bg=green!25},
+                        hlines, vlines,
+                        rowsep = 3pt, colsep = 5pt
                     }
                 
                                 & Catastrófica & Importante & Moderada & Menor & Insignificante \\
@@ -904,6 +889,7 @@
                     Inusual     & 5  & 4  & 3  & 2  & 1 \\
                 
                 \end{longtblr}
+                \endgroup
         
             La clasificación del impacto se realiza de la siguiente forma:
     
@@ -921,17 +907,16 @@
             Con base en lo mencionado anteriormente, se identificaron los riesgos y su impacto en el proyecto como se puede observar en la Tabla~\ref{riesgos}.
 
                 \vspace{0.2 cm}
+                \begingroup \setstretch{1.1}
                 \begin{longtblr}[
                     caption = Riesgos y clasificación de los mismos,
                     label = riesgos
                     ]{
-                        cells={ valign = m , halign = c }, 
-                        colspec = {Q[1 cm] Q[l] Q[2 cm] Q[2 cm] Q[2 cm] Q[2 cm]}, 
-                        rowsep = 2.5 pt,        
-                        colsep = 5 pt,           
-                        hlines,              
-                        vlines,                             
-                        row{1}={bg=gray!15, font=\bfseries, halign = c}
+                        colspec = {Q[c,m,1cm] X[l,m] Q[c,m,2cm] Q[c,m,2cm] Q[c,m,2cm] Q[c,m,2cm]},
+                        cells = {font=\small},
+                        row{1} = {bg=gray!15, font=\small\bfseries, halign=c},
+                        hlines, vlines,
+                        rowsep = 3pt, colsep = 5pt
                     }
             
                         ID & Riesgo identificado & Ocurrencia & Gravedad & Impacto & Riesgo \\ 
@@ -946,6 +931,7 @@
                         R8 & Diferencias entre los integrantes    & 2 & 1 & 2  & Bajo  \\
             
                 \end{longtblr}
+                \endgroup
     
         \subsubsection*{Descripción de los riesgos}
     

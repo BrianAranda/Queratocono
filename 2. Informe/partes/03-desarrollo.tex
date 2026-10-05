@@ -58,17 +58,16 @@
 
         Los centros de salud y profesionales contactados hasta la fecha se detallan en la Tabla~\ref{tabla:centros_contactados}.
 
+        \begingroup \setstretch{1.1}
         \begin{longtblr}[
             caption = Centros de salud y profesionales de oftalmología contactados,
             label = tabla:centros_contactados
             ]{
-                cells={ valign = m, halign = l },
-                colspec = {Q[l, 9.5 cm] Q[l, 5.5 cm]},
-                rowsep = 4 pt,
-                colsep = 5 pt,
-                hlines,
-                vlines,
-                row{1}={bg=gray!15, font=\bfseries, halign = c}
+                colspec = {X[l,m] Q[l,m,4cm]},
+                cells = {font=\small},
+                row{1} = {bg=gray!15, font=\small\bfseries, halign=c},
+                hlines, vlines,
+                rowsep = 3pt, colsep = 5pt
             }
 
             Centro de salud o profesional & Localidad \\
@@ -92,6 +91,7 @@
             Clínica de Ojos Dr. Santiago Barreyro & Posadas \\
 
         \end{longtblr}
+        \endgroup
 
         Estos contactos representan el punto de partida para la conformación del lote de muestras locales anonimizadas previsto en la propuesta metodológica, cuya validación constituye un requisito para contrastar el rendimiento del modelo con la realidad clínica regional.
 
