@@ -28,7 +28,7 @@
     
         El queratocono presenta la dificultad de que sus manifestaciones iniciales son sutiles y pueden confundirse con miopía o astigmatismo común. Esta interpretación está condicionada por la experiencia del profesional, lo que aumenta la probabilidad de errores, especialmente en etapas subclínicas donde la patología se manifiesta de forma discreta y no resulta evidente en una revisión superficial del estudio.
     
-        Esta situación se ve agravada por la rápida aparición y avance de la enfermedad en edades tempranas de los pacientes, lo que representa un punto crítico en cuanto al tiempo de diagnóstico y tratamiento. La demora en la detección puede derivar en una progresión irreversible del daño corneal, llegando en estancias medias y avanzadas a necesitar intervención quirúrgica para no perder la visión \cite{deteccion_temprana}.
+        Esta situación se ve agravada por la rápida aparición y avance de la enfermedad en edades tempranas de los pacientes, lo que representa un punto crítico en cuanto al tiempo de diagnóstico y tratamiento. La demora en la detección puede derivar en una progresión irreversible del daño corneal, llegando en estadios medios y avanzados a necesitar intervención quirúrgica para no perder la visión \cite{deteccion_temprana}.
         
         La interpretación visual de mapas topográficos y tomográficos puede derivar en diagnósticos confusos o tardíos, particularmente en manos de médicos con menos experiencia, lo que fundamenta la necesidad de generar herramientas de asistencia al diagnóstico basadas en Inteligencia Artificial (IA) para estandarizar los criterios de evaluación y reducir la variabilidad inherente al proceso \cite{queratocono_ia}.
 
@@ -48,9 +48,9 @@
     
         Al tratarse de una aplicación en el ámbito de la salud, la implementación de este sistema conlleva riesgos críticos que deben ser tenidos en cuenta. La integración de modelos de IA exige una rigurosa validación externa o local. Este proceso es fundamental para contrastar el rendimiento del algoritmo con la realidad clínica diaria. Esto permite evaluar y documentar de manera rigurosa la fiabilidad y eficacia del sistema bajo las condiciones y recursos de nuestra región.
     
-        Por otro lado, la Disposición ANMAT 9688/19 establece en su artículo 26 que todo \textit{software} que se encuadre en la definición de producto médico debe inscribirse en el Registro de Productores y Productos de Tecnología Médica~\cite{dispo_9688}, requisito que alcanza directamente a este sistema. La inscripción no certifica por sí sola que el producto sea seguro, sino que exige presentar los ensayos que respaldan el informe de Requisitos Esenciales de Seguridad y Eficacia, con una profundidad que depende de la clase de riesgo asignada según la Disposición 2318/02~\cite{dispo_2318}.
+        Por otro lado, la Disposición N.º 9688/2019 de la Administración Nacional de Medicamentos, Alimentos y Tecnología Médica (ANMAT) establece en su artículo 26 que todo \textit{software} que se encuadre en la definición de producto médico debe inscribirse en el Registro de Productores y Productos de Tecnología Médica~\cite{dispo_9688}, requisito que alcanza directamente a este sistema. La inscripción no certifica por sí sola que el producto sea seguro, sino que exige presentar los ensayos que respaldan el informe de Requisitos Esenciales de Seguridad y Eficacia, con una profundidad que depende de la clase de riesgo asignada según la Disposición ANMAT N.º 2318/2002~\cite{dispo_2318}.
         
-        La responsabilidad legal de los datos locales recae en los oftalmólogos consultados, en su labor de anonimizar los estudios provistos. Por otro lado, los datos presentes en los \textit{datasets} internacionales~\cite{kaggle,zenodo,insight} ya vienen anonimizados previamente para su uso, garantizando la transparencia y validación clínica según las normativas de protección de datos personales~\cite{ley_25326}.
+        La responsabilidad legal de los datos locales recae en los oftalmólogos consultados, en su labor de anonimizar los estudios provistos. Por otro lado, los datos presentes en los \textit{datasets} internacionales~\cite{kaggle,zenodo,insight} ya vienen anonimizados previamente para su uso, garantizando la transparencia y validación clínica según la Ley N.º 25.326 de Protección de los Datos Personales, sancionada en el año 2000~\cite{ley_25326}.
 
 \phantomsection
 \par\vspace{-0.2 cm}
@@ -61,14 +61,14 @@
 
         Un antecedente fundamental es el modelo de aprendizaje profundo multimodal presentado por Shafi Balal en el congreso ESCRS 2025, abordando la problemática de que los médicos no pueden predecir con certeza qué pacientes progresan hacia estadios graves y cuáles son estables, saturando los servicios con seguimientos frecuentes. Su sistema utiliza redes neuronales recurrentes para analizar datos de solo dos visitas, logrando clasificar a los pacientes en grupos de bajo o alto riesgo de progresión a dos años~\cite{shafi_balal}.
 
-        Este trabajo demuestra dos cosas: es posible construir modelos predictivos con una cantidad reducida de información clínica y que es viable estratificar el riesgo de progresión. Esto es relevante, puesto que valida uno de los fines del trabajo propuesto, la estratificación. Además, verifica que no precisamos de un banco de datos de validación extenso con muestras locales.
+        Este trabajo demuestra que es posible construir modelos predictivos con una cantidad reducida de información clínica y que es viable estratificar el riesgo de progresión. Sin embargo, requiere datos de más de una visita por paciente, información con la que no cuentan los conjuntos de datos disponibles para este proyecto. Por ello, la estratificación del riesgo de progresión se plantea como una línea de trabajo futuro (ver sección Alcance y limitaciones).
 
     \par\vspace{-0.1 cm}
     \subsection*{Redes neuronales convolucionales (CNN)}
     
         Por otro lado, el desarrollo del algoritmo KeratoDetect se enfoca en la dificultad de detectar el queratocono en etapas subclínicas. Este algoritmo demostró que los modelos basados en redes neuronales convolucionales pueden identificar patrones patológicos que el ojo humano podría omitir, procesando imágenes corneales para una clasificación binaria con alta precisión~\cite{kerato_detect}.
 
-        Este antecedente se centra exclusivamente en la detección, sin abordar la estratificación ni integración a sistemas para oftalmólogos. Esto nos sirve para validar que es posible el otro punto objetivo del trabajo, la detección. Además, justifica la utilización de redes CNN para definir la arquitectura de procesamiento.
+        Este antecedente se centra exclusivamente en el análisis de imágenes, sin incorporar datos clínicos del paciente ni integrarse a un sistema para oftalmólogos. Aun así, respalda el objetivo central del trabajo, la detección, y justifica la utilización de redes CNN para definir la arquitectura de procesamiento.
 
     \par\vspace{-0.1 cm}
     \subsection*{Herramientas médicas e investigación}
@@ -93,7 +93,7 @@
 
     \subsection*{Comparativa de los antecedentes}
 
-        Los antecedentes abordan de forma aislada los dos objetivos que este trabajo se propone integrar: la detección temprana y la estratificación del riesgo. Ninguno las combina, ni contempla el marco regulatorio local, para un sistema pensado para el flujo de trabajo del oftalmólogo.
+        Los antecedentes resuelven partes del problema de forma aislada: algunos analizan solo imágenes, otros se encuentran en fase de investigación y los productos comerciales no ofrecen un módulo específico para queratocono. Ninguno combina la detección a partir de imágenes y datos clínicos con la explicación visual de cada predicción, en una herramienta accesible pensada para el flujo de trabajo del oftalmólogo y el marco regulatorio local.
 
         \begingroup \setstretch{1.1}
         \begin{longtblr}[
@@ -115,7 +115,7 @@
             
             KeratoDetect
             & Detección binaria subclínica para reducir la subjetividad. Utiliza CNN.  
-            & No aborda estratificación ni se integra a un sistema médico. \\
+            & Analiza solo imágenes y no se integra a un sistema médico. \\
             
             Entelai
             & Plataforma comercial líder en Argentina para la agilización de informes médicos. 
@@ -126,8 +126,8 @@
             & Diseñados para sistemas internacionales de alta gama, sin adecuación regulatoria. \\
             
             \textbf{Nuestro proyecto }
-            & Enfoque integral: detección temprana y estratificación de riesgo en un sistema abierto y accesible. RNN y CNN.
-            & Desarrollo acotado a las normativas de la ANMAT. Necesidad de validación con muestras locales. \\
+            & Detección temprana multimodal (imágenes y datos clínicos) con explicación visual, en una aplicación web accesible. Utiliza CNN.
+            & Prototipo entrenado con un \textit{dataset} público. Requiere validación con muestras locales. \\
             
         \end{longtblr}
         \endgroup
@@ -138,7 +138,7 @@
 
     El proyecto se justifica por tres razones fundamentales que lo distinguen de las soluciones existentes y que responden a una necesidad concreta no resuelta en el mercado actual.
 
-    En primer lugar, la accesibilidad, el sistema se enfoca en datos provenientes de equipos disponibles localmente, como Pentacam y Sirius, no limitándose a \textit{hardware} de altísima gama, lo que facilita su adopción en centros de salud de la región donde la infraestructura diagnóstica puede ser variada.
+    En primer lugar, la accesibilidad, el sistema trabaja con los mapas corneales que exportan los equipos de topografía y tomografía ya instalados en los centros de salud, sin requerir \textit{hardware} de altísima gama, lo que facilita su adopción en la región, donde la infraestructura diagnóstica puede ser variada. El prototipo se desarrolla con mapas de equipos Orbscan, y su extensión a otros equipos disponibles localmente, como Pentacam y Sirius, se plantea como trabajo futuro.
     
     Seguidamente, la independencia y los costos, el proyecto propone un modelo de \textit{software} independiente, rompiendo con los ecosistemas cerrados y costosos de marcas como OCULUS\textsuperscript{\textregistered} o Topcon\textsuperscript{\textregistered}, cuyos sistemas de análisis dependen obligatoriamente de la adquisición de dispositivos propietarios, lo que genera una barrera de entrada para los que ya cuentan con equipos de otros fabricantes.
     
@@ -163,24 +163,71 @@
     \par\vspace{-0.15 cm}
     \subsection*{Objetivo general}
     
-        Desarrollar un sistema de soporte a la decisión clínica, basado en algoritmos de inteligencia artificial sobre imágenes y datos topográficos, dirigido a los oftalmólogos para la detección temprana y estratificación de riesgo del queratocono.
+        Desarrollar un sistema de soporte a la decisión clínica, basado en algoritmos de inteligencia artificial sobre mapas corneales y datos clínicos, dirigido a los oftalmólogos para la detección temprana del queratocono y accesible mediante una aplicación web.
 
     \subsection*{Objetivos específicos}
-    
+
         \begin{enumerate}[label=\textbf{\arabic*)},leftmargin=*]
-            \item Consolidar una base de datos multimodal que combine \textit{datasets} públicos internacionales \cite{kaggle,zenodo,insight} con muestras locales anonimizadas de Misiones, validando la eficacia del diagnóstico en la realidad regional.
-            
-            \item Desarrollar y entrenar modelos de aprendizaje profundo basados en redes neuronales convolucionales y recurrentes para la identificación automatizada de patrones morfológicos sutiles.
-            
-            \item Diseñar, implementar y validar un algoritmo de estratificación de riesgo priorizando la reducción de falsos negativos para etapas iniciales de la enfermedad.
-            
+            \item Analizar y preparar un conjunto de datos público y multimodal~\cite{zenodo}, que reúne mapas corneales y variables clínicas, caracterizando su composición y calidad antes del entrenamiento.
+
+            \item Desarrollar y entrenar un modelo de aprendizaje profundo multimodal, basado en redes neuronales convolucionales, que combine los mapas corneales con las variables clínicas para identificar el queratocono, priorizando la reducción de falsos negativos.
+
             \item Integrar herramientas de inteligencia artificial explicable que proporcionen evidencia visual al oftalmólogo sobre las regiones corneales determinantes para cada predicción.
-            
-            \item Diseñar y desplegar una arquitectura de \textit{software} que garantice la interoperabilidad entre dispositivos diagnósticos y facilite la consulta de informes mediante una interfaz intuitiva.
+
+            \item Desarrollar una aplicación web que permita al oftalmólogo cargar los estudios del paciente, ejecutar el modelo y consultar un informe con el resultado y su explicación visual.
         \end{enumerate}
 
 \phantomsection
-\section{Marco Teórico}
+\section{Alcance y limitaciones}
+
+    Esta sección delimita qué demostrará el prototipo desarrollado en el marco del Proyecto Final Integrador (PFI) y qué aspectos quedan fuera de su alcance, de modo que los resultados que se presenten se correspondan con lo que el prototipo efectivamente puede comprobar.
+
+    \subsection*{Alcance del prototipo}
+
+        El prototipo funciona como una herramienta de apoyo: recibe la información de un estudio corneal, la procesa con un modelo de IA y devuelve un resultado que el oftalmólogo interpreta y valida. En concreto:
+
+        \begin{itemize}[leftmargin=*]
+            \item \textbf{Qué ingresa:} los cuatro mapas corneales de un ojo (axial, elevación anterior, elevación posterior y paquimetría), tal como los entrega un equipo Orbscan, junto con las variables clínicas del paciente: edad, sexo, astigmatismo, curvatura máxima de la córnea (K max), espesor corneal central y en su punto más delgado, y asfericidad anterior y posterior.
+
+            \item \textbf{Qué procesa:} un modelo multimodal analiza las imágenes y los datos clínicos en conjunto y estima la probabilidad de que el ojo presente queratocono. A la vez, la técnica Grad-CAM marca sobre los mapas las regiones que más influyeron en esa estimación.
+
+            \item \textbf{Qué entrega:} un informe con la clasificación del ojo (normal o con queratocono), el nivel de confianza del modelo y el mapa de calor que la justifica, consultable desde la aplicación web.
+        \end{itemize}
+
+        El entrenamiento y la evaluación se realizan con el \textit{dataset} público CornOrb~\cite{zenodo}, ya que las muestras locales se encuentran en proceso de solicitud a centros de salud de la región (ver capítulo Desarrollo). Si se obtienen durante el PFI, se incorporarán para una primera evaluación del modelo sobre datos regionales. El prototipo se considera terminado cuando el modelo esté entrenado y evaluado con ese conjunto de datos y la aplicación web permita ejecutarlo de punta a punta.
+
+    \subsection*{Limitaciones}
+
+        \begin{itemize}[leftmargin=*]
+            \item \textbf{Disponibilidad limitada de grandes \textit{datasets}:} los conjuntos de datos públicos de queratocono son escasos y de tamaño moderado. CornOrb reúne 1.454 ojos de 744 pacientes, un volumen suficiente para entrenar y evaluar un prototipo, pero acotado frente al que requieren arquitecturas más complejas como los \textit{Vision Transformers} o los modelos fundacionales.
+
+            \item \textbf{Falta de datos de carácter local:} las muestras de pacientes de Misiones se encuentran en proceso de solicitud y aún no se dispone de ellas. Hasta que se obtengan, el desempeño del prototipo solo podrá informarse sobre el conjunto de datos público. Aun si se incorporan durante el PFI, permitirán una evaluación preliminar sobre la población regional, pero no una validación clínica.
+
+            \item \textbf{Validación en un único origen de datos:} todas las muestras de CornOrb provienen de un mismo tipo de equipo (Orbscan~3) y de centros de un mismo país. Para afirmar que el sistema funciona en la práctica clínica sería necesario validarlo en distintos centros de salud, con otros equipos y otros protocolos de adquisición.
+
+            \item \textbf{Diferencias entre poblaciones y contextos clínicos:} los datos corresponden a pacientes de Argelia, por lo que las características de la población y de la atención pueden diferir de las de Argentina. Un modelo que funciona bien en una población no necesariamente mantiene su desempeño en otra.
+
+            \item \textbf{Etiquetas binarias:} cada ojo está etiquetado únicamente como normal o con queratocono, sin distinguir estadios de la enfermedad. Por ello, el prototipo no puede medir por separado su desempeño en casos subclínicos, que son los más difíciles de detectar.
+        \end{itemize}
+
+        Estas limitaciones no invalidan el prototipo, pero acotan lo que sus resultados permiten afirmar: el desempeño obtenido describe el comportamiento del modelo sobre los datos con los que se evalúe y no constituye una validación clínica.
+
+    \subsection*{Trabajo futuro}
+
+        Quedan fuera del alcance del PFI, y se plantean como líneas de trabajo futuro:
+
+        \begin{itemize}[leftmargin=*]
+            \item La estratificación del riesgo, ya sea mediante los índices del sistema ABCD de Belin o mediante la predicción del riesgo de progresión con redes neuronales recurrentes. Ambas requieren datos que CornOrb no incluye: valores ABCD o estudios de un mismo paciente en distintas visitas.
+
+            \item La validación clínica con muestras locales de distintos centros de salud de la región, a partir de las solicitudes ya iniciadas (ver capítulo Desarrollo).
+
+            \item La compatibilidad con otros equipos de diagnóstico, como Pentacam\textsuperscript{\scriptsize\textregistered}{} o Sirius\textsuperscript{\scriptsize\textregistered}{}, condicionada a la obtención de sus archivos de exportación.
+
+            \item La inscripción del sistema como producto médico ante la ANMAT y su lanzamiento comercial, cuya planificación se desarrolla en el capítulo Análisis de Producto de Mercado.
+        \end{itemize}
+
+\phantomsection
+\section{Marco teórico}
 
     \phantomsection
     \subsection{Queratocono: fisiopatología y diagnóstico}
@@ -189,7 +236,7 @@
         
         La enfermedad tiene un inicio típico en la segunda década de la vida y puede progresar hasta la tercera o cuarta década, momento en el que generalmente se estabiliza. La detección temprana es especialmente crítica porque el queratocono se presenta y avanza rápidamente en edades jóvenes, y su manifestación inicial puede confundirse con miopía o astigmatismo común, lo que retrasa la intervención oportuna~\cite{kcn_edad}.
 
-        El diagnóstico se basa en la evaluación de múltiples parámetros corneales obtenidos mediante tomógrafos de Scheimpflug (como el Pentacam) o topógrafos de Placido (como el Sirius). Entre los parámetros clínicos más relevantes se encuentran la curvatura keratométrica (Km), el espesor corneal mínimo (paquimetría), el ``\textit{Differential Surface Elevation}'' (DSE) y los índices del sistema ABCD de Belin, que permite una estratificación de riesgo basada en la elevación anterior, la elevación posterior y el espesor corneal~\cite{kcn_parametros}.
+        El diagnóstico se basa en la evaluación de múltiples parámetros corneales obtenidos mediante tomógrafos de Scheimpflug (como el Pentacam), topógrafos de Placido (como el Sirius) o sistemas de barrido por hendidura (como el Orbscan, con el que se obtuvieron los datos utilizados en este trabajo). Entre los parámetros clínicos más relevantes se encuentran la curvatura keratométrica (Km), el espesor corneal mínimo (paquimetría), el ``\textit{Differential Surface Elevation}'' (DSE) y los índices del sistema ABCD de Belin, que permite una estratificación de riesgo basada en la elevación anterior, la elevación posterior y el espesor corneal~\cite{kcn_parametros}.
 
     \phantomsection
     \subsection{Inteligencia Artificial en medicina: estado del arte}
@@ -207,7 +254,7 @@
 
         Entre las arquitecturas más utilizadas se encuentran \textit{EfficientNet-B7}, que ofrece un equilibrio óptimo entre precisión y eficiencia computacional mediante el escalado compuesto de profundidad, resolución y ancho de banda, siendo particularmente adecuado para imágenes médicas donde se requiere alta resolución para capturar detalles sutiles. \textit{ResNet}, por su parte, utiliza conexiones residuales que permiten entrenar redes muy profundas sin el problema de la degradación, facilitando la extracción de características de alta complejidad en imágenes de topografía corneal. 
         
-        Por otro lado, los \textit{Vision Transformers} (VT) constituyen una alternativa basada en mecanismos de atención que captura relaciones globales en la imagen, potencialmente útil para analizar la topografía corneal como un todo integrado. Se emplean algoritmos de visión artificial como \textit{YOLOv8} para la segmentación y recorte automático de las regiones de interés, estandarizando las exportaciones de equipos de diferentes fabricantes a una escala común antes de la entrada al modelo predictivo.
+        Por otro lado, los \textit{Vision Transformers} (VT) constituyen una alternativa basada en mecanismos de atención que captura relaciones globales en la imagen, potencialmente útil para analizar la topografía corneal como un todo integrado. Para incorporar exportaciones de equipos de diferentes fabricantes, pueden emplearse algoritmos de visión artificial como \textit{YOLOv8} para la segmentación y recorte automático de las regiones de interés, llevándolas a una escala común antes de la entrada al modelo predictivo. En el prototipo esta etapa no resulta necesaria, ya que CornOrb provee los mapas ya recortados y estandarizados.
 
     \phantomsection
     \subsection{Aprendizaje profundo multimodal}
@@ -230,57 +277,82 @@
 
         El \textit{software} de soporte a la decisión clínica se enmarca conceptualmente como un SaMD, definido por la organización internacional de normalización (ISO) como \textit{software} destinado a ser utilizado con fines médicos sin formar parte de un \textit{hardware} médico. 
         
-        En Argentina, la regulación de los SaMD está a cargo de la ANMAT, que establece las disposiciones 2318/02 y 9688/19 \cite{dispo_2318,dispo_9688} para la clasificación y registro de productos médicos. Según el nivel de riesgo asociado a la función que cumple el software, se clasifica en Clase I (bajo riesgo), Clase II (riesgo medio) o Clase III (alto riesgo).
+        En Argentina, la regulación de los SaMD está a cargo de la ANMAT, que establece las disposiciones N.º 2318/2002 y N.º 9688/2019~\cite{dispo_2318,dispo_9688} para la clasificación y registro de productos médicos. Según el nivel de riesgo asociado a la función que cumple el software, se clasifica en Clase I (bajo riesgo), Clase II (riesgo medio) o Clase III (alto riesgo).
 
-        Para el proyecto propuesto, el registro como producto Clase II implica la necesidad de demostrar la seguridad y eficacia del sistema mediante validación clínica, así como el cumplimiento de la normativa de protección de datos personales (Ley 25.326 \cite{ley_25326}) para garantizar la anonimización de las muestras y el consentimiento informado de los pacientes. El cumplimiento normativo no es simplemente un requisito administrativo, sino que forma parte integral del diseño del sistema, ya que desde las etapas iniciales de desarrollo se deben implementar mecanismos de seguridad, trazabilidad y auditoría. Esto para demostrar ante el organismo regulador que el producto cumple con los estándares de calidad y seguridad requeridos para su uso en el ámbito clínico.
+        Para el proyecto propuesto, el registro como producto Clase II implica la necesidad de demostrar la seguridad y eficacia del sistema mediante validación clínica, así como el cumplimiento de la normativa de protección de datos personales (Ley N.º 25.326 (2000)~\cite{ley_25326}) para garantizar la anonimización de las muestras y el consentimiento informado de los pacientes. El cumplimiento normativo no es simplemente un requisito administrativo, sino que forma parte integral del diseño del sistema, ya que desde las etapas iniciales de desarrollo se deben implementar mecanismos de seguridad, trazabilidad y auditoría. Esto para demostrar ante el organismo regulador que el producto cumple con los estándares de calidad y seguridad requeridos para su uso en el ámbito clínico.
 
     \phantomsection
     \subsection{Sistema ABCD de Belin para estratificación de riesgo}
 
         El sistema ABCD de Belin es un método de clasificación del queratocono que evalúa la córnea en cuatro dimensiones: A (elevación anterior), B (elevación posterior), C (curvatura corneal) y D (espesor corneal o paquimetría). Cada parámetro se puntúa en una escala que permite una estratificación objetiva de la severidad de la enfermedad y su riesgo de progresión. Este sistema supera las limitaciones del análisis convencional de mapas topográficos, que depende exclusivamente de la interpretación visual del especialista. Al integrar múltiples parámetros objetivos en una evaluación unificada que facilita la comparabilidad de los resultados con estudios publicados y la aceptación del sistema por parte de la comunidad oftalmológica. Al basar la estratificación en un sistema validado y ampliamente reconocido, el proyecto se posiciona como una herramienta complementaria al flujo de trabajo clínico existente y no como un reemplazo del criterio médico especializado.
 
-        En el contexto del sistema propuesto, el algoritmo de IA se entrenará para predecir los valores del sistema ABCD a partir de las imágenes topográficas, entregando como resultado una clasificación de riesgo que el oftalmólogo puede utilizar como herramienta de apoyo para determinar la necesidad de tratamiento o seguimiento. La adopción de este sistema como referencia clínica permite alinearse con los estándares internacionales de diagnóstico del queratocono, facilitando la comparabilidad de los resultados con estudios publicados y mejorando la aceptación del sistema por parte de la comunidad oftalmológica.
+        Predecir los valores del sistema ABCD a partir de los mapas corneales permitiría que el sistema propuesto entregue, además de la detección, una clasificación de la severidad alineada con los estándares internacionales de diagnóstico. Sin embargo, entrenar un modelo con ese fin requiere estudios etiquetados con dichos índices, con los que no cuenta el conjunto de datos utilizado. Por este motivo, la estratificación basada en el sistema ABCD se plantea como una línea de trabajo futuro (ver sección Alcance y limitaciones).
 
 \clearpage
 \phantomsection
 \section{Propuesta metodológica}
 
-    El desarrollo del proyecto se organizaría en etapas secuenciales que abarcaría desde la obtención de datos hasta el despliegue del sistema como \textit{software} como producto médico, con una duración total estimada de 4 meses. Esta propuesta se adaptaría a la metodología CRISP-DM combinado con un desarrollo incremental, dado que el proyecto avanza mediante ciclos iterativos de entendimiento y preparación de datos, modelado, evaluación y despliegue, en lugar de seguir un esquema secuencial clásico tipo cascada.
+    La propuesta se adapta a la metodología CRISP-DM combinado con un desarrollo incremental, dado que el proyecto avanza mediante ciclos iterativos de entendimiento y preparación de datos, modelado, evaluación y despliegue, en lugar de seguir un esquema secuencial clásico tipo cascada.
 
-    \subsection*{Primera fase}
-        
-        La primera etapa corresponde al desarrollo y entrenamiento, que abarca los primeros seis meses y se centra en la elaboración del algoritmo, su primera verificación y refinamiento. Desde el inicio de este ciclo se definen los requisitos regulatorios, legales y de calidad, estableciendo las políticas de trazabilidad y la estructura del informe técnico necesaria para la futura certificación del sistema como producto médico. Asimismo, en esta fase se realiza la consolidación de la base de datos mediante la recopilación y unificación de \textit{datasets} internacionales de carácter público o privado \cite{kaggle,zenodo,insight}, que aportarán el volumen masivo de imágenes topográficas requerido para constituir la fuente principal del entrenamiento algorítmico. 
-    
-        Paralelamente, se desarrollan acuerdos de colaboración con centros oftalmológicos locales para conformar un \textit{dataset} de alrededor de 150 muestras locales, estrictamente anonimizadas desde su origen en cumplimiento con los lineamientos de confidencialidad y protección de datos, con el fin de validar posteriormente el modelo. Se construye un módulo de estandarización de formatos para las exportaciones del equipo Pentacam, extrayendo y llevando a una misma escala los mapas clave: elevación anterior y posterior, curvatura sagital y tangencial, y espesor corneal. Dicho diseño facilita, como línea de trabajo futuro, la incorporación de interfaces de compatibilidad para otros equipos del mercado, tales como Sirius y GALILEI\textsuperscript{\textregistered}. 
-    
-        Las imágenes se preprocesan para su segmentación, y luego se experimentaría con arquitecturas multimodales para la extracción de características espaciales. El modelo seleccionado se entrenará exhaustivamente por \textit{fine-tuning} para maximizar la identificación de patrones morfológicos sutiles del queratocono, y se estratificará el riesgo tomando el sistema ABCD de Belin como referencia. Finalmente, se verifica la robustez del modelo enfrentándolo a datos presentes en los \textit{datasets} internacionales y locales, priorizando la reducción de los falsos negativos.
+    La planificación distingue dos horizontes. El primero corresponde al PFI y abarca las dos primeras fases, que culminan en el prototipo descrito en la sección Alcance y limitaciones. El segundo corresponde a la proyección del producto: las fases tres y cuatro, necesarias para llevar el prototipo al uso clínico y comercial, y que quedan fuera del alcance del PFI.
 
-     \subsection*{Segunda fase}
-        
-        La segunda etapa corresponde a la implementación e integración, que abarcaría dos meses tras el desarrollo. En esta fase el modelo se encapsulará en una plataforma de \textit{software}, estableciendo las bases para su monitoreo a largo plazo en producción. 
-    
-        Se desarrollará el \textit{backend} para la lógica del servidor y creación de API utilizando el \textit{framework} FastAPI, y se implementan herramientas de explicabilidad para proporcionar evidencia visual que fundamenta la predicción. 
-        
-        Paralelamente, se diseñará y programará el \textit{frontend} con una interfaz de usuario amigable y multiplataforma utilizando React, capaz de generar informes detallados con los niveles de fiabilidad de la inferencia.
+    Para el PFI se establece una línea base de cuatro meses, de octubre de 2026 a enero de 2027, en concordancia con la duración de un cuatrimestre. A esta línea base se suma una reserva de contingencia de hasta dos meses (febrero y marzo de 2027), destinada a absorber los retrasos que puedan surgir por la naturaleza iterativa del modelado o por la materialización de los riesgos identificados en la sección Gestión de riesgos.
 
-     \subsection*{Tercera fase}
-            
-        La tercera etapa correspondería a la validación clínica y pruebas de usuario, que abarcaría otros dos meses tras la integración. En esta fase se realizará una auditoría del rendimiento del sistema utilizando métricas clínicas y evaluando el esfuerzo humano requerido. 
-    
-        Se llevará a cabo una verificación externa utilizando la totalidad del conjunto de 150 topografías locales reservado para pruebas (no utilizado durante el entrenamiento), calculando un intervalo de confianza estadístico del 90\,\% sobre las métricas de sensibilidad y especificidad. Se realizarán ajustes de experiencia de usuario e interfaz basados en la retroalimentación y pruebas de usabilidad realizadas con el personal médico.
+    \subsection*{Primera fase: datos y modelo}
 
-     \subsection*{Cuarta fase}
-        
-        Finalmente, en la cuarta etapa de certificación regulatoria y despliegue (con una duración de dos meses), se consolidará la alineación legal y normativa que estableció los lineamientos del proyecto desde su inicio. Se realizará la revisión y el cierre del informe técnico, las decisiones de arquitectura y las políticas de calidad durante todo el ciclo de desarrollo. Un abogado consultor auditará esta documentación y acompañará el proceso formal de inscripción del sistema como producto médico Clase II ante la ANMAT. Asimismo, se someterán a control final y aprobación los contratos de confidencialidad, los términos de uso con limitación de responsabilidad clínica y los consentimientos informados, validando el cumplimiento estricto de la Ley N.º 25.326 de Protección de Datos Personales de cara a la puesta en marcha de la infraestructura.
-    
-        Se desplegará la arquitectura de \textit{software} en el servidor VPS bajo los protocolos de seguridad correspondientes, con asesoramiento del oftalmólogo consultor para garantizar la correcta integración con las exportaciones de datos de los topógrafos. 
-        
-        Por último, se planificará y ejecutará una campaña de comunicación para introducir la plataforma en el sector de la salud, incluyendo presentaciones en congresos médicos, ponencias académicas y \textit{webinars} especializados, y se elaborará la documentación técnica y el manual de usuario para que los oftalmólogos puedan configurar y utilizar el sistema sin requerir asistencia técnica.
+        La primera fase abarca los meses uno a tres (octubre a diciembre de 2026) y se centra en la preparación de los datos y el desarrollo del modelo. Desde su inicio se definen los requisitos regulatorios, legales y de calidad, estableciendo las políticas de documentación y trazabilidad que exigirá la futura inscripción del sistema como producto médico, de modo que el registro de cada decisión se lleve en paralelo al desarrollo y no deba reconstruirse al final.
+
+        Se parte del análisis exploratorio del \textit{dataset} CornOrb~\cite{zenodo}, cuyos resultados se presentan en el capítulo Desarrollo, y se preparan los datos para el entrenamiento. Luego se experimenta con arquitecturas multimodales que combinan una rama convolucional para los mapas corneales con una rama para las variables clínicas. El modelo seleccionado se entrena y se evalúa con la partición de entrenamiento y prueba que provee el propio \textit{dataset}, priorizando la reducción de los falsos negativos, y se le integra la técnica Grad-CAM para generar la explicación visual de cada predicción.
+
+        En paralelo, se avanza con las solicitudes de muestras locales anonimizadas a centros oftalmológicos de la región. Si se obtienen durante esta fase, se utilizan para una primera evaluación del modelo sobre datos regionales; el lote completo se destina a la validación clínica prevista en la tercera fase.
+
+    \subsection*{Segunda fase: aplicación web}
+
+        La segunda fase abarca los meses tres y cuatro (diciembre de 2026 y enero de 2027), solapándose con el cierre de la primera. En ella el modelo se encapsula en una aplicación web: se desarrolla el \textit{backend}, encargado de la lógica del servidor y de exponer el modelo mediante una API construida con el \textit{framework} FastAPI, y el \textit{frontend}, la interfaz con la que interactúa el oftalmólogo, desarrollada con React.
+
+        La aplicación permite cargar los estudios de un paciente, ejecutar el modelo y consultar un informe con el resultado, el nivel de confianza y el mapa de calor que lo justifica. Además, incorpora la gestión de usuarios necesaria para el modelo de suscripción y se despliega en un servidor VPS para su prueba.
+
+    \subsection*{Proyección del producto}
+
+        Una vez finalizado el PFI, la llegada del sistema al uso clínico y comercial requiere dos fases adicionales, cada una con una duración estimada de dos meses.
+
+        La tercera fase corresponde a la validación clínica y las pruebas de usuario. Se verifica el desempeño del modelo con un conjunto de alrededor de 150 estudios locales no utilizados durante el entrenamiento, calculando un intervalo de confianza del 90\,\% sobre las métricas de sensibilidad y especificidad, y se realizan ajustes de la interfaz a partir de pruebas de usabilidad con personal médico.
+
+        La cuarta fase corresponde a la certificación regulatoria y el lanzamiento. Se cierra el informe técnico elaborado a lo largo de todo el desarrollo y, con el acompañamiento de un abogado consultor, se gestiona la inscripción del sistema como producto médico Clase II ante la ANMAT. Asimismo, se aprueban los contratos de confidencialidad, los términos de uso con limitación de responsabilidad clínica y los consentimientos informados, en cumplimiento de la Ley N.º 25.326 (2000) de Protección de los Datos Personales. Por último, se ejecuta la campaña de comunicación del producto y se elabora la documentación técnica y el manual de usuario.
+
+        Sumando el PFI (incluida su reserva de contingencia) y estas dos fases, el desarrollo completo del producto se extiende por diez meses, con el lanzamiento comercial a partir del mes once. Este horizonte es el que se toma como base para el análisis económico del capítulo Análisis de Producto de Mercado.
 
     \vspace{0.25 cm}
-    \subsection{Cronograma de Actividades}
+    \subsection{Cronograma de actividades}
 
-        El cronograma del proyecto se presenta en el Diagrama de Gantt de la Figura del Anexo, el cual grafica la distribución temporal de las actividades y etapas a lo largo de los 12 meses de duración estimada del proyecto. En ella se especifican las fases, tareas, secuencia lógica y duración estimada de cada actividad, permitiendo visualizar de forma clara la distribución del trabajo a lo largo del proyecto.
+        La Tabla~\ref{tabla:cronograma} resume la distribución temporal de las fases, y el detalle de las actividades se presenta en el Diagrama de Gantt de la Figura~\ref{fig:anexo_gannt}.
+
+        \begingroup \setstretch{1.1}
+        \begin{longtblr}[
+            caption = Distribución temporal de las fases del proyecto,
+            label = tabla:cronograma
+            ]{
+                colspec = {X[l,m] Q[c,m,1.6cm] Q[c,m,5.4cm] Q[c,m,2.2cm]},
+                cells = {font=\small},
+                row{1} = {bg=gray!15, font=\small\bfseries, halign=c},
+                hlines, vlines,
+                rowsep = 3pt, colsep = 5pt
+            }
+
+            Fase & Meses & Período & Horizonte \\
+
+            Primera fase: datos y modelo & 1 a 3 & octubre a diciembre de 2026 & PFI \\
+
+            Segunda fase: aplicación web & 3 y 4 & diciembre de 2026 y enero de 2027 & PFI \\
+
+            Reserva de contingencia & 5 y 6 & febrero y marzo de 2027 & PFI \\
+
+            Tercera fase: validación clínica & 7 y 8 & --- & Producto \\
+
+            Cuarta fase: certificación y lanzamiento & 9 y 10 & --- & Producto \\
+
+        \end{longtblr}
+        \endgroup
 \newpage
 \phantomsection
 \chapter{Análisis de Producto de Mercado}
@@ -299,7 +371,7 @@
         \begin{itemize}[leftmargin=*]
             \item \textbf{Análisis automatizado:} Procesamiento de imágenes de mapas topográficos y datos clínicos.
             
-            \item \textbf{Estratificación de riesgo:} Clasificación basada en el sistema ABCD de Belin.
+            \item \textbf{Detección:} Clasificación de cada ojo como normal o con queratocono, junto con el nivel de confianza del modelo.
             
             \item \textbf{Explicabilidad (XAI):} Generación de mapas de calor que justifiquen la predicción del algoritmo.
             
@@ -319,7 +391,7 @@
     
             Los usuarios destinatarios corresponderían a los médicos oftalmólogos generales, especialistas en córnea y técnicos en centros de optometría de alta complejidad, los cuales dispongan del equipo necesario para la realización de los estudios.
     
-        \subsubsection*{Usos Posibles}
+        \subsubsection*{Usos posibles}
     
             \begin{itemize}
                 \item Detección temprana de queratocono subclínico en pacientes jóvenes.
@@ -389,7 +461,7 @@
                 & Solución general. Sin módulo específico para queratocono. \\
 
                 \textbf{Nuestro proyecto} 
-                & Software independiente (SaMD) multimodal. Detección temprana + estratificación de riesgo en sistema abierto y accesible. 
+                & Software independiente (SaMD) multimodal. Detección temprana con explicación visual en una aplicación web accesible.
                 & Desarrollo acotado a normativas ANMAT. Necesidad de validación local. \\
                 
             \end{longtblr}
@@ -414,16 +486,16 @@
                 
                 Competidor & Inversión inicial & Modelo de facturación \\
                 
-                Sistemas Tradicionales (Oculus/Ziemer) 
+                Sistemas tradicionales (Oculus/Ziemer) 
                 & USD \$\,20.000 a USD \$\,40.000 por equipo + software 
                 & Licencia cerrada e inflexible \\
 
-                Referente IA Local (Entelai) 
+                Referente IA local (Entelai) 
                 & No requiere hardware propio 
                 & SaaS / Pay-per-scan: $\approx$\,\$\,3.790 + IVA por informe~\cite{entelai} \\
 
-                \textbf{Nuestra Propuesta} 
-                & No requiere hardware nuevo. Procesa imágenes de cualquier equipo estándar 
+                \textbf{Nuestra propuesta} 
+                & No requiere hardware nuevo. Procesa los mapas que exportan los equipos existentes (en el prototipo, Orbscan)
                 & Suscripción mensual SaaS \\
                 
             \end{longtblr}
@@ -432,11 +504,11 @@
             \subsubsection*{Estructura de costos del proyecto}
             
             \begin{itemize}[leftmargin=*]
-                \item \textbf{Infraestructura Mensual:} Aproximadamente \$\,41.600 ARS. Esto incluye el servidor VPS (KVM 4 de Hostinger a $\approx$\,\$\,23.300) y la plataforma de entrenamiento (Google Colab Pro a $\approx$\,\$\,18.300 con impuestos incluidos).  
+                \item \textbf{Infraestructura mensual:} Aproximadamente \$\,41.600 ARS. Esto incluye el servidor VPS (KVM 4 de Hostinger a $\approx$\,\$\,23.300) y la plataforma de entrenamiento (Google Colab Pro a $\approx$\,\$\,18.300 con impuestos incluidos).  
     
-                \item \textbf{Validación Médica:} El costo operativo de un especialista para auditoría de datos es de $\approx$\,\$\,30.000 ARS/hora.  
+                \item \textbf{Validación médica:} El costo operativo de un especialista para auditoría de datos es de $\approx$\,\$\,30.000 ARS por hora.  
     
-                \item \textbf{Barrera Regulatoria (ANMAT):} El registro del producto Clase II cuesta \$\,52.000 ARS, pero la habilitación inicial de la empresa como fabricante/importador requiere un pago único de \$\,1.523.100 ARS.
+                \item \textbf{Barrera regulatoria (ANMAT):} El registro del producto Clase II cuesta \$\,52.000 ARS, pero la habilitación inicial de la empresa como fabricante/importador requiere un pago único de \$\,1.523.100 ARS.
             \end{itemize}
 
         \phantomsection
@@ -478,7 +550,7 @@
             \begin{itemize}
                 \item El software se desplegará en un servidor VPS.
                 
-                \item El acceso al usuario final mediante una plataforma web o una aplicación móvil desarrollada en React Native, permitiendo al oftalmólogo consultar los resultados desde cualquier dispositivo.
+                \item El acceso al usuario final se realiza mediante una aplicación web, bajo un modelo de suscripción, que permite al oftalmólogo consultar los resultados desde el navegador de cualquier dispositivo.
             \end{itemize}
 
             \vspace{-0.5 cm}
@@ -504,7 +576,7 @@
         
                 \item \textbf{Capacidad técnica del equipo:} Medir si los integrantes poseen las habilidades necesarias en \textit{Deep Learning}, desarrollo \textit{backend/frontend} y manejo de normativas médicas.
         
-                \item \textbf{Interoperabilidad:} Capacidad del sistema para integrarse con diferentes equipos de diagnóstico (Pentacam, Sirius).
+                \item \textbf{Interoperabilidad:} Capacidad del sistema para integrarse con diferentes equipos de diagnóstico (por ejemplo, Orbscan, Pentacam o Sirius).
         
                 \item \textbf{Mantenibilidad del sistema:} La facilidad con la que el software puede ser actualizado, corregido o adaptado a nuevas versiones o cambios en los formatos de salida de los equipos de diagnóstico.
             \end{itemize}
@@ -512,9 +584,9 @@
             \paragraph{Viabilidad jurídica} (25\,\% de influencia) Para asegurar el cumplimiento normativo respecto a la salud.
         
             \begin{itemize}
-                \item \textbf{Cumplimiento de normativas ANMAT:} Factibilidad de registrar el software como producto médico (SaMD) bajo las disposiciones 2318/02 \cite{dispo_2318} y 9688/19 \cite{dispo_9688}, clasificándolo como clase II.  
+                \item \textbf{Cumplimiento de normativas ANMAT:} Factibilidad de registrar el software como producto médico (SaMD) bajo las disposiciones N.º 2318/2002~\cite{dispo_2318} y N.º 9688/2019~\cite{dispo_9688}, clasificándolo como Clase II.  
                 
-                \item \textbf{Protección de datos personales:} Garantizar que los procesos de anonimización de datos locales cumplan con la Ley 25.326 \cite{ley_25326} de Protección de Datos Personales.  
+                \item \textbf{Protección de datos personales:} Garantizar que los procesos de anonimización de datos locales cumplan con la Ley N.º 25.326 (2000) de Protección de los Datos Personales~\cite{ley_25326}.  
                 
                 \item \textbf{Consentimiento informado:} Viabilidad de gestionar los permisos legales necesarios con los pacientes de Misiones para el uso de sus muestras en la validación.
             \end{itemize}
@@ -525,7 +597,7 @@
             \begin{itemize}
                 \item \textbf{Predisposición y aceptación del usuario:} Nivel de apertura de los oftalmólogos para adoptar herramientas de IA como apoyo diagnóstico.  
                 
-                \item \textbf{Facilidad de uso e interfaz:} Evaluación de sí la curva de aprendizaje de la aplicación es lo suficientemente baja para el personal médico con poca experiencia en el uso de herramientas digitales.  
+                \item \textbf{Facilidad de uso e interfaz:} Evaluación de si la curva de aprendizaje de la aplicación es lo suficientemente baja para el personal médico con poca experiencia en el uso de herramientas digitales.  
                 
                 \item \textbf{Integración al flujo de trabajo:} Determinar si el sistema agiliza o entorpece la consulta diaria del especialista. 
             \end{itemize}
@@ -538,52 +610,81 @@
                 
                 \item \textbf{Costos de validación clínica:} Honorarios de los especialistas médicos por las horas dedicadas a auditar el sistema o consultas pertinentes.  
                 
-                \item \textbf{Relación costo benefició:} Compara el esfuerzo económico invertido frente al valor o ahorro que el proyecto generará a largo plazo a los especialistas.
+                \item \textbf{Relación costo-beneficio:} Compara el esfuerzo económico invertido frente al valor o ahorro que el proyecto generará a largo plazo a los especialistas.
             \end{itemize}
         
             \subsubsection*{Análisis por criterio}
-        
+
             \paragraph{Viabilidad técnica}
-        
+
             \begin{itemize}
-                \item \textbf{Accesibilidad de tecnologías y datos:} El queratocono dispone de \textit{datasets} públicos y privados de mayor accesibilidad, junto a una disponibilidad de datos locales alta.
-        
-                \item \textbf{Capacidad técnica del equipo:} El desarrollo posee implementaciones previas similares en un ámbito académico en herramientas e implementación por parte del equipo.
-        
-                \item \textbf{Interoperabilidad:} El queratocono utiliza mapas y datos topográficos más estandarizados.
-        
-                \item \textbf{Mantenibilidad del sistema:} Se presenta mayor en el queratocono dada la menor demanda de almacenamiento y procesamiento.
+                \item \textbf{Accesibilidad de tecnologías y datos:} Para el entrenamiento se dispone del \textit{dataset} público y multimodal CornOrb~\cite{zenodo}, cuyo análisis exploratorio confirmó que es adecuado como punto de partida (ver capítulo Desarrollo). Las herramientas de desarrollo son de uso libre (Python, FastAPI, React) y la capacidad de cómputo necesaria se obtiene mediante Google Colab Pro. Las muestras locales se encuentran en proceso de solicitud a nueve centros de salud y profesionales; su obtención no condiciona el desarrollo del prototipo.
+
+                \item \textbf{Capacidad técnica del equipo:} Los integrantes cuentan con experiencia previa, en el ámbito académico, en el desarrollo de modelos de aprendizaje profundo y de aplicaciones web. El conocimiento normativo se complementa con el asesoramiento del abogado consultor previsto en el presupuesto.
+
+                \item \textbf{Interoperabilidad:} Es el aspecto más limitado. El prototipo procesa únicamente los mapas corneales de equipos Orbscan, tal como los provee CornOrb. La compatibilidad con otros equipos, como Pentacam o Sirius, depende de acceder a sus archivos de exportación y se plantea como trabajo futuro.
+
+                \item \textbf{Mantenibilidad del sistema:} La separación del sistema en módulos independientes (preprocesamiento, modelo, API e interfaz) y su encapsulamiento mediante contenedores permiten actualizar cada parte por separado. Un cambio en el formato de exportación de un equipo, por ejemplo, solo afecta al módulo de preprocesamiento.
             \end{itemize}
-        
-            \paragraph{Viabilidad jurídica} 
-        
+
+            \paragraph{Viabilidad jurídica}
+
             \begin{itemize}
-                \item \textbf{Cumplimiento de normativas ANMAT:} El desarrollo se categoriza como producto médico clase II. Debido al riesgo asociado al diagnóstico, la ANMAT exigirá demostrar que el modelo es robusto.
-                
-                \item \textbf{Protección de datos personales:} Los datos oftalmológicos presentan un menor riesgo de sensibilidad bajo la Ley 25.326 \cite{ley_25326}.
-                
-                \item \textbf{Consentimiento informado:} Es más factible de gestionar logísticamente en clínicas de oftalmología.
+                \item \textbf{Cumplimiento de normativas ANMAT:} El sistema se categoriza como producto médico Clase II, cuya inscripción exige demostrar su seguridad y eficacia mediante validación clínica. Este requisito corresponde a la proyección del producto (cuarta fase), mientras que el prototipo del PFI no se utiliza para tomar decisiones clínicas. Desde el inicio se lleva la documentación y trazabilidad que la inscripción requerirá.
+
+                \item \textbf{Protección de datos personales:} La Ley N.º 25.326 (2000) considera a los datos referidos a la salud como datos sensibles, que cuentan con el mayor nivel de protección~\cite{ley_25326}. Por ello, todo estudio utilizado debe estar anonimizado: los de CornOrb ya lo están, y las muestras locales deberán anonimizarse en su origen, antes de ser compartidas con el equipo.
+
+                \item \textbf{Consentimiento informado:} El uso de estudios de pacientes locales requiere contar con su consentimiento. Su gestión depende de los centros colaboradores y forma parte de las solicitudes en curso.
             \end{itemize}
-        
-            \paragraph{Viabilidad operativa} 
-        
+
+            \paragraph{Viabilidad operativa}
+
             \begin{itemize}
-                \item \textbf{Predisposición y aceptación del usuario:} Alta en el proyecto, ya que los oftalmólogos muestran una necesidad de asistencia debido al valor que existiría ante una herramienta capaz de agilizar tiempos de espera en diagnósticos de pacientes con esta patología.
-                
-                \item \textbf{Facilidad de uso e interfaz:} La interfaz busca ser intuitiva para personal no técnico.
-                
-                \item \textbf{Integración al flujo de trabajo:} El sistema de queratocono se podría insertar más fluidamente en la consulta dado el carácter más digital de los equipos.
+                \item \textbf{Predisposición y aceptación del usuario:} Se estima favorable, dado que la herramienta responde a una dificultad diagnóstica reconocida (ver Análisis del problema) y se presenta como apoyo al especialista y no como reemplazo. Aun así, la resistencia a adoptar herramientas de IA es un riesgo identificado (R7), por lo que la aceptación deberá confirmarse en las pruebas con usuarios.
+
+                \item \textbf{Facilidad de uso e interfaz:} Al tratarse de una aplicación web, no requiere instalación y puede utilizarse desde el navegador de cualquier dispositivo. El informe presenta el resultado, su nivel de confianza y el mapa de calor que lo justifica, y el diseño de la interfaz cuenta con un especialista en experiencia de usuario.
+
+                \item \textbf{Integración al flujo de trabajo:} El oftalmólogo carga los mapas que ya exporta su equipo, sin modificar la forma en que se realiza el estudio. El sistema agrega un paso a la consulta, cuyo impacto en el tiempo de atención deberá evaluarse en las pruebas de usabilidad.
             \end{itemize}
-        
+
             \paragraph{Viabilidad económica}
-        
+
             \begin{itemize}
-                \item \textbf{Costos directos de desarrollo e implementación:} El queratocono requiere infraestructura estándar.
-                
-                \item \textbf{Costos de validación clínica:} Menor en costo y tiempo para el queratocono.
-                
-                \item \textbf{Relación costo benefició:} El queratocono evitaría trasplantes y proporcionaría una identificación temprana con un software de menor mantenimiento.
+                \item \textbf{Costos directos de desarrollo e implementación:} La infraestructura tecnológica tiene un costo mensual acotado (servidor VPS, Google Colab Pro y herramientas de desarrollo). Los gastos de mayor peso corresponden a la habilitación de la empresa ante la ANMAT y a los recursos humanos (ver sección Presupuesto).
+
+                \item \textbf{Costos de validación clínica:} Los honorarios del oftalmólogo consultor representan el ítem más costoso del presupuesto, y se concentran en la validación clínica de la proyección del producto.
+
+                \item \textbf{Relación costo-beneficio:} Frente al costo de un estudio topográfico, los tratamientos de las etapas avanzadas de la enfermedad son entre veinte y más de sesenta veces más caros (ver Impacto económico), por lo que una detección temprana representa un ahorro potencial considerable. Para el proyecto, la viabilidad depende de financiar la inversión inicial hasta que el modelo de suscripción genere ingresos, lo que se aborda mediante el préstamo descrito en la sección Distribución financiera.
             \end{itemize}
+
+            La Tabla~\ref{tabla:viabilidad} resume la evaluación de cada criterio según su ponderación.
+
+            \begingroup \setstretch{1.1}
+            \begin{longtblr}[
+                caption = Resumen de la evaluación de viabilidad del proyecto,
+                label = tabla:viabilidad
+                ]{
+                    colspec = {Q[l,m,2.6cm] Q[c,m,1.6cm] Q[c,m,2.2cm] X[l,m]},
+                    cells = {font=\small},
+                    row{1} = {bg=gray!15, font=\small\bfseries, halign=c},
+                    hlines, vlines,
+                    rowsep = 3pt, colsep = 5pt
+                }
+
+                Criterio & Peso & Evaluación & Principal condicionante \\
+
+                Técnica & 40\,\% & Alta & Compatibilidad limitada a equipos Orbscan en el prototipo \\
+
+                Jurídica & 25\,\% & Media & La inscripción ante la ANMAT requiere validación clínica \\
+
+                Operativa & 20\,\% & Favorable & Aceptación a confirmar en pruebas con usuarios \\
+
+                Económica & 15\,\% & Media & Financiamiento de la inversión inicial hasta el lanzamiento \\
+
+            \end{longtblr}
+            \endgroup
+
+            El criterio de mayor peso, la viabilidad técnica, es también el más favorable, lo que respalda la factibilidad del prototipo planteado para el PFI. Los condicionantes jurídicos y económicos recaen principalmente sobre la proyección del producto, y se encuentran contemplados en la planificación y en la gestión de riesgos.
 
     \vspace{-0.5 cm}
     \phantomsection
@@ -624,9 +725,9 @@
                 Los valores calculados a continuación se basan en el salario mediano de dichos roles (\cite{cita:salario_marketing} y  \cite{cita:salario_UX_UI}).
                 
                 \begin{itemize}
-                    \item \textbf{Diseñador UX y UI:} Su actividad se centrará en la segunda fase, de implementación e integración junto a los desarrolladores web, diseñando interfaces intuitivas y amigables para que sea simple de usar para usuarios no técnicos. Con una participación de 1 meses y dedicación del 30\,\% el costo total estimado es de \$\,480.800.
+                    \item \textbf{Diseñador UX y UI:} Su actividad se centrará en la segunda fase, de implementación e integración junto a los desarrolladores web, diseñando interfaces intuitivas y amigables para que sea simple de usar para usuarios no técnicos. Con una participación de 1 mes y una dedicación del 30\,\% el costo total estimado es de \$\,480.000.
         
-                    \item \textbf{Especialista en marketing digital:} Este perfil se enfocará en la creación de compañas de marketing digital y en realizar sugerencias  en cuanto a la información presentada en \textit{newsletters}, \textit{webinars} y congresos científicos. Con una participación de 1 meses de dedicación del 20\,\% el costo total estimado es de \$\,162.000.
+                    \item \textbf{Especialista en marketing digital:} Este perfil se enfocará en la creación de campañas de marketing digital y en realizar sugerencias  en cuanto a la información presentada en \textit{newsletters}, \textit{webinars} y congresos científicos. Con una participación de 1 mes y una dedicación del 20\,\% el costo total estimado es de \$\,162.000.
                 \end{itemize}
 
             \vspace{-0.25 cm}
@@ -690,11 +791,11 @@
                 \vspace{0.25 cm}
                 \item \textbf{Licenciado en Oftalmología - Consultor:} Se tomará como referencia el valor de hora médica definida por el colegio de médicos de la provincia de Misiones \cite{cita:honorario_oftalmólogo}, con un costo de \$\,129.000 ARS por hora médica y un tiempo de estimado de 40 horas, distribuidas a lo largo de aproximadamente 2 meses. Se elige este valor, ya que, para fines de este proyecto, no se realizarán consultas clínicas de rutina, sino que se realizará tareas de alta complejidad fuera del consultorio, como por ejemplo validación de datos y pruebas de experiencia de usuario. 
     
-                \item \textbf{Abogado - Consultor:} Ayudará en el asesoramiento legal en cuanto a encuadre gratulatorio de ANMAT, redacción de términos y condiciones de uso del software y registro de propiedad intelectual. Basándonos en los valores establecidos por el colegio de abogados de la provincia de Misiones \cite{cita:honorario_abogado} el costo total estimado es de \$\,387.640, teniendo el valor de un salario Mínimo Vital y Móvil (SMVM) \cite{cita:SMVM}, cuatro consultas formales de un valor de 20\,\% de un SMVM y la redacción de documentos por el valor del 30\,\% de un SMVM.
+                \item \textbf{Abogado - Consultor:} Ayudará en el asesoramiento legal en cuanto a encuadre regulatorio ante la ANMAT, redacción de términos y condiciones de uso del software y registro de propiedad intelectual. Basándonos en los valores establecidos por el colegio de abogados de la provincia de Misiones \cite{cita:honorario_abogado} el costo total estimado es de \$\,387.640, teniendo el valor de un salario Mínimo Vital y Móvil (SMVM) \cite{cita:SMVM}, cuatro consultas formales de un valor de 20\,\% de un SMVM y la redacción de documentos por el valor del 30\,\% de un SMVM.
     
                 \item \textbf{Google Colaboratory (Pro):} Entorno \textit{Cloud} con acceso a GPU para el entrenamiento de los modelos de IA. Su costo de suscripción es de aproximadamente \$\,18.300 ARS mensuales (\$\,10 USD + impuesto país).
     
-                \item \textbf{Suscripción a \textit{Claude Code}:} herramienta para acelerar el desarrollo del sistema de análisis de topografías corneales mediante la automatización de la escritura, refactorización y depuración del código. Dicha suscripción tiene un valor de aproximadamente \$\,31.600 (\$\,20 USD + impuesto país) por mes.
+                \item \textbf{Suscripción a \textit{Claude Code}:} herramienta para acelerar el desarrollo del sistema de análisis de topografías corneales mediante la automatización de la escritura, refactorización y depuración del código. Dicha suscripción tiene un valor de aproximadamente \$\,31.000 (\$\,20 USD + impuesto país) por mes.
     
                 \item \textbf{Servidor VPS:} Infraestructura virtual para el despliegue de la API \textit{backend} y el \textit{frontend}. Su costo ronda los \$\,41.600 ARS mensuales.
             \end{itemize}
@@ -1026,3 +1127,5 @@
             Finalmente, \textbf{R8 (Diferencias entre los integrantes)} sí presenta una afectación sobre el cronograma según su propia descripción, aunque de carácter menor, puntual y limitado a tareas específicas del equipo, sin comprometer las etapas generales del proyecto.
 
             En conclusión, los riesgos con afectación directa y relevante sobre el cronograma son \textbf{R1, R2 y R3}, los riesgos con afectación indirecta o acotada son \textbf{R4, R5, R7 y R8}, mientras que \textbf{R6} es el único riesgo que no compromete en ningún grado el desarrollo técnico ni su cronograma.
+
+            Cabe destacar que la validación clínica con muestras locales forma parte de la proyección del producto, por lo que R1 y R3 no bloquean la entrega del PFI: si las muestras se obtienen durante el PFI, se incorporan a una primera evaluación del modelo; de lo contrario, el prototipo se evalúa sobre el conjunto de datos público. Para los riesgos que sí pueden afectar al PFI, como R2, R4 y R8, así como para las iteraciones propias del modelado, el cronograma prevé la reserva de contingencia de hasta dos meses descrita en la Propuesta metodológica.
