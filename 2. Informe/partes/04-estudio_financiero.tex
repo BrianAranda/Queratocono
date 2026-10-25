@@ -4,11 +4,6 @@
 \section{Estudio de mercado}
 
     \phantomsection
-    \subsection{Descripción del área geográfica que abarca el mercado del proyecto}
-    
-        El mercado objetivo se localiza en la Provincia de Misiones, Argentina. Se enfoca principalmente en los centros urbanos con mayor infraestructura oftalmológica (como Posadas, Oberá y Eldorado), donde se concentran las clínicas privadas y hospitales públicos que cuentan con equipos de diagnóstico de alta complejidad (Pentacam, Sirius, etc.). Al ser los lugares de mayor densidad poblacional de la provincia, en ellos se concentra la mayor parte del diagnóstico oftalmológico, en donde se pretende implementar un soporte para la diferenciación entre las enfermedades oculares comunes y el queratocono. 
-
-    \phantomsection
     \subsection{Descripción de los bienes y/o servicios que provea el proyecto}
     
         El proyecto proveerá un \textit{software} como producto médico que ofrece un servicio de soporte a la decisión clínica, el cual busca disminuir subjetividades por parte del especialista sirviendo como una ``segunda opinión experta''. Sus funciones principales son:
@@ -67,84 +62,9 @@
 
             El mercado global está dominado por un grupo reducido de empresas que comercializan sistemas cerrados, los cuales analizan y reestructuran los datos provenientes de los mismos equipos sin realizar predicciones ni diagnósticos sobre los mismos, donde el software de análisis depende obligatoriamente de tener sus dispositivos propietarios. A nivel nacional, no existen competidores directos con un software como producto médico específico para queratocono. La Tabla~\ref{tabla:oferta_cualitativa} resume las características cualitativas de los competidores identificados.
 
-            \begingroup \setstretch{1.1}
-            \begin{longtblr}[
-                caption = Características cualitativas de la oferta competitiva,
-                label = tabla:oferta_cualitativa
-                ]{
-                    colspec = {Q[l,m,3.5cm] X[l,m] X[l,m]},
-                    cells = {font=\small},
-                    row{1} = {bg=gray!15, font=\small\bfseries, halign=c},
-                    hlines, vlines,
-                    rowsep = 3pt, colsep = 5pt
-                }
-                
-                Competidor & Descripción & Limitación \\
-                
-                Oculus (Familia Pentacam) 
-                & Referente del sector. Oferta desde modelos básicos hasta el Pentacam AXL Wave con biometría y wavefront~\cite{oculus}. 
-                & Sistema cerrado. Software dependiente de hardware propietario. \\
-
-                Topcon Healthcare 
-                & Conectividad mediante Harmony e IDHea. Integra datos de topógrafos de Placido (CA-800) para análisis longitudinal asistido por IA~\cite{topcon}. 
-                & Sistema cerrado. Sin módulo específico para queratocono. \\
-
-                KERAFound (Dr. Shafi Balal / Moorfields) 
-                & Plugin de código abierto en desarrollo para predecir riesgo de progresión del queratocono~\cite{shafi_balal}. 
-                & En fase de investigación. Sin integración a sistemas médicos. \\
-
-                KeratoDetect 
-                & Algoritmo CNN para detección binaria subclínica~\cite{kerato_detect}. 
-                & Código cerrado. Solo detección, sin estratificación ni integración. \\
-
-                AEYE 
-                & Sistema multi-agente de IA para detección de queratocono y evaluación de elegibilidad refractiva~\cite{aeye}. 
-                & Diseñado para sistemas internacionales de alta gama. \\
-
-                Entelai 
-                & Startup Argentina para análisis de imágenes médicas con IA~\cite{entelai}. 
-                & Solución general. Sin módulo específico para queratocono. \\
-
-                \textbf{Nuestro proyecto} 
-                & Software independiente (SaMD) multimodal. Detección temprana con explicación visual en una aplicación web accesible.
-                & Desarrollo acotado a normativas ANMAT. Necesidad de validación local. \\
-                
-            \end{longtblr}
-            \endgroup
 
         \phantomsection
         \subsection{Análisis de precios}
-
-            La Tabla~\ref{tabla:precios_cuantitativa} presenta la comparativa de precios y costos de los competidores identificados, diferenciando entre inversión inicial, modelo de facturación y costo por uso.
-
-            \begingroup \setstretch{1.1}
-            \begin{longtblr}[
-                caption = Comparativa de precios y costos de la oferta competitiva,
-                label = tabla:precios_cuantitativa
-                ]{
-                    colspec = {Q[l,m,4cm] X[l,m] X[l,m]},
-                    cells = {font=\small},
-                    row{1} = {bg=gray!15, font=\small\bfseries, halign=c},
-                    hlines, vlines,
-                    rowsep = 3pt, colsep = 5pt
-                }
-                
-                Competidor & Inversión inicial & Modelo de facturación \\
-                
-                Sistemas tradicionales (Oculus/Ziemer) 
-                & USD \$\,20.000 a USD \$\,40.000 por equipo + software 
-                & Licencia cerrada e inflexible \\
-
-                Referente IA local (Entelai) 
-                & No requiere hardware propio 
-                & SaaS / Pay-per-scan: $\approx$\,\$\,3.790 + IVA por informe~\cite{entelai} \\
-
-                \textbf{Nuestra propuesta} 
-                & No requiere hardware nuevo. Procesa los mapas que exportan los equipos existentes (en el prototipo, Orbscan)
-                & Suscripción mensual SaaS \\
-                
-            \end{longtblr}
-            \endgroup
 
             \subsubsection*{Estructura de costos del proyecto}
             
