@@ -87,3 +87,420 @@
             \label{fig:anexo_caja_años}
         \end{figure}
     \end{landscape}
+
+
+\phantomsection
+\section{Anexo del estudio financiero}
+\label{sec:anexo_estudio_financiero}
+
+    \subsection*{Criterios de factibilidad}
+
+        \begingroup \setstretch{1.1}
+        \begin{longtblr}[
+            caption = Criterios ponderados para la evaluación de factibilidad,
+            label = tabla:anexo_criterios
+            ]{
+                colspec = {Q[l,m,2.4cm] Q[c,m,1.4cm] X[l,m]},
+                cells = {font=\small},
+                row{1} = {bg=gray!15, font=\small\bfseries, halign=c},
+                hlines, vlines,
+                rowsep = 3pt, colsep = 5pt
+            }
+
+            Criterio & Peso & Aspectos evaluados \\
+
+            Técnico & 40\,\% & Determina si el equipo cuenta con los recursos y la experiencia para cumplir los requisitos: accesibilidad de tecnologías y datos (\textit{hardware} de entrenamiento, herramientas y \textit{datasets} multimodales), capacidad técnica del equipo (\textit{Deep Learning}, \textit{backend}, \textit{frontend} y normativa médica), interoperabilidad con distintos equipos (Orbscan, Pentacam o Sirius) y mantenibilidad ante nuevas versiones o cambios en los formatos de salida. \\
+
+            Jurídico & 25\,\% & Asegura el cumplimiento normativo en salud: inscripción como producto médico Clase II ante la ANMAT según las disposiciones N.º 2318/2002~\cite{dispo_2318} y N.º 9688/2019~\cite{dispo_9688}, anonimización de los datos según la Ley N.º 25.326~\cite{ley_25326} y gestión del consentimiento informado de los pacientes. \\
+
+            Operativo & 20\,\% & Analiza si el sistema se utilizará y funcionará al instalarse: predisposición de los oftalmólogos a adoptar herramientas de IA, facilidad de uso para personal con poca experiencia digital e integración al flujo de trabajo de la consulta. \\
+
+            Económico & 15\,\% & Evalúa la rentabilidad y la capacidad de solventar los gastos: costos directos de desarrollo e implementación (Colab Pro, VPS y aranceles de la ANMAT), costos de validación clínica y relación costo-beneficio para los especialistas. \\
+
+        \end{longtblr}
+        \endgroup
+
+        \begingroup \setstretch{1.1}
+        \begin{longtblr}[
+            caption = Análisis de cada criterio de factibilidad,
+            label = tabla:anexo_analisis_criterios
+            ]{
+                colspec = {Q[l,m,2cm] Q[l,m,2.8cm] X[l,m]},
+                cells = {font=\small},
+                row{1} = {bg=gray!15, font=\small\bfseries, halign=c},
+                cell{2}{1} = {r=4}{}, cell{6}{1} = {r=3}{}, cell{9}{1} = {r=3}{}, cell{12}{1} = {r=3}{},
+                hlines, vlines,
+                rowsep = 3pt, colsep = 5pt
+            }
+
+            Criterio & Aspecto & Análisis \\
+
+            Técnico & Tecnologías y datos & Se dispone del \textit{dataset} público y multimodal CornOrb~\cite{zenodo}, cuyo análisis exploratorio confirmó que es adecuado como punto de partida. Las herramientas son de uso libre (Python, FastAPI, React) y el cómputo se obtiene con Google Colab Pro. Las muestras locales están en proceso de solicitud a nueve centros y no condicionan el prototipo. \\
+            & Capacidad del equipo & Los integrantes tienen experiencia académica en aprendizaje profundo y aplicaciones web. El conocimiento normativo se complementa con el abogado consultor. \\
+            & Interoperabilidad & Es el aspecto más limitado: el prototipo procesa solo mapas de equipos Orbscan. La compatibilidad con Pentacam o Sirius depende de acceder a sus archivos de exportación y queda como trabajo futuro. \\
+            & Mantenibilidad & Los módulos independientes (preprocesamiento, modelo, API e interfaz) y los contenedores permiten actualizar cada parte por separado. \\
+
+            Jurídico & Normativa ANMAT & La inscripción como Clase II exige demostrar seguridad y eficacia mediante validación clínica, prevista en la proyección del producto. El prototipo del PFI no se usa para decisiones clínicas, y desde el inicio se lleva la documentación que la inscripción requerirá. \\
+            & Datos personales & La Ley N.º 25.326 considera sensibles los datos de salud~\cite{ley_25326}, por lo que todo estudio debe estar anonimizado: los de CornOrb ya lo están, y las muestras locales se anonimizan en su origen. \\
+            & Consentimiento informado & Su gestión depende de los centros colaboradores y forma parte de las solicitudes en curso. \\
+
+            Operativo & Aceptación del usuario & Se estima favorable, porque la herramienta responde a una dificultad diagnóstica reconocida y apoya al especialista sin reemplazarlo. La resistencia a la IA es un riesgo identificado (R7). \\
+            & Facilidad de uso & Al ser una aplicación web, no requiere instalación. El informe presenta el resultado, la confianza y el mapa de calor, y la interfaz cuenta con un especialista en experiencia de usuario. \\
+            & Flujo de trabajo & El oftalmólogo carga los mapas que ya exporta su equipo. El paso adicional en la consulta se evaluará en las pruebas de usabilidad. \\
+
+            Económico & Costos directos & La infraestructura tecnológica tiene un costo mensual acotado; los gastos de mayor peso son la habilitación ante la ANMAT y los recursos humanos. \\
+            & Validación clínica & Los honorarios del oftalmólogo consultor son uno de los ítems más costosos; la mitad de las horas se cubre por convenio académico. \\
+            & Costo-beneficio & Los tratamientos de etapas avanzadas cuestan entre veinte y más de sesenta veces un estudio topográfico. Para el proyecto, la viabilidad depende de financiar la inversión inicial hasta que las suscripciones generen ingresos (ver sección Viabilidad económica y financiera). \\
+
+        \end{longtblr}
+        \endgroup
+
+    \subsection*{Presupuesto detallado}
+
+        \begingroup \setstretch{1.1}
+        \begin{longtblr}[
+            caption = Recursos materiales del proyecto,
+            label = tabla:anexo_recursos_materiales
+            ]{
+                colspec = {Q[l,m,3.4cm] X[l,m] Q[r,m,2.6cm]},
+                cells = {font=\small},
+                row{1} = {bg=gray!15, font=\small\bfseries, halign=c},
+                row{5} = {bg=gray!15, font=\small\bfseries},
+                hlines, vlines,
+                rowsep = 3pt, colsep = 5pt
+            }
+
+            Recurso & Descripción & Costo \\
+
+            Muestras locales & Lote de 150 topografías corneales anonimizadas, provistas por el consultorio asociado para la validación clínica local. & \$\,0,00 \\
+
+            \textit{Datasets} públicos & Bases de datos internacionales con casos de queratocono para el entrenamiento inicial del modelo. & \$\,0,00 \\
+
+            Computadoras portátiles & Dos equipos con procesador Intel Core i7 y 16 GB de RAM, uno por integrante, a \$\,2.100.000 cada uno. & \$\,4.200.000,00 \\
+
+            \SetCell[c=2]{r} TOTAL & & \$\,4.200.000,00 \\
+
+        \end{longtblr}
+        \endgroup
+
+        \begingroup \setstretch{1.1}
+        \begin{longtblr}[
+            caption = Recursos humanos propios que intervendrán en el proyecto,
+            label = tabla:rrhh_propios
+            ]{
+                colspec = {X[l,m] Q[c,m,1cm] Q[r,m,2.3cm] Q[r,m,2.1cm] Q[c,m,1.4cm] Q[c,m,1.2cm] Q[r,m,2.3cm]},
+                cells = {font=\footnotesize},
+                row{1} = {bg=gray!15, font=\footnotesize\bfseries, halign=c},
+                row{4} = {bg=gray!15, font=\footnotesize\bfseries},
+                hlines, vlines,
+                rowsep = 3pt, colsep = 3pt
+            }
+
+            Profesión / función en el proyecto & Cant. & Costo mensual real c/u & Retribución simbólica & Meses de partic. & \% de dedic. & Costo total \\
+
+            Programador IA & 2 & \$\,3.783.577,52 & \$\,352.400,00 & 9 & 50 & \$\,3.171.600,00 \\
+
+            Desarrollador Web Full Stack & 2 & \$\,3.453.169,23 & \$\,352.400,00 & 2 & 50 & \$\,704.800,00 \\
+
+            \SetCell[c=6]{r} TOTAL & & & & & & \$\,3.876.400,00 \\
+
+        \end{longtblr}
+        \endgroup
+
+        Los costos mensuales reales se basan en los honorarios recomendados por el Consejo Profesional de Ciencias Informáticas de Córdoba~\cite{honorarios_profesionales_cordoba}, y la retribución simbólica en el Salario Mínimo, Vital y Móvil~\cite{cita:SMVM}, en proporción a una jornada de cuatro horas. Los recursos humanos adicionales se valúan según el salario mediano de cada rol~\cite{cita:salario_marketing,cita:salario_UX_UI}.
+
+        \begingroup \setstretch{1.1}
+        \begin{longtblr}[
+            caption = Recursos humanos adicionales requeridos en el proyecto,
+            label = tabla:rrhh_adicionales
+            ]{
+                colspec = {Q[l,m,2.4cm] X[l,m] Q[r,m,2.5cm] Q[c,m,1.5cm] Q[c,m,1.4cm] Q[r,m,2.3cm]},
+                cells = {font=\small},
+                row{1} = {bg=gray!15, font=\small\bfseries, halign=c},
+                row{4,5} = {bg=gray!15, font=\small\bfseries},
+                hlines, vlines,
+                rowsep = 3pt, colsep = 5pt
+            }
+
+            Profesión u oficio & Función en el proyecto & Costo total mensual & Meses de partic. & \% de dedic. & Costo total \\
+
+            Diseñador web & Diseño de las interfaces UI/UX & \$\,1.600.000,00 & 1 & 30 & \$\,480.000,00 \\
+
+            Idóneo & Marketing digital & \$\,810.000,00 & 1 & 20 & \$\,162.000,00 \\
+
+            \SetCell[c=5]{r} TOTAL & & & & & \$\,642.000,00 \\
+
+            \SetCell[c=5]{r} TOTAL DE RECURSOS HUMANOS & & & & & \$\,4.518.400,00 \\
+
+        \end{longtblr}
+        \endgroup
+
+        \begingroup \setstretch{1.1}
+        \begin{longtblr}[
+            caption = Consultoría y servicios tecnológicos a contratar,
+            label = tabla:consultoria_servicios
+            ]{
+                colspec = {X[l,m] Q[r,m,2.8cm] Q[c,m,2.6cm] Q[r,m,2.8cm]},
+                cells = {font=\small},
+                row{1} = {bg=gray!15, font=\small\bfseries, halign=c},
+                row{6} = {bg=gray!15, font=\small\bfseries},
+                hlines, vlines,
+                rowsep = 3pt, colsep = 5pt
+            }
+
+            Descripción & Costo mensual & Meses de partic. & Costo total \\
+
+            Google Colaboratory (Pro) & \$\,18.300,00 & 12 & \$\,219.600,00 \\
+
+            Suscripción a Claude Code & \$\,31.000,00 & 12 & \$\,372.000,00 \\
+
+            Abogado - Consultor & \$\,96.910,00 & 4 & \$\,387.640,00 \\
+
+            Lic. en Oftalmología - Consultor (20 h pagas de 40) & \$\,860.000,00 & 3 & \$\,2.580.000,00 \\
+
+            \SetCell[c=3]{r} TOTAL & & & \$\,3.559.240,00 \\
+
+        \end{longtblr}
+        \endgroup
+
+        La hora médica del oftalmólogo se valúa en \$\,129.000 según el Colegio de Médicos de Misiones~\cite{cita:honorario_oftalmólogo}, y la consultoría legal según los valores del Colegio de Abogados de Misiones~\cite{cita:honorario_abogado}. El servidor VPS (\$\,41.600 mensuales desde el mes 7) se contabiliza como costo operativo.
+
+        \begingroup \setstretch{1.1}
+        \begin{longtblr}[
+            caption = {Costos de movilidad, logística, inscripción a congresos y matriculación},
+            label = tabla:otros_costos
+            ]{
+                colspec = {X[l,m] Q[c,m,1.6cm] Q[r,m,3cm]},
+                cells = {font=\small},
+                row{1} = {bg=gray!15, font=\small\bfseries, halign=c},
+                row{7} = {bg=gray!15, font=\small\bfseries},
+                hlines, vlines,
+                rowsep = 3pt, colsep = 5pt
+            }
+
+            Descripción & Período & Costo total \\
+
+            Traslados de los desarrolladores a la clínica del oftalmólogo colaborador (Oberá / Leandro N. Alem) & Meses 1 y 2 & \$\,20.000,00 \\
+
+            Registro de producto médico Clase II - ANMAT & Mes 11 & \$\,52.000,00 \\
+
+            Autorización de funcionamiento de empresa fabricante de productos médicos - ANMAT & Mes 11 & \$\,1.523.100,00 \\
+
+            Traslado al congreso nacional de oftalmología (Oberá / Buenos Aires) & Año 2 & \$\,440.000,00 \\
+
+            Inscripción al congreso nacional de oftalmología~\cite{cita:aranceles_congreso_oftalmología} & Año 2 & \$\,24.000,00 \\
+
+            \SetCell[c=2]{r} TOTAL & & \$\,2.059.100,00 \\
+
+        \end{longtblr}
+        \endgroup
+
+    \subsection*{Criterios y planes de la gestión de riesgos}
+
+        \begingroup \setstretch{1.1}
+        \begin{longtblr}[
+            caption = Escala de probabilidad de ocurrencia de riesgos,
+            label = riesgos_prob
+            ]{
+                colspec = {Q[c,m,2.5cm] Q[c,m,2.5cm] X[l,m]},
+                cells = {font=\small},
+                row{1} = {bg=gray!15, font=\small\bfseries, halign=c},
+                hlines, vlines,
+                rowsep = 3pt, colsep = 5pt
+            }
+
+            Cualitativa & Cuantitativa & Descripción \\
+            Recurrente  & 5 & Este riesgo ocurrirá en algún momento \\
+            Probable    & 4 & Existe una gran probabilidad de que este riesgo ocurra \\
+            Posible     & 3 & Este riesgo podría ocurrir o no, probabilidades de 50/50 \\
+            Inusual     & 2 & Existe una gran probabilidad de que este riesgo no ocurra \\
+            Remota      & 1 & El hecho de que este riesgo ocurra es una posibilidad remota \\
+
+        \end{longtblr}
+        \endgroup
+
+        \begingroup \setstretch{1.1}
+        \begin{longtblr}[
+            caption = Escala de gravedad de ocurrencia de riesgos,
+            label = riesgos_grav
+            ]{
+                colspec = {Q[c,m,2.5cm] Q[c,m,2.5cm] X[l,m]},
+                cells = {font=\small},
+                row{1} = {bg=gray!15, font=\small\bfseries, halign=c},
+                hlines, vlines,
+                rowsep = 3pt, colsep = 5pt
+            }
+
+            Cualitativa & Cuantitativa & Descripción \\
+            Catastrófica & 5 & Las consecuencias de este riesgo serán muy perjudiciales y puede resultar difícil recuperarse \\
+            Importante & 4 & Las consecuencias de este riesgo serán significativas y pueden causar daños a largo plazo \\
+            Moderada & 3 & Las consecuencias del riesgo tardarán en mitigarse \\
+            Menor & 2 & Las consecuencias del riesgo se gestionarán con facilidad \\
+            Insignificante & 1 & El riesgo generará pocas consecuencias si ocurriera \\
+
+        \end{longtblr}
+        \endgroup
+
+        \begingroup \setstretch{1.1}
+        \begin{longtblr}[
+            caption = Escala de impacto de riesgos considerando probabilidad y gravedad,
+            label = riesgos_imp
+            ]{
+                colspec = {X[c,m] X[c,m] X[c,m] X[c,m] X[c,m] X[c,m]},
+                cells = {font=\small},
+                row{1} = {bg=gray!15, font=\small\bfseries, halign=c},
+                column{1} = {bg=gray!15, font=\small\bfseries},
+                cell{2}{2,3,4} = {bg=red!25}, cell{2}{5} = {bg=orange!30}, cell{2}{6} = {bg=green!25},
+                cell{3}{2,3} = {bg=red!25}, cell{3}{4,5} = {bg=orange!30}, cell{3}{6} = {bg=green!25},
+                cell{4}{2} = {bg=red!25}, cell{4}{3,4} = {bg=orange!30}, cell{4}{5,6} = {bg=green!25},
+                cell{5}{2,3} = {bg=orange!30}, cell{5}{4,5,6} = {bg=green!25},
+                cell{6}{2,3,4,5,6} = {bg=green!25},
+                hlines, vlines,
+                rowsep = 3pt, colsep = 5pt
+            }
+
+                        & Catastrófica & Importante & Moderada & Menor & Insignificante \\
+            Recurrente  & 25 & 20 & 15 & 10 & 5 \\
+            Probable    & 20 & 16 & 12 & 8  & 4 \\
+            Posible     & 15 & 12 & 9  & 6  & 3 \\
+            Inusual     & 10 & 8  & 6  & 4  & 2 \\
+            Remota      & 5  & 4  & 3  & 2  & 1 \\
+
+        \end{longtblr}
+        \endgroup
+
+        \begingroup \setstretch{1.1}
+        \begin{longtblr}[
+            caption = Descripción y planes de acción de los riesgos identificados,
+            label = tabla:anexo_planes_riesgos
+            ]{
+                colspec = {Q[c,m,0.9cm] X[l,m] X[l,m] X[l,m]},
+                cells = {font=\footnotesize},
+                row{1} = {bg=gray!15, font=\footnotesize\bfseries, halign=c},
+                hlines, vlines,
+                rowsep = 3pt, colsep = 4pt
+            }
+
+            ID & Descripción & Mitigación & Contingencia \\
+
+            R1 & El modelo podría perder eficacia con topografías de pacientes locales, porque se entrena con \textit{datasets} internacionales, y generar falsos negativos. & \textit{Data augmentation} sobre las muestras locales, control del \textit{overfitting} y del \textit{underfitting}, reentrenamiento continuo y monitoreo de deriva. & Sesiones con el oftalmólogo consultor para analizar los mapas de calor de los casos erróneos y reentrenar el modelo de forma focalizada. \\
+
+            R2 & Los equipos de las clínicas podrían exportar formatos propietarios, anómalos o con resoluciones que el preprocesamiento no interprete. & Solicitar muestras de los equipos locales (Pentacam) desde el inicio y construir un \textit{pipeline} de preprocesamiento robusto. & Forzar una estandarización (recorte, redimensionamiento y normalización de canales) antes de que la imagen ingrese al modelo. \\
+
+            R3 & Dificultad para obtener las muestras locales a tiempo, por falta de tiempo de los médicos o trabas en la anonimización. & Entregar a los colaboradores un \textit{script} que elimine automáticamente los metadatos del paciente. & Ampliar la solicitud a otras clínicas de Posadas, Oberá y Eldorado. \\
+
+            R4 & Errores o incompatibilidades al integrar el modelo (Python) con la interfaz (React) y montarlos en el VPS. & Desarrollo modular, probando los \textit{endpoints} de la API antes de conectarlos a la interfaz. & Contenerización con Docker para garantizar el mismo entorno en desarrollo y en el servidor. \\
+
+            R5 & El presupuesto podría superarse por aumentos en los servicios en la nube, los honorarios o los aranceles regulatorios. & Control de gastos, uso de Colab Pro solo en períodos críticos y convenio académico con el oftalmólogo, que ofrece coautoría a cambio de la mitad de las horas. & Asociación con una institución ya habilitada ante la ANMAT o distribución inicial como \textit{software} de investigación (\textit{Research Use Only}). \\
+
+            R6 & Retrasos burocráticos en la inscripción y la auditoría, que postergan el uso clínico formal sin detener el desarrollo. & Sin plan específico por tratarse de un riesgo bajo; la documentación y la trazabilidad se llevan desde el inicio del desarrollo. & --- \\
+
+            R7 & Desconfianza de algunos oftalmólogos y técnicos para incorporar la IA como segunda opinión. & Sin plan específico por tratarse de un riesgo bajo; la aceptación se confirma en las pruebas con usuarios. & --- \\
+
+            R8 & Desacuerdos técnicos o de disponibilidad entre los integrantes que ralenticen ciertas tareas. & Sin plan específico por tratarse de un riesgo bajo. & --- \\
+
+            R9 & El FCM podría considerar los dos pedidos como un único emprendimiento y aprobar solo un crédito, o un monto menor. & Consultar a un oficial de crédito antes de presentar, y presentar cada solicitud con un destino diferenciado (modelo de IA y plataforma web) y documentación propia. & Cubrir la diferencia con aporte propio adicional (unos \$\,2.700.000 más), comprar una sola computadora o postular a premios y subsidios para emprendedores. \\
+
+            R10 & Si el lanzamiento o la captación se demoran, las cuotas siguen venciendo sin ingresos suficientes y la deuda recae sobre los garantes o los bienes ofrecidos. & Dimensionar el aporte propio con margen sobre el peor mes de caja, tomar la tasa fija y sumar al oftalmólogo colaborador como primer suscriptor. & Solicitar la refinanciación al FCM, postergar los gastos no esenciales y ofrecer descuentos por pago anual para adelantar ingresos. \\
+
+            R11 & El FCM podría no aceptar los honorarios como investigación y desarrollo, o exigir la devolución del capital de trabajo en doce meses. & Presentar presupuestos solo de rubros financiables y confirmar la excepción de investigación y desarrollo antes de firmar. & Reducir el monto solicitado a los rubros admitidos y cubrir el resto con aporte propio. \\
+
+        \end{longtblr}
+        \endgroup
+
+    \subsection*{Flujo de caja y amortización}
+
+    \begin{landscape}
+        \thispagestyle{empty}
+        \begingroup \setstretch{1.0}
+        \begin{longtblr}[
+            caption = Flujo de caja mensual del primer año con financiamiento,
+            label = tabla:anexo_flujo_mensual
+            ]{
+                colspec = {Q[l,m,3.5cm] *{13}{X[r,m]}},
+                cells = {font=\scriptsize},
+                row{1} = {bg=gray!15, font=\scriptsize\bfseries, halign=c},
+                row{6,19,23,24,25} = {bg=gray!15, font=\scriptsize\bfseries},
+                hlines, vlines,
+                rowsep = 0.8pt, colsep = 1.8pt
+            }
+
+            Concepto & Mes 1 & Mes 2 & Mes 3 & Mes 4 & Mes 5 & Mes 6 & Mes 7 & Mes 8 & Mes 9 & Mes 10 & Mes 11 & Mes 12 & Total \\
+
+                Saldo inicial de caja & 0 & 15.219.836 & 14.139.671 & 13.488.917 & 12.692.545 & 11.896.174 & 11.099.802 & 9.781.830 & 8.591.458 & 7.783.387 & 6.622.915 & 3.838.333 & --- \\
+                Ingresos por suscripciones & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 180.000 & 180.000 & 360.000 \\
+                VPS & 0 & 0 & 0 & 0 & 0 & 0 & $-$41.600 & $-$41.600 & $-$41.600 & $-$41.600 & $-$41.600 & $-$41.600 & $-$249.600 \\
+                Monotributo (2 integrantes) & $-$99.054 & $-$99.054 & $-$99.054 & $-$99.054 & $-$99.054 & $-$99.054 & $-$99.054 & $-$99.054 & $-$99.054 & $-$99.054 & $-$99.054 & $-$99.054 & $-$1.188.652 \\
+                Flujo de caja operativo & $-$99.054 & $-$99.054 & $-$99.054 & $-$99.054 & $-$99.054 & $-$99.054 & $-$140.654 & $-$140.654 & $-$140.654 & $-$140.654 & 39.346 & 39.346 & $-$1.078.252 \\
+                Computadoras portátiles & $-$4.200.000 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & $-$4.200.000 \\
+                Consultoría oftalmológica & $-$322.500 & $-$322.500 & 0 & 0 & 0 & 0 & 0 & 0 & $-$322.500 & $-$322.500 & $-$645.000 & $-$645.000 & $-$2.580.000 \\
+                Consultoría legal & $-$96.910 & $-$96.910 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & $-$96.910 & $-$96.910 & $-$387.640 \\
+                Pasantes desarrolladores IA & $-$352.400 & $-$352.400 & $-$352.400 & $-$352.400 & $-$352.400 & $-$352.400 & 0 & $-$352.400 & 0 & $-$352.400 & 0 & $-$352.400 & $-$3.171.600 \\
+                Pasantes desarrolladores web & 0 & 0 & 0 & 0 & 0 & 0 & $-$352.400 & $-$352.400 & 0 & 0 & 0 & 0 & $-$704.800 \\
+                Honorarios diseñador web & 0 & 0 & 0 & 0 & 0 & 0 & $-$480.000 & 0 & 0 & 0 & 0 & 0 & $-$480.000 \\
+                Honorarios marketing digital & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & $-$162.000 & 0 & $-$162.000 \\
+                Suscripción a Claude Code & $-$31.000 & $-$31.000 & $-$31.000 & $-$31.000 & $-$31.000 & $-$31.000 & $-$31.000 & $-$31.000 & $-$31.000 & $-$31.000 & $-$31.000 & $-$31.000 & $-$372.000 \\
+                Suscripción a Google Colab & $-$18.300 & $-$18.300 & $-$18.300 & $-$18.300 & $-$18.300 & $-$18.300 & $-$18.300 & $-$18.300 & $-$18.300 & $-$18.300 & $-$18.300 & $-$18.300 & $-$219.600 \\
+                Traslados a la clínica & $-$10.000 & $-$10.000 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & $-$20.000 \\
+                Registro Clase II (ANMAT) & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & $-$52.000 & 0 & $-$52.000 \\
+                Habilitación de fabricante (ANMAT) & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & $-$1.523.100 & 0 & $-$1.523.100 \\
+                Flujo de caja de inversión & $-$5.031.110 & $-$831.110 & $-$401.700 & $-$401.700 & $-$401.700 & $-$401.700 & $-$881.700 & $-$754.100 & $-$371.800 & $-$724.200 & $-$2.528.310 & $-$1.143.610 & $-$13.872.740 \\
+                Aporte propio & 8.500.000 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 8.500.000 \\
+                Desembolso de los créditos & 12.000.000 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 12.000.000 \\
+                Cuotas de los créditos & $-$150.000 & $-$150.000 & $-$150.000 & $-$295.617 & $-$295.617 & $-$295.617 & $-$295.617 & $-$295.617 & $-$295.617 & $-$295.617 & $-$295.617 & $-$295.617 & $-$3.110.556 \\
+                Flujo de caja de financiamiento & 20.350.000 & $-$150.000 & $-$150.000 & $-$295.617 & $-$295.617 & $-$295.617 & $-$295.617 & $-$295.617 & $-$295.617 & $-$295.617 & $-$295.617 & $-$295.617 & 17.389.444 \\
+                Flujo de caja neto & 15.219.836 & $-$1.080.164 & $-$650.754 & $-$796.372 & $-$796.372 & $-$796.372 & $-$1.317.972 & $-$1.190.372 & $-$808.072 & $-$1.160.472 & $-$2.784.582 & $-$1.399.882 & 2.438.452 \\
+                Saldo final de caja & 15.219.836 & 14.139.671 & 13.488.917 & 12.692.545 & 11.896.174 & 11.099.802 & 9.781.830 & 8.591.458 & 7.783.387 & 6.622.915 & 3.838.333 & 2.438.452 & 2.438.452 \\
+
+        \end{longtblr}
+        \endgroup
+    \end{landscape}
+
+        \begingroup \setstretch{1.0}
+        \begin{longtblr}[
+            caption = Plan de amortización mensual de los dos créditos Despegue Emprendedor,
+            label = tabla:anexo_amortizacion
+            ]{
+                colspec = {Q[c,m,0.8cm] X[r,m] X[r,m] X[r,m] X[r,m] Q[c,m,0.8cm] X[r,m] X[r,m] X[r,m] X[r,m]},
+                cells = {font=\scriptsize},
+                row{1} = {bg=gray!15, font=\scriptsize\bfseries, halign=c},
+                column{6} = {bg=gray!15},
+                hlines, vlines,
+                rowsep = 1pt, colsep = 3pt
+            }
+
+            Mes & Interés & Cuota & Amortiz. & Saldo & Mes & Interés & Cuota & Amortiz. & Saldo \\
+
+            1 & 150.000 & 150.000 & 0 & 12.000.000 & 31 & 91.970 & 295.617 & 203.647 & 7.153.945 \\
+            2 & 150.000 & 150.000 & 0 & 12.000.000 & 32 & 89.424 & 295.617 & 206.193 & 6.947.752 \\
+            3 & 150.000 & 150.000 & 0 & 12.000.000 & 33 & 86.847 & 295.617 & 208.770 & 6.738.981 \\
+            4 & 150.000 & 295.617 & 145.617 & 11.854.383 & 34 & 84.237 & 295.617 & 211.380 & 6.527.601 \\
+            5 & 148.180 & 295.617 & 147.438 & 11.706.945 & 35 & 81.595 & 295.617 & 214.022 & 6.313.579 \\
+            6 & 146.337 & 295.617 & 149.281 & 11.557.665 & 36 & 78.920 & 295.617 & 216.698 & 6.096.881 \\
+            7 & 144.471 & 295.617 & 151.147 & 11.406.518 & 37 & 76.211 & 295.617 & 219.406 & 5.877.475 \\
+            8 & 142.581 & 295.617 & 153.036 & 11.253.482 & 38 & 73.468 & 295.617 & 222.149 & 5.655.326 \\
+            9 & 140.669 & 295.617 & 154.949 & 11.098.533 & 39 & 70.692 & 295.617 & 224.926 & 5.430.400 \\
+            10 & 138.732 & 295.617 & 156.886 & 10.941.648 & 40 & 67.880 & 295.617 & 227.737 & 5.202.663 \\
+            11 & 136.771 & 295.617 & 158.847 & 10.782.801 & 41 & 65.033 & 295.617 & 230.584 & 4.972.079 \\
+            12 & 134.785 & 295.617 & 160.832 & 10.621.969 & 42 & 62.151 & 295.617 & 233.466 & 4.738.613 \\
+            13 & 132.775 & 295.617 & 162.843 & 10.459.126 & 43 & 59.233 & 295.617 & 236.385 & 4.502.228 \\
+            14 & 130.739 & 295.617 & 164.878 & 10.294.248 & 44 & 56.278 & 295.617 & 239.339 & 4.262.888 \\
+            15 & 128.678 & 295.617 & 166.939 & 10.127.308 & 45 & 53.286 & 295.617 & 242.331 & 4.020.557 \\
+            16 & 126.591 & 295.617 & 169.026 & 9.958.282 & 46 & 50.257 & 295.617 & 245.360 & 3.775.197 \\
+            17 & 124.479 & 295.617 & 171.139 & 9.787.144 & 47 & 47.190 & 295.617 & 248.427 & 3.526.769 \\
+            18 & 122.339 & 295.617 & 173.278 & 9.613.866 & 48 & 44.085 & 295.617 & 251.533 & 3.275.237 \\
+            19 & 120.173 & 295.617 & 175.444 & 9.438.422 & 49 & 40.940 & 295.617 & 254.677 & 3.020.560 \\
+            20 & 117.980 & 295.617 & 177.637 & 9.260.785 & 50 & 37.757 & 295.617 & 257.860 & 2.762.699 \\
+            21 & 115.760 & 295.617 & 179.858 & 9.080.927 & 51 & 34.534 & 295.617 & 261.084 & 2.501.616 \\
+            22 & 113.512 & 295.617 & 182.106 & 8.898.821 & 52 & 31.270 & 295.617 & 264.347 & 2.237.269 \\
+            23 & 111.235 & 295.617 & 184.382 & 8.714.439 & 53 & 27.966 & 295.617 & 267.651 & 1.969.617 \\
+            24 & 108.930 & 295.617 & 186.687 & 8.527.752 & 54 & 24.620 & 295.617 & 270.997 & 1.698.620 \\
+            25 & 106.597 & 295.617 & 189.020 & 8.338.732 & 55 & 21.233 & 295.617 & 274.385 & 1.424.236 \\
+            26 & 104.234 & 295.617 & 191.383 & 8.147.349 & 56 & 17.803 & 295.617 & 277.814 & 1.146.421 \\
+            27 & 101.842 & 295.617 & 193.775 & 7.953.573 & 57 & 14.330 & 295.617 & 281.287 & 865.134 \\
+            28 & 99.420 & 295.617 & 196.198 & 7.757.376 & 58 & 10.814 & 295.617 & 284.803 & 580.331 \\
+            29 & 96.967 & 295.617 & 198.650 & 7.558.725 & 59 & 7.254 & 295.617 & 288.363 & 291.968 \\
+            30 & 94.484 & 295.617 & 201.133 & 7.357.592 & 60 & 3.650 & 295.617 & 291.968 & 0 \\
+
+        \end{longtblr}
+        \endgroup
