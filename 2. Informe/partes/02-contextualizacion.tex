@@ -2,31 +2,9 @@
 
 \section{Análisis del problema}
 
-    \subsection*{Definición y características clínicas del queratocono}
-
-        El queratocono es una enfermedad ocular en la que la córnea (la parte transparente y curva en la superficie del ojo) se debilita y adelgaza progresivamente, deformándose hasta tomar una forma cónica en lugar de su curvatura normal (Figura~\ref{fig:comparacion_corneas}). Esto altera la manera en que la luz ingresa al ojo, generando visión borrosa y distorsionada que empeora con el tiempo si no se detecta en etapas iniciales \cite{queratocono}.
-
-        \vspace{-0.5 cm}
-        \begin{figure}[H] \centering
-            \begin{subfigure}[b]{0.45\textwidth} \centering
-                \includegraphics[width=\textwidth]{img/queratocono_deformacion_a.png} 
-                \caption{Córnea sana}
-                \label{fig:cornea_a}
-            \end{subfigure}
-            \hspace{-1 cm}
-            \begin{subfigure}[b]{0.45\textwidth} \centering
-                \includegraphics[width=\textwidth]{img/queratocono_deformacion_b.png}
-                \caption{Córnea con queratocono}
-                \label{fig:cornea_b}
-            \end{subfigure}
-            \caption{Comparación anatómica entre córnea sana y córnea con queratocono.}
-            \label{fig:comparacion_corneas}
-        \end{figure}
-
-    \par\vspace{-0.5 cm}
     \subsection*{El desafío del diagnóstico temprano}
     
-        El queratocono presenta la dificultad de que sus manifestaciones iniciales son sutiles y pueden confundirse con miopía o astigmatismo común. Esta interpretación está condicionada por la experiencia del profesional, lo que aumenta la probabilidad de errores, especialmente en etapas subclínicas donde la patología se manifiesta de forma discreta y no resulta evidente en una revisión superficial del estudio.
+        El queratocono, enfermedad que deforma progresivamente la córnea, presenta la dificultad de que sus manifestaciones iniciales son sutiles y pueden confundirse con miopía o astigmatismo común. Esta interpretación está condicionada por la experiencia del profesional, lo que aumenta la probabilidad de errores. Sucede especialmente en etapas subclínicas donde la patología se manifiesta de forma discreta y no resulta evidente en una revisión superficial del estudio.
     
         Esta situación se ve agravada por la rápida aparición y avance de la enfermedad en edades tempranas de los pacientes, lo que representa un punto crítico en cuanto al tiempo de diagnóstico y tratamiento. La demora en la detección puede derivar en una progresión irreversible del daño corneal, llegando en estadios medios y avanzados a necesitar intervención quirúrgica para no perder la visión \cite{deteccion_temprana}.
         
@@ -34,66 +12,66 @@
 
     \subsection*{Indicadores cuantitativos}
 
-        Se estima que afecta a más de 23,7 millones de personas a nivel mundial, con una prevalencia global de 289 casos por cada 100.000 habitantes~\cite{prevalencia_kc}. A pesar de los avances en imagenología corneal, la detección de estadios subclínicos es un desafío dado que los sistemas de IA alcanzan una sensibilidad del 90\,\% en estos casos, frente al 98,6\,\% en casos ya manifiestos, es decir que uno de cada diez ojos con queratocono subclínico pasa desapercibido, contra menos de dos de cada cien con deformación más avanzada~\cite{sensibilidad_ia_subclinica}.
+        Se estima que el queratocono afecta a más de 23,7 millones de personas en el mundo, con una prevalencia de 289 casos cada 100.000 habitantes~\cite{prevalencia_kc}. Los casos subclínicos son los más difíciles de detectar. Incluso los sistemas de IA actuales alcanzan una sensibilidad del 90\% en estos casos, frente al 98,6\% en casos ya manifestados~\cite{sensibilidad_ia_subclinica}. Es decir, uno de cada diez ojos con queratocono subclínico pasa desapercibido, contra menos de dos de cada cien en etapas más avanzadas.
         
-        Esta dificultad se traduce en demoras diagnósticas de hasta 2,9 años entre la primera consulta optométrica y la derivación oftalmológica~\cite{demora_diagnostica}, retraso que resulta crítico considerando que hasta el 88\,\% de los casos de ectasia corneal postquirúrgica\footnote{Adelgazamiento y encorvamiento progresivo de la córnea posterior a una cirugía refractiva, cuando el tejido remanente pierde la resistencia necesaria para sostener la presión intraocular. Puede llegar a requerir un trasplante.} se atribuyen a ojos queratocónicos que no fueron detectados a tiempo~\cite{falsos_negativos_ectasia}.
+        Estas dificultades generan demoras de hasta 2,9 años entre la primera consulta optométrica y la derivación al oftalmólogo~\cite{demora_diagnostica}. La demora tiene consecuencias graves. Hasta el 88\% de los casos de ectasia corneal postquirúrgica\footnote{Adelgazamiento y encorvamiento progresivo de la córnea posterior a una cirugía refractiva, cuando el tejido remanente pierde la resistencia necesaria para sostener la presión intraocular. Puede llegar a requerir un trasplante.} se atribuyen a ojos con queratocono que no fueron detectados antes de la cirugía~\cite{falsos_negativos_ectasia}.
 
     \subsection*{Impacto local}
-    
-        En la provincia de Misiones, se ha reportado un aumento de casos de queratocono en la ciudad de Oberá~\cite{misiones}. El problema real es que la infraestructura diagnóstica se concentra en Posadas y Alem donde, para un paciente de zonas remotas de la provincia, una consulta podría ser su única oportunidad de detección dados los costos de traslado, lo que evidencia la relevancia regional de la problemática. 
-        
-        Un soporte a la decisión clínica actuaría como una herramienta de ayuda para referenciar los criterios de evaluación, pudiendo reducir el riesgo de errores diagnósticos y permitiendo intervenciones oportunas para preservar la visión de los pacientes.
-        
+
+        En la provincia de Misiones, un oftalmólogo de Oberá reportó un aumento de casos de queratocono en su consultorio. Pasó de atender un caso por año a tres por mes, y en pocos días realizó tres trasplantes de córnea por esta enfermedad en pacientes de entre 18 y 21 años~\cite{misiones}.
+
+        Los equipos de diagnóstico se concentran en los centros urbanos de la provincia, como Posadas, Oberá y Leandro N. Alem. Para un paciente de una zona alejada, viajar a una consulta tiene un costo alto. Por eso esa consulta puede ser su única oportunidad de detectar la enfermedad a tiempo.
+
     \subsection*{Riesgos de implementación y barreras normativas}
-    
-        Al tratarse de una aplicación en el ámbito de la salud, la implementación de este sistema conlleva riesgos críticos que deben ser tenidos en cuenta. La integración de modelos de IA exige una rigurosa validación externa o local. Este proceso es fundamental para contrastar el rendimiento del algoritmo con la realidad clínica diaria. Esto permite evaluar y documentar de manera rigurosa la fiabilidad y eficacia del sistema bajo las condiciones y recursos de nuestra región.
-    
-        Por otro lado, la Disposición N.º 9688/2019 de la Administración Nacional de Medicamentos, Alimentos y Tecnología Médica (ANMAT) establece en su artículo 26 que todo \textit{software} que se encuadre en la definición de producto médico debe inscribirse en el Registro de Productores y Productos de Tecnología Médica~\cite{dispo_9688}, requisito que alcanza directamente a este sistema. La inscripción no certifica por sí sola que el producto sea seguro, sino que exige presentar los ensayos que respaldan el informe de Requisitos Esenciales de Seguridad y Eficacia, con una profundidad que depende de la clase de riesgo asignada según la Disposición ANMAT N.º 2318/2002~\cite{dispo_2318}.
-        
-        La responsabilidad legal de los datos locales recae en los oftalmólogos consultados, en su labor de anonimizar los estudios provistos. Por otro lado, los datos presentes en los \textit{datasets} internacionales~\cite{kaggle,zenodo,insight} ya vienen anonimizados previamente para su uso, garantizando la transparencia y validación clínica según la Ley N.º 25.326 de Protección de los Datos Personales, sancionada en el año 2000~\cite{ley_25326}.
+
+        Al tratarse de una herramienta de salud, KERALYTIX no puede usarse con pacientes sin una validación previa. El modelo tiene que probarse con estudios de centros de la región para comparar su rendimiento con la práctica clínica real. Esa validación también deja documentada la fiabilidad del sistema con los equipos y recursos disponibles en la provincia.
+
+        Por otro lado, la Disposición N.º 9688/2019 de la Administración Nacional de Medicamentos, Alimentos y Tecnología Médica (ANMAT) establece en su artículo 26 que todo \textit{software} que sea un producto médico debe inscribirse ante ese organismo~\cite{dispo_9688}. Este requisito alcanza directamente a KERALYTIX. Para la inscripción hay que presentar los ensayos que respaldan la seguridad y la eficacia del producto. La profundidad de esos ensayos depende de la clase de riesgo asignada según la Disposición ANMAT N.º 2318/2002~\cite{dispo_2318}.
+
+        En cuanto a los datos, los estudios locales se solicitan a los oftalmólogos ya anonimizados. El \textit{dataset} público CornOrb también se distribuye anonimizado~\cite{zenodo}. Así, el tratamiento de los datos cumple con la Ley N.º 25.326 de Protección de los Datos Personales~\cite{ley_25326}.
 
 \phantomsection
-\par\vspace{-0.2 cm}
 \section{Antecedentes}
 
-    \par\vspace{-0.25 cm}
+    Los antecedentes se dividen en trabajos de investigación académica y productos comerciales disponibles en el mercado.
+
     \subsection*{Redes neuronales recurrentes (RNN)}
 
-        Un antecedente fundamental es el modelo de aprendizaje profundo multimodal presentado por Shafi Balal en el congreso ESCRS 2025, abordando la problemática de que los médicos no pueden predecir con certeza qué pacientes progresan hacia estadios graves y cuáles son estables, saturando los servicios con seguimientos frecuentes. Su sistema utiliza redes neuronales recurrentes para analizar datos de solo dos visitas, logrando clasificar a los pacientes en grupos de bajo o alto riesgo de progresión a dos años~\cite{shafi_balal}.
+        En el congreso ESCRS 2025, Shafi Balal presentó un modelo de aprendizaje profundo multimodal basado en redes neuronales recurrentes~\cite{shafi_balal}. El trabajo parte de un problema clínico concreto. Los médicos no pueden predecir con certeza qué pacientes van a progresar hacia etapas graves, y por eso los servicios se saturan con controles frecuentes. El modelo analiza datos de solo dos visitas y clasifica a los pacientes en grupos de bajo o alto riesgo de progresión a dos años.
 
-        Este trabajo demuestra que es posible construir modelos predictivos con una cantidad reducida de información clínica y que es viable estratificar el riesgo de progresión. Sin embargo, requiere datos de más de una visita por paciente, información con la que no cuentan los conjuntos de datos disponibles para este proyecto. Por ello, la estratificación del riesgo de progresión se plantea como una línea de trabajo futuro (ver sección Alcance y limitaciones).
+        Este trabajo muestra que se puede estratificar el riesgo con poca información clínica. Pero necesita datos de más de una visita por paciente, y el conjunto de datos de este proyecto no los tiene. Por eso la estratificación del riesgo queda como trabajo futuro.
 
-    \par\vspace{-0.1 cm}
     \subsection*{Redes neuronales convolucionales (CNN)}
-    
-        Por otro lado, el desarrollo del algoritmo KeratoDetect se enfoca en la dificultad de detectar el queratocono en etapas subclínicas. Este algoritmo demostró que los modelos basados en redes neuronales convolucionales pueden identificar patrones patológicos que el ojo humano podría omitir, procesando imágenes corneales para una clasificación binaria con alta precisión~\cite{kerato_detect}.
 
-        Este antecedente se centra exclusivamente en el análisis de imágenes, sin incorporar datos clínicos del paciente ni integrarse a un sistema para oftalmólogos. Aun así, respalda el objetivo central del trabajo, la detección, y justifica la utilización de redes CNN para definir la arquitectura de procesamiento.
+        KeratoDetect es un algoritmo que apunta a la detección del queratocono en etapas subclínicas~\cite{kerato_detect}. Usa redes neuronales convolucionales para clasificar imágenes de topografía corneal como normales o con queratocono, con una exactitud del 99,33\% sobre su conjunto de prueba. El trabajo muestra que estas redes pueden reconocer patrones que el ojo humano podría pasar por alto.
 
-    \par\vspace{-0.1 cm}
-    \subsection*{Herramientas médicas e investigación}
-    
-        En el ámbito local, no existen competidores directos con un software como producto médico específico para queratocono en Argentina. El referente más cercano es Entelai~\cite{entelai}, una \textit{startup} líder en el país en la aplicación de IA para el análisis de imágenes médicas, cuyo modelo de validación asistida permite a los médicos procesar informes con rapidez. A nivel internacional, proyectos como KERAFound y el sistema multi-agente AEYE~\cite{aeye} están evolucionando desde la investigación académica hacia las herramientas comerciales de aplicación.
-    
-        Mediante estos antecedentes se demuestra que es posible predecir la enfermedad y estratificar su riesgo basándose en imágenes topográficas y datos clínicos relevantes. Además, la industria está interesada en la adopción de aplicaciones médicas para el apoyo en el flujo de trabajo e investigar estas herramientas.
+        KeratoDetect analiza solo imágenes, sin datos clínicos del paciente, y no está integrado a una herramienta para oftalmólogos. Aun así, respalda el uso de redes convolucionales para procesar los mapas corneales en KERALYTIX.
 
     \subsection*{\textit{Vision Transformers}}
 
-        En paralelo al uso de arquitecturas convolucionales, distintos trabajos recientes han incorporado \textit{Vision Transformers} (ViT) para el análisis de queratocono, superando las limitaciones de las CNN en la captura de dependencias espaciales de largo alcance dentro de la imagen corneal. 
+        Varios trabajos recientes usan \textit{Vision Transformers} (ViT) para analizar el queratocono. Estas arquitecturas captan relaciones entre zonas alejadas de la imagen corneal, algo que a las CNN les cuesta más. Abdelmotaal et al. combinaron un \textit{transformer} con una CNN para detectar queratocono en videos de deformación corneal~\cite{abdelmotaal_vit}. Yaraghi y Khatibi fusionaron varios modelos preentrenados con un \textit{transformer} para clasificar imágenes corneales~\cite{vit_fusion_kcn}. Ismael integró topografía, aberrometría y datos tabulares en un modelo \textit{transformer} para predecir la progresión~\cite{vit_multisource}.
 
-        Abdelmotaal et al. presentaron un modelo híbrido Transformer-CNN para la detección automática de queratocono a partir de videos de deformación corneal dinámica basados en Scheimpflug~\cite{abdelmotaal_vit}, mientras que otro trabajo propuso la fusión de múltiples modelos preentrenados junto con una arquitectura transformer para la clasificación de imágenes corneales~\cite{vit_fusion_kcn}. Asimismo, se desarrolló un modelo transformer multi-fuente que integra topografía, aberrometría y datos tabulares para predecir la progresión de la enfermedad~\cite{vit_multisource}. 
-        
-        Estos antecedentes evidencian una tendencia hacia arquitecturas más complejas que las CNN tradicionales. Sin embargo, dado el volumen de datos disponibles y las limitaciones de desarrollo del presente trabajo, la adopción de \textit{Vision Transformers} resulta como una alternativa a explorar pero no obligatoria, siendo una limitación del enfoque actual o una línea de trabajo futura.
+        Estas arquitecturas necesitan más datos que las CNN para entrenarse bien. Con el volumen de CornOrb, se dejan como alternativa para trabajo futuro.
 
     \subsection*{Modelos fundacionales}
 
-        Otro antecedente relevante es RETFound, el primer modelo fundacional (\textit{foundation model}) en oftalmología, entrenado mediante aprendizaje autosupervisado (\textit{masked autoencoder}) sobre 1,6 millones de imágenes retinianas no etiquetadas, logrando superar a modelos preentrenados en ImageNet en tareas de diagnóstico y pronóstico con una cantidad reducida de datos etiquetados~\cite{retfound}. Esta línea de trabajo fue posteriormente extendida por el \textit{Global RETFound Consortium}, que propuso un modelo fundacional médico de alcance global~\cite{retfound_global}.
-        
-        Este tipo de modelos demuestra que es posible reducir significativamente la dependencia de grandes volúmenes de datos etiquetados mediante preentrenamiento a gran escala. Sin embargo, su implementación requiere capacidad de cómputo y acceso a \textit{datasets} masivos que exceden el alcance y las limitaciones de desarrollo del presente trabajo, por lo que su exploración se plantea como trabajo futuro.
+        Un modelo fundacional se entrena primero con una gran cantidad de imágenes sin etiquetar y después se ajusta a tareas concretas con pocos datos. RETFound fue el primero en oftalmología. Se entrenó con 1,6 millones de imágenes de retina y superó a modelos preentrenados en ImageNet en tareas de diagnóstico~\cite{retfound}. Después, el \textit{Global RETFound Consortium} lo extendió a un modelo de alcance global~\cite{retfound_global}.
+
+        Para el queratocono, Shafi Balal desarrolla KERAFound en Moorfields, un modelo fundacional entrenado con estudios del segmento anterior del ojo~\cite{kerafound}. El proyecto está en investigación y todavía no tiene resultados publicados. Estos modelos necesitan una capacidad de cómputo y un volumen de datos que exceden el PFI, por eso su adaptación queda como trabajo futuro.
+
+    \subsection*{Ensayos clínicos}
+
+        AEYE es un sistema de IA con varios agentes que trabajan coordinados. Está en ensayo clínico para comparar su desempeño con el de oftalmólogos consultores en el diagnóstico de queratocono y la evaluación para cirugía refractiva~\cite{aeye}. El ensayo muestra el interés por llevar estas herramientas a la práctica clínica. Por ahora es un estudio de investigación y no un producto disponible.
+
+    \subsection*{Productos comerciales}
+
+        Los fabricantes de equipos de diagnóstico incluyen \textit{software} de análisis con sus equipos. OCULUS ofrece la familia Pentacam, que va desde modelos básicos hasta el Pentacam AXL Wave con biometría y análisis de frente de onda~\cite{oculus}. Topcon ofrece topógrafos de Placido como el CA-800, que se conectan con sus plataformas de gestión de datos~\cite{topcon}. En ambos casos el \textit{software} solo funciona con los equipos de la marca. Un centro que ya tiene un equipo de otro fabricante no puede usarlo.
+
+        En Argentina no hay un \textit{software} como producto médico específico para queratocono. El referente más cercano es Entelai, una empresa argentina que aplica IA al análisis de imágenes médicas~\cite{entelai}. Su herramienta para resonancias magnéticas genera informes estandarizados y está pensada para patologías neurológicas.
 
     \subsection*{Comparativa de los antecedentes}
 
-        Los antecedentes resuelven partes del problema de forma aislada: algunos analizan solo imágenes, otros se encuentran en fase de investigación y los productos comerciales no ofrecen un módulo específico para queratocono. Ninguno combina la detección a partir de imágenes y datos clínicos con la explicación visual de cada predicción, en una herramienta accesible pensada para el flujo de trabajo del oftalmólogo y el marco regulatorio local.
+        Los antecedentes resuelven partes del problema por separado. Algunos analizan solo imágenes, otros siguen en etapa de investigación, y los productos comerciales no tienen un módulo específico para queratocono o dependen de un equipo propio. Ninguno combina imágenes y datos clínicos con una explicación visual de cada predicción, en una herramienta accesible para el oftalmólogo y adecuada al marco regulatorio local. La Tabla~\ref{tabla_antecedentes_comparativa} resume estas diferencias.
 
         \begingroup \setstretch{1.1}
         \begin{longtblr}[
@@ -110,54 +88,60 @@
             Referencia & Aporte & Limitación \\
             
             Shafi Balal
-            & Clasificación binaria del riesgo a dos años con solo dos visitas. Utiliza RNN.
-            & No aborda detección temprana ni se integra a un sistema médico. \\
+            & Clasificación del riesgo de progresión a dos años con solo dos visitas. Utiliza RNN.
+            & Necesita varias visitas por paciente. No aborda la detección temprana. \\
             
             KeratoDetect
-            & Detección binaria subclínica para reducir la subjetividad. Utiliza CNN.  
-            & Analiza solo imágenes y no se integra a un sistema médico. \\
+            & Detección binaria subclínica a partir de topografías. Utiliza CNN.
+            & Analiza solo imágenes y no se integra a una herramienta clínica. \\
+            
+            \textit{Vision Transformers}
+            & Mejor captura de relaciones espaciales en la imagen corneal.
+            & Requieren más datos que los disponibles. \\
+            
+            RETFound / KERAFound
+            & Modelos fundacionales que se ajustan con pocos datos etiquetados.
+            & Requieren gran capacidad de cómputo. KERAFound sigue en investigación. \\
+            
+            AEYE
+            & Sistema de IA con varios agentes en ensayo clínico.
+            & Estudio de investigación, no disponible como producto. \\
+            
+            OCULUS / Topcon
+            & Equipos de referencia con \textit{software} de análisis incluido.
+            & Sistemas cerrados, dependientes del equipo de la marca. \\
             
             Entelai
-            & Plataforma comercial líder en Argentina para la agilización de informes médicos. 
-            & Solución general, no posee un módulo específico ni adaptado para queratocono. \\
+            & Plataforma argentina de IA para informes de imágenes médicas.
+            & Orientada a neurología, sin módulo para queratocono. \\
             
-            KERAFound / AEYE
-            & Investigaciones académicas con transición a herramientas de diagnóstico. 
-            & Diseñados para sistemas internacionales de alta gama, sin adecuación regulatoria. \\
-            
-            \textbf{Nuestro proyecto }
-            & Detección temprana multimodal (imágenes y datos clínicos) con explicación visual, en una aplicación web accesible. Utiliza CNN.
+            \textbf{KERALYTIX}
+            & Detección temprana multimodal con explicación visual, en una aplicación web.
             & Prototipo entrenado con un \textit{dataset} público. Requiere validación con muestras locales. \\
             
         \end{longtblr}
         \endgroup
         
 \phantomsection
-\par\vspace{-0.75 cm}
 \section{Justificación}
 
-    El proyecto se justifica por tres razones fundamentales que lo distinguen de las soluciones existentes y que responden a una necesidad concreta no resuelta en el mercado actual.
+    KERALYTIX se justifica por tres razones.
 
-    En primer lugar, la accesibilidad, el sistema trabaja con los mapas corneales que exportan los equipos de topografía y tomografía ya instalados en los centros de salud, sin requerir \textit{hardware} de altísima gama, lo que facilita su adopción en la región, donde la infraestructura diagnóstica puede ser variada. El prototipo se desarrolla con mapas de equipos Orbscan, y su extensión a otros equipos disponibles localmente, como Pentacam y Sirius, se plantea como trabajo futuro.
-    
-    Seguidamente, la independencia y los costos, el proyecto propone un modelo de \textit{software} independiente, rompiendo con los ecosistemas cerrados y costosos de marcas como OCULUS\textsuperscript{\textregistered} o Topcon\textsuperscript{\textregistered}, cuyos sistemas de análisis dependen obligatoriamente de la adquisición de dispositivos propietarios, lo que genera una barrera de entrada para los que ya cuentan con equipos de otros fabricantes.
-    
-    Por último, la relevancia local, el proyecto aborda una problemática con evidencia clínica real en la región, con un aumento reportado de casos de queratocono en Oberá \cite{misiones}, lo que genera una necesidad concreta de herramientas diagnósticas asistidas por tecnología que no se encuentran disponibles en el mercado nacional.
-    
-    La solución técnica propuesta busca mitigar la subjetividad inherente a la interpretación de mapas corneales, reduciendo la dependencia de la experiencia del médico de turno y garantizando un diagnóstico más preciso y estandarizado independientemente de quién evalúe el estudio.
-    
-    Desde el punto de vista técnico, se trata de una adaptación innovadora de tecnologías conocidas, como redes neuronales convolucionales, algoritmos de explicabilidad y plataformas web modernas, a una necesidad clínica concreta no resuelta con los sistemas actuales.
+    La primera es la accesibilidad. KERALYTIX trabaja con los mapas corneales que exportan los equipos de topografía y tomografía que ya tienen los centros de salud. No necesita \textit{hardware} nuevo, y eso facilita su adopción en una región con equipos variados. El prototipo usa mapas de equipos Orbscan. La extensión a otros equipos disponibles en la provincia, como Pentacam y Sirius, queda como trabajo futuro.
+
+    La segunda es la independencia del fabricante. Como se vio en los antecedentes, el \textit{software} de las marcas comerciales solo funciona con sus propios equipos. KERALYTIX no depende de una marca, así que un centro puede usarlo sin cambiar el equipo que ya tiene.
+
+    La tercera es la necesidad local. El aumento de casos reportado en Oberá y la concentración de los equipos en pocas ciudades muestran que hace falta una herramienta de apoyo en la provincia. En el mercado nacional no hay una herramienta específica para queratocono.
 
     \subsection*{Impacto económico}
 
-        Al no existir datos económicos sistematizados sobre el queratocono en Argentina, se plantea un análisis del costo de los estudios necesarios para la herramienta propuesta frente al de los tratamientos correspondientes a etapas avanzadas de la enfermedad. Para ello, tomamos en cuenta el nomenclador nacional de prácticas oftalmológicas de 2025~\cite{nomenclador_cao}, sin considerar descuentos como, por ejemplo, los de las obras sociales.
-        
-        Mientras que un estudio de topografía o tomografía corneal ronda los \$\,150.000, los procedimientos quirúrgicos representan un salto gigantesco en costo. El \textit{cross-linking} corneal y el implante de anillos intracorneales oscilan entre 3 y 3,3 millones de pesos por ojo, mientras que un trasplante de córnea puede superar los 10 millones de pesos por ojo considerando los costos de importación del tejido, cirugía y seguimiento postoperatorio. 
-        
-        Bajo este escenario, un sistema de detección temprana que evite o retrase la progresión hacia estas instancias quirúrgicas representaría un ahorro potencial considerable tanto para el paciente como para el sistema de salud, además de reducir la carga sobre los servicios de oftalmología especializada al filtrar los casos de bajo riesgo mediante una primera evaluación asistida.
+        No hay datos económicos sistematizados sobre el queratocono en Argentina. Por eso se compara con el costo de los tratamientos de las etapas avanzadas. Los valores salen del nomenclador nacional de prácticas oftalmológicas de octubre de 2025~\cite{nomenclador_cao}, sin descuentos de obras sociales.
+
+        Una topografía corneal bilateral cuesta alrededor de \$150.000. Los tratamientos de etapas avanzadas cuestan mucho más. El \textit{cross-linking} corneal y el implante de anillos intracorneales cuestan entre 2,9 y 3,2 millones de pesos por ojo. Un trasplante de córnea cuesta entre 9,2 y 14,7 millones de pesos por ojo, según la técnica.
+
+        Detectar la enfermedad a tiempo puede evitar o retrasar estas cirugías. Eso representa un ahorro para el paciente y para el sistema de salud.
 
 \phantomsection
-\par\vspace{-0.4 cm}
 \section{Objetivos}
 
     \par\vspace{-0.15 cm}
@@ -234,9 +218,28 @@
     \phantomsection
     \subsection{Queratocono: fisiopatología y diagnóstico}
 
-        El queratocono es una enfermedad degenerativa no inflamatoria de la córnea en la que esta adopta una forma cónica progresiva, provocando un adelgazamiento del estroma corneal y una distorsión de su superficie anterior. Esta deformación genera una alteración en la refracción de la luz que se manifiesta como astigmatismo irregular, miopía y disminución progresiva de la agudeza visual~\cite{kcn_fisio}.
-        
-        La enfermedad tiene un inicio típico en la segunda década de la vida y puede progresar hasta la tercera o cuarta década, momento en el que generalmente se estabiliza. La detección temprana es especialmente crítica porque el queratocono se presenta y avanza rápidamente en edades jóvenes, y su manifestación inicial puede confundirse con miopía o astigmatismo común, lo que retrasa la intervención oportuna~\cite{kcn_edad}.
+        El queratocono es una enfermedad ocular degenerativa y no inflamatoria. En ella la córnea, la parte transparente y curva en la superficie del ojo, se debilita y se adelgaza de forma progresiva hasta tomar una forma cónica (Figura~\ref{fig:comparacion_corneas}). Este cambio altera la manera en que la luz ingresa al ojo. Por eso aparecen astigmatismo irregular, miopía y una pérdida progresiva de la agudeza visual, que empeoran con el tiempo si la enfermedad no se detecta en etapas iniciales~\cite{queratocono, kcn_fisio}.
+
+        \vspace{-0.5 cm}
+        \begin{figure}[H] \centering
+            \begin{subfigure}[b]{0.45\textwidth} \centering
+                \includegraphics[width=\textwidth]{img/queratocono_deformacion_a.png}
+                \caption{Córnea sana}
+                \label{fig:cornea_a}
+            \end{subfigure}
+            \hspace{-1 cm}
+            \begin{subfigure}[b]{0.45\textwidth} \centering
+                \includegraphics[width=\textwidth]{img/queratocono_deformacion_b.png}
+                \caption{Córnea con queratocono}
+                \label{fig:cornea_b}
+            \end{subfigure}
+            \caption{Comparación anatómica entre córnea sana y córnea con queratocono.}
+            \label{fig:comparacion_corneas}
+        \end{figure}
+
+        La enfermedad se conoce desde hace más de dos siglos. Su primera descripción se atribuye a Burchard Mauchart en 1748, que la llamó \textit{staphyloma diaphanum}. En 1854, John Nottingham hizo la primera descripción detallada y la diferenció de otras enfermedades de la córnea~\cite{historia_kc}.
+
+        La enfermedad tiene un inicio típico en la segunda década de la vida y puede progresar hasta la tercera o cuarta década, momento en el que generalmente se estabiliza~\cite{kcn_edad}.
 
         El diagnóstico se basa en la evaluación de múltiples parámetros corneales obtenidos mediante tomógrafos de Scheimpflug (como el Pentacam), topógrafos de Placido (como el Sirius) o sistemas de barrido por hendidura (como el Orbscan, con el que se obtuvieron los datos utilizados en este trabajo). Entre los parámetros clínicos más relevantes se encuentran la curvatura queratométrica (Km), el espesor corneal mínimo (paquimetría), el ``\textit{Differential Surface Elevation}'' (DSE) y los índices del sistema ABCD de Belin, que permite una estratificación de riesgo basada en la elevación anterior, la elevación posterior y el espesor corneal~\cite{kcn_parametros}.
 
