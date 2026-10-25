@@ -13,4 +13,5 @@ build/
 
 # Salida de compilación (se regenera)
 *.synctex.gz
+*.synctex(busy).gz
 2. Informe/main.pdf
