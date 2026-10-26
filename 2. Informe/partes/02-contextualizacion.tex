@@ -137,24 +137,21 @@
 
         No hay datos económicos sistematizados sobre el queratocono en Argentina. Por eso se compara con el costo de los tratamientos de las etapas avanzadas. Los valores salen del nomenclador nacional de prácticas oftalmológicas de octubre de 2025~\cite{nomenclador_cao}, sin descuentos de obras sociales.
 
-        Una topografía corneal bilateral cuesta alrededor de \$150.000. Los tratamientos de etapas avanzadas cuestan mucho más. El \textit{cross-linking} corneal y el implante de anillos intracorneales cuestan entre 2,9 y 3,2 millones de pesos por ojo. Un trasplante de córnea cuesta entre 9,2 y 14,7 millones de pesos por ojo, según la técnica.
-
-        Detectar la enfermedad a tiempo puede evitar o retrasar estas cirugías. Eso representa un ahorro para el paciente y para el sistema de salud.
+        Una topografía corneal bilateral cuesta alrededor de \$150.000. Los tratamientos de etapas avanzadas cuestan mucho más. El \textit{cross-linking} corneal y el implante de anillos intracorneales cuestan entre 2,9 y 3,2 millones de pesos por ojo. Un trasplante de córnea cuesta entre 9,2 y 14,7 millones de pesos por ojo, según la técnica. Detectar la enfermedad a tiempo puede evitar o retrasar estas cirugías. Eso representa un ahorro para el paciente y para el sistema de salud.
 
 \phantomsection
 \section{Objetivos}
 
-    \par\vspace{-0.15 cm}
     \subsection*{Objetivo general}
     
         Desarrollar un sistema de soporte a la decisión clínica, basado en algoritmos de inteligencia artificial sobre mapas corneales y datos clínicos, dirigido a los oftalmólogos para la detección temprana del queratocono y accesible mediante una aplicación web.
 
     \subsection*{Objetivos específicos}
 
-        \begin{enumerate}[label=\textbf{\arabic*)},leftmargin=*]
-            \item Analizar y preparar un conjunto de datos público y multimodal~\cite{zenodo}, que reúne mapas corneales y variables clínicas, caracterizando su composición y calidad antes del entrenamiento.
+        \begin{enumerate}[label=\textbf{\arabic*)}]
+            \item Analizar un conjunto de datos público y multimodal~\cite{zenodo}, que reúne mapas corneales y variables clínicas, caracterizando su composición y calidad antes del entrenamiento.
 
-            \item Desarrollar y entrenar un modelo de aprendizaje profundo multimodal, basado en redes neuronales convolucionales, que combine los mapas corneales con las variables clínicas para identificar el queratocono, priorizando la reducción de falsos negativos.
+            \item Construir un modelo de aprendizaje profundo multimodal, basado en redes neuronales convolucionales, que combine los mapas corneales con las variables clínicas para identificar el queratocono, priorizando la reducción de falsos negativos.
 
             \item Integrar herramientas de inteligencia artificial explicable que proporcionen evidencia visual al oftalmólogo sobre las regiones corneales determinantes para cada predicción.
 
@@ -168,15 +165,15 @@
 
     \subsection*{Alcance del prototipo}
 
-        El prototipo funciona como una herramienta de apoyo: recibe la información de un estudio corneal, la procesa con un modelo de IA y devuelve un resultado que el oftalmólogo interpreta y valida. En concreto:
+        El prototipo funciona como una herramienta de apoyo. Recibe la información de un estudio corneal, la procesa con un modelo de IA y devuelve un resultado que el oftalmólogo interpreta y valida (Figura~\ref{fig:alcance_prototipo}).
 
-        \begin{itemize}[leftmargin=*]
-            \item \textbf{Qué ingresa:} los cuatro mapas corneales de un ojo (axial, elevación anterior, elevación posterior y paquimetría), tal como los entrega un equipo Orbscan, junto con las variables clínicas del paciente: edad, sexo, astigmatismo, curvatura máxima de la córnea (K max), espesor corneal central y en su punto más delgado, y asfericidad anterior y posterior.
+        \begin{figure}[H] \centering
+            \input{img/esquema_alcance}
+            \caption{Esquema del alcance del prototipo.}
+            \label{fig:alcance_prototipo}
+        \end{figure}
 
-            \item \textbf{Qué procesa:} un modelo multimodal analiza las imágenes y los datos clínicos en conjunto y estima la probabilidad de que el ojo presente queratocono. A la vez, la técnica Grad-CAM marca sobre los mapas las regiones que más influyeron en esa estimación.
-
-            \item \textbf{Qué entrega:} un informe con la clasificación del ojo (normal o con queratocono), el nivel de confianza del modelo y el mapa de calor que la justifica, consultable desde la aplicación web.
-        \end{itemize}
+        El prototipo recibe los cuatro mapas corneales de un ojo, tal como los entrega un equipo Orbscan. También recibe las variables clínicas del paciente. Son la edad, el sexo, el astigmatismo, la curvatura máxima de la córnea (K~max), el espesor corneal central y en su punto más delgado, y la asfericidad anterior y posterior. Un modelo multimodal analiza las imágenes y los datos clínicos en conjunto y estima la probabilidad de que el ojo tenga queratocono. La técnica Grad-CAM marca sobre los mapas las regiones que más influyeron en esa estimación. El resultado es un informe con la clasificación del ojo, el nivel de confianza del modelo y el mapa de calor, que se consulta desde la aplicación web.
 
         El entrenamiento y la evaluación se realizan con el \textit{dataset} público CornOrb~\cite{zenodo}, ya que las muestras locales se encuentran en proceso de solicitud a centros de salud de la región (ver capítulo Desarrollo). Si se obtienen durante el PFI, se incorporarán para una primera evaluación del modelo sobre datos regionales. El prototipo se considera terminado cuando el modelo esté entrenado y evaluado con ese conjunto de datos y la aplicación web permita ejecutarlo de punta a punta.
 
@@ -220,7 +217,6 @@
 
         El queratocono es una enfermedad ocular degenerativa y no inflamatoria. En ella la córnea, la parte transparente y curva en la superficie del ojo, se debilita y se adelgaza de forma progresiva hasta tomar una forma cónica (Figura~\ref{fig:comparacion_corneas}). Este cambio altera la manera en que la luz ingresa al ojo. Por eso aparecen astigmatismo irregular, miopía y una pérdida progresiva de la agudeza visual, que empeoran con el tiempo si la enfermedad no se detecta en etapas iniciales~\cite{queratocono, kcn_fisio}.
 
-        \vspace{-0.5 cm}
         \begin{figure}[H] \centering
             \begin{subfigure}[b]{0.45\textwidth} \centering
                 \includegraphics[width=\textwidth]{img/queratocono_deformacion_a.png}

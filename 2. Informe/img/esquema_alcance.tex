@@ -1,0 +1,33 @@
+% Esquema del alcance del prototipo (sección Alcance y limitaciones)
+\begin{tikzpicture}[
+    node distance = 0.5cm and 0.7cm,
+    caja/.style = {draw, align=center, font=\small,
+                   text width=3.1cm, minimum height=1.3cm, inner sep=4pt,
+                   execute at begin node={\setstretch{1}\hyphenpenalty=10000}},
+    entrada/.style = {caja, fill=gray!10, text width=3.6cm},
+    proceso/.style = {caja, fill=gray!25},
+    rotulo/.style = {font=\footnotesize\bfseries},
+    etiqueta/.style = {font=\scriptsize, fill=white, inner sep=1pt},
+    flecha/.style = {-{Stealth[length=2.2mm]}, thick}
+  ]
+  \node[entrada] (mapas) {Cuatro mapas corneales\\ \footnotesize(axial, elevación anterior, elevación posterior y paquimetría)};
+  \node[entrada, below=of mapas] (clin) {Variables clínicas\\ \footnotesize(edad, sexo, K~max, espesor, asfericidad, entre otras)};
+  \coordinate (medio) at ($(mapas.east)!0.5!(clin.east)$);
+  \node[proceso, right=1.1cm of medio, anchor=west] (modelo) {\textbf{Modelo multimodal}\\ \footnotesize(CNN y datos clínicos)};
+  \node[proceso, below right=0.4cm and 0.5cm of modelo.south east, anchor=north west] (gradcam) {\textbf{Grad-CAM}\\ \footnotesize(regiones determinantes)};
+  \node[caja, fill=gray!10, anchor=west] (informe) at ($(modelo.east -| gradcam.east)+(0.7cm,0)$) {Informe\\ \footnotesize(clasificación, confianza y mapa de calor)};
+
+  \coordinate (tope) at ($(mapas.north)+(0,0.35cm)$);
+  \node[rotulo] at (mapas |- tope) {Qué ingresa};
+  \node[rotulo] at ($(modelo |- tope)!0.5!(gradcam |- tope)$) {Qué procesa};
+  \node[rotulo] at (informe |- tope) {Qué entrega};
+
+  % Entradas en L hacia el modelo
+  \draw[flecha] (mapas.east) -- ++(0.55cm,0) |- (modelo.west);
+  \draw[flecha] (clin.east) -- ++(0.55cm,0) |- (modelo.west);
+
+  % Bifurcación: la predicción va directo al informe y Grad-CAM agrega el mapa de calor
+  \draw[flecha] (modelo.east) -- node[etiqueta, above=1pt] {clasificación y confianza} (informe.west);
+  \draw[flecha] (modelo.south) |- (gradcam.west);
+  \draw[flecha] (gradcam.east) -| node[etiqueta, pos=0.25, below=1pt] {mapa de calor} (informe.south);
+\end{tikzpicture}
