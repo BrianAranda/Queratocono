@@ -39,7 +39,7 @@
 
         En el congreso ESCRS 2025, Shafi Balal presentó un modelo de aprendizaje profundo multimodal basado en redes neuronales recurrentes~\cite{shafi_balal}. El trabajo parte de un problema clínico concreto. Los médicos no pueden predecir con certeza qué pacientes van a progresar hacia etapas graves, y por eso los servicios se saturan con controles frecuentes. El modelo analiza datos de solo dos visitas y clasifica a los pacientes en grupos de bajo o alto riesgo de progresión a dos años.
 
-        Este trabajo muestra que se puede estratificar el riesgo con poca información clínica. Pero necesita datos de más de una visita por paciente, y el conjunto de datos de este proyecto no los tiene. Por eso la estratificación del riesgo queda como trabajo futuro.
+        Este trabajo muestra que se puede estratificar el riesgo con poca información clínica. Pero necesita datos de más de una visita por paciente, y el conjunto de datos de este proyecto no los tiene. Por eso la estratificación del riesgo queda como línea futura.
 
     \subsection*{Redes neuronales convolucionales (CNN)}
 
@@ -51,13 +51,13 @@
 
         Varios trabajos recientes usan \textit{Vision Transformers} (ViT) para analizar el queratocono. Estas arquitecturas captan relaciones entre zonas alejadas de la imagen corneal, algo que a las CNN les cuesta más. Abdelmotaal et al. combinaron un \textit{transformer} con una CNN para detectar queratocono en videos de deformación corneal~\cite{abdelmotaal_vit}. Yaraghi y Khatibi fusionaron varios modelos preentrenados con un \textit{transformer} para clasificar imágenes corneales~\cite{vit_fusion_kcn}. Ismael integró topografía, aberrometría y datos tabulares en un modelo \textit{transformer} para predecir la progresión~\cite{vit_multisource}.
 
-        Estas arquitecturas necesitan más datos que las CNN para entrenarse bien. Con el volumen de CornOrb, se dejan como alternativa para trabajo futuro.
+        Estas arquitecturas necesitan más datos que las CNN para entrenarse bien. Con el volumen de CornOrb, se dejan como alternativa para una línea futura.
 
     \subsection*{Modelos fundacionales}
 
         Un modelo fundacional se entrena primero con una gran cantidad de imágenes sin etiquetar y después se ajusta a tareas concretas con pocos datos. RETFound fue el primero en oftalmología. Se entrenó con 1,6 millones de imágenes de retina y superó a modelos preentrenados en ImageNet en tareas de diagnóstico~\cite{retfound}. Después, el \textit{Global RETFound Consortium} lo extendió a un modelo de alcance global~\cite{retfound_global}.
 
-        Para el queratocono, Shafi Balal desarrolla KERAFound en Moorfields, un modelo fundacional entrenado con estudios del segmento anterior del ojo~\cite{kerafound}. El proyecto está en investigación y todavía no tiene resultados publicados. Estos modelos necesitan una capacidad de cómputo y un volumen de datos que exceden el PFI, por eso su adaptación queda como trabajo futuro.
+        Para el queratocono, Shafi Balal desarrolla KERAFound en Moorfields, un modelo fundacional entrenado con estudios del segmento anterior del ojo~\cite{kerafound}. El proyecto está en investigación y todavía no tiene resultados publicados. Estos modelos necesitan una capacidad de cómputo y un volumen de datos que exceden el PFI, por eso su adaptación queda como línea futura.
 
     \subsection*{Ensayos clínicos}
 
@@ -127,7 +127,7 @@
 
     KERALYTIX se justifica por tres razones.
 
-    La primera es la accesibilidad. KERALYTIX trabaja con los mapas corneales que exportan los equipos de topografía y tomografía que ya tienen los centros de salud. No necesita \textit{hardware} nuevo, y eso facilita su adopción en una región con equipos variados. El prototipo usa mapas de equipos Orbscan. La extensión a otros equipos disponibles en la provincia, como Pentacam y Sirius, queda como trabajo futuro.
+    La primera es la accesibilidad. KERALYTIX trabaja con los mapas corneales que exportan los equipos de topografía y tomografía que ya tienen los centros de salud. No necesita \textit{hardware} nuevo, y eso facilita su adopción en una región con equipos variados. El prototipo usa mapas de equipos Orbscan. La extensión a otros equipos disponibles en la provincia, como Pentacam y Sirius, queda como línea futura.
 
     La segunda es la independencia del fabricante. Como se vio en los antecedentes, el \textit{software} de las marcas comerciales solo funciona con sus propios equipos. KERALYTIX no depende de una marca, así que un centro puede usarlo sin cambiar el equipo que ya tiene.
 
@@ -179,35 +179,17 @@
 
     \subsection*{Limitaciones}
 
-        \begin{itemize}[leftmargin=*]
-            \item \textbf{Disponibilidad limitada de grandes \textit{datasets}:} los conjuntos de datos públicos de queratocono son escasos y de tamaño moderado. CornOrb reúne 1.454 ojos de 744 pacientes, un volumen suficiente para entrenar y evaluar un prototipo, pero acotado frente al que requieren arquitecturas más complejas como los \textit{Vision Transformers} o los modelos fundacionales.
+        \begin{itemize}
+            \item \textbf{Tamaño de los conjuntos de datos:} los conjuntos de datos públicos de queratocono son escasos y de tamaño moderado. CornOrb reúne 1.454 ojos de 744 pacientes~\cite{zenodo}. Ese volumen alcanza para entrenar y evaluar un prototipo, pero es chico para arquitecturas más complejas como los \textit{Vision Transformers} o los modelos fundacionales.
 
-            \item \textbf{Falta de datos de carácter local:} las muestras de pacientes de Misiones se encuentran en proceso de solicitud y aún no se dispone de ellas. Hasta que se obtengan, el desempeño del prototipo solo podrá informarse sobre el conjunto de datos público. Aun si se incorporan durante el PFI, permitirán una evaluación preliminar sobre la población regional, pero no una validación clínica.
+            \item \textbf{Falta de datos locales:} las muestras de pacientes de Misiones están en proceso de solicitud. Hasta que se obtengan, el desempeño del prototipo solo puede informarse sobre el conjunto de datos público. Si llegan durante el PFI, permitirán una evaluación preliminar sobre la población regional, pero no una validación clínica.
 
-            \item \textbf{Validación en un único origen de datos:} todas las muestras de CornOrb provienen de un mismo tipo de equipo (Orbscan~3) y de centros de un mismo país. Para afirmar que el sistema funciona en la práctica clínica sería necesario validarlo en distintos centros de salud, con otros equipos y otros protocolos de adquisición.
+            \item \textbf{Un único origen de datos:} todas las muestras de CornOrb vienen de un mismo tipo de equipo, el Orbscan~3, y de centros de Argelia. Las características de esa población y de su atención pueden diferir de las de Argentina. Un modelo que funciona bien en una población no necesariamente mantiene su desempeño en otra, ni con otros equipos o protocolos.
 
-            \item \textbf{Diferencias entre poblaciones y contextos clínicos:} los datos corresponden a pacientes de Argelia, por lo que las características de la población y de la atención pueden diferir de las de Argentina. Un modelo que funciona bien en una población no necesariamente mantiene su desempeño en otra.
-
-            \item \textbf{Etiquetas binarias:} cada ojo está etiquetado únicamente como normal o con queratocono, sin distinguir estadios de la enfermedad. Por ello, el prototipo no puede medir por separado su desempeño en casos subclínicos, que son los más difíciles de detectar.
+            \item \textbf{Etiquetas binarias:} cada ojo está etiquetado solo como normal o con queratocono, sin distinguir etapas de la enfermedad. Por eso el prototipo no puede medir por separado su desempeño en los casos subclínicos, que son los más difíciles de detectar.
         \end{itemize}
 
-        Estas limitaciones no invalidan el prototipo, pero acotan lo que sus resultados permiten afirmar: el desempeño obtenido describe el comportamiento del modelo sobre los datos con los que se evalúe y no constituye una validación clínica.
-
-    \subsection*{Trabajo futuro}
-
-        Quedan fuera del alcance del PFI, y se plantean como líneas de trabajo futuro:
-
-        \begin{itemize}[leftmargin=*]
-            \item La estratificación del riesgo, ya sea mediante los índices del sistema ABCD de Belin o mediante la predicción del riesgo de progresión con redes neuronales recurrentes. Ambas requieren datos que CornOrb no incluye: valores ABCD o estudios de un mismo paciente en distintas visitas.
-
-            \item La validación clínica con muestras locales de distintos centros de salud de la región, a partir de las solicitudes ya iniciadas (ver capítulo Desarrollo).
-
-            \item La adaptación de modelos fundacionales al análisis de la topografía corneal, que requiere conjuntos de datos del segmento anterior del ojo y una capacidad de cómputo que exceden el alcance del PFI.
-
-            \item La compatibilidad con otros equipos de diagnóstico, como Pentacam\textsuperscript{\scriptsize\textregistered}{} o Sirius\textsuperscript{\scriptsize\textregistered}{}, condicionada a la obtención de sus archivos de exportación.
-
-            \item La inscripción del sistema como producto médico ante la ANMAT y su lanzamiento comercial, cuya planificación se desarrolla en el capítulo Estudio financiero.
-        \end{itemize}
+        Por estas limitaciones, los resultados describen el comportamiento del modelo sobre los datos con los que se evalúa. No constituyen una validación clínica de KERALYTIX. Lo que queda fuera del alcance del PFI se detalla en la sección Líneas futuras, al final del informe.
 
 \phantomsection
 \section{Marco teórico}
@@ -275,7 +257,7 @@
 
         Sin embargo, una revisión sistemática reciente de diez modelos fundacionales en oftalmología indica que ocho de ellos se centran en enfermedades de la retina, mientras que las aplicaciones al segmento anterior del ojo se limitan a tumores de la superficie ocular~\cite{jin_fm_oftalmologia}. La misma revisión señala como barreras para su adopción clínica la falta de interpretabilidad, la elevada demanda de cómputo, la integración con los sistemas clínicos existentes y la necesidad de validación por parte de los especialistas.
 
-        Estos antecedentes son relevantes para el presente trabajo por dos motivos. En primer lugar, confirman el valor de combinar múltiples fuentes de información y de reutilizar conocimiento previamente aprendido, principios que el prototipo puede aplicar a menor escala: la rama convolucional puede partir de una red preentrenada (aprendizaje por transferencia) y se combina con los datos clínicos del paciente. En segundo lugar, muestran que los mapas de topografía corneal, centrales para el diagnóstico del queratocono, aún no forman parte de los modelos fundacionales disponibles. Por ello, y dado el volumen de datos y de cómputo que requieren, su desarrollo o adaptación para el queratocono se plantea como una línea de trabajo futuro (ver sección Alcance y limitaciones).
+        Estos antecedentes son relevantes para el presente trabajo por dos motivos. En primer lugar, confirman el valor de combinar múltiples fuentes de información y de reutilizar conocimiento previamente aprendido, principios que el prototipo puede aplicar a menor escala: la rama convolucional puede partir de una red preentrenada (aprendizaje por transferencia) y se combina con los datos clínicos del paciente. En segundo lugar, muestran que los mapas de topografía corneal, centrales para el diagnóstico del queratocono, aún no forman parte de los modelos fundacionales disponibles. Por ello, y dado el volumen de datos y de cómputo que requieren, su desarrollo o adaptación para el queratocono se plantea como una línea futura (ver sección Líneas futuras).
 
     \phantomsection
     \subsection{Explicabilidad de la Inteligencia Artificial (XAI)}
@@ -298,7 +280,7 @@
 
         El sistema ABCD de Belin es un método de clasificación del queratocono que evalúa la córnea en cuatro dimensiones: A (elevación anterior), B (elevación posterior), C (curvatura corneal) y D (espesor corneal o paquimetría). Cada parámetro se puntúa en una escala que permite una estratificación objetiva de la severidad de la enfermedad y su riesgo de progresión. Este sistema supera las limitaciones del análisis convencional de mapas topográficos, que depende exclusivamente de la interpretación visual del especialista, ya que integra múltiples parámetros objetivos en una evaluación unificada, lo que facilita la comparabilidad de los resultados con estudios publicados y la aceptación del sistema por parte de la comunidad oftalmológica. Al basar la estratificación en un sistema validado y ampliamente reconocido, el proyecto se posiciona como una herramienta complementaria al flujo de trabajo clínico existente y no como un reemplazo del criterio médico especializado.
 
-        Predecir los valores del sistema ABCD a partir de los mapas corneales permitiría que el sistema propuesto entregue, además de la detección, una clasificación de la severidad alineada con los estándares internacionales de diagnóstico. Sin embargo, entrenar un modelo con ese fin requiere estudios etiquetados con dichos índices, con los que no cuenta el conjunto de datos utilizado. Por este motivo, la estratificación basada en el sistema ABCD se plantea como una línea de trabajo futuro (ver sección Alcance y limitaciones).
+        Predecir los valores del sistema ABCD a partir de los mapas corneales permitiría que el sistema propuesto entregue, además de la detección, una clasificación de la severidad alineada con los estándares internacionales de diagnóstico. Sin embargo, entrenar un modelo con ese fin requiere estudios etiquetados con dichos índices, con los que no cuenta el conjunto de datos utilizado. Por este motivo, la estratificación basada en el sistema ABCD se plantea como una línea futura (ver sección Líneas futuras).
 
 \phantomsection
 \section{Propuesta metodológica}
