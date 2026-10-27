@@ -1,0 +1,28 @@
+% Esquema de la propuesta metodológica (etapas de CRISP-DM y fases del PFI)
+\begin{tikzpicture}[
+    node distance = 0.4cm,
+    etapa/.style = {draw, align=center, font=\small, fill=gray!10,
+                    text width=2.05cm, minimum height=1.3cm, inner sep=3pt,
+                    execute at begin node={\setstretch{1}\hyphenpenalty=10000}},
+    fase/.style = {font=\footnotesize, align=center,
+                   execute at begin node={\setstretch{1}}},
+    llave/.style = {decorate, decoration={brace, amplitude=5pt, mirror}, thick},
+    flecha/.style = {-{Stealth[length=2.2mm]}, thick}
+  ]
+  \node[etapa] (e1) {Comprensión del problema};
+  \node[etapa, right=of e1] (e2) {Comprensión de los datos};
+  \node[etapa, right=of e2] (e3) {Preparación de los datos};
+  \node[etapa, right=of e3] (e4) {Modelado};
+  \node[etapa, right=of e4] (e5) {Evaluación};
+  \node[etapa, right=of e5, fill=gray!25] (e6) {Despliegue};
+
+  \foreach \a/\b in {e1/e2, e2/e3, e3/e4, e4/e5, e5/e6}
+    \draw[flecha] (\a) -- (\b);
+
+  % Iteraciones de CRISP-DM
+  \draw[flecha] (e5.north) -- ++(0,0.45cm) -| node[fase, pos=0.25, above] {nuevas iteraciones} (e3.north);
+
+  % Fases del PFI
+  \draw[llave] ($(e1.south west)+(0,-0.15cm)$) -- node[fase, below=6pt] {Primera fase:\\datos y modelo} ($(e5.south east)+(0,-0.15cm)$);
+  \draw[llave] ($(e6.south west)+(0,-0.15cm)$) -- node[fase, below=6pt] {Segunda fase:\\aplicación web} ($(e6.south east)+(0,-0.15cm)$);
+\end{tikzpicture}

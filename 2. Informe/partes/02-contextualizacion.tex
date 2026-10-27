@@ -269,7 +269,7 @@
 
         Un SaMD es un \textit{software} destinado a usarse con uno o más fines médicos que cumple esos fines sin formar parte de un equipo médico~\cite{imdrf_samd}. KERALYTIX entra en esta categoría. Analiza estudios corneales para apoyar un diagnóstico, y funciona por separado del equipo que generó esos estudios.
 
-        En Argentina, los productos médicos se clasifican según su riesgo en cuatro clases, de la I (menor riesgo) a la IV (mayor riesgo)~\cite{dispo_2318}. La Disposición N.º 9688/2019 establece que el \textit{software} que funciona de forma independiente se considera un producto médico activo~\cite{dispo_9688}. A su vez, la Disposición N.º 2318/2002 ubica en la Clase II a los productos médicos activos con fines de diagnóstico. Por eso KERALYTIX corresponde a la Clase II.
+        En Argentina, los productos médicos se clasifican según su riesgo en cuatro clases, de la I (menor riesgo) a la IV (mayor riesgo)~\cite{dispo_2318}. La Disposición N.º 9688/2019 establece que el \textit{software} que funciona de forma independiente se considera un producto médico activo~\cite{dispo_9688}. La Disposición N.º 2318/2002 ubica en la Clase II a los productos médicos activos con fines de diagnóstico. Por eso KERALYTIX corresponde a la Clase II.
 
         El registro en esta clase exige demostrar la seguridad y la eficacia del producto, como se describió en la sección Riesgos de implementación y barreras normativas. Esto se tiene en cuenta desde el inicio del desarrollo. Cada decisión se documenta y queda registrada, para poder presentar esa trazabilidad ante la ANMAT al momento de la inscripción.
 
@@ -283,40 +283,45 @@
 \phantomsection
 \section{Propuesta metodológica}
 
-    La propuesta se adapta a la metodología CRISP-DM combinada con un desarrollo incremental, dado que el proyecto avanza mediante ciclos iterativos de entendimiento y preparación de datos, modelado, evaluación y despliegue, en lugar de seguir un esquema secuencial clásico tipo cascada.
+    La propuesta se basa en la metodología CRISP-DM~\cite{crisp_dm} combinada con un desarrollo incremental. El proyecto avanza en ciclos que repiten la comprensión y preparación de los datos, el modelado, la evaluación y el despliegue, en lugar de seguir un esquema en cascada (Figura~\ref{fig:esquema_metodologia}).
 
-    La planificación distingue dos horizontes. El primero corresponde al PFI y abarca las dos primeras fases, que culminan en el prototipo descrito en la sección Alcance y limitaciones. El segundo corresponde a la proyección del producto: las fases tres y cuatro, necesarias para llevar el prototipo al uso clínico y comercial, y que quedan fuera del alcance del PFI.
+    \begin{figure}[H] \centering
+        \input{img/esquema_metodologia}
+        \caption{Esquema de la propuesta metodológica.}
+        \label{fig:esquema_metodologia}
+    \end{figure}
 
-    Para el PFI se establece una línea base de cuatro meses, de octubre de 2026 a enero de 2027, en concordancia con la duración de un cuatrimestre. A esta línea base se suma una reserva de contingencia de hasta dos meses (febrero y marzo de 2027), destinada a absorber los retrasos que puedan surgir por la naturaleza iterativa del modelado o por la materialización de los riesgos identificados en la sección Gestión de riesgos.
+    La planificación distingue dos horizontes. El primero corresponde al PFI y abarca las dos primeras fases, que terminan en el prototipo descrito en la sección Alcance y limitaciones. El segundo corresponde a la proyección del producto. Incluye las fases tres y cuatro, que hacen falta para llevar el prototipo al uso clínico y comercial y quedan fuera del PFI.
+
+    Para el PFI se establece una línea base de cuatro meses, de octubre de 2026 a enero de 2027, que coincide con un cuatrimestre. Se suma una reserva de contingencia de hasta dos meses, febrero y marzo de 2027, para absorber retrasos. Esos retrasos pueden venir de la naturaleza iterativa del modelado o de los riesgos identificados en la sección Gestión de riesgos.
 
     \subsection*{Primera fase: datos y modelo}
 
-        La primera fase abarca los meses uno a tres (octubre a diciembre de 2026) y se centra en la preparación de los datos y el desarrollo del modelo. Desde su inicio se definen los requisitos regulatorios, legales y de calidad, estableciendo las políticas de documentación y trazabilidad que exigirá la futura inscripción del sistema como producto médico, de modo que el registro de cada decisión se lleve en paralelo al desarrollo y no deba reconstruirse al final.
+        La primera fase abarca los meses uno a tres, de octubre a diciembre de 2026, y se centra en los datos y el modelo. Desde el inicio se definen los requisitos regulatorios, legales y de calidad. También se fijan las políticas de documentación y trazabilidad que pedirá la inscripción de KERALYTIX como producto médico. Así, cada decisión queda registrada durante el desarrollo y no hay que reconstruirla al final.
 
-        Se parte del análisis exploratorio del \textit{dataset} CornOrb~\cite{zenodo}, cuyos resultados se presentan en el capítulo Desarrollo, y se preparan los datos para el entrenamiento. Luego se experimenta con arquitecturas multimodales que combinan una rama convolucional para los mapas corneales con una rama para las variables clínicas. El modelo seleccionado se entrena y se evalúa con la partición de entrenamiento y prueba que provee el propio \textit{dataset}, priorizando la reducción de los falsos negativos, y se le integra la técnica Grad-CAM para generar la explicación visual de cada predicción.
+        El trabajo parte del análisis exploratorio de CornOrb~\cite{zenodo}, cuyos resultados se presentan en el capítulo Desarrollo, y de la preparación de los datos para el entrenamiento. Después se prueban arquitecturas multimodales que combinan una rama convolucional para los mapas corneales con una rama para las variables clínicas. El modelo elegido se entrena y se evalúa con la partición de entrenamiento y prueba que trae el \textit{dataset}, priorizando la reducción de falsos negativos. Por último, se le integra Grad-CAM para generar la explicación visual de cada predicción.
 
-        En paralelo, se avanza con las solicitudes de muestras locales anonimizadas a centros oftalmológicos de la región. Si se obtienen durante esta fase, se utilizan para una primera evaluación del modelo sobre datos regionales; el lote completo se destina a la validación clínica prevista en la tercera fase.
+        En paralelo, se avanza con las solicitudes de muestras locales anonimizadas a centros oftalmológicos de la región. Si llegan durante esta fase, se usan para una primera evaluación del modelo sobre datos regionales. El lote completo se reserva para la validación clínica de la tercera fase.
 
     \subsection*{Segunda fase: aplicación web}
 
-        La segunda fase abarca los meses tres y cuatro (diciembre de 2026 y enero de 2027), solapándose con el cierre de la primera. En ella el modelo se encapsula en una aplicación web: se desarrolla el \textit{backend}, encargado de la lógica del servidor y de exponer el modelo mediante una API construida con el \textit{framework} FastAPI, y el \textit{frontend}, la interfaz con la que interactúa el oftalmólogo, desarrollada con React.
+        La segunda fase abarca los meses tres y cuatro, diciembre de 2026 y enero de 2027, y se superpone con el cierre de la primera. En ella el modelo se integra a una aplicación web. El \textit{backend} es la parte del servidor y expone el modelo mediante una interfaz de programación (API) construida con FastAPI. El \textit{frontend} es la interfaz que usa el oftalmólogo y se desarrolla con React.
 
-        La aplicación permite cargar los estudios de un paciente, ejecutar el modelo y consultar un informe con el resultado, el nivel de confianza y el mapa de calor que lo justifica. Además, incorpora la gestión de usuarios necesaria para el modelo de suscripción y se despliega en un servidor VPS para su prueba.
+        La aplicación permite cargar los estudios de un paciente, ejecutar el modelo y consultar un informe con el resultado, el nivel de confianza y el mapa de calor. También incluye la gestión de usuarios que necesita el modelo de suscripción. Para las pruebas se publica en un servidor virtual privado (VPS).
 
     \subsection*{Proyección del producto}
 
-        Una vez finalizado el PFI, la llegada del sistema al uso clínico y comercial requiere dos fases adicionales, cada una con una duración estimada de dos meses.
+        Después del PFI, llevar KERALYTIX al uso clínico y comercial requiere dos fases más, de dos meses cada una.
 
-        La tercera fase corresponde a la validación clínica y las pruebas de usuario. Se verifica el desempeño del modelo con un conjunto de alrededor de 150 estudios locales no utilizados durante el entrenamiento, calculando un intervalo de confianza del 90\,\% sobre las métricas de sensibilidad y especificidad, y se realizan ajustes de la interfaz a partir de pruebas de usabilidad con personal médico.
+        La tercera fase es la validación clínica y las pruebas con usuarios. El desempeño del modelo se verifica con unos 150 estudios locales que no se usaron en el entrenamiento. Sobre la sensibilidad y la especificidad se calcula un intervalo de confianza del 90\%. También se ajusta la interfaz a partir de pruebas de uso con personal médico.
 
-        La cuarta fase corresponde a la certificación regulatoria y el lanzamiento. Se cierra el informe técnico elaborado a lo largo de todo el desarrollo y, con el acompañamiento de un abogado consultor, se gestiona la inscripción del sistema como producto médico Clase II ante la ANMAT. Asimismo, se aprueban los contratos de confidencialidad, los términos de uso con limitación de responsabilidad clínica y los consentimientos informados, en cumplimiento de la Ley N.º 25.326 (2000) de Protección de los Datos Personales. Por último, se ejecuta la campaña de comunicación del producto y se elabora la documentación técnica y el manual de usuario.
+        La cuarta fase es la certificación y el lanzamiento. Se cierra el informe técnico armado durante todo el desarrollo. Con el apoyo de un abogado, se gestiona la inscripción de KERALYTIX como producto médico Clase II ante la ANMAT. También se aprueban los contratos de confidencialidad, los términos de uso con limitación de responsabilidad clínica y los consentimientos informados, según la Ley N.º 25.326. Por último, se lanza la campaña de comunicación y se elaboran la documentación técnica y el manual de usuario.
 
-        Sumando el PFI (incluida su reserva de contingencia) y estas dos fases, el desarrollo completo del producto se extiende por diez meses, con el lanzamiento comercial a partir del mes once. Este horizonte es el que se toma como base para el análisis económico del capítulo Estudio financiero.
+        Sumando el PFI, con su reserva de contingencia, y estas dos fases, el desarrollo completo dura diez meses. El lanzamiento comercial es a partir del mes once. Este horizonte es la base del análisis económico del capítulo Estudio financiero.
 
-    \vspace{0.25 cm}
     \subsection{Cronograma de actividades}
 
-        La Tabla~\ref{tabla:cronograma} resume la distribución temporal de las fases, y el detalle de las actividades se presenta en el Diagrama de Gantt de la Figura~\ref{fig:anexo_gantt}, por mes. En azul, las actividades del PFI (de octubre de 2026 a enero de 2027); en gris, la reserva de contingencia (febrero y marzo de 2027); y en naranja, las fases de la proyección del producto.
+        La Tabla~\ref{tabla:cronograma} resume cuándo se desarrolla cada fase. El detalle mensual de las actividades está en el diagrama de Gantt de la Figura~\ref{fig:anexo_gantt} en el Anexo de imágenes.
 
         \begingroup \setstretch{1.1}
         \begin{longtblr}[
