@@ -458,6 +458,55 @@
         \endgroup
     \end{landscape}
 
+        La Tabla~\ref{tabla:anexo_flujo_anual} extiende el flujo a los seis años del horizonte de evaluación con los mismos rubros. Las inversiones del primer año se detallan por rubro, y las cuotas de los créditos se separan en intereses y amortización del capital.
+
+        \begingroup \setstretch{1.0}
+        \begin{longtblr}[
+            caption = Flujo de caja anual de los seis años con financiamiento,
+            label = tabla:anexo_flujo_anual
+            ]{
+                colspec = {Q[l,m,3.6cm] *{7}{X[r,m]}},
+                cells = {font=\scriptsize},
+                row{1} = {bg=gray!15, font=\scriptsize\bfseries, halign=c},
+                rowhead = 1,
+                row{7,21,26,27,28} = {bg=gray!15, font=\scriptsize\bfseries},
+                hlines, vlines,
+                rowsep = 1.5pt, colsep = 2pt
+            }
+
+            Concepto & Año 1 & Año 2 & Año 3 & Año 4 & Año 5 & Año 6 & Total \\
+
+                Saldo inicial de caja & 0 & 2.438.452 & 467.591 & 1.120.731 & 6.093.871 & 15.387.010 & --- \\
+                Ingresos por suscripciones & 360.000 & 4.320.000 & 6.480.000 & 10.800.000 & 15.120.000 & 25.920.000 & 63.000.000 \\
+                VPS & $-$249.600 & $-$499.200 & $-$499.200 & $-$499.200 & $-$499.200 & $-$499.200 & $-$2.745.600 \\
+                Claude Code y Google Colab & 0 & $-$591.600 & $-$591.600 & $-$591.600 & $-$591.600 & $-$591.600 & $-$2.958.000 \\
+                Monotributo (2 integrantes) & $-$1.188.652 & $-$1.188.652 & $-$1.188.652 & $-$1.188.652 & $-$1.188.652 & $-$1.188.652 & $-$7.131.914 \\
+                Flujo de caja operativo & $-$1.078.252 & 2.040.548 & 4.200.548 & 8.520.548 & 12.840.548 & 23.640.548 & 50.164.486 \\
+                Computadoras portátiles & $-$4.200.000 & 0 & 0 & 0 & 0 & 0 & $-$4.200.000 \\
+                Consultoría oftalmológica & $-$2.580.000 & 0 & 0 & 0 & 0 & 0 & $-$2.580.000 \\
+                Consultoría legal & $-$387.640 & 0 & 0 & 0 & 0 & 0 & $-$387.640 \\
+                Pasantes desarrolladores IA & $-$3.171.600 & 0 & 0 & 0 & 0 & 0 & $-$3.171.600 \\
+                Pasantes desarrolladores web & $-$704.800 & 0 & 0 & 0 & 0 & 0 & $-$704.800 \\
+                Honorarios diseñador web & $-$480.000 & 0 & 0 & 0 & 0 & 0 & $-$480.000 \\
+                Honorarios marketing digital & $-$162.000 & 0 & 0 & 0 & 0 & 0 & $-$162.000 \\
+                Suscripción a Claude Code & $-$372.000 & 0 & 0 & 0 & 0 & 0 & $-$372.000 \\
+                Suscripción a Google Colab & $-$219.600 & 0 & 0 & 0 & 0 & 0 & $-$219.600 \\
+                Traslados a la clínica & $-$20.000 & 0 & 0 & 0 & 0 & 0 & $-$20.000 \\
+                Registro Clase II (ANMAT) & $-$52.000 & 0 & 0 & 0 & 0 & 0 & $-$52.000 \\
+                Habilitación de fabricante (ANMAT) & $-$1.523.100 & 0 & 0 & 0 & 0 & 0 & $-$1.523.100 \\
+                Congreso (traslado e inscripción) & 0 & $-$464.000 & 0 & 0 & 0 & 0 & $-$464.000 \\
+                Flujo de caja de inversión & $-$13.872.740 & $-$464.000 & 0 & 0 & 0 & 0 & $-$14.336.740 \\
+                Aporte propio & 8.500.000 & 0 & 0 & 0 & 0 & 0 & 8.500.000 \\
+                Desembolso de los créditos & 12.000.000 & 0 & 0 & 0 & 0 & 0 & 12.000.000 \\
+                Intereses de los créditos & $-$1.732.525 & $-$1.453.192 & $-$1.116.537 & $-$725.763 & $-$272.171 & 0 & $-$5.300.188 \\
+                Amortización del capital & $-$1.378.031 & $-$2.094.216 & $-$2.430.871 & $-$2.821.645 & $-$3.275.237 & 0 & $-$12.000.000 \\
+                Flujo de caja de financiamiento & 17.389.444 & $-$3.547.408 & $-$3.547.408 & $-$3.547.408 & $-$3.547.408 & 0 & 3.199.812 \\
+                Flujo de caja neto & 2.438.452 & $-$1.970.860 & 653.140 & 4.973.140 & 9.293.140 & 23.640.548 & 39.027.558 \\
+                Saldo final de caja & 2.438.452 & 467.591 & 1.120.731 & 6.093.871 & 15.387.010 & 39.027.558 & --- \\
+
+        \end{longtblr}
+        \endgroup
+
         \begingroup \setstretch{1.0}
         \begin{longtblr}[
             caption = Plan de amortización mensual de los dos créditos Despegue Emprendedor,
