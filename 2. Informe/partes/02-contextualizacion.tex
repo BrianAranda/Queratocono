@@ -291,21 +291,23 @@
         \label{fig:esquema_metodologia}
     \end{figure}
 
-    La planificación distingue dos horizontes. El primero corresponde al PFI y abarca las dos primeras fases, que terminan en el prototipo descrito en la sección Alcance y limitaciones. El segundo corresponde a la proyección del producto. Incluye las fases tres y cuatro, que hacen falta para llevar el prototipo al uso clínico y comercial y quedan fuera del PFI.
+    La planificación distingue dos horizontes. El primero corresponde al PFI y abarca las tres primeras fases, que terminan en el prototipo descrito en la sección Alcance y limitaciones. El segundo corresponde a la proyección del producto. Incluye las fases cuatro y cinco, que hacen falta para llevar el prototipo al uso clínico y comercial y quedan fuera del PFI.
 
-    Para el PFI se establece una línea base de cuatro meses, de octubre de 2026 a enero de 2027, que coincide con un cuatrimestre. Se suma una reserva de contingencia de hasta dos meses, febrero y marzo de 2027, para absorber retrasos. Esos retrasos pueden venir de la naturaleza iterativa del modelado o de los riesgos identificados en la sección Gestión de riesgos.
+    Para el PFI se establece una línea base de cinco meses, de agosto a diciembre de 2026. Se suma una reserva de contingencia de un mes, enero de 2027, para absorber retrasos. Esos retrasos pueden venir de la naturaleza iterativa del modelado o de los riesgos identificados en la sección Gestión de riesgos.
 
-    \subsection*{Primera fase: datos y modelo}
+    \subsection*{Primera fase: comprensión y selección de datos}
 
-        La primera fase abarca los meses uno a tres, de octubre a diciembre de 2026, y se centra en los datos y el modelo. Desde el inicio se definen los requisitos regulatorios, legales y de calidad. También se fijan las políticas de documentación y trazabilidad que pedirá la inscripción de KERALYTIX como producto médico. Así, cada decisión queda registrada durante el desarrollo y no hay que reconstruirla al final.
+        La primera fase ocupa el mes uno, agosto de 2026. Desde el inicio se definen los requisitos regulatorios, legales y de calidad. También se fijan las políticas de documentación y trazabilidad que pedirá la inscripción de KERALYTIX como producto médico. Así, cada decisión queda registrada durante el desarrollo y no hay que reconstruirla al final. En esta fase se seleccionó CornOrb~\cite{zenodo} como conjunto de datos de trabajo, por ser público y reunir los mapas corneales y las variables clínicas de cada ojo. Sobre él se hace el análisis exploratorio, cuyos resultados se presentan en el capítulo Desarrollo.
 
-        El trabajo parte del análisis exploratorio de CornOrb~\cite{zenodo}, cuyos resultados se presentan en el capítulo Desarrollo, y de la preparación de los datos para el entrenamiento. Después se prueban arquitecturas multimodales que combinan una rama convolucional para los mapas corneales con una rama para las variables clínicas. El modelo elegido se entrena y se evalúa con la partición de entrenamiento y prueba que trae el \textit{dataset}, priorizando la reducción de falsos negativos. Por último, se le integra Grad-CAM para generar la explicación visual de cada predicción.
+        En la misma fase se inician las solicitudes de muestras locales anonimizadas a centros oftalmológicos de la región. Las solicitudes siguen en paralelo durante el resto del PFI. Si las muestras llegan a tiempo, se usan para una primera evaluación del modelo sobre datos regionales. El lote completo se reserva para la validación clínica de la cuarta fase.
 
-        En paralelo, se avanza con las solicitudes de muestras locales anonimizadas a centros oftalmológicos de la región. Si llegan durante esta fase, se usan para una primera evaluación del modelo sobre datos regionales. El lote completo se reserva para la validación clínica de la tercera fase.
+    \subsection*{Segunda fase: modelado}
 
-    \subsection*{Segunda fase: aplicación web}
+        La segunda fase abarca los meses dos a cuatro, de septiembre a noviembre de 2026. Es la fase iterativa de la metodología. Los datos se preparan para el entrenamiento y se prueban arquitecturas multimodales que combinan una rama convolucional para los mapas corneales con una rama para las variables clínicas. El modelo elegido se entrena y se evalúa con la partición de entrenamiento y prueba que trae el \textit{dataset}, priorizando la reducción de falsos negativos. Si la evaluación no da resultados aceptables, se vuelve a la preparación de los datos o al modelado. Por último, se integra Grad-CAM para generar la explicación visual.
 
-        La segunda fase abarca los meses tres y cuatro, diciembre de 2026 y enero de 2027, y se superpone con el cierre de la primera. En ella el modelo se integra a una aplicación web. El \textit{backend} es la parte del servidor y expone el modelo mediante una interfaz de programación (API) construida con FastAPI. El \textit{frontend} es la interfaz que usa el oftalmólogo y se desarrolla con React.
+    \subsection*{Tercera fase: aplicación web}
+
+        La tercera fase abarca los meses cuatro y cinco, noviembre y diciembre de 2026, y se superpone con el cierre de la segunda. En ella el modelo se integra a una aplicación web. El \textit{backend} es la parte del servidor y expone el modelo mediante una interfaz de programación (API) construida con FastAPI. El \textit{frontend} es la interfaz que usa el oftalmólogo y se desarrolla con React.
 
         La aplicación permite cargar los estudios de un paciente, ejecutar el modelo y consultar un informe con el resultado, el nivel de confianza y el mapa de calor. También incluye la gestión de usuarios que necesita el modelo de suscripción. Para las pruebas se publica en un servidor virtual privado (VPS).
 
@@ -313,9 +315,9 @@
 
         Después del PFI, llevar KERALYTIX al uso clínico y comercial requiere dos fases más, de dos meses cada una.
 
-        La tercera fase es la validación clínica y las pruebas con usuarios. El desempeño del modelo se verifica con unos 150 estudios locales que no se usaron en el entrenamiento. Sobre la sensibilidad y la especificidad se calcula un intervalo de confianza del 90\%. También se ajusta la interfaz a partir de pruebas de uso con personal médico.
+        La cuarta fase es la validación clínica y las pruebas con usuarios. El desempeño del modelo se verifica con unos 150 estudios locales que no se usaron en el entrenamiento. Sobre la sensibilidad y la especificidad se calcula un intervalo de confianza del 90\%. También se ajusta la interfaz a partir de pruebas de uso con personal médico.
 
-        La cuarta fase es la certificación y el lanzamiento. Se cierra el informe técnico armado durante todo el desarrollo. Con el apoyo de un abogado, se gestiona la inscripción de KERALYTIX como producto médico Clase II ante la ANMAT. También se aprueban los contratos de confidencialidad, los términos de uso con limitación de responsabilidad clínica y los consentimientos informados, según la Ley N.º 25.326. Por último, se lanza la campaña de comunicación y se elaboran la documentación técnica y el manual de usuario.
+        La quinta fase es la certificación y el lanzamiento. Se cierra el informe técnico armado durante todo el desarrollo. Con el apoyo de un abogado, se gestiona la inscripción de KERALYTIX como producto médico Clase II ante la ANMAT. También se aprueban los contratos de confidencialidad, los términos de uso con limitación de responsabilidad clínica y los consentimientos informados, según la Ley N.º 25.326. Por último, se lanza la campaña de comunicación y se elaboran la documentación técnica y el manual de usuario.
 
         Sumando el PFI, con su reserva de contingencia, y estas dos fases, el desarrollo completo dura diez meses. El lanzamiento comercial es a partir del mes once. Este horizonte es la base del análisis económico del capítulo Estudio financiero.
 
@@ -337,15 +339,17 @@
 
             Fase & Meses & Período & Horizonte \\
 
-            Primera fase: datos y modelo & 1 a 3 & octubre a diciembre de 2026 & PFI \\
+            Primera fase: comprensión y selección de datos & 1 & agosto de 2026 & PFI \\
 
-            Segunda fase: aplicación web & 3 y 4 & diciembre de 2026 y enero de 2027 & PFI \\
+            Segunda fase: modelado & 2 a 4 & septiembre a noviembre de 2026 & PFI \\
 
-            Reserva de contingencia & 5 y 6 & febrero y marzo de 2027 & PFI \\
+            Tercera fase: aplicación web & 4 y 5 & noviembre y diciembre de 2026 & PFI \\
 
-            Tercera fase: validación clínica & 7 y 8 & --- & Producto \\
+            Reserva de contingencia & 6 & enero de 2027 & PFI \\
 
-            Cuarta fase: certificación y lanzamiento & 9 y 10 & --- & Producto \\
+            Cuarta fase: validación clínica & 7 y 8 & --- & Producto \\
+
+            Quinta fase: certificación y lanzamiento & 9 y 10 & --- & Producto \\
 
         \end{longtblr}
         \endgroup

@@ -10,7 +10,7 @@
     \definecolor{ganttreserva}{HTML}{BBBBBB}
     \definecolor{ganttproducto}{HTML}{E4572E}
 
-    En azul figuran las actividades del PFI, de octubre de 2026 a enero de 2027. En gris figura la reserva de contingencia, de febrero y marzo de 2027. En naranja figuran las fases de la proyección del producto.
+    En azul figuran las actividades del PFI, de agosto a diciembre de 2026. En gris figura la reserva de contingencia, en enero de 2027. En naranja figuran las fases de la proyección del producto.
 
     \begin{figure}[H] \centering
         \begin{ganttchart}[
@@ -40,28 +40,30 @@
 
             \ganttbar{Documentación y trazabilidad}{1}{10} \\
 
-            \ganttgroup{Fase 1: datos y modelo}{1}{3} \\
+            \ganttgroup{Fase 1: comprensión y selección de datos}{1}{1} \\
             \ganttbar{Requisitos regulatorios}{1}{1} \\
             \ganttbar{Análisis exploratorio de datos}{1}{1} \\
-            \ganttbar{Preprocesamiento de los datos}{1}{2} \\
-            \ganttbar{Entrenamiento del modelo}{2}{3} \\
-            \ganttbar{Evaluación e integración de Grad-CAM}{3}{3} \\
-            \ganttbar{Solicitud de muestras locales}{1}{4} \\
+            \ganttbar{Solicitud de muestras locales}{1}{5} \\
 
-            \ganttgroup{Fase 2: aplicación web}{3}{4} \\
-            \ganttbar{\textit{Backend} (API con FastAPI)}{3}{4} \\
-            \ganttbar{\textit{Frontend} (React)}{3}{4} \\
-            \ganttbar{Usuarios y suscripción}{4}{4} \\
-            \ganttbar{Despliegue en servidor VPS}{4}{4} \\
-            \ganttmilestone{Prototipo terminado}{4} \\
+            \ganttgroup{Fase 2: modelado}{2}{4} \\
+            \ganttbar{Preprocesamiento de los datos}{2}{3} \\
+            \ganttbar{Entrenamiento del modelo}{3}{4} \\
+            \ganttbar{Evaluación e integración de Grad-CAM}{4}{4} \\
 
-            \ganttbar[bar/.append style={fill=ganttreserva}]{Reserva de contingencia}{5}{6} \\
+            \ganttgroup{Fase 3: aplicación web}{4}{5} \\
+            \ganttbar{\textit{Backend} (API con FastAPI)}{4}{5} \\
+            \ganttbar{\textit{Frontend} (React)}{4}{5} \\
+            \ganttbar{Usuarios y suscripción}{5}{5} \\
+            \ganttbar{Despliegue en servidor VPS}{5}{5} \\
+            \ganttmilestone{Prototipo terminado}{5} \\
 
-            \ganttgroup{Fase 3: validación clínica}{7}{8} \\
+            \ganttbar[bar/.append style={fill=ganttreserva}]{Reserva de contingencia}{6}{6} \\
+
+            \ganttgroup{Fase 4: validación clínica}{7}{8} \\
             \ganttbar[bar/.append style={fill=ganttproducto}]{Evaluación con muestras locales}{7}{8} \\
             \ganttbar[bar/.append style={fill=ganttproducto}]{Pruebas de usabilidad}{8}{8} \\
 
-            \ganttgroup{Fase 4: certificación y lanzamiento}{9}{10} \\
+            \ganttgroup{Fase 5: certificación y lanzamiento}{9}{10} \\
             \ganttbar[bar/.append style={fill=ganttproducto}]{Cierre del informe técnico}{9}{9} \\
             \ganttbar[bar/.append style={fill=ganttproducto}]{Inscripción ante la ANMAT}{9}{10} \\
             \ganttbar[bar/.append style={fill=ganttproducto}]{Documentación legal}{9}{10} \\

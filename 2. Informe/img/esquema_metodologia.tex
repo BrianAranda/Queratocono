@@ -23,6 +23,7 @@
   \draw[flecha] (e5.north) -- ++(0,0.45cm) -| node[fase, pos=0.25, above] {nuevas iteraciones} (e3.north);
 
   % Fases del PFI
-  \draw[llave] ($(e1.south west)+(0,-0.15cm)$) -- node[fase, below=6pt] {Primera fase:\\datos y modelo} ($(e5.south east)+(0,-0.15cm)$);
-  \draw[llave] ($(e6.south west)+(0,-0.15cm)$) -- node[fase, below=6pt] {Segunda fase:\\aplicación web} ($(e6.south east)+(0,-0.15cm)$);
+  \draw[llave] ($(e1.south west)+(0,-0.15cm)$) -- node[fase, below=6pt] {Primera fase:\\comprensión y selección de datos} ($(e2.south east)+(0,-0.15cm)$);
+  \draw[llave] ($(e3.south west)+(0,-0.15cm)$) -- node[fase, below=6pt] {Segunda fase:\\modelado} ($(e5.south east)+(0,-0.15cm)$);
+  \draw[llave] ($(e6.south west)+(0,-0.15cm)$) -- node[fase, below=6pt] {Tercera fase:\\aplicación web} ($(e6.south east)+(0,-0.15cm)$);
 \end{tikzpicture}
