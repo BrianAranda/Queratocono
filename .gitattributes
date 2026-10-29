@@ -1,0 +1,10 @@
+# Finales de línea: el repositorio guarda siempre LF y cada sistema los
+# convierte al suyo al hacer checkout (CRLF en Windows, LF en Linux/Mac).
+# Así un cambio de CRLF/LF no aparece como archivo modificado.
+* text=auto
+
+# Binarios: nunca convertir
+*.pdf  binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
