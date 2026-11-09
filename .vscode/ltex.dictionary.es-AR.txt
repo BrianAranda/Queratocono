@@ -118,3 +118,10 @@ seaborn
 ipynb
 chi
 VisionFM
+TREMA
+TIR
+FOGAMI
+ATM
+CBU
+EMBI
+recategorizarse
