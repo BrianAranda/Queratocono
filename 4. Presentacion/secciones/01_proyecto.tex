@@ -33,7 +33,7 @@
     Una herramienta web que le da al oftalmólogo una segunda opinión sobre el estudio de la córnea.
     \vspace{0.1cm}
     \begin{center}
-        \begin{tikzpicture}[node distance=0.6cm and 0.9cm]
+        \begin{tikzpicture}[node distance=0.45cm and 0.9cm]
             \node[caja=3.2cm] (mapas) {\textbf{Mapas de la córnea}\\ \footnotesize los cuatro que exporta el equipo de topografía};
             \node[caja=3.2cm, below=of mapas] (clin) {\textbf{Datos del paciente}\\ \footnotesize edad, sexo, curvatura, espesor};
             \coordinate (medio) at ($(mapas.east)!0.5!(clin.east)$);
@@ -49,7 +49,7 @@
             \node[font=\footnotesize\bfseries, text=gray] at (informe |- {$(mapas.north)+(0,0.4cm)$}) {Qué entrega};
         \end{tikzpicture}
     \end{center}
-    {\small El mapa de calor marca qué zonas de la córnea llevaron al resultado. La decisión final es siempre del médico.}
+    {\small Los mapas son imágenes (datos no estructurados) y los datos del paciente son números en una tabla (datos estructurados). Por combinar los dos tipos, el modelo es \textbf{multimodal}. El mapa de calor marca qué zonas de la córnea llevaron al resultado. La decisión final es siempre del médico.}
 \end{frame}
 
 % ===============================================================

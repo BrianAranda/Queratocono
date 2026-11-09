@@ -138,7 +138,30 @@
 % 10. Fase 2: avance del modelado
 % ===============================================================
 \begin{frame}{Fase 2: avance del modelado}
-    \pendiente{Lo que el compañero tenga presentable del modelo: primera versión entrenada, resultados preliminares, capturas.}
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \small
+            Se armó la comparación de \textbf{redes base}, modelos ya entrenados con millones de imágenes que se reutilizan para los mapas corneales.
+            \begin{itemize}
+                \item Se prueban tres redes: MobileNetV2, EfficientNet-B3 y ConvNeXt-Tiny.
+                \item Se usa como referencia un modelo simple con los datos clínicos. Las imágenes tienen que superarlo.
+                \item El umbral se fija para detectar al menos el 95\,\% de los queratoconos.
+                \item Grad-CAM revisa que el modelo mire la córnea y no los números impresos en el mapa.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.46\textwidth}
+            \centering
+            \begin{tikzpicture}[node distance=0.3cm]
+                \node[caja=4.4cm, draw=verde] (a) {Datos limpios y separados por paciente};
+                \node[caja=4.4cm, draw=verde, below=of a] (b) {Comparación de redes base programada};
+                \node[caja=4.4cm, fill=azul!15, very thick, below=of b] (c) {\textbf{Primera corrida y revisión}\\ \footnotesize estamos acá};
+                \node[caja=4.4cm, draw=gray!60, text=gray, below=of c] (d) {Ajuste fino y fusión con los datos clínicos};
+                \draw[flecha] (a) -- (b);
+                \draw[flecha] (b) -- (c);
+                \draw[flecha, gray!60] (c) -- (d);
+            \end{tikzpicture}
+        \end{column}
+    \end{columns}
     \enproceso{Objetivos 2 y 3}
 \end{frame}
 
