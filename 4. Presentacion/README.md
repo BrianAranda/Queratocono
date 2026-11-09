@@ -10,7 +10,7 @@ Desde esta carpeta:
 ```
 latexmk
 ```
-El `.latexmkrc` ya indica el archivo principal (`main.tex`). Genera **`main.pdf`** junto al `.tex` y deja los auxiliares en `build/`. Antes de compilar, cerrar el PDF si el visor lo bloquea.
+El `.latexmkrc` ya indica el archivo principal (`main.tex`). Genera **`Presentacion.pdf`** junto al `.tex` y deja los auxiliares en `build/`. Antes de compilar, cerrar el PDF si el visor lo bloquea.
 
 Criterio: **0 advertencias**. En Beamer, un `Overfull` casi siempre es algo que se sale de la hoja aunque no se note.
 
@@ -27,7 +27,7 @@ Sigue la plantilla de las presentaciones de IdS2 y PDS, explicada en `Plantilla_
 | `config/tikz.tex` | Estilos `caja` y `flecha` para los diagramas |
 | `partes/` | `00-portada`, `01-proyecto`, `02-resultados`, `03-balance`, `04-final` y `anexo` (diapositivas de respaldo) |
 | `img/` | Logos, figuras del EDA y esquemas TikZ, como el de parámetros corneales copiado del informe |
-| `.latexmkrc` | Salida `main.pdf`, auxiliares en `build/` |
+| `.latexmkrc` | Salida `Presentacion.pdf`, auxiliares en `build/` |
 
 ## Macros propias
 - `\seccion{Título}`: ordena el archivo, sin diapositiva separadora.

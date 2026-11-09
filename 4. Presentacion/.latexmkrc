@@ -1,8 +1,8 @@
 # Archivo principal (así alcanza con correr "latexmk" sin argumentos)
 @default_files = ("main.tex");
 
-# Sin $jobname: el PDF se llama main.pdf, igual que el .tex, para que el visor
-# de LaTeX Workshop lo encuentre (busca un PDF con el nombre del archivo raíz)
+# Nombre del PDF de salida
+$jobname = "Presentacion";
 
 # Compilar a PDF con pdflatex
 $pdf_mode  = 1;
