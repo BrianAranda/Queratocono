@@ -1,0 +1,58 @@
+% LTeX: enabled=false
+% Sección 3: correspondencia entre objetivos y resultados, y próximos pasos
+
+\seccion{Balance}
+
+% ===============================================================
+% 12. Objetivos y resultados
+% ===============================================================
+\newcommand{\etiq}[2]{\fcolorbox{#1}{#1!10}{\textcolor{#1}{\textbf{#2}}}}
+
+\begin{frame}{Lo que nos propusimos y lo que logramos}
+    \begin{tabla}{colspec = {Q[c,m,0.7cm] Q[l,m,4.3cm] X[l,m] Q[c,m,2.3cm]},
+                  rows = {font=\footnotesize}, rowsep = 1pt}
+        Obj. & Qué nos propusimos & Qué logramos & Estado \\
+        1 & Analizar un conjunto de datos público & CornOrb seleccionado y revisado, con los datos a corregir identificados & \etiq{verde}{Alcanzado} \\
+        2 & Construir el modelo de IA & Diseño definido y primera versión en desarrollo & \etiq{azul}{En proceso} \\
+        3 & Integrar la explicación visual & Prevista con Grad-CAM, al cierre del modelado & \etiq{gray}{Por empezar} \\
+        4 & Desarrollar la aplicación web & Partes y herramientas definidas (React y FastAPI) & \etiq{gray}{Por empezar} \\
+        --- & Conseguir datos locales para validar & 9 centros contactados, charla con Roberto Albertazzi y trámites en curso & \etiq{azul}{En proceso} \\
+    \end{tabla}
+    \vspace{0.2cm}
+    \centering
+    {\small El avance coincide con el cronograma: la fase 1 está terminada y la fase 2 está en curso.}
+\end{frame}
+
+% ===============================================================
+% 13. Próximos pasos
+% ===============================================================
+\begin{frame}{Próximos pasos}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{block}{Noviembre}
+                \begin{itemize}
+                    \item Corregir los datos según la revisión.
+                    \item Entrenar y evaluar el modelo, priorizando no pasar por alto casos de queratocono.
+                    \item Integrar el mapa de calor.
+                    \item Empezar la aplicación web.
+                \end{itemize}
+            \end{block}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \begin{block}{Diciembre}
+                \begin{itemize}
+                    \item Terminar la aplicación web.
+                    \item Conectar el modelo con la aplicación.
+                    \item Tener el prototipo funcionando de punta a punta.
+                \end{itemize}
+            \end{block}
+            \vspace{0.2cm}
+            \begin{block}{En paralelo}
+                \begin{itemize}
+                    \item Avanzar con los trámites para los datos locales.
+                \end{itemize}
+            \end{block}
+        \end{column}
+    \end{columns}
+    \idea{Enero queda como reserva por si algo se atrasa.}
+\end{frame}

@@ -1,0 +1,8 @@
+% Estilos comunes de los diagramas (ver Plantilla_beamer.md, sección 4)
+\tikzset{
+    caja/.style={draw=azul, fill=white, align=center, font=\small,
+                 execute at begin node={\hyphenpenalty=10000},
+                 inner sep=5pt, text width=#1},
+    caja/.default=3cm,
+    flecha/.style={-{Stealth[length=2.5mm]}, thick, azul},
+}

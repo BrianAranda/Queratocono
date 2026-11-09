@@ -1,0 +1,103 @@
+% LTeX: enabled=false
+% Sección 1: el problema y qué es KERALYTIX, en lenguaje simple
+
+\seccion{El proyecto}
+
+% ===============================================================
+% 1. El problema
+% ===============================================================
+\begin{frame}{El problema: detectar el queratocono a tiempo}
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item La córnea se adelgaza y se deforma hasta tomar forma de cono.
+                \item Aparece en jóvenes y avanza rápido. Al principio se confunde con miopía o astigmatismo.
+                \item Incluso con IA, 1 de cada 10 casos iniciales pasa desapercibido.
+                \item Detectada tarde, puede terminar en un trasplante de córnea.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.46\textwidth}
+            \centering\vspace{0.3cm}
+            \includegraphics[width=0.49\linewidth]{queratocono_deformacion_a.png}\hfill
+            \includegraphics[width=0.49\linewidth]{queratocono_deformacion_b.png}\par
+            {\scriptsize Córnea sana \hspace{1.5cm} Córnea con queratocono}
+        \end{column}
+    \end{columns}
+    \idea{El problema no es la enfermedad, es detectarla a tiempo.}
+\end{frame}
+
+% ===============================================================
+% 2. Qué es KERALYTIX (diagrama de bloques general)
+% ===============================================================
+\begin{frame}{Qué es KERALYTIX}
+    Una herramienta web que le da al oftalmólogo una segunda opinión sobre el estudio de la córnea.
+    \vspace{0.1cm}
+    \begin{center}
+        \begin{tikzpicture}[node distance=0.6cm and 0.9cm]
+            \node[caja=3.2cm] (mapas) {\textbf{Mapas de la córnea}\\ \footnotesize los cuatro que exporta el equipo de topografía};
+            \node[caja=3.2cm, below=of mapas] (clin) {\textbf{Datos del paciente}\\ \footnotesize edad, sexo, curvatura, espesor};
+            \coordinate (medio) at ($(mapas.east)!0.5!(clin.east)$);
+            \node[caja=3.2cm, fill=azul!15, very thick, right=1.2cm of medio, anchor=west] (modelo)
+                {\textbf{Modelo de IA}\\ \footnotesize analiza imágenes y datos juntos};
+            \node[caja=3.2cm, draw=verde, right=of modelo] (informe)
+                {\textbf{Informe}\\ \footnotesize normal o queratocono, confianza y mapa de calor};
+            \draw[flecha] (mapas.east) -- ++(0.6cm,0) |- (modelo.west);
+            \draw[flecha] (clin.east) -- ++(0.6cm,0) |- (modelo.west);
+            \draw[flecha] (modelo) -- (informe);
+            \node[font=\footnotesize\bfseries, text=gray, above=0.15cm of mapas] {Qué recibe};
+            \node[font=\footnotesize\bfseries, text=gray] at (modelo |- {$(mapas.north)+(0,0.4cm)$}) {Qué hace};
+            \node[font=\footnotesize\bfseries, text=gray] at (informe |- {$(mapas.north)+(0,0.4cm)$}) {Qué entrega};
+        \end{tikzpicture}
+    \end{center}
+    {\small El mapa de calor marca qué zonas de la córnea llevaron al resultado. La decisión final es siempre del médico.}
+\end{frame}
+
+% ===============================================================
+% 3. Objetivos
+% ===============================================================
+\begin{frame}{Objetivos}
+    \begin{block}{Objetivo general}
+        \small Desarrollar un sistema de soporte a la decisión clínica, basado en IA sobre mapas corneales y datos clínicos,
+        para la detección temprana del queratocono y accesible mediante una aplicación web.
+    \end{block}
+    \vspace{0.3cm}
+    \begin{tabla}{colspec = {Q[c,m,0.8cm] X[l,m]}, rows = {font=\small}}
+        N.º & Objetivos específicos \\
+        1 & Analizar un conjunto de datos público con mapas corneales y variables clínicas. \\
+        2 & Construir un modelo de IA que combine mapas y variables para identificar el queratocono. \\
+        3 & Integrar una explicación visual de las zonas de la córnea que llevaron a cada resultado. \\
+        4 & Desarrollar una aplicación web para cargar estudios y consultar el informe. \\
+    \end{tabla}
+\end{frame}
+
+% ===============================================================
+% 4. Fases y estado actual
+% ===============================================================
+\begin{frame}{Fases del proyecto y estado actual}
+    \begin{center}
+        \begin{tikzpicture}[x=1.9cm, y=1cm]
+            % Meses
+            \foreach \m/\n in {1/Ago, 2/Sep, 3/Oct, 4/Nov, 5/Dic}
+                \node[font=\footnotesize, text=gray] at (\m-0.5, 3.3) {\n};
+            % Fases
+            \fill[verde!70] (0,2.2) rectangle (1,2.8);
+            \node[anchor=east, font=\small, align=right] at (-0.1,2.5) {Fase 1: comprensión y\\selección de datos};
+            \fill[azul!70] (1,1.2) rectangle (4,1.8);
+            \node[anchor=east, font=\small] at (-0.1,1.5) {Fase 2: modelado};
+            \fill[gray!40] (3,0.2) rectangle (5,0.8);
+            \node[anchor=east, font=\small] at (-0.1,0.5) {Fase 3: aplicación web};
+            % Objetivos que cubre cada fase
+            \node[font=\scriptsize, text=white] at (0.5,2.5) {Obj. 1};
+            \node[font=\scriptsize, text=white] at (2.5,1.5) {Obj. 2 y 3};
+            \node[font=\scriptsize] at (4,0.5) {Obj. 4};
+            % Hoy
+            \draw[rojo, very thick, dashed] (3.3,0) -- (3.3,3.05);
+            \node[rojo, font=\footnotesize\bfseries, anchor=south] at (3.3,-0.55) {hoy};
+        \end{tikzpicture}
+    \end{center}
+    \vspace{0.1cm}
+    \centering
+    {\small\textcolor{verde}{\textbf{\textbullet}} Terminada \quad
+     \textcolor{azul}{\textbf{\textbullet}} En curso \quad
+     \textcolor{gray!60}{\textbf{\textbullet}} Por empezar}
+\end{frame}

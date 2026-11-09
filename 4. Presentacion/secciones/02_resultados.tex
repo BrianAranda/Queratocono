@@ -1,0 +1,168 @@
+% LTeX: enabled=false
+% Sección 2: resultados por fase, con evidencias y estado de cada uno
+
+\seccion{Resultados por fase}
+
+% ===============================================================
+% 5. Fase 1: selección del conjunto de datos
+% ===============================================================
+\begin{frame}{Fase 1: selección del conjunto de datos}
+    \begin{columns}[T]
+        \begin{column}{0.44\textwidth}
+            Se seleccionó \textbf{CornOrb}, un conjunto de datos público:
+            \begin{itemize}
+                \item 1.454 ojos de 744 pacientes.
+                \item 5.628 imágenes de mapas corneales.
+                \item Cada ojo trae sus mapas y sus datos clínicos juntos, que es lo que necesita un modelo multimodal.
+                \item El diagnóstico de cada ojo lo asignaron oftalmólogos.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.52\textwidth}
+            \centering
+            {\small\textbf{Qué trae cada ojo}}\par\vspace{0.2cm}
+            \begin{tikzpicture}[node distance=0.35cm]
+                \node[caja=4.6cm] (m) {\textbf{4 mapas de la córnea}\\ \footnotesize curvatura, elevación delantera, elevación trasera y espesor};
+                \node[caja=4.6cm, below=of m] (v) {\textbf{Datos clínicos}\\ \footnotesize edad, sexo, curvatura máxima, espesor, astigmatismo};
+                \node[caja=4.6cm, draw=verde, below=of v] (e) {\textbf{Diagnóstico}\\ \footnotesize normal o queratocono};
+            \end{tikzpicture}
+        \end{column}
+    \end{columns}
+    \alcanzado{Objetivo 1}
+\end{frame}
+
+% ===============================================================
+% 6. Fase 1: análisis exploratorio (composición y calidad)
+% ===============================================================
+\begin{frame}{Fase 1: revisión de los datos}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{eda/eda_clases.png}\par
+            {\scriptsize 61\% de ojos normales y 39\% con queratocono}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \footnotesize
+            \textbf{Lo que está bien}
+            \begin{itemize}
+                \item No faltan datos y cada ojo tiene sus cuatro mapas.
+                \item Los ojos de un mismo paciente nunca quedan repartidos entre entrenamiento y prueba. Así el modelo no se evalúa con pacientes que ya conoce.
+            \end{itemize}
+            \textbf{Lo que hay que corregir}
+            \begin{itemize}
+                \item 46 ojos medidos más de una vez.
+                \item Un código de paciente mal escrito.
+                \item Valores imposibles, como una curvatura de 4 cuando lo normal es 44.
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    \alcanzado{Objetivo 1}
+\end{frame}
+
+% ===============================================================
+% 7. Fase 1: qué dicen las variables clínicas
+% ===============================================================
+\begin{frame}{Fase 1: qué dicen los datos clínicos}
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{eda/eda_correlacion.png}\par
+            {\scriptsize Cuanto más larga la barra, más se relaciona el dato con el diagnóstico}
+        \end{column}
+        \begin{column}{0.46\textwidth}
+            Los ojos con queratocono tienen:
+            \begin{itemize}
+                \item Una córnea más curva (53 frente a 44 dioptrías).
+                \item Una córnea más delgada (428 frente a 521 micrones).
+                \item Más astigmatismo.
+            \end{itemize}
+            \vspace{0.2cm}
+            Coincide con lo que describe la medicina sobre la enfermedad.
+        \end{column}
+    \end{columns}
+    \idea{Los datos clínicos ya separan bastante los dos grupos. Por eso el modelo los combina con las imágenes.}
+\end{frame}
+
+% ===============================================================
+% 8. Datos locales para la validación
+% ===============================================================
+\begin{frame}{Datos locales para la validación}
+    \begin{columns}[T]
+        \begin{column}{0.45\textwidth}
+            CornOrb viene de pacientes de Argelia. Para comprobar que KERALYTIX funciona con pacientes de la región, hacen falta estudios locales.
+            \begin{itemize}
+                \item Se contactaron 9 centros y profesionales de Misiones, Córdoba, Buenos Aires y Perú.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.51\textwidth}
+            \centering
+            \begin{tikzpicture}[node distance=0.4cm]
+                \node[caja=4.6cm, draw=verde] (a) {\textbf{Contacto con Roberto Albertazzi}};
+                \node[caja=4.6cm, draw=verde, below=of a] (b) {\textbf{Charla sobre datos para validar el modelo}};
+                \node[caja=4.6cm, fill=azul!15, very thick, below=of b] (c) {\textbf{Trámites legales para la solicitud}\\ \footnotesize estamos acá};
+                \node[caja=4.6cm, draw=gray!60, text=gray, below=of c] (d) {Estudios locales anonimizados};
+                \draw[flecha] (a) -- (b);
+                \draw[flecha] (b) -- (c);
+                \draw[flecha, gray!60] (c) -- (d);
+            \end{tikzpicture}
+        \end{column}
+    \end{columns}
+    \enproceso{Validación local}
+\end{frame}
+
+% ===============================================================
+% 9. Fase 2: cómo funciona el modelo (diagrama de bloques)
+% ===============================================================
+\begin{frame}{Fase 2: cómo funciona el modelo}
+    \begin{center}
+        \begin{tikzpicture}[node distance=0.5cm and 0.55cm]
+            \node[caja=1.9cm] (mapas) {\textbf{Mapas}};
+            \node[caja=1.9cm, below=1.1cm of mapas] (datos) {\textbf{Datos clínicos}};
+            \node[caja=3cm, right=of mapas] (cnn) {\textbf{Rama de imágenes}\\ \footnotesize aprende a reconocer formas en los mapas};
+            \node[caja=3cm, right=of datos] (densa) {\textbf{Rama de datos}\\ \footnotesize analiza los valores numéricos};
+            \coordinate (m2) at ($(cnn.east)!0.5!(densa.east)$);
+            \node[caja=2.5cm, fill=azul!15, very thick, right=0.6cm of m2, anchor=west] (fus) {\textbf{Fusión}\\ \footnotesize junta lo que encontró cada rama};
+            \node[caja=2.6cm, draw=verde, right=of fus] (res) {\textbf{Resultado}\\ \footnotesize normal o queratocono, y confianza};
+            \node[caja=2.6cm, draw=verde, above=0.45cm of res] (gc) {\textbf{Mapa de calor}\\ \footnotesize zonas que influyeron};
+            \draw[flecha] (mapas) -- (cnn);
+            \draw[flecha] (datos) -- (densa);
+            \draw[flecha] (cnn.east) -- ++(0.35cm,0) |- (fus.west);
+            \draw[flecha] (densa.east) -- ++(0.35cm,0) |- (fus.west);
+            \draw[flecha] (fus) -- (res);
+            \draw[flecha] (cnn.north) |- node[pos=0.75, above, font=\scriptsize, text=gray] {Grad-CAM} (gc.west);
+        \end{tikzpicture}
+    \end{center}
+    {\small Cada rama se especializa en un tipo de dato y la fusión aprovecha las relaciones entre ambos. Grad-CAM mira la rama de imágenes y marca qué zonas pesaron en el resultado.}
+\end{frame}
+
+% ===============================================================
+% 10. Fase 2: avance del modelado
+% ===============================================================
+\begin{frame}{Fase 2: avance del modelado}
+    \pendiente{Lo que el compañero tenga presentable del modelo: primera versión entrenada, resultados preliminares, capturas.}
+    \enproceso{Objetivos 2 y 3}
+\end{frame}
+
+% ===============================================================
+% 11. Fase 3: la aplicación web
+% ===============================================================
+\begin{frame}{Fase 3: la aplicación web}
+    \begin{center}
+        \begin{tikzpicture}[node distance=0.5cm and 0.65cm]
+            \node[caja=2.3cm] (med) {\textbf{Oftalmólogo}\\ \footnotesize desde el navegador};
+            \node[caja=2.8cm, right=of med] (front) {\textbf{Página web}\\ \footnotesize carga los estudios y muestra el informe};
+            \node[caja=2.8cm, right=of front] (back) {\textbf{Servidor}\\ \footnotesize recibe los estudios y ejecuta el modelo};
+            \node[caja=1.9cm, fill=azul!15, very thick, right=of back] (mod) {\textbf{Modelo de IA}};
+            \node[caja=2.8cm, below=0.6cm of back] (us) {\textbf{Usuarios y suscripción}\\ \footnotesize quién puede usar el sistema};
+            \draw[flecha, <->] (med) -- (front);
+            \draw[flecha, <->] (front) -- (back);
+            \draw[flecha, <->] (back) -- (mod);
+            \draw[flecha, <->] (back) -- (us);
+        \end{tikzpicture}
+    \end{center}
+    \begin{itemize}
+        \small
+        \item La página web se hace con React y el servidor con FastAPI.
+        \item Se trabaja en noviembre y diciembre, superpuesta con el cierre del modelo.
+    \end{itemize}
+    \porhacer{Objetivo 4}
+\end{frame}

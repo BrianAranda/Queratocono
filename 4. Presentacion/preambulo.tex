@@ -1,0 +1,101 @@
+% LTeX: enabled=false
+
+% ---------------------------------------------------------------
+% Paquetes
+% ---------------------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish, es-nodecimaldot, es-noshorthands, es-tabla]{babel}
+\usepackage{times}
+\usepackage{amsmath, amssymb}
+\usepackage{tabularray}
+\usepackage{tikz}
+\usetikzlibrary{positioning, fit, backgrounds, calc, arrows.meta, babel}
+\usepackage{appendixnumberbeamer}   % las diapositivas de respaldo no suman al total
+\graphicspath{{img/}}
+
+% ---------------------------------------------------------------
+% Estilo (plantilla de las presentaciones de IdS2 y PDS)
+% ---------------------------------------------------------------
+\usefonttheme{serif}
+\definecolor{azul}{HTML}{2C6AA0}
+\definecolor{verde}{HTML}{3E8E5E}
+\definecolor{gris}{HTML}{F1F1F1}
+\definecolor{rojo}{HTML}{B03A2E}
+
+\setbeamercolor{frametitle}{fg=azul}
+\setbeamercolor{title}{fg=azul}
+\setbeamercolor{structure}{fg=azul}
+\setbeamercolor{alerted text}{fg=azul}
+\setbeamerfont{alerted text}{series=\bfseries}
+\setbeamercolor{block title}{bg=azul, fg=white}
+\setbeamercolor{block body}{bg=gris}
+\setbeamerfont{frametitle}{series=\bfseries, size=\Large}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize items}{\color{azul}\textbullet}
+\setbeamertemplate{blocks}[default]
+
+\setlength{\leftmargini}{1.2em}   % listas de primer nivel
+\setlength{\leftmarginii}{1.2em}  % listas anidadas
+
+% Pie de página: autores, título corto y número de diapositiva.
+% Tres cajas que suman exactamente el ancho de la hoja (0.35 + 0.40 + 0.25).
+% Cada línea termina en % para que los saltos de línea no agreguen espacios.
+\setbeamercolor{footline}{fg=gray}
+\setbeamerfont{footline}{size=\scriptsize}
+\setbeamertemplate{footline}{%
+    \leavevmode%
+    \hbox{%
+        \begin{beamercolorbox}[wd=0.35\paperwidth, ht=3ex, dp=1.2ex, left]{footline}%
+            \hspace*{1em}Aranda - Wlodeck%
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd=0.40\paperwidth, ht=3ex, dp=1.2ex, center]{footline}%
+            KERALYTIX - Proyecto final integrador%
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd=0.25\paperwidth, ht=3ex, dp=1.2ex, right]{footline}%
+            \insertframenumber\,/\,\inserttotalframenumber\hspace*{1em}%
+        \end{beamercolorbox}%
+    }%
+    \vskip0pt%
+}
+
+% Título de cada diapositiva con una línea debajo
+\setbeamertemplate{frametitle}{%
+    \vspace{0.4em}\insertframetitle\par\vspace{0.2em}{\color{azul}\hrule height 0.6pt}}
+
+% ---------------------------------------------------------------
+% Macros propias
+% ---------------------------------------------------------------
+
+% Idea clave: caja recta, fondo gris y borde azul
+\newcommand{\idea}[1]{%
+    \begin{center}
+        \setlength{\fboxsep}{5pt}%
+        \fcolorbox{azul}{gris}{\parbox{0.9\linewidth}{\centering #1}}
+    \end{center}}
+
+% Marca de contenido pendiente (no debe quedar ninguna en la versión final)
+\newcommand{\pendiente}[1]{%
+    \fcolorbox{rojo}{rojo!5}{\parbox{0.9\linewidth}{\centering\small\color{rojo}%
+    \textbf{PENDIENTE}\\ #1}}}
+
+% Estado de un resultado, como pide la consigna: alcanzado, en proceso o pendiente.
+% #1 = color, #2 = estado, #3 = objetivos que cubre. Va al final del frame.
+\newcommand{\estado}[3]{%
+    \par\vfill\hfill{\small\fcolorbox{#1}{#1!10}{\textcolor{#1}{\textbf{#2}}}\enspace\textcolor{gray}{#3}}}
+\newcommand{\alcanzado}[1]{\estado{verde}{Alcanzado}{#1}}
+\newcommand{\enproceso}[1]{\estado{azul}{En proceso}{#1}}
+\newcommand{\porhacer}[1]{\estado{gray}{Por empezar}{#1}}
+
+% Formato común de las tablas: encabezado azul y líneas horizontales grises
+\NewTblrEnviron{tabla}
+\SetTblrOuter[tabla]{halign=c}
+\SetTblrInner[tabla]{row{1} = {bg=azul, fg=white, font=\bfseries},
+                     hlines = {gray!50}, rowsep = 2pt}
+
+% Diagramas TikZ
+\input{tikz/estilos}
+
+% Sección: solo ordena el archivo, sin diapositiva separadora,
+% para no gastar páginas (límite de 20 páginas y 20 minutos)
+\newcommand{\seccion}[1]{\section{#1}}
