@@ -42,7 +42,7 @@ Correcciones del Ing. Matías Gabriel Krujoski (MGK) sobre el informe del TP3, e
 ## Página 7 (PDF 9)
 
 - [ ] **Resaltado** «Para un paciente de una zona alejada, viajar a una consulta tiene un costo alto. Por eso esa consulta puede ser su única oportunidad de detectar la enfermedad a tiempo.» → ¿qué hay del costo de la máquina amén de que el profesional no posee los conocimientos clínicos para evaluar su resultado? Digo en términos comerciales acaso no sería viable ofrecerle a cualquier oftalmólogo "comprate el topógrafo optométrico que nosotros te analizamos el dato para decirte si amerita derivar o no" así se puede crear la capacidad de diagnóstico ubicuo fuera de las principales ciudades incluso ante la carencia de especialistas abocados a esta patología en particular. Quizás el aparato puede incluso ser operado por una enfermera capacitada y entonces casi en cualquier lugar se puede disponer uno (según su costo) por mucho que no haya profesionales capaces de interpretarlo; al menos como un screaning inicial cuando un oftalmólogo cualquiera detecta ciertos síntomas que sirven de indicio para dudar. _(MGK, 31/10/2026 17:08)_
-- [ ] **Resaltado** «solo» → sólo con tilde cuando corresponde a "solamente"; para diferenciar cabe recordar la diferencia entre "tuve sexo solo dos veces" y "tuve sexo sólo dos veces". _(MGK, 31/10/2026 17:11)_
+- [x] **Resaltado** «solo» → sólo con tilde cuando corresponde a "solamente"; para diferenciar cabe recordar la diferencia entre "tuve sexo solo dos veces" y "tuve sexo sólo dos veces". _(MGK, 31/10/2026 17:11)_
 
   **💬 Respuesta propuesta al tutor (sin cambios):**
   Según la RAE, «solo» se escribe sin tilde; la tilde es optativa únicamente cuando quien escribe ve riesgo de ambigüedad, que no es el caso en estas oraciones [1], [2].
@@ -51,11 +51,13 @@ Correcciones del Ing. Matías Gabriel Krujoski (MGK) sobre el informe del TP3, e
 
   > Aplica también a los demás «solo» marcados. Ojo: en Antecedentes (RNN) quedó escrito «sólo dos visitas»; si mantienen la postura, sáquenle la tilde.
 
+  **✏️ Corregido:** se mantiene «solo» sin tilde en todo el informe y se quitó la tilde de «sólo dos visitas» en Antecedentes (RNN).
+
 ## Página 8 (PDF 10)
 
-- [ ] **Resaltado** «99,33 %» → Cuando la limosna es grande hasta el santo desconfía... _(MGK, 31/10/2026 17:13)_
+- [x] **Resaltado** «99,33 %» → Cuando la limosna es grande hasta el santo desconfía... _(MGK, 31/10/2026 17:13)_
 
-  **✏️ Corregido (parcial):** la cita [kerato_detect] ahora va pegada al 99,33 % y su link apunta a PMC6364125, que es el mismo artículo (Lavric y Popa, 2019, doi: 10.1155/2019/8162567). Falta agregar el contexto del resultado.
+  **✏️ Corregido:** la cita [kerato_detect] ahora va pegada al 99,33 % y su link apunta a PMC6364125, que es el mismo artículo (Lavric y Popa, 2019, doi: 10.1155/2019/8162567). El texto aclara que el resultado se obtuvo con 3.000 topografías sintéticas y que los autores no lo consideran apto como diagnóstico independiente.
 
   **💬 Respuesta propuesta al tutor:** tiene razón en desconfiar. El 99,33 % se obtuvo con 3.000 topografías **sintéticas** generadas por un modelo estadístico (SyntEyes KTC), sin validación con pacientes reales; los propios autores aclaran que el método no puede usarse como diagnóstico independiente. Lo aclaramos en el texto.
   - https://pmc.ncbi.nlm.nih.gov/articles/PMC6364125/
@@ -246,7 +248,9 @@ Correcciones del Ing. Matías Gabriel Krujoski (MGK) sobre el informe del TP3, e
 
 ## Página 29 (PDF 31)
 
-- [ ] **Resaltado** «cada suscripción adicional se transforma casi por completo en ganancia.» → Lo mismo dijeron OpenaAI, Antrophic y tantas otras; pero acá estamos, todas en rojo e inflando la burbuja hasta que los inversores digan "no da para más". _(MGK, 31/10/2026 20:32)_
+- [x] **Resaltado** «cada suscripción adicional se transforma casi por completo en ganancia.» → Lo mismo dijeron OpenaAI, Antrophic y tantas otras; pero acá estamos, todas en rojo e inflando la burbuja hasta que los inversores digan "no da para más". _(MGK, 31/10/2026 20:32)_
+
+  **✏️ Corregido:** «El costo variable por suscriptor es bajo [...] cada suscripción adicional deja un margen alto. Ese margen no es total, ya que con más clientes también crecen el soporte, la capacidad del servidor y la comercialización.» Falta confirmar que esos costos figuran en el flujo de caja.
 
 ## Página 30 (PDF 32)
 

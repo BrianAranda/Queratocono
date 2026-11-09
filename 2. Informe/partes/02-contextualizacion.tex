@@ -39,13 +39,13 @@
 
     \subsection*{Redes neuronales recurrentes (RNN)}
 
-        En el congreso ESCRS 2025, Shafi Balal presentó un modelo de aprendizaje profundo multimodal basado en redes neuronales recurrentes~\cite{shafi_balal}. El trabajo parte de un problema clínico concreto. Los médicos no pueden predecir con certeza qué pacientes van a progresar hacia etapas graves, y por eso los servicios se saturan con controles frecuentes. El modelo analiza datos de sólo dos visitas y clasifica a los pacientes en grupos de bajo o alto riesgo de progresión a dos años.
+        En el congreso ESCRS 2025, Shafi Balal presentó un modelo de aprendizaje profundo multimodal basado en redes neuronales recurrentes~\cite{shafi_balal}. El trabajo parte de un problema clínico concreto. Los médicos no pueden predecir con certeza qué pacientes van a progresar hacia etapas graves, y por eso los servicios se saturan con controles frecuentes. El modelo analiza datos de solo dos visitas y clasifica a los pacientes en grupos de bajo o alto riesgo de progresión a dos años.
 
         Este trabajo muestra que se puede estratificar el riesgo con poca información clínica. Pero necesita datos de más de una visita por paciente, y el conjunto de datos de este proyecto no los tiene. Por eso la estratificación del riesgo queda como línea futura.
 
     \subsection*{Redes neuronales convolucionales (CNN)}
 
-        KeratoDetect es un algoritmo que apunta a la detección del queratocono en etapas subclínicas. Usa CNN para clasificar imágenes de topografía corneal como normales o con queratocono, con una exactitud del 99,33\%~\cite{kerato_detect} sobre su conjunto de prueba. El trabajo muestra que estas redes pueden reconocer patrones que el ojo humano podría pasar por alto.
+        KeratoDetect es un algoritmo que apunta a la detección del queratocono en etapas subclínicas. Usa CNN para clasificar imágenes de topografía corneal como normales o con queratocono. Sobre su conjunto de prueba alcanzó una exactitud del 99,33\%~\cite{kerato_detect}. Ese resultado se obtuvo con 3.000 topografías sintéticas, generadas por un modelo estadístico, y no con estudios de pacientes reales. Por eso los propios autores aclaran que el método no puede usarse como diagnóstico independiente. Aun así, el trabajo muestra que estas redes pueden reconocer patrones que el ojo humano podría pasar por alto.
 
         KeratoDetect analiza solo imágenes, sin datos clínicos del paciente, y no está integrado a una herramienta para oftalmólogos. Aun así, respalda el uso de redes convolucionales para procesar los mapas corneales en KERALYTIX.
 
