@@ -20,3 +20,7 @@ build/
 *.nav
 *.snm
 *.vrb
+
+# Datos descargados por los notebooks (CornOrb, ~680 MB)
+3. Codigo/Datos/
+3. Codigo/salidas/
