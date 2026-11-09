@@ -3,7 +3,7 @@
 \chapter{Desarrollo}
 
 \phantomsection
-\section{Relevamiento clínico y análisis exploratorio de datos (EDA)}
+\section[Relevamiento clínico y análisis exploratorio de datos (EDA)]{Relevamiento clínico y análisis exploratorio de datos (EDA\footnote{Por sus siglas en inglés, \textit{Exploratory Data Analysis}.})}
 
     Tal como se planteó en la primera fase de la propuesta metodológica, se estableció contacto con diferentes centros de salud y profesionales del área de oftalmología, con el fin de reunir muestras locales anonimizadas que permitan evaluar el modelo con datos de la región. Las solicitudes se encuentran en curso y, hasta que se concreten, el trabajo continúa sobre los datos públicos del \textit{dataset} CornOrb, disponible en Zenodo~\cite{zenodo}.
 
@@ -52,7 +52,7 @@
     \phantomsection
     \subsection{Conjunto de datos de trabajo}
 
-        Mientras se concretan las solicitudes de muestras locales, el análisis se realiza sobre el \textit{dataset} CornOrb~\cite{zenodo}. Este recurso reúne 1.454 registros correspondientes a ojos de 744 pacientes, estudiados con un equipo Orbscan~3 en centros de oftalmología de Argelia. Para cada ojo se proporcionan cuatro mapas corneales (axial, anterior, posterior y paquimetría) en formato de imagen, junto con un archivo de datos clínicos que incluye la etiqueta diagnóstica: normal o queratocono. Según la documentación del \textit{dataset}, las etiquetas fueron asignadas por oftalmólogos, y los datos se encuentran anonimizados.
+        Mientras se concretan las solicitudes de muestras locales, el análisis se realiza sobre el \textit{dataset} CornOrb~\cite{zenodo}. Este recurso reúne 1.454 registros correspondientes a ojos de 744 pacientes, estudiados con un equipo \Orbscan{}~3 en centros de oftalmología de Argelia. Para cada ojo se proporcionan cuatro mapas corneales (axial, anterior, posterior y paquimetría) en formato de imagen, junto con un archivo de datos clínicos que incluye la etiqueta diagnóstica: normal o queratocono. Según la documentación del \textit{dataset}, las etiquetas fueron asignadas por oftalmólogos, y los datos se encuentran anonimizados.
 
         El \textit{dataset} incluye además una partición predefinida de los registros: el 80\,\% se destina al entrenamiento del modelo y el 20\,\% restante se reserva para su evaluación final. A su vez, la porción de entrenamiento está dividida en cinco subconjuntos (\textit{folds}) para realizar validación cruzada, es decir, entrenar y evaluar el modelo cinco veces rotando la porción que se deja afuera, de modo de obtener una estimación más estable de su desempeño.
 
@@ -80,17 +80,17 @@
 
             \texttt{astig\_value\_D} & Astigmatismo corneal & dioptrías \\
 
-            \texttt{kmax\_value\_D} & Curvatura máxima de la córnea (K max), indicador clásico de queratocono & dioptrías \\
+            \texttt{kmax\_value\_D} & Curvatura máxima de la córnea (K max), indicador clásico de queratocono (Figura~\ref{fig:parametros_cornea}a) & dioptrías \\
 
             \texttt{pachy\_central\_um} & Espesor de la córnea en su centro (paquimetría central) & µm \\
 
-            \texttt{pachy\_thinnest\_um} & Espesor de la córnea en su punto más delgado & µm \\
+            \texttt{pachy\_thinnest\_um} & Espesor mínimo: espesor de la córnea en su punto más delgado (C en el sistema ABCD, Figura~\ref{fig:parametros_cornea}a) & µm \\
 
-            \texttt{pachy\_thinnest\_x}, \texttt{\_y} & Ubicación del punto más delgado & mm \\
+            \texttt{pachy\_thinnest\_x}, \texttt{\_y} & Ubicación del punto más delgado (Figura~\ref{fig:parametros_cornea}b) & mm \\
 
-            \texttt{asphericity\_anterior}, \texttt{\_posterior} & Asfericidad de las superficies anterior y posterior: cuánto se aparta la forma de la córnea de una esfera & --- \\
+            \texttt{asphericity\_anterior}, \texttt{\_posterior} & Asfericidad de las superficies anterior y posterior: cuánto se aparta la forma de la córnea de una esfera. Vale 0 en una esfera, es negativa cuando la córnea se aplana hacia la periferia, como la córnea normal (alrededor de $-0{,}26$), y positiva cuando se curva más. En el queratocono se vuelve más negativa~\cite{conic_constant, asfericidad_q} & --- \\
 
-            \texttt{astig\_axis\_deg}, \texttt{kmax\_axis\_deg} & Orientación del astigmatismo y de la curvatura máxima & grados \\
+            \texttt{astig\_axis\_deg}, \texttt{kmax\_axis\_deg} & Orientación del astigmatismo y de la curvatura máxima (Figura~\ref{fig:parametros_cornea}b) & grados \\
 
             \texttt{label} & Etiqueta diagnóstica: 0 = normal, 1 = queratocono & --- \\
 
@@ -133,7 +133,7 @@
 
             El 65,13\,\% de los registros corresponde a mujeres y el 34,87\,\% a hombres, mientras que los ojos derecho e izquierdo están prácticamente balanceados (50,21\,\% y 49,79\,\%).
 
-            La edad media es de 33,5 años en el grupo normal y de 27,9 años en el grupo con queratocono, cuyo registro más joven tiene 13 años (Figura~\ref{fig:eda_edad}). Este resultado es coherente con lo planteado en el Marco teórico respecto de la aparición temprana de la enfermedad~\cite{kcn_edad}, aunque describe a la muestra del \textit{dataset} y no a la población general.
+            La edad es de 33,5 ± 7,4 años en el grupo normal y de 27,9 ± 7,2 años en el grupo con queratocono (media ± desvío estándar, contando ojos). El registro más joven con queratocono tiene 13 años (Figura~\ref{fig:eda_edad}). Este resultado es coherente con lo planteado en el Marco teórico respecto de la aparición temprana de la enfermedad~\cite{kcn_edad}, aunque describe a la muestra del \textit{dataset} y no a la población general.
 
             \begin{figure}[H]
                 \centering
@@ -179,5 +179,5 @@
 
                 \item Evaluar el modelo priorizando la sensibilidad, en línea con el objetivo de reducir los falsos negativos, e informar su desempeño por separado para cada sexo.
 
-                \item Transformar las variables de orientación (ejes en grados) antes de utilizarlas, ya que, por ejemplo, 1° y 179° representan orientaciones casi idénticas pese a la diferencia numérica.
+                \item Transformar las variables de orientación (ejes en grados) antes de utilizarlas, ya que, por ejemplo, 1° y 179° representan orientaciones casi idénticas pese a la diferencia numérica (Figura~\ref{fig:parametros_cornea}b).
             \end{itemize}

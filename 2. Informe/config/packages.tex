@@ -41,8 +41,11 @@
 \usepackage{pdflscape}      % Para rotar la página
 \usepackage{rotating}       % Permite rotar figuras y tablas
 
-% Citas: ordena y comprime números ([9, 10], [11]–[13])
+% Citas: ordena y comprime números ([9], [10], [11]–[13])
 \usepackage{cite}
+% Formato IEEE: cada número en su propio corchete, como lo hace IEEEtran.cls
+\renewcommand{\citepunct}{], [}
+\renewcommand{\citedash}{]--[}
 
 % URLs: permite cortarlas en cualquier carácter (evita Underfull \hbox en la bibliografía)
 \usepackage{xurl}
@@ -63,3 +66,4 @@
 % Diagramas
 \usepackage{tikz}
 \usetikzlibrary{positioning,arrows.meta,calc,decorations.pathreplacing}
+\usetikzlibrary{babel}  % evita que babel (español) rompa las flechas <-> de TikZ

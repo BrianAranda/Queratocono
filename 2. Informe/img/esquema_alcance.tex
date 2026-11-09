@@ -14,8 +14,8 @@
   \node[entrada, below=of mapas] (clin) {Variables clínicas\\ \footnotesize(edad, sexo, K~max, espesor, asfericidad, entre otras)};
   \coordinate (medio) at ($(mapas.east)!0.5!(clin.east)$);
   \node[proceso, right=1.1cm of medio, anchor=west] (modelo) {\textbf{Modelo multimodal}\\ \footnotesize(CNN y datos clínicos)};
-  \node[proceso, below right=0.4cm and 0.5cm of modelo.south east, anchor=north west] (gradcam) {\textbf{Grad-CAM}\\ \footnotesize(regiones determinantes)};
-  \node[caja, fill=gray!10, anchor=west] (informe) at ($(modelo.east -| gradcam.east)+(0.7cm,0)$) {Informe\\ \footnotesize(clasificación, confianza y mapa de calor)};
+  \node[proceso, below right=0.4cm and 0.5cm of modelo.south east, anchor=north west] (gradcam) {\textbf{Grad-CAM}\\ \footnotesize(qué zonas decidieron el resultado)};
+  \node[caja, fill=gray!10, anchor=west] (informe) at ($(modelo.east -| gradcam.east)+(0.7cm,0)$) {Informe\\ \footnotesize(clasificación, confianza y explicación visual)};
 
   \coordinate (tope) at ($(mapas.north)+(0,0.35cm)$);
   \node[rotulo] at (mapas |- tope) {Qué ingresa};
@@ -29,5 +29,5 @@
   % Bifurcación: la predicción va directo al informe y Grad-CAM agrega el mapa de calor
   \draw[flecha] (modelo.east) -- node[etiqueta, above=1pt] {clasificación y confianza} (informe.west);
   \draw[flecha] (modelo.south) |- (gradcam.west);
-  \draw[flecha] (gradcam.east) -| node[etiqueta, pos=0.25, below=1pt] {mapa de calor} (informe.south);
+  \draw[flecha] (gradcam.east) -| node[etiqueta, pos=0.75, left=2pt, align=right] {explicación\\(mapa de calor)} (informe.south);
 \end{tikzpicture}

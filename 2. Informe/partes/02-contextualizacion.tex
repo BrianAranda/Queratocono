@@ -14,7 +14,7 @@
 
         Se estima que el queratocono afecta a más de 23,7 millones de personas en el mundo, con una prevalencia de 289 casos cada 100.000 habitantes~\cite{prevalencia_kc}. Los casos subclínicos son los más difíciles de detectar. Incluso los sistemas de IA actuales alcanzan una sensibilidad del 90\% en estos casos, frente al 98,6\% en casos ya manifestados~\cite{sensibilidad_ia_subclinica}. Es decir, uno de cada diez ojos con queratocono subclínico pasa desapercibido, contra menos de dos de cada cien en etapas más avanzadas.
         
-        Estas dificultades generan demoras de hasta 2,9 años entre la primera consulta optométrica y la derivación al oftalmólogo~\cite{demora_diagnostica}. La demora tiene consecuencias graves. Hasta el 88\% de los casos de ectasia corneal postquirúrgica\footnote{Adelgazamiento y encorvamiento progresivo de la córnea posterior a una cirugía refractiva, cuando el tejido remanente pierde la resistencia necesaria para sostener la presión intraocular. Puede llegar a requerir un trasplante.} se atribuyen a ojos con queratocono que no fueron detectados antes de la cirugía~\cite{falsos_negativos_ectasia}.
+        Estas dificultades generan una demora promedio de unos 3 años (2,9 ± 3,1) entre la primera consulta optométrica y la derivación al oftalmólogo~\cite{demora_diagnostica}. La demora tiene consecuencias graves. Hasta el 88\% de los casos de ectasia corneal postquirúrgica\footnote{Adelgazamiento y encorvamiento progresivo de la córnea posterior a una cirugía refractiva, cuando el tejido remanente pierde la resistencia necesaria para sostener la presión intraocular. Puede llegar a requerir un trasplante.} se atribuyen a ojos con queratocono que no fueron detectados antes de la cirugía~\cite{falsos_negativos_ectasia}.
 
     \subsection*{Impacto local}
 
@@ -22,7 +22,9 @@
 
         Los equipos de diagnóstico se concentran en los centros urbanos de la provincia, como Posadas, Oberá y Leandro N. Alem. Para un paciente de una zona alejada, viajar a una consulta tiene un costo alto. Por eso esa consulta puede ser su única oportunidad de detectar la enfermedad a tiempo.
 
+    \phantomsection
     \subsection*{Riesgos de implementación y barreras normativas}
+    \label{sec:riesgos}
 
         Al tratarse de una herramienta de salud, KERALYTIX\footnote{El nombre, el logotipo (Figura~\ref{fig:anexo_logo_keralytix}) y el posicionamiento de la marca KERALYTIX se describen en el Anexo de identidad de marca.} no puede usarse con pacientes sin una validación previa. El modelo tiene que probarse con estudios de centros de la región para comparar su rendimiento con la práctica clínica real. Esa validación también deja documentada la fiabilidad del sistema con los equipos y recursos disponibles en la provincia.
 
@@ -37,19 +39,19 @@
 
     \subsection*{Redes neuronales recurrentes (RNN)}
 
-        En el congreso ESCRS 2025, Shafi Balal presentó un modelo de aprendizaje profundo multimodal basado en redes neuronales recurrentes~\cite{shafi_balal}. El trabajo parte de un problema clínico concreto. Los médicos no pueden predecir con certeza qué pacientes van a progresar hacia etapas graves, y por eso los servicios se saturan con controles frecuentes. El modelo analiza datos de solo dos visitas y clasifica a los pacientes en grupos de bajo o alto riesgo de progresión a dos años.
+        En el congreso ESCRS 2025, Shafi Balal presentó un modelo de aprendizaje profundo multimodal basado en redes neuronales recurrentes~\cite{shafi_balal}. El trabajo parte de un problema clínico concreto. Los médicos no pueden predecir con certeza qué pacientes van a progresar hacia etapas graves, y por eso los servicios se saturan con controles frecuentes. El modelo analiza datos de sólo dos visitas y clasifica a los pacientes en grupos de bajo o alto riesgo de progresión a dos años.
 
         Este trabajo muestra que se puede estratificar el riesgo con poca información clínica. Pero necesita datos de más de una visita por paciente, y el conjunto de datos de este proyecto no los tiene. Por eso la estratificación del riesgo queda como línea futura.
 
     \subsection*{Redes neuronales convolucionales (CNN)}
 
-        KeratoDetect es un algoritmo que apunta a la detección del queratocono en etapas subclínicas~\cite{kerato_detect}. Usa CNN para clasificar imágenes de topografía corneal como normales o con queratocono, con una exactitud del 99,33\% sobre su conjunto de prueba. El trabajo muestra que estas redes pueden reconocer patrones que el ojo humano podría pasar por alto.
+        KeratoDetect es un algoritmo que apunta a la detección del queratocono en etapas subclínicas. Usa CNN para clasificar imágenes de topografía corneal como normales o con queratocono, con una exactitud del 99,33\%~\cite{kerato_detect} sobre su conjunto de prueba. El trabajo muestra que estas redes pueden reconocer patrones que el ojo humano podría pasar por alto.
 
         KeratoDetect analiza solo imágenes, sin datos clínicos del paciente, y no está integrado a una herramienta para oftalmólogos. Aun así, respalda el uso de redes convolucionales para procesar los mapas corneales en KERALYTIX.
 
     \subsection*{\textit{Vision Transformers}}
 
-        Varios trabajos recientes usan \textit{Vision Transformers} (ViT) para analizar el queratocono. Estas arquitecturas captan relaciones entre zonas alejadas de la imagen corneal, algo que a las CNN les cuesta más. Abdelmotaal et al. combinaron un \textit{transformer} con una CNN para detectar queratocono en videos de deformación corneal~\cite{abdelmotaal_vit}. Yaraghi y Khatibi fusionaron varios modelos preentrenados con un \textit{transformer} para clasificar imágenes corneales~\cite{vit_fusion_kcn}. Ismael integró topografía, aberrometría y datos tabulares en un modelo \textit{transformer} para predecir la progresión~\cite{vit_multisource}.
+        Varios trabajos recientes usan \textit{Vision Transformers} (ViT) para analizar el queratocono. Estas arquitecturas dividen la imagen en parches y comparan cada parche con todos los demás, por lo que pueden relacionar información de distintas regiones del mapa corneal. Las CNN, en cambio, analizan regiones pequeñas y solo integran la imagen completa en sus capas más profundas~\cite{vit_dosovitskiy, vit_raghu}. Abdelmotaal et al. combinaron un \textit{transformer} con una CNN para detectar queratocono en videos de deformación corneal~\cite{abdelmotaal_vit}. Yaraghi y Khatibi fusionaron varios modelos preentrenados con un \textit{transformer} para clasificar imágenes corneales~\cite{vit_fusion_kcn}. Ismael integró topografía, aberrometría y datos tabulares en un modelo \textit{transformer} para predecir la progresión~\cite{vit_multisource}.
 
         Estas arquitecturas necesitan más datos que las CNN para entrenarse bien. Con el volumen de CornOrb, se dejan como alternativa para una línea futura.
 
@@ -65,9 +67,9 @@
 
     \subsection*{Productos comerciales}
 
-        Los fabricantes de equipos de diagnóstico incluyen \textit{software} de análisis con sus equipos. OCULUS ofrece la familia Pentacam, que va desde modelos básicos hasta el Pentacam AXL Wave con biometría y análisis de frente de onda~\cite{oculus}. Topcon ofrece topógrafos de Placido como el CA-800, que se conectan con sus plataformas de gestión de datos~\cite{topcon}. En ambos casos el \textit{software} solo funciona con los equipos de la marca. Un centro que ya tiene un equipo de otro fabricante no puede usarlo.
+        Los fabricantes de equipos de diagnóstico incluyen \textit{software} de análisis con sus equipos. OCULUS ofrece la familia \Pentacam{}, que va desde modelos básicos hasta el \Pentacam{} AXL Wave con biometría y análisis de frente de onda~\cite{oculus}. Topcon ofrece topógrafos de Placido como el CA-800, que se conectan con sus plataformas de gestión de datos~\cite{topcon}. En ambos casos el \textit{software} solo funciona con los equipos de la marca. Un centro que ya tiene un equipo de otro fabricante no puede usarlo.
 
-        En Argentina no hay un \textit{software} como producto médico específico para queratocono. El referente más cercano es Entelai, una empresa argentina que aplica IA al análisis de imágenes médicas~\cite{entelai}. Su herramienta para resonancias magnéticas genera informes estandarizados y está pensada para patologías neurológicas.
+        En Argentina no hay un \textit{software} como producto médico específico para queratocono. El referente más cercano es Entelai, una empresa argentina que aplica IA a resonancias magnéticas cerebrales y genera informes estandarizados para patologías neurológicas~\cite{entelai}. Esos estudios son de naturaleza muy distinta a un mapa corneal: la resonancia obtiene cortes del interior del cuerpo, mientras que la topografía y la tomografía corneal miden con luz la forma y el espesor de la córnea. Por eso Entelai no cubre los estudios oftalmológicos, que es el espacio al que apunta KERALYTIX.
 
     \subsection*{Comparativa de los antecedentes}
 
@@ -127,17 +129,19 @@
 
     KERALYTIX se justifica por tres razones.
 
-    La primera es la accesibilidad. KERALYTIX trabaja con los mapas corneales que exportan los equipos de topografía y tomografía que ya tienen los centros de salud. No necesita \textit{hardware} nuevo, y eso facilita su adopción en una región con equipos variados. El prototipo usa mapas de equipos Orbscan. La extensión a otros equipos disponibles en la provincia, como Pentacam y Sirius, queda como línea futura.
+    La primera es la accesibilidad. KERALYTIX trabaja con los mapas corneales que exportan los equipos de topografía y tomografía que ya tienen los centros de salud. No necesita \textit{hardware} nuevo, y eso facilita su adopción en una región con equipos variados. El prototipo se entrena con mapas de equipos \Orbscan{} porque son los que trae CornOrb, el \textit{dataset} público elegido para el desarrollo. El producto, en cambio, apunta al \Pentacam{}, que es el equipo más común en los centros de la provincia. Por eso las muestras locales se solicitan a esos centros desde el inicio del proyecto.
 
-    La segunda es la independencia del fabricante. Como se vio en los antecedentes, el \textit{software} de las marcas comerciales solo funciona con sus propios equipos. KERALYTIX no depende de una marca, así que un centro puede usarlo sin cambiar el equipo que ya tiene.
+    La segunda es que el diseño no depende de un fabricante. Como se vio en los antecedentes, el \textit{software} de las marcas comerciales solo funciona con sus propios equipos. KERALYTIX recibe los mapas como imágenes exportadas, así que puede adaptarse a distintos equipos sin que el centro cambie el que ya tiene. La adaptación al \Pentacam{} es el primer paso después del PFI y depende de contar con sus exportaciones. Otros equipos, como el \Sirius{}, quedan como línea futura.
 
     La tercera es la necesidad local. El aumento de casos reportado en Oberá y la concentración de los equipos en pocas ciudades muestran que hace falta una herramienta de apoyo en la provincia. En el mercado nacional no hay una herramienta específica para queratocono.
 
     \subsection*{Impacto económico}
 
-        No hay datos económicos sistematizados sobre el queratocono en Argentina. Por eso se compara con el costo de los tratamientos de las etapas avanzadas. Los valores salen del nomenclador nacional de prácticas oftalmológicas de octubre de 2025~\cite{nomenclador_cao}, sin descuentos de obras sociales.
+        No hay datos económicos sistematizados sobre el queratocono en Argentina. Por eso se compara con el costo de los tratamientos. Los valores salen del nomenclador nacional de prácticas oftalmológicas de octubre de 2025~\cite{nomenclador_cao}, sin descuentos de obras sociales.
 
-        Una topografía corneal bilateral cuesta alrededor de \$150.000. Los tratamientos de etapas avanzadas cuestan mucho más. El \textit{cross-linking} corneal y el implante de anillos intracorneales cuestan entre 2,9 y 3,2 millones de pesos por ojo. Un trasplante de córnea cuesta entre 9,2 y 14,7 millones de pesos por ojo, según la técnica. Detectar la enfermedad a tiempo puede evitar o retrasar estas cirugías. Eso representa un ahorro para el paciente y para el sistema de salud.
+        Una topografía corneal bilateral cuesta alrededor de \$150.000. Los tratamientos cuestan mucho más. El \textit{cross-linking} corneal y el implante de anillos intracorneales cuestan entre 2,9 y 3,2 millones de pesos por ojo. Un trasplante de córnea cuesta entre 9,2 y 14,7 millones de pesos por ojo, según la técnica.
+
+        No existen medicamentos que detengan el queratocono. El \textit{cross-linking} corneal es el único tratamiento que demostró frenar su progresión. Es un procedimiento que endurece la córnea con gotas de riboflavina y luz ultravioleta~\cite{cxl_cochrane}. En los Países Bajos, los trasplantes de córnea por queratocono bajaron alrededor de un 25\,\% en los tres años siguientes a la adopción del \textit{cross-linking} en todo el país~\cite{cxl_trasplantes}. El resto del manejo busca mejorar la visión con anteojos o lentes de contacto rígidas y evitar que el paciente se frote los ojos, ya que eso puede agravar la enfermedad~\cite{statpearls_kc}. Detectar la enfermedad a tiempo permite indicar el \textit{cross-linking} antes de que avance, y así evitar o retrasar el implante de anillos y el trasplante. Eso supondría un ahorro para el paciente y para el sistema de salud.
 
 \phantomsection
 \section{Objetivos}
@@ -161,7 +165,7 @@
 \phantomsection
 \section{Alcance y limitaciones}
 
-    Esta sección delimita qué demostrará el prototipo desarrollado en el marco del Proyecto Final Integrador (PFI) y qué aspectos quedan fuera de su alcance, de modo que los resultados que se presenten se correspondan con lo que el prototipo efectivamente puede comprobar.
+    Esta sección delimita qué demostrará el prototipo desarrollado en el marco del Proyecto Final Integrador (PFI) y qué aspectos quedan fuera de su alcance, de modo que los resultados que se presenten se correspondan con lo que el prototipo efectivamente puede demostrar.
 
     \subsection*{Alcance del prototipo}
 
@@ -173,7 +177,7 @@
             \label{fig:alcance_prototipo}
         \end{figure}
 
-        El prototipo recibe los cuatro mapas corneales de un ojo, tal como los entrega un equipo Orbscan. También recibe las variables clínicas del paciente. Son la edad, el sexo, el astigmatismo, la curvatura máxima de la córnea (K~max), el espesor corneal central y en su punto más delgado, y la asfericidad anterior y posterior. Un modelo multimodal analiza las imágenes y los datos clínicos en conjunto y estima la probabilidad de que el ojo tenga queratocono. La técnica Grad-CAM marca sobre los mapas las regiones que más influyeron en esa estimación. El resultado es un informe con la clasificación del ojo, el nivel de confianza del modelo y el mapa de calor, que se consulta desde la aplicación web.
+        El prototipo recibe los cuatro mapas corneales de un ojo, tal como los entrega un equipo \Orbscan{}. También recibe las variables clínicas del paciente. Son la edad, el sexo, el astigmatismo, la curvatura máxima de la córnea (K~max), el espesor central, el espesor mínimo y la asfericidad anterior y posterior. Un modelo multimodal analiza las imágenes y los datos clínicos en conjunto y estima la probabilidad de que el ojo tenga queratocono. La técnica Grad-CAM marca sobre los mapas las regiones que más influyeron en esa estimación. Como se aplica sobre la rama convolucional del modelo, explica el aporte de los mapas corneales y no el de las variables clínicas. El resultado es un informe con la clasificación del ojo, el nivel de confianza del modelo y el mapa de calor, que se consulta desde la aplicación web.
 
         El entrenamiento y la evaluación se realizan con el \textit{dataset} público CornOrb~\cite{zenodo}, ya que las muestras locales se encuentran en proceso de solicitud a centros de salud de la región (ver capítulo Desarrollo). Si se obtienen durante el PFI, se incorporarán para una primera evaluación del modelo sobre datos regionales. El prototipo se considera terminado cuando el modelo esté entrenado y evaluado con ese conjunto de datos y la aplicación web permita ejecutarlo de punta a punta.
 
@@ -182,9 +186,9 @@
         \begin{itemize}
             \item \textbf{Tamaño de los conjuntos de datos:} los conjuntos de datos públicos de queratocono son escasos y de tamaño moderado. CornOrb reúne 1.454 ojos de 744 pacientes~\cite{zenodo}. Ese volumen alcanza para entrenar y evaluar un prototipo, pero es chico para arquitecturas más complejas como los \textit{Vision Transformers} o los modelos fundacionales.
 
-            \item \textbf{Falta de datos locales:} las muestras de pacientes de Misiones están en proceso de solicitud. Hasta que se obtengan, el desempeño del prototipo solo puede informarse sobre el conjunto de datos público. Si llegan durante el PFI, permitirán una evaluación preliminar sobre la población regional, pero no una validación clínica.
+            \item \textbf{Falta de datos locales:} las muestras de pacientes de Misiones están en proceso de solicitud. Hasta que se obtengan, el desempeño del prototipo solo puede informarse sobre el conjunto de datos público. Si llegan durante el PFI, permitirán una evaluación preliminar sobre la población regional, pero no una validación clínica bajo el rigor reglamentario requerido.
 
-            \item \textbf{Un único origen de datos:} todas las muestras de CornOrb vienen de un mismo tipo de equipo, el Orbscan~3, y de centros de Argelia. Las características de esa población y de su atención pueden diferir de las de Argentina. Un modelo que funciona bien en una población no necesariamente mantiene su desempeño en otra, ni con otros equipos o protocolos.
+            \item \textbf{Un único origen de datos:} todas las muestras de CornOrb vienen de un mismo tipo de equipo, el \Orbscan{}~3, y de centros de Argelia. Las características de esa población y de su atención pueden diferir de las de Argentina. Un modelo que funciona bien en una población no necesariamente mantiene su desempeño en otra, ni con otros equipos o protocolos. Como los centros de la provincia usan principalmente \Pentacam{}, el modelo deberá adaptarse a sus mapas antes de usarse con datos locales.
 
             \item \textbf{Etiquetas binarias:} cada ojo está etiquetado solo como normal o con queratocono, sin distinguir etapas de la enfermedad. Por eso el prototipo no puede medir por separado su desempeño en los casos subclínicos, que son los más difíciles de detectar.
         \end{itemize}
@@ -197,7 +201,7 @@
     \phantomsection
     \subsection{Queratocono: fisiopatología y diagnóstico}
 
-        El queratocono es una enfermedad ocular degenerativa y no inflamatoria. En ella la córnea, la parte transparente y curva en la superficie del ojo, se debilita y se adelgaza de forma progresiva hasta tomar una forma cónica (Figura~\ref{fig:comparacion_corneas}). Este cambio altera la manera en que la luz ingresa al ojo. Por eso aparecen astigmatismo irregular, miopía y una pérdida progresiva de la agudeza visual, que empeoran con el tiempo si la enfermedad no se detecta en etapas iniciales~\cite{queratocono, kcn_fisio}. Suele comenzar en la segunda década de la vida y puede progresar hasta la tercera o cuarta década, cuando generalmente se estabiliza~\cite{kcn_edad}.
+        El queratocono es una enfermedad ocular degenerativa y no inflamatoria. En ella la córnea, la parte transparente y curva en la superficie del ojo, se debilita y se adelgaza de forma progresiva hasta tomar una forma cónica (Figura~\ref{fig:comparacion_corneas}). Este cambio en su forma altera la manera en que la luz ingresa al ojo. Por eso aparecen astigmatismo irregular, miopía y una pérdida progresiva de la agudeza visual, que empeoran con el tiempo si la enfermedad no se detecta en etapas iniciales~\cite{queratocono, kcn_fisio}. Suele comenzar en la segunda década de la vida y puede progresar hasta la tercera o cuarta década, cuando generalmente se estabiliza~\cite{kcn_edad}.
 
         \begin{figure}[H] \centering
             \begin{subfigure}[b]{0.45\textwidth} \centering
@@ -217,7 +221,13 @@
 
         La enfermedad se conoce desde hace más de dos siglos. Su primera descripción se atribuye a Burchard Mauchart en 1748, que la llamó \textit{staphyloma diaphanum}. En 1854, John Nottingham hizo la primera descripción detallada y la diferenció de otras enfermedades de la córnea~\cite{historia_kc}.
 
-        El diagnóstico se basa en parámetros corneales que miden equipos de imagen. Los tomógrafos de Scheimpflug, como el Pentacam y el Sirius, fotografían la córnea en cortes. El Orbscan combina un barrido con hendidura de luz y un disco de Placido. Los datos de este trabajo provienen de un Orbscan. Entre los parámetros más relevantes están la curvatura máxima de la córnea (K~max), el espesor en su punto más delgado y la elevación de las superficies anterior y posterior respecto de una superficie de referencia~\cite{kcn_parametros}. Varios de estos parámetros se combinan en sistemas de clasificación, como el sistema ABCD de Belin, que se describe más adelante.
+        El diagnóstico se basa en parámetros corneales que se miden con equipos de imagen. Los tomógrafos de Scheimpflug, como el \Pentacam{} y el \Sirius{}, fotografían la córnea en cortes. El \Orbscan{} combina un barrido con hendidura de luz y un disco de Placido. Los datos de este trabajo provienen de un \Orbscan{}. Entre los parámetros más relevantes están la curvatura máxima de la córnea (K~max), el espesor mínimo, es decir, el espesor de la córnea en su punto más delgado, y la elevación de las superficies anterior y posterior respecto de una superficie de referencia~\cite{kcn_parametros}. La Figura~\ref{fig:parametros_cornea}a muestra dónde se mide cada uno sobre una córnea con queratocono, y la Figura~\ref{fig:parametros_cornea}b cómo se ubican el punto más delgado y las orientaciones en grados vistos de frente. Varios de estos parámetros se combinan en sistemas de clasificación, como el sistema ABCD de Belin, que se describe más adelante.
+
+        \begin{figure}[H] \centering
+            \resizebox{\linewidth}{!}{\input{img/esquema_parametros_cornea}}
+            \caption[Esquema de los parámetros corneales que miden los equipos de diagnóstico.]{Esquema de los parámetros corneales que miden los equipos de diagnóstico a partir de~\cite{kcn_parametros, belin_abcd}.}
+            \label{fig:parametros_cornea}
+        \end{figure}
 
     \phantomsection
     \subsection{Inteligencia Artificial en medicina: estado del arte}
@@ -229,18 +239,18 @@
     \phantomsection
     \subsection{Redes neuronales convolucionales para procesamiento de imágenes}
 
-        Las CNN son la arquitectura más usada para procesar imágenes. Aprenden por sí mismas qué características de la imagen son útiles, desde bordes y texturas simples hasta patrones complejos~\cite{lecun_dl}. Por eso sirven para analizar mapas corneales.
+        Las CNN son la arquitectura más usada para procesar imágenes. Durante la etapa de entrenamiento aprenden por sí mismas qué características de la imagen son útiles, desde bordes y texturas simples hasta patrones complejos~\cite{lecun_dl}. Por eso sirven para analizar mapas corneales.
 
-        Una CNN aplica a la imagen filtros que aprende durante el entrenamiento. Estas son las capas de convolución. Después, las capas de agrupamiento (\textit{pooling}) reducen el tamaño de la información y conservan lo más relevante. Al apilar varias capas, la red pasa de reconocer detalles simples a reconocer estructuras más complejas~\cite{lecun_dl}.
+        Una CNN trabaja en dos etapas. En el entrenamiento recibe miles de mapas ya etiquetados como normales o con queratocono. Para cada uno hace una predicción, la compara con la etiqueta correcta y ajusta sus filtros para equivocarse menos. Al repetir este proceso, los filtros terminan detectando los patrones que distinguen ambos grupos. En la inferencia, la red ya entrenada recibe un mapa nuevo, sin etiqueta, le aplica los filtros aprendidos y devuelve la probabilidad de queratocono. Por dentro, las capas de convolución aplican esos filtros a la imagen y las capas de agrupamiento (\textit{pooling}) reducen el tamaño de la información y conservan lo más relevante. Al apilar varias capas, la red pasa de reconocer detalles simples a reconocer estructuras más complejas~\cite{lecun_dl}.
 
         Entre las arquitecturas más usadas están EfficientNet y ResNet. EfficientNet escala de forma equilibrada la profundidad de la red, su ancho y la resolución de la imagen de entrada. Así logra buena precisión con menos parámetros que otras redes~\cite{efficientnet}. ResNet usa conexiones residuales, que permiten entrenar redes muy profundas sin que su desempeño se degrade al agregar capas~\cite{resnet}.
 
     \phantomsection
     \subsection{Aprendizaje profundo multimodal}
 
-        El enfoque multimodal combina distintos tipos de datos de entrada para mejorar el diagnóstico. En este trabajo, esas fuentes son los cuatro mapas corneales del Orbscan y las variables clínicas que los acompañan, descritas en la sección Alcance y limitaciones.
+        El enfoque multimodal combina distintos tipos de datos de entrada para mejorar el diagnóstico. En este trabajo, esas fuentes son los cuatro mapas corneales del \Orbscan{} y las variables clínicas que los acompañan, descritas en la sección Alcance y limitaciones.
 
-        Al combinar ambas fuentes, el modelo puede encontrar patrones que no aparecen al analizar cada una por separado. Por ejemplo, una leve protrusión en el mapa de elevación posterior puede no ser concluyente por sí sola. Junto con un espesor corneal reducido en la misma zona, en cambio, puede indicar un queratocono en etapa temprana.
+        Al combinar ambas fuentes, el modelo puede encontrar patrones que no aparecen al analizar cada una por separado. Por ejemplo, una leve protrusión en el mapa de elevación posterior puede no ser concluyente por sí sola. Junto con un espesor corneal reducido en la misma zona, en cambio, puede indicar un queratocono en etapa temprana (Figura~\ref{fig:parametros_cornea}a).
 
         Una revisión sistemática sobre la combinación de imágenes médicas con datos de la historia clínica distingue tres estrategias de fusión, según el momento en que se unen ambas fuentes~\cite{huang_fusion}. En la fusión temprana, los datos se combinan antes de ingresar al modelo. En la fusión tardía, cada fuente se analiza con un modelo propio y solo se combinan las predicciones finales. En la fusión conjunta, las características que una red extrae de la imagen se unen con las variables clínicas dentro de la misma red, y ambas partes aprenden en simultáneo.
 
@@ -251,34 +261,63 @@
 
         Los modelos fundacionales son modelos de IA entrenados con volúmenes muy grandes de datos, en general sin etiquetas. Aprenden de la propia estructura de los datos, lo que se llama aprendizaje autosupervisado. Una vez entrenados, se adaptan a muchas tareas distintas con pocos datos etiquetados. En medicina, se espera que lleguen a interpretar juntas distintas fuentes, como imágenes, historias clínicas, análisis de laboratorio o texto médico~\cite{moor_gmai}.
 
-        La oftalmología es una de las especialidades donde estos modelos avanzaron más rápido. RETFound, descrito en los antecedentes, fue el primero y trabaja solo con imágenes de retina~\cite{retfound}. Después, VisionFM extendió el enfoque a varios tipos de estudio. Se entrenó con 3,4 millones de imágenes de más de 500.000 personas, de ocho tipos de estudios oftalmológicos, entre ellos retinografía, tomografía de coherencia óptica, lámpara de hendidura y ecografía. En su validación interna alcanzó un área bajo la curva ROC promedio de 0,950 en el diagnóstico de ocho categorías de enfermedades oculares~\cite{visionfm}. Esta métrica mide qué tan bien el modelo distingue casos sanos de casos enfermos, y su valor ideal es 1.
+        La oftalmología es una de las especialidades donde estos modelos avanzaron más rápido. RETFound, descrito en los antecedentes, fue el primero y trabaja solo con imágenes de retina~\cite{retfound}. Después, VisionFM extendió el enfoque a varios tipos de estudio. Se entrenó con 3,4 millones de imágenes de más de 500.000 personas, de ocho tipos de estudios oftalmológicos, entre ellos retinografía, tomografía de coherencia óptica, lámpara de hendidura y ecografía. En su validación interna alcanzó un área bajo la curva ROC\footnote{Por sus siglas en inglés, \textit{Receiver Operating Characteristic}: curva que muestra la sensibilidad del modelo frente a su tasa de falsos positivos para cada umbral de decisión.} promedio de 0,950 en el diagnóstico de ocho categorías de enfermedades oculares~\cite{visionfm}. Esta métrica mide qué tan bien el modelo distingue casos sanos de casos enfermos, y su valor ideal es 1.
 
-        Una revisión sistemática reciente analizó diez modelos fundacionales en oftalmología. Ocho se centran en enfermedades de la retina, y fuera de la retina y el glaucoma solo hay aplicaciones a tumores de la superficie del ojo~\cite{jin_fm_oftalmologia}. La revisión también señala barreras para su uso clínico. Son la falta de interpretabilidad, la alta demanda de cómputo, la integración con los sistemas de los hospitales y la necesidad de que los especialistas los validen.
+        Una revisión sistemática reciente analizó diez modelos fundacionales en oftalmología. Ocho se centran en enfermedades de la retina. Fuera de la retina y del glaucoma, la única aplicación es la detección de tumores de la superficie ocular~\cite{jin_fm_oftalmologia}. La revisión también señala barreras para su uso clínico, como son la falta de interpretabilidad, la alta demanda de cómputo, la integración con los sistemas de los hospitales y la necesidad de que los especialistas los validen.
 
-        Estos modelos muestran el aporte de combinar varias fuentes de información y de reutilizar lo que una red ya aprendió. El prototipo aplica estas ideas a menor escala. La rama convolucional puede partir de una red ya entrenada con otras imágenes, lo que se llama aprendizaje por transferencia, y se combina con los datos clínicos del paciente. Los mapas de topografía corneal todavía no forman parte de los modelos fundacionales publicados. KERAFound apunta a cubrirlos, pero sigue en desarrollo. Por el volumen de datos y de cómputo que requieren, su adaptación al queratocono queda como línea futura.
+        Estos modelos muestran el aporte de combinar varias fuentes de información y de reutilizar lo que una red ya aprendió. Los mapas de topografía corneal todavía no forman parte de los modelos fundacionales publicados. KERAFound apunta a cubrirlos, pero sigue en desarrollo. Por el volumen de datos y de cómputo que requieren, su adaptación al queratocono queda como línea futura.
 
     \phantomsection
     \subsection{Explicabilidad de la Inteligencia Artificial (XAI)}
 
         La XAI busca que el profesional pueda entender y verificar por qué el modelo dio un resultado. Sin ella, el modelo funciona como una ``caja negra''. El médico ve la predicción pero no sabe en qué se basó, y eso genera desconfianza y dificulta su adopción en la práctica clínica~\cite{jin_fm_oftalmologia}. La explicabilidad también ayuda a detectar errores del modelo. Si el modelo se basa en zonas de la imagen que no tienen relación con la enfermedad, el especialista puede notarlo.
 
-        Una de las técnicas más usadas en imágenes médicas es Grad-CAM. Genera un mapa de calor que resalta las regiones de la imagen que más influyeron en la decisión del modelo~\cite{gradcam}. En el queratocono, el mapa muestra qué zonas de la córnea llevaron a la predicción, y así el oftalmólogo puede comprobar si coinciden con lo que él observa. Grad-CAM se aplica sobre la rama convolucional del modelo, así que explica el aporte de los mapas corneales. No muestra el peso de las variables clínicas.
+        Una de las técnicas más usadas en imágenes médicas es Grad-CAM. Genera un mapa de calor que resalta las regiones de la imagen que más influyeron en la decisión del modelo~\cite{gradcam}. En el queratocono, el mapa muestra qué zonas de la córnea llevaron a la predicción, y así el oftalmólogo puede comprobar si coinciden con lo que él observa.
 
     \phantomsection
     \subsection{\textit{Software} como producto médico y marco regulatorio}
 
-        Un SaMD es un \textit{software} destinado a usarse con uno o más fines médicos que cumple esos fines sin formar parte de un equipo médico~\cite{imdrf_samd}. KERALYTIX entra en esta categoría. Analiza estudios corneales para apoyar un diagnóstico, y funciona por separado del equipo que generó esos estudios.
+        Un SaMD es un \textit{software} destinado a usarse con uno o más fines médicos que cumple esa función sin formar parte de un equipo médico~\cite{imdrf_samd}. KERALYTIX entra en esta categoría. Analiza estudios corneales para apoyar un diagnóstico, y funciona por separado del equipo que generó esos estudios.
 
         En Argentina, los productos médicos se clasifican según su riesgo en cuatro clases, de la I (menor riesgo) a la IV (mayor riesgo)~\cite{dispo_2318}. La Disposición N.º 9688/2019 establece que el \textit{software} que funciona de forma independiente se considera un producto médico activo~\cite{dispo_9688}. La Disposición N.º 2318/2002 ubica en la Clase II a los productos médicos activos con fines de diagnóstico. Por eso KERALYTIX corresponde a la Clase II.
 
-        El registro en esta clase exige demostrar la seguridad y la eficacia del producto, como se describió en la sección Riesgos de implementación y barreras normativas. Esto se tiene en cuenta desde el inicio del desarrollo. Cada decisión se documenta y queda registrada, para poder presentar esa trazabilidad ante la ANMAT al momento de la inscripción.
+        El registro en esta clase exige demostrar la seguridad y la eficacia del producto, como se describió en la sección \hyperref[sec:riesgos]{Riesgos de implementación y barreras normativas}, dentro del Análisis del problema. Esto se tiene en cuenta desde el inicio del desarrollo. Cada decisión se documenta y queda registrada, para poder presentar esa trazabilidad ante la ANMAT al momento de la inscripción.
 
     \phantomsection
     \subsection{Sistema ABCD de Belin}
 
-        El sistema ABCD de Belin clasifica la severidad del queratocono en etapas de 0 a 4~\cite{belin_abcd}. Evalúa cuatro parámetros. A es la curvatura de la cara anterior de la córnea y B la de la cara posterior, ambas medidas en una zona de 3~mm centrada en su punto más delgado. C es el espesor de la córnea en ese punto y D es la agudeza visual con la mejor corrección. Cada parámetro recibe su propia etapa, y así el sistema describe el estado de la córnea con más detalle que una sola cifra. A diferencia de clasificaciones anteriores, incluye la cara posterior de la córnea, donde aparecen los primeros cambios de la enfermedad~\cite{belin_abcd}.
+        El sistema ABCD de Belin clasifica la severidad del queratocono en etapas de 0 a 4~\cite{belin_abcd}. Evalúa cuatro parámetros. A es la curvatura de la cara anterior de la córnea y B la de la cara posterior, ambas medidas en una zona de 3~mm centrada en su punto más delgado (Figura~\ref{fig:parametros_cornea}). C es el espesor mínimo y D es la agudeza visual con la mejor corrección. Cada parámetro recibe su propia etapa, y así el sistema describe el estado de la córnea con más detalle que una sola cifra. A diferencia de clasificaciones anteriores, incluye la cara posterior de la córnea, donde aparecen los primeros cambios de la enfermedad~\cite{belin_abcd}.
 
-        Equipos como el Pentacam calculan el ABCD de forma automática. CornOrb, en cambio, solo incluye el espesor mínimo (C). No trae las curvaturas en la zona del punto más delgado (A y B) ni la agudeza visual (D), y sus ojos no están etiquetados por etapa. Por eso el prototipo no puede asignar ni predecir una etapa ABCD, y esta clasificación queda como línea futura.
+        A y B no son lo mismo que K~max. K~max es la curvatura máxima de la cara anterior en un solo punto, expresada en dioptrías. A y B son radios de curvatura, en milímetros, promediados en la zona que rodea al punto más delgado (Figura~\ref{fig:parametros_cornea}a). Belin usa esa zona porque representa mejor la región afectada que un valor puntual como K~max~\cite{belin_abcd}. C, en cambio, es el mismo espesor mínimo que incluye CornOrb. La Tabla~\ref{tabla:parametros_corneales} resume los parámetros y cómo se nombran en el \textit{dataset} y en el sistema ABCD.
+
+        \begingroup \setstretch{1.1}
+        \begin{longtblr}[
+            caption = Parámetros corneales usados en el informe,
+            label = tabla:parametros_corneales
+            ]{
+                colspec = {Q[l,m,3cm] X[l,m] Q[c,m,1.5cm] Q[c,m,3.6cm] Q[c,m,1.3cm]},
+                cells = {font=\small},
+                row{1} = {bg=gray!15, font=\small\bfseries, halign=c},
+                hlines, vlines,
+                rowsep = 3pt, colsep = 5pt
+            }
+
+            Parámetro & Qué mide & Unidad & En CornOrb & En el ABCD \\
+
+            K~max & Curvatura máxima de la cara anterior, en un solo punto & dioptrías & \texttt{kmax\_value\_D} & --- \\
+
+            Curvatura anterior en la zona del punto más delgado & Radio de curvatura de la cara anterior, promediado en una zona de 3~mm & mm & no incluida & A \\
+
+            Curvatura posterior en la zona del punto más delgado & Radio de curvatura de la cara posterior, promediado en la misma zona & mm & no incluida & B \\
+
+            Espesor mínimo & Espesor de la córnea en su punto más delgado & µm & \texttt{pachy\_thinnest\_um} & C \\
+
+            Agudeza visual & Visión con la mejor corrección óptica & --- & no incluida & D \\
+
+        \end{longtblr}
+        \endgroup
+
+        Equipos como el \Pentacam{} calculan el ABCD de forma automática. CornOrb, en cambio, solo incluye el espesor mínimo (C). No trae las curvaturas en la zona del punto más delgado (A y B) ni la agudeza visual (D), y sus ojos no están etiquetados por etapa. Por eso el prototipo no puede asignar ni predecir una etapa ABCD, y esta clasificación queda como línea futura.
 
 \phantomsection
 \section{Propuesta metodológica}
@@ -299,23 +338,23 @@
 
         La primera fase ocupa el mes uno, agosto de 2026. Desde el inicio se definen los requisitos regulatorios, legales y de calidad. También se fijan las políticas de documentación y trazabilidad que pedirá la inscripción de KERALYTIX como producto médico. Así, cada decisión queda registrada durante el desarrollo y no hay que reconstruirla al final. En esta fase se seleccionó CornOrb~\cite{zenodo} como conjunto de datos de trabajo, por ser público y reunir los mapas corneales y las variables clínicas de cada ojo. Sobre él se hace el análisis exploratorio, cuyos resultados se presentan en el capítulo Desarrollo.
 
-        En la misma fase se inician las solicitudes de muestras locales anonimizadas a centros oftalmológicos de la región. Las solicitudes siguen en paralelo durante el resto del PFI. Si las muestras llegan a tiempo, se usan para una primera evaluación del modelo sobre datos regionales. El lote completo se reserva para la validación clínica de la cuarta fase.
+        En la misma fase se inician las solicitudes de muestras locales anonimizadas a centros oftalmológicos de la región. Las solicitudes siguen en paralelo durante el resto del PFI. Si las muestras llegan a tiempo, se usan para una primera evaluación del modelo sobre datos regionales, que muestra cuánto cambia su desempeño con otro equipo y otra población. El lote completo se reserva para la validación clínica de la cuarta fase.
 
     \subsection*{Segunda fase: modelado}
 
-        La segunda fase abarca los meses dos a cuatro, de septiembre a noviembre de 2026. Es la fase iterativa de la metodología. Los datos se preparan para el entrenamiento y se prueban arquitecturas multimodales que combinan una rama convolucional para los mapas corneales con una rama para las variables clínicas. El modelo elegido se entrena y se evalúa con la partición de entrenamiento y prueba que trae el \textit{dataset}, priorizando la reducción de falsos negativos. Si la evaluación no da resultados aceptables, se vuelve a la preparación de los datos o al modelado. Por último, se integra Grad-CAM para generar la explicación visual.
+        La segunda fase abarca los meses dos a cuatro, de septiembre a noviembre de 2026. Es la fase iterativa de la metodología. Los datos se preparan para el entrenamiento y se prueban arquitecturas multimodales que combinan una rama convolucional para los mapas corneales con una rama para las variables clínicas. La rama convolucional puede partir de una red ya entrenada con otras imágenes, lo que se llama aprendizaje por transferencia. El modelo elegido se entrena y se evalúa con la partición de entrenamiento y prueba que trae el \textit{dataset}, priorizando la reducción de falsos negativos. Si la evaluación no da resultados aceptables, se vuelve a la preparación de los datos o al modelado. Por último, se integra Grad-CAM para generar la explicación visual.
 
     \subsection*{Tercera fase: aplicación web}
 
-        La tercera fase abarca los meses cuatro y cinco, noviembre y diciembre de 2026, y se superpone con el cierre de la segunda. En ella el modelo se integra a una aplicación web. El \textit{backend} es la parte del servidor y expone el modelo mediante una interfaz de programación (API) construida con FastAPI. El \textit{frontend} es la interfaz que usa el oftalmólogo y se desarrolla con React.
+        La tercera fase abarca los meses cuatro y cinco, noviembre y diciembre de 2026, y se superpone con el cierre de la segunda. En ella el modelo se integra a una aplicación web. El \textit{backend} es la parte del servidor y expone el modelo mediante una interfaz de programación (API\footnote{Por sus siglas en inglés, \textit{Application Programming Interface}.}) construida con FastAPI. El \textit{frontend} es la interfaz que usa el oftalmólogo y se desarrolla con React.
 
-        La aplicación permite cargar los estudios de un paciente, ejecutar el modelo y consultar un informe con el resultado, el nivel de confianza y el mapa de calor. También incluye la gestión de usuarios que necesita el modelo de suscripción. Para las pruebas se publica en un servidor virtual privado (VPS).
+        La aplicación permite cargar los estudios de un paciente, ejecutar el modelo y consultar un informe con el resultado, el nivel de confianza y el mapa de calor. También incluye la gestión de usuarios que necesita el modelo de suscripción. Para las pruebas se publica en un servidor virtual privado (VPS\footnote{Por sus siglas en inglés, \textit{Virtual Private Server}.}).
 
     \subsection*{Proyección del producto}
 
         Después del PFI, llevar KERALYTIX al uso clínico y comercial requiere dos fases más, de dos meses cada una.
 
-        La cuarta fase es la validación clínica y las pruebas con usuarios. El desempeño del modelo se verifica con unos 150 estudios locales que no se usaron en el entrenamiento. Sobre la sensibilidad y la especificidad se calcula un intervalo de confianza del 90\%. También se ajusta la interfaz a partir de pruebas de uso con personal médico.
+        La cuarta fase es la validación clínica y las pruebas con usuarios. Primero, el modelo se adapta a los mapas del \Pentacam{}, el equipo de los centros locales, con parte de las muestras obtenidas. Después, el desempeño del modelo se verifica con unos 150 estudios locales que no se usaron en el entrenamiento. Sobre la sensibilidad y la especificidad se calcula un intervalo de confianza del 90\%. También se ajusta la interfaz a partir de pruebas de uso con personal médico.
 
         La quinta fase es la certificación y el lanzamiento. Se cierra el informe técnico armado durante todo el desarrollo. Con el apoyo de un abogado, se gestiona la inscripción de KERALYTIX como producto médico Clase II ante la ANMAT. También se aprueban los contratos de confidencialidad, los términos de uso con limitación de responsabilidad clínica y los consentimientos informados, según la Ley N.º 25.326. Por último, se lanza la campaña de comunicación y se elaboran la documentación técnica y el manual de usuario.
 

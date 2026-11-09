@@ -138,7 +138,7 @@
 
             Criterio & Peso & Aspectos evaluados \\
 
-            Técnico & 40\,\% & Determina si el equipo cuenta con los recursos y la experiencia para cumplir los requisitos: accesibilidad de tecnologías y datos (\textit{hardware} de entrenamiento, herramientas y \textit{datasets} multimodales), capacidad técnica del equipo (\textit{Deep Learning}, \textit{backend}, \textit{frontend} y normativa médica), interoperabilidad con distintos equipos (Orbscan, Pentacam o Sirius) y mantenibilidad ante nuevas versiones o cambios en los formatos de salida. \\
+            Técnico & 40\,\% & Determina si el equipo cuenta con los recursos y la experiencia para cumplir los requisitos: accesibilidad de tecnologías y datos (\textit{hardware} de entrenamiento, herramientas y \textit{datasets} multimodales), capacidad técnica del equipo (\textit{Deep Learning}, \textit{backend}, \textit{frontend} y normativa médica), interoperabilidad con distintos equipos (\Orbscan{}, \Pentacam{} o \Sirius{}) y mantenibilidad ante nuevas versiones o cambios en los formatos de salida. \\
 
             Jurídico & 25\,\% & Asegura el cumplimiento normativo en salud: inscripción como producto médico Clase II ante la ANMAT según las disposiciones N.º 2318/2002~\cite{dispo_2318} y N.º 9688/2019~\cite{dispo_9688}, anonimización de los datos según la Ley N.º 25.326~\cite{ley_25326} y gestión del consentimiento informado de los pacientes. \\
 
@@ -166,7 +166,7 @@
 
             Técnico & Tecnologías y datos & Se dispone del \textit{dataset} público y multimodal CornOrb~\cite{zenodo}, cuyo análisis exploratorio confirmó que es adecuado como punto de partida. Las herramientas son de uso libre (Python, FastAPI, React) y el cómputo se obtiene con Google Colab Pro. Las muestras locales están en proceso de solicitud a nueve centros y no condicionan el prototipo. \\
             & Capacidad del equipo & Los integrantes tienen experiencia académica en aprendizaje profundo y aplicaciones web. El conocimiento normativo se complementa con el abogado consultor. \\
-            & Interoperabilidad & Es el aspecto más limitado: el prototipo procesa solo mapas de equipos Orbscan. La compatibilidad con Pentacam o Sirius depende de acceder a sus archivos de exportación y queda como trabajo futuro. \\
+            & Interoperabilidad & Es el aspecto más limitado: el prototipo procesa solo mapas de equipos \Orbscan{}, que son los del \textit{dataset}. La adaptación al \Pentacam{}, el equipo de los centros locales, es el primer paso después del PFI. La de otros equipos, como el \Sirius{}, queda como trabajo futuro. Ambas dependen de acceder a sus archivos de exportación. \\
             & Mantenibilidad & Los módulos independientes (preprocesamiento, modelo, API e interfaz) y los contenedores permiten actualizar cada parte por separado. \\
 
             Jurídico & Normativa ANMAT & La inscripción como Clase II exige demostrar seguridad y eficacia mediante validación clínica, prevista en la proyección del producto. El prototipo del PFI no se usa para decisiones clínicas, y desde el inicio se lleva la documentación que la inscripción requerirá. \\
@@ -414,7 +414,7 @@
 
             R1 & El modelo podría perder eficacia con topografías de pacientes locales, porque se entrena con \textit{datasets} internacionales, y generar falsos negativos. & \textit{Data augmentation} sobre las muestras locales, control del \textit{overfitting} y del \textit{underfitting}, reentrenamiento continuo y monitoreo de deriva. & Sesiones con el oftalmólogo consultor para analizar los mapas de calor de los casos erróneos y reentrenar el modelo de forma focalizada. \\
 
-            R2 & Los equipos de las clínicas podrían exportar formatos propietarios, anómalos o con resoluciones que el preprocesamiento no interprete. & Solicitar muestras de los equipos locales (Pentacam) desde el inicio y construir un \textit{pipeline} de preprocesamiento robusto. & Forzar una estandarización (recorte, redimensionamiento y normalización de canales) antes de que la imagen ingrese al modelo. \\
+            R2 & Los equipos de las clínicas podrían exportar formatos propietarios, anómalos o con resoluciones que el preprocesamiento no interprete. & Solicitar muestras de los equipos locales (\Pentacam{}) desde el inicio y construir un \textit{pipeline} de preprocesamiento robusto. & Forzar una estandarización (recorte, redimensionamiento y normalización de canales) antes de que la imagen ingrese al modelo. \\
 
             R3 & Dificultad para obtener las muestras locales a tiempo, por falta de tiempo de los médicos o trabas en la anonimización. & Entregar a los colaboradores un \textit{script} que elimine automáticamente los metadatos del paciente. & Ampliar la solicitud a otras clínicas de Posadas, Oberá y Eldorado. \\
 
