@@ -1,47 +1,27 @@
 % LTeX: enabled=false
 \documentclass[aspectratio=169, 11pt]{beamer}
-\input{preambulo}
-
-% Datos de la portada
-\title{KERALYTIX}
-\subtitle{Sistema de soporte para la decisión clínica temprana del queratocono mediante IA multimodal}
-\author{Aranda, Brian Ezequiel \and Wlodeck, Fabricio Joaquín}
-\institute{Proyecto final integrador [IC-522] - Facultad de Ingeniería, UNaM}
-\date{Oberá, Misiones - \today}
-
+\input{config/packages}
+\input{config/formato}
+\input{config/datos}
 \begin{document}
 
-% ===============================================================
-% Portada
-% ===============================================================
-\begin{frame}[plain]
-    \centering
-    \includegraphics[height=1.4cm]{Logo_UNaM.png}\hspace{1cm}%
-    \includegraphics[height=1.4cm]{logotipo_solo.png}\par\vspace{0.6cm}
-    {\usebeamercolor[fg]{title}\LARGE\bfseries\inserttitle\par}\vspace{0.3cm}
-    {\large\insertsubtitle\par}\vspace{0.6cm}
-    {\normalsize Grupo N.º 7: \insertauthor\par}\vspace{0.15cm}
-    {\small Docente tutor: Ing. Krujoski, Matías Gabriel\par}\vspace{0.3cm}
-    {\small\color{gray}\insertinstitute\par\insertdate\par}
-\end{frame}
+    % Portada
+    \input{partes/00-portada}
 
-\input{secciones/01_proyecto}
-\input{secciones/02_resultados}
-\input{secciones/03_cierre}
+    % El problema, qué es KERALYTIX, objetivos y fases
+    \input{partes/01-proyecto}
 
-% ===============================================================
-% Cierre
-% ===============================================================
-\begin{frame}[plain]
-    \centering\vfill
-    {\usebeamercolor[fg]{title}\LARGE\bfseries ¿Preguntas?\par}
-    \vspace{0.8cm}
-    \includegraphics[height=2.2cm]{logo_keralytix.png}
-    \vfill
-\end{frame}
+    % Resultados por fase
+    \input{partes/02-resultados}
 
-% Diapositivas de respaldo (no suman al total del pie)
-\appendix
-\input{secciones/04_respaldo}
+    % Correspondencia entre objetivos y resultados, y próximos pasos
+    \input{partes/03-balance}
+
+    % Diapositiva final
+    \input{partes/04-final}
+
+    % Diapositivas de respaldo (no suman al total del pie)
+    \appendix
+    \input{partes/anexo}
 
 \end{document}

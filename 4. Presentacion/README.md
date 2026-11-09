@@ -20,15 +20,19 @@ Sigue la plantilla de las presentaciones de IdS2 y PDS, explicada en `Plantilla_
 ## Estructura
 | Archivo | Contenido |
 |---|---|
-| `main.tex` | Datos y portada, orden de las secciones, cierre |
-| `preambulo.tex` | Paquetes, colores, pie de página, macros |
+| `main.tex` | Solo invoca la configuración y las partes, en orden |
+| `config/packages.tex` | Paquetes |
+| `config/formato.tex` | Colores, pie de página, título de cada diapositiva y macros |
+| `config/datos.tex` | Título, autores, institución y fecha de la portada |
+| `config/tikz.tex` | Estilos `caja` y `flecha` para los diagramas |
+| `partes/` | `00-portada`, `01-proyecto`, `02-resultados`, `03-balance`, `04-final` y `anexo` (diapositivas de respaldo) |
+| `img/` | Logos, figuras del EDA y esquemas TikZ, como el de parámetros corneales copiado del informe |
 | `.latexmkrc` | Salida `Presentacion.pdf`, auxiliares en `build/` |
-| `secciones/` | Diapositivas de cada tema. `01_ejemplos.tex` tiene un molde de cada patrón y se borra cuando ya no haga falta |
-| `tikz/estilos.tex` | Estilos `caja` y `flecha` para los diagramas |
-| `img/` | Logos de la UNaM y de KERALYTIX, copiados del informe |
 
 ## Macros propias
-- `\seccion{Título}`: diapositiva separadora, sin pie.
+- `\seccion{Título}`: ordena el archivo, sin diapositiva separadora.
+- `\alcanzado{}`, `\enproceso{}`, `\porhacer{}`: estado del resultado al pie de la diapositiva.
+- `\etiq{color}{texto}`: etiqueta de estado dentro de una tabla.
 - `\idea{texto}`: caja gris con borde azul para la idea clave.
 - `\pendiente{texto}`: marca en rojo de lo que falta. No debe quedar ninguna en la versión final.
 - Entorno `tabla`: tabla con encabezado azul y líneas horizontales grises.

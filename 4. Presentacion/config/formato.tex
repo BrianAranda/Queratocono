@@ -1,21 +1,6 @@
 % LTeX: enabled=false
 
 % ---------------------------------------------------------------
-% Paquetes
-% ---------------------------------------------------------------
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage[spanish, es-nodecimaldot, es-noshorthands, es-tabla]{babel}
-\usepackage{times}
-\usepackage{amsmath, amssymb}
-\usepackage{tabularray}
-\usepackage{tikz}
-\usetikzlibrary{positioning, fit, backgrounds, calc, arrows.meta, babel}
-\usepackage{setspace}               % lo usa el esquema de parámetros corneales del informe
-\usepackage{appendixnumberbeamer}   % las diapositivas de respaldo no suman al total
-\graphicspath{{img/}}
-
-% ---------------------------------------------------------------
 % Estilo (plantilla de las presentaciones de IdS2 y PDS)
 % ---------------------------------------------------------------
 \usefonttheme{serif}
@@ -88,15 +73,18 @@
 \newcommand{\enproceso}[1]{\estado{azul}{En proceso}{#1}}
 \newcommand{\porhacer}[1]{\estado{gray}{Por empezar}{#1}}
 
+% Etiqueta de estado dentro de una tabla
+\newcommand{\etiq}[2]{\fcolorbox{#1}{#1!10}{\textcolor{#1}{\textbf{#2}}}}
+
 % Formato común de las tablas: encabezado azul y líneas horizontales grises
 \NewTblrEnviron{tabla}
 \SetTblrOuter[tabla]{halign=c}
 \SetTblrInner[tabla]{row{1} = {bg=azul, fg=white, font=\bfseries},
                      hlines = {gray!50}, rowsep = 2pt}
 
-% Diagramas TikZ
-\input{tikz/estilos}
-
 % Sección: solo ordena el archivo, sin diapositiva separadora,
 % para no gastar páginas (límite de 20 páginas y 20 minutos)
 \newcommand{\seccion}[1]{\section{#1}}
+
+% Estilos de los diagramas TikZ
+\input{config/tikz}
