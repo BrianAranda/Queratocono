@@ -6,5 +6,32 @@
     // plano para que LTeX+ no los revise
     "files.associations": {
         "**/build/**": "plaintext"
-    }
+    },
+
+    // LaTeX Workshop: compilar con latexmk SIN pasarle carpetas ni motor,
+    // así toma todo del .latexmkrc de cada carpeta (2. Informe y 4. Presentacion):
+    // pdflatex, PDF junto a main.tex y auxiliares en build/.
+    // La receta por defecto agrega -outdir y pisa lo del .latexmkrc.
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmkrc",
+            "command": "latexmk",
+            // LaTeX Workshop corre la herramienta desde la carpeta de main.tex,
+            // así latexmk encuentra el .latexmkrc. %DOCFILE% = "main", sin ruta,
+            // para evitar problemas con los espacios y la "ñ" de "5to año".
+            "args": ["%DOCFILE%"],
+            "env": {}
+        }
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk (.latexmkrc)",
+            "tools": ["latexmkrc"]
+        }
+    ],
+    "latex-workshop.latex.recipe.default": "first",
+    // El PDF queda junto a main.tex
+    "latex-workshop.latex.outDir": "%DIR%",
+    // No compilar archivos sueltos de partes/ o config/ como si fueran el principal
+    "latex-workshop.latex.rootFile.useSubFile": false
 }
