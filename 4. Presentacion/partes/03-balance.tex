@@ -12,46 +12,51 @@
                   rows = {font=\footnotesize}, rowsep = 1pt}
         Obj. & Qué nos propusimos & Qué logramos & Estado \\
         1 & Analizar un conjunto de datos público & CornOrb seleccionado y revisado, con los datos a corregir identificados & \etiq{verde}{Alcanzado} \\
-        2 & Construir el modelo de IA & Modelo con los mapas evaluado: detecta el 92\,\% de los queratoconos sin falsas alarmas. Falta la fusión con los datos clínicos & \etiq{azul}{En proceso} \\
+        2 & Construir el modelo de IA & Primera prueba con los mapas: detecta el 92\,\% de los queratoconos sin falsos positivos. Se siguen probando redes y estrategias, y falta la fusión con los datos clínicos & \etiq{azul}{En proceso} \\
         3 & Integrar la explicación visual & Grad-CAM funcionando sobre los mapas. Falta mostrarlo en el informe & \etiq{azul}{En proceso} \\
         4 & Desarrollar la aplicación web & Partes y herramientas definidas (React y FastAPI) & \etiq{gray}{Por empezar} \\
         --- & Conseguir datos locales para validar & 9 centros contactados, charla con Roberto Albertazzi y trámites en curso & \etiq{azul}{En proceso} \\
     \end{tabla}
-    \vspace{0.2cm}
-    \centering
-    {\small El avance coincide con el cronograma: la fase 1 está terminada y la fase 2 está en curso.}
 \end{frame}
 
 % ===============================================================
 % 13. Próximos pasos
 % ===============================================================
 \begin{frame}{Próximos pasos}
-    \begin{columns}[T]
-        \begin{column}{0.48\textwidth}
+    % Noviembre y Diciembre lado a lado, con cuatro puntos cada uno para que
+    % los bloques queden de la misma altura. "En paralelo" abajo, a todo el ancho
+    % de los dos. Las columnas ocupan 0,99 (Beamer reparte el espacio sobrante
+    % entre ellas), y el bloque de abajo mide lo mismo para que los bordes coincidan
+    \vspace{-0.5cm}
+    \begin{columns}[T, totalwidth=0.99\textwidth]
+        \begin{column}{0.47\textwidth}
             \begin{block}{Noviembre}
                 \begin{itemize}
+                    \item Seguir probando redes y estrategias.
                     \item Combinar los mapas con los datos clínicos en un solo modelo.
                     \item Ajustarlo para detectar al menos el 95\,\% de los queratoconos.
-                    \item Sumar el mapa de calor al informe.
                     \item Empezar la aplicación web.
                 \end{itemize}
             \end{block}
         \end{column}
-        \begin{column}{0.48\textwidth}
+        \hspace{0.03\textwidth}
+        \begin{column}{0.47\textwidth}
             \begin{block}{Diciembre}
                 \begin{itemize}
                     \item Terminar la aplicación web.
                     \item Conectar el modelo con la aplicación.
+                    \item Generar el informe con el resultado y el mapa de calor.
                     \item Tener el prototipo funcionando de punta a punta.
-                \end{itemize}
-            \end{block}
-            \vspace{0.2cm}
-            \begin{block}{En paralelo}
-                \begin{itemize}
-                    \item Avanzar con los trámites para los datos locales.
                 \end{itemize}
             \end{block}
         \end{column}
     \end{columns}
-    \idea{Enero queda como reserva por si algo se atrasa.}
+    \vspace{0.3cm}
+    % Sin center: las columnas arrancan en el margen izquierdo, así que este
+    % bloque también, para que los bordes coincidan
+    \noindent\begin{minipage}{0.99\textwidth}
+        \begin{block}{En paralelo}
+            Avanzar con los trámites para conseguir los datos locales de validación.
+        \end{block}
+    \end{minipage}
 \end{frame}

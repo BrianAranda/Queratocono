@@ -1,4 +1,3 @@
-% LTeX: enabled=false
 % Sección 1: el problema y qué es KERALYTIX, en lenguaje simple
 
 \seccion{El proyecto}
@@ -7,8 +6,15 @@
 % 1. El problema
 % ===============================================================
 \begin{frame}{El problema: detectar el queratocono a tiempo}
-    \begin{columns}[T]
-        \begin{column}{0.5\textwidth}
+    % Beamer apoya el bloque de columnas sobre el margen izquierdo (no lo centra).
+    % El \hspace* corre el texto hasta el borde de la caja de \idea.
+    % totalwidth tiene que alcanzar para el corrimiento + las dos columnas:
+    % 0,032 + 0,48 + 0,44 = 0,952 <= 0,96
+    \begin{columns}[T, totalwidth=0.96\textwidth]
+        \hspace*{0.032\textwidth}
+        \begin{column}{0.48\textwidth}
+            \vspace{0.25 cm}
+            \textbf{Características de la patología}
             \begin{itemize}
                 \item La córnea se adelgaza y se deforma hasta tomar forma de cono.
                 \item Aparece en jóvenes y avanza rápido. Al principio se confunde con miopía o astigmatismo.
@@ -16,21 +22,27 @@
                 \item Detectada tarde, puede terminar en un trasplante de córnea.
             \end{itemize}
         \end{column}
-        \begin{column}{0.46\textwidth}
-            \centering\vspace{0.3cm}
-            \includegraphics[width=0.49\linewidth]{queratocono_deformacion_a.png}\hfill
-            \includegraphics[width=0.49\linewidth]{queratocono_deformacion_b.png}\par
-            {\scriptsize Córnea sana \hspace{1.5cm} Córnea con queratocono}
+        \begin{column}{0.44\textwidth}
+            % Una debajo de la otra. Cada ilustración ya trae su rótulo
+            % ("Córnea sana" y "Córnea con queratocono")
+            \centering
+            \includegraphics[height=2.8cm]{queratocono_deformacion_a.png}\par\vspace{0.1cm}
+            \includegraphics[height=2.8cm]{queratocono_deformacion_b.png}
         \end{column}
     \end{columns}
     \idea{El problema no es la enfermedad, es detectarla a tiempo.}
+\end{frame}
+
+\begin{frame}{Qué mide el equipo}
+    \centering
+    \resizebox{\linewidth}{!}{\input{img/esquema_parametros_cornea}}
 \end{frame}
 
 % ===============================================================
 % 2. Qué es KERALYTIX (diagrama de bloques general)
 % ===============================================================
 \begin{frame}{Qué es KERALYTIX}
-    Una herramienta web que le da al oftalmólogo una segunda opinión sobre el estudio de la córnea.
+    Una herramienta web que le da al oftalmólogo una segunda opinión sobre el estudio.
     \vspace{0.1cm}
     \begin{center}
         \begin{tikzpicture}[node distance=0.45cm and 0.9cm]
@@ -49,7 +61,7 @@
             \node[font=\footnotesize\bfseries, text=gray] at (informe |- {$(mapas.north)+(0,0.4cm)$}) {Qué entrega};
         \end{tikzpicture}
     \end{center}
-    {\small Los mapas son imágenes (datos no estructurados) y los datos del paciente son números en una tabla (datos estructurados). Por combinar los dos tipos, el modelo es \textbf{multimodal}. El mapa de calor marca qué zonas de la córnea llevaron al resultado. La decisión final es siempre del médico.}
+    \footnotesize{Los mapas son imágenes y los datos del paciente son información tabulada. Al combinar ambos tipos, el modelo es \textbf{multimodal}. El mapa de calor marca qué zonas de la córnea llevaron al resultado. La decisión final es siempre del médico.}
 \end{frame}
 
 % ===============================================================
@@ -66,7 +78,7 @@
         1 & Analizar un conjunto de datos público con mapas corneales y variables clínicas. \\
         2 & Construir un modelo de IA que combine mapas y variables para identificar el queratocono. \\
         3 & Integrar una explicación visual de las zonas de la córnea que llevaron a cada resultado. \\
-        4 & Desarrollar una aplicación web para cargar estudios y consultar el informe. \\
+        4 & Implementar una aplicación web para cargar estudios y consultar el informe. \\
     \end{tabla}
 \end{frame}
 
@@ -97,7 +109,7 @@
     \end{center}
     \vspace{0.1cm}
     \centering
-    {\small\textcolor{verde}{\textbf{\textbullet}} Terminada \quad
-     \textcolor{azul}{\textbf{\textbullet}} En curso \quad
-     \textcolor{gray!60}{\textbf{\textbullet}} Por empezar}
+    {\small\textcolor{verde}{\textbf{$\blacksquare$}} Terminada \quad
+     \textcolor{azul}{\textbf{$\blacksquare$}} En curso \quad
+     \textcolor{gray!60}{\textbf{$\blacksquare$}} Por empezar}
 \end{frame}

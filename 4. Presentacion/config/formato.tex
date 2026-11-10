@@ -66,9 +66,14 @@
     \textbf{PENDIENTE}\\ #1}}}
 
 % Estado de un resultado, como pide la consigna: alcanzado, en proceso o pendiente.
-% #1 = color, #2 = estado, #3 = objetivos que cubre. Va al final del frame.
+% #1 = color, #2 = estado, #3 = objetivos que cubre. Se dibuja arriba a la derecha,
+% a la altura del título, sin ocupar lugar en el frame (necesita dos compilaciones).
 \newcommand{\estado}[3]{%
-    \par\vfill\hfill{\small\fcolorbox{#1}{#1!10}{\textcolor{#1}{\textbf{#2}}}\enspace\textcolor{gray}{#3}}}
+    \begin{tikzpicture}[remember picture, overlay]
+        \node[anchor=north east, inner sep=0pt]
+            at ([xshift=-1cm, yshift=-0.32cm]current page.north east)
+            {\small\textcolor{gray}{#3}\enspace\fcolorbox{#1}{#1!10}{\textcolor{#1}{\textbf{#2}}}};
+    \end{tikzpicture}}
 \newcommand{\alcanzado}[1]{\estado{verde}{Alcanzado}{#1}}
 \newcommand{\enproceso}[1]{\estado{azul}{En proceso}{#1}}
 \newcommand{\porhacer}[1]{\estado{gray}{Por empezar}{#1}}

@@ -1,4 +1,3 @@
-% LTeX: enabled=false
 % Sección 2: resultados por fase, con evidencias y estado de cada uno
 
 \seccion{Resultados por fase}
@@ -7,7 +6,12 @@
 % 5. Fase 1: selección del conjunto de datos
 % ===============================================================
 \begin{frame}{Fase 1: selección del conjunto de datos}
-    \begin{columns}[T]
+    % [c]: las dos columnas centradas en vertical entre sí.
+    % Centrado horizontal: columnas 0,44 + 0,38 con 0,04 entre ellas = 0,86.
+    % Sobra 0,14, así que se corre la mitad (0,07) y totalwidth = 0,07 + 0,86 = 0,93.
+    % Se deja 0,95 porque Beamer suma un pequeño espacio entre elementos
+    \begin{columns}[c, totalwidth=0.95\textwidth]
+        \hspace*{0.07\textwidth}
         \begin{column}{0.44\textwidth}
             Se seleccionó \textbf{CornOrb}, un conjunto de datos público:
             \begin{itemize}
@@ -17,13 +21,14 @@
                 \item El diagnóstico de cada ojo lo asignaron oftalmólogos.
             \end{itemize}
         \end{column}
-        \begin{column}{0.52\textwidth}
+        \hspace{0.04\textwidth}
+        \begin{column}{0.38\textwidth}
             \centering
             {\small\textbf{Qué trae cada ojo}}\par\vspace{0.2cm}
             \begin{tikzpicture}[node distance=0.35cm]
-                \node[caja=4.6cm] (m) {\textbf{4 mapas de la córnea}\\ \footnotesize curvatura, elevación delantera, elevación trasera y espesor};
-                \node[caja=4.6cm, below=of m] (v) {\textbf{Datos clínicos}\\ \footnotesize edad, sexo, curvatura máxima, espesor, astigmatismo};
-                \node[caja=4.6cm, draw=verde, below=of v] (e) {\textbf{Diagnóstico}\\ \footnotesize normal o queratocono};
+                \node[caja=4.6cm] (m) {\textbf{4 mapas de la córnea}\\ \footnotesize Curvatura, elevación delantera, elevación trasera y espesor};
+                \node[caja=4.6cm, below=of m] (v) {\textbf{Datos clínicos}\\ \footnotesize Edad, sexo, curvatura máxima, espesor y astigmatismo};
+                \node[caja=4.6cm, draw=verde, below=of v] (e) {\textbf{Diagnóstico}\\ \footnotesize Normal o con queratocono};
             \end{tikzpicture}
         \end{column}
     \end{columns}
@@ -35,23 +40,24 @@
 % ===============================================================
 \begin{frame}{Fase 1: revisión de los datos}
     \begin{columns}[T]
-        \begin{column}{0.48\textwidth}
+        \begin{column}{0.52\textwidth}
+            % Exportada por el EDA al ancho de esta columna: se inserta sin escalar
             \centering
-            \includegraphics[width=\linewidth]{eda/eda_clases.png}\par
-            {\scriptsize 61\% de ojos normales y 39\% con queratocono}
+            \includegraphics[width=\linewidth]{eda/eda_clases.pdf}
         \end{column}
-        \begin{column}{0.48\textwidth}
+        \begin{column}{0.44\textwidth}
+            \vspace{0.5 cm}
             \footnotesize
-            \textbf{Lo que está bien}
+            \textbf{Puntos positivos}
             \begin{itemize}
-                \item No faltan datos y cada ojo tiene sus cuatro mapas.
-                \item Los ojos de un mismo paciente nunca quedan repartidos entre entrenamiento y prueba. Así el modelo no se evalúa con pacientes que ya conoce.
+                \item No faltan datos ni imágenes de ningún paciente.
+                \item Los ojos de un mismo paciente nunca quedan repartidos entre entrenamiento y prueba.
             \end{itemize}
-            \textbf{Lo que hay que corregir}
+            \textbf{Puntos a tratar}
             \begin{itemize}
                 \item 46 ojos medidos más de una vez.
                 \item Un código de paciente mal escrito.
-                \item Valores imposibles, como una curvatura de 4 cuando lo normal es 44.
+                \item {Valores imposibles, como una curvatura\\de 4 cuando lo normal es 44.}
             \end{itemize}
         \end{column}
     \end{columns}
@@ -63,45 +69,51 @@
 % ===============================================================
 \begin{frame}{Fase 1: qué dicen los datos clínicos}
     \begin{columns}[T]
-        \begin{column}{0.5\textwidth}
+        \begin{column}{0.56\textwidth}
+            \vspace{-0.25 cm}
+            % Exportada por el EDA al ancho de esta columna: se inserta sin escalar
             \centering
-            \includegraphics[width=\linewidth]{eda/eda_correlacion.png}\par
-            {\scriptsize Cuanto más larga la barra, más se relaciona el dato con el diagnóstico}
+            \includegraphics[width=\linewidth]{eda/eda_correlacion.pdf}
         \end{column}
-        \begin{column}{0.46\textwidth}
+        \begin{column}{0.40\textwidth}
+            \vspace{0.5 cm}
+            \footnotesize
             Los ojos con queratocono tienen:
             \begin{itemize}
-                \item Una córnea más curva (53 frente a 44 dioptrías).
-                \item Una córnea más delgada (428 frente a 521 micrones).
+                \item {Una córnea más curva\\(53 frente a 44 dioptrías)}.
+                \item {Una córnea más delgada\\(428 frente a 521 micrones)}.
                 \item Más astigmatismo.
             \end{itemize}
-            \vspace{0.2cm}
             Coincide con lo que describe la medicina sobre la enfermedad.
         \end{column}
     \end{columns}
-    \idea{Los datos clínicos ya separan bastante los dos grupos. Por eso el modelo los combina con las imágenes.}
+    \idea{Los datos clínicos ya separan bastante los dos grupos.\\Por eso el modelo los combina con las imágenes.}
 \end{frame}
 
 % ===============================================================
 % 8. Datos locales para la validación
 % ===============================================================
 \begin{frame}{Datos locales para la validación}
-    \begin{columns}[T]
-        \begin{column}{0.45\textwidth}
+    % Texto más ancho y bloques cerca: 0,56 + 0,03 + 0,34 = 0,93.
+    % Sobra 0,07: se corre la mitad (0,035) y totalwidth queda con holgura en 0,98
+    \begin{columns}[c, totalwidth=0.98\textwidth]
+        \hspace*{0.035\textwidth}
+        \begin{column}{0.56\textwidth}
             CornOrb viene de pacientes de Argelia. Para comprobar que KERALYTIX funciona con pacientes de la región, hacen falta estudios locales.
+            \vspace{-0.5 cm}
             \begin{itemize}
                 \item Se contactaron 9 centros y profesionales de Misiones, Córdoba, Buenos Aires y Perú.
+                \item Se contactó, por medio del programador Gonzalo Pozzo, con el expresidente de la Sociedad Internacional de Queratocono Roberto Albertazzi. 
             \end{itemize}
         \end{column}
-        \begin{column}{0.51\textwidth}
+        \hspace{0.03\textwidth}
+        \begin{column}{0.34\textwidth}
             \centering
             \begin{tikzpicture}[node distance=0.4cm]
-                \node[caja=4.6cm, draw=verde] (a) {\textbf{Contacto con Roberto Albertazzi}};
-                \node[caja=4.6cm, draw=verde, below=of a] (b) {\textbf{Charla sobre datos para validar el modelo}};
-                \node[caja=4.6cm, fill=azul!15, very thick, below=of b] (c) {\textbf{Trámites legales para la solicitud}\\ \footnotesize estamos acá};
-                \node[caja=4.6cm, draw=gray!60, text=gray, below=of c] (d) {Estudios locales anonimizados};
-                \draw[flecha] (a) -- (b);
-                \draw[flecha] (b) -- (c);
+                \node[caja=4.2cm, draw=verde] (a) {Contacto con Roberto Albertazzi};
+                \node[caja=4.2cm, fill=azul!15, very thick, below=of a] (c) {Trámites legales para la solicitud\\ \footnotesize estamos acá};
+                \node[caja=4.2cm, draw=gray!60, text=gray, below=of c] (d) {Estudios locales anonimizados};
+                \draw[flecha] (a) -- (c);
                 \draw[flecha, gray!60] (c) -- (d);
             \end{tikzpicture}
         \end{column}
@@ -119,8 +131,12 @@
             \node[caja=1.9cm, below=1.1cm of mapas] (datos) {\textbf{Datos clínicos}};
             \node[caja=3cm, right=of mapas] (cnn) {\textbf{Rama de imágenes}\\ \footnotesize aprende a reconocer formas en los mapas};
             \node[caja=3cm, right=of datos] (densa) {\textbf{Rama de datos}\\ \footnotesize analiza los valores numéricos};
+            % Todas las flechas miden 0,55 cm (la separación horizontal de node distance).
+            % Las dos ramas se unen en (j), a 0,55 cm, y de ahí sale una sola flecha
+            % del doble de largo (1,1 cm) hasta la fusión
             \coordinate (m2) at ($(cnn.east)!0.5!(densa.east)$);
-            \node[caja=2.5cm, fill=azul!15, very thick, right=0.6cm of m2, anchor=west] (fus) {\textbf{Fusión}\\ \footnotesize junta lo que encontró cada rama};
+            \coordinate (j) at ($(m2)+(0.55cm,0)$);
+            \node[caja=2cm, fill=azul!15, very thick, right=0.45cm of j] (fus) {\textbf{Fusión}\\ \footnotesize junta lo que encontró cada rama};
             \node[caja=2.6cm, draw=verde, right=of fus] (res) {\textbf{Resultado}\\ \footnotesize normal o queratocono, y confianza};
             \node[caja=2.6cm, draw=verde, above=0.45cm of res] (gc) {\textbf{Mapa de calor}\\ \footnotesize zonas que influyeron};
             \draw[flecha] (mapas) -- (cnn);
@@ -138,13 +154,16 @@
 % 10. Fase 2: primeros resultados del modelo de imágenes
 % ===============================================================
 \begin{frame}{Fase 2: primeros resultados}
-    \begin{columns}[T]
-        \begin{column}{0.5\textwidth}
+    % Columnas juntas y centradas: 0,5 + 0,03 + 0,34 = 0,87.
+    % Sobra 0,13: se corre la mitad (0,065) y totalwidth queda con holgura en 0,96
+    \begin{columns}[c, totalwidth=0.96\textwidth]
+        % \hspace*{0.065\textwidth}
+        \begin{column}{0.6\textwidth}
             \small
-            Se compararon tres \textbf{redes base}, modelos ya entrenados con millones de imágenes que se adaptan a los mapas corneales. La mejor fue MobileNetV2, la más liviana.
+            Se compararon tres \textbf{redes base}, modelos ya entrenados con millones de imágenes que se adaptan a los mapas corneales. En esta primera prueba la que mejor funcionó fue MobileNetV2, la más liviana. Todavía se siguen probando otras redes y estrategias.
             \vspace{0.2cm}
 
-            Resultado con 279 ojos que el modelo nunca vio:
+            Resultado de prueba con 279 ojos que el modelo nunca vio:
             \begin{itemize}
                 \item Detectó \textbf{95 de 103} ojos con queratocono (92\,\%).
                 \item \textbf{Ninguna falsa alarma} en los 176 ojos sanos.
@@ -152,13 +171,14 @@
             \vspace{0.1cm}
             Un modelo solo con los datos clínicos da resultados parecidos. Por eso el siguiente paso es combinar ambos.
         \end{column}
-        \begin{column}{0.46\textwidth}
+        \hspace{0.03\textwidth}
+        \begin{column}{0.34\textwidth}
             \centering
             \begin{tikzpicture}[node distance=0.3cm]
-                \node[caja=4.4cm, draw=verde] (a) {Datos limpios y separados por paciente};
-                \node[caja=4.4cm, draw=verde, below=of a] (b) {Modelo con los mapas corneales entrenado y evaluado};
-                \node[caja=4.4cm, fill=azul!15, very thick, below=of b] (c) {\textbf{Fusión con los datos clínicos}\\ \footnotesize estamos acá};
-                \node[caja=4.4cm, draw=gray!60, text=gray, below=of c] (d) {Ajuste para llegar al 95\,\% de detección};
+                \node[caja=4.2cm, draw=verde] (a) {Datos limpios y separados por paciente};
+                \node[caja=4.2cm, draw=verde, below=of a] (b) {Primera prueba con los mapas corneales};
+                \node[caja=4.2cm, fill=azul!15, very thick, below=of b] (c) {\textbf{Pruebas de otras redes y estrategias}\\ \footnotesize estamos acá};
+                \node[caja=4.2cm, draw=gray!60, text=gray, below=of c] (d) {Fusión con los datos clínicos};
                 \draw[flecha] (a) -- (b);
                 \draw[flecha] (b) -- (c);
                 \draw[flecha, gray!60] (c) -- (d);
@@ -172,19 +192,24 @@
 % 11. Fase 2: explicación visual con Grad-CAM
 % ===============================================================
 \begin{frame}{Fase 2: el modelo muestra dónde miró}
-    \begin{columns}[c]
-        \begin{column}{0.56\textwidth}
+    % Columna de imágenes justa para la grilla (0,45) y texto pegado a ella:
+    % 0,45 + 0,03 + 0,42 = 0,90. Se corre la mitad de lo que sobra (0,05)
+    % y totalwidth queda con holgura en 0,97
+    \begin{columns}[c, totalwidth=0.97\textwidth]
+        \hspace*{0.05\textwidth}
+        \begin{column}{0.45\textwidth}
             \centering
             \begin{tabular}{@{}c@{\hspace{0.15cm}}c@{\hspace{0.15cm}}c@{}}
                 & {\scriptsize Mapa de la córnea} & {\scriptsize Mapa de calor} \\
                 \rotatebox{90}{\scriptsize\hspace{0.4cm}Con queratocono} &
-                \includegraphics[width=0.36\linewidth]{gradcam/qc_mapa.png} &
-                \includegraphics[width=0.36\linewidth]{gradcam/qc_gc.png} \\
+                \includegraphics[width=0.44\linewidth]{gradcam/qc_mapa.png} &
+                \includegraphics[width=0.44\linewidth]{gradcam/qc_gc.png} \\
                 \rotatebox{90}{\scriptsize\hspace{0.9cm}Sano} &
-                \includegraphics[width=0.36\linewidth]{gradcam/sano_mapa.png} &
-                \includegraphics[width=0.36\linewidth]{gradcam/sano_gc.png} \\
+                \includegraphics[width=0.44\linewidth]{gradcam/sano_mapa.png} &
+                \includegraphics[width=0.44\linewidth]{gradcam/sano_gc.png} \\
             \end{tabular}
         \end{column}
+        \hspace{0.03\textwidth}
         \begin{column}{0.42\textwidth}
             \small
             Mapas de la cara posterior de dos ojos de prueba.
@@ -208,17 +233,31 @@
             \node[caja=2.8cm, right=of med] (front) {\textbf{Página web}\\ \footnotesize carga los estudios y muestra el informe};
             \node[caja=2.8cm, right=of front] (back) {\textbf{Servidor}\\ \footnotesize recibe los estudios y ejecuta el modelo};
             \node[caja=1.9cm, fill=azul!15, very thick, right=of back] (mod) {\textbf{Modelo de IA}};
-            \node[caja=2.8cm, below=0.6cm of back] (us) {\textbf{Usuarios y suscripción}\\ \footnotesize quién puede usar el sistema};
+            % Nota debajo de la página web, sin recuadro
+            \node[below=0.15cm of front, font=\footnotesize, text=gray] {Modelo de suscripción};
             \draw[flecha, <->] (med) -- (front);
             \draw[flecha, <->] (front) -- (back);
             \draw[flecha, <->] (back) -- (mod);
-            \draw[flecha, <->] (back) -- (us);
         \end{tikzpicture}
     \end{center}
-    \begin{itemize}
-        \small
-        \item La página web se hace con React y el servidor con FastAPI.
-        \item Se trabaja en noviembre y diciembre, superpuesta con el cierre del modelo.
-    \end{itemize}
+    \vspace{0.2cm}
+    % Abajo, dos columnas: el texto a la izquierda y el QR al HTML de Fabricio a la derecha
+    \begin{columns}[c, totalwidth=0.97\textwidth]
+        \hspace*{0.05\textwidth}
+        \begin{column}{0.6\textwidth}
+            \begin{itemize}
+                \small
+                \item La página web se hace con React y el servidor con FastAPI.
+                \item Se trabaja en noviembre y diciembre, superpuesta con el cierre del modelo.
+            \end{itemize}
+        \end{column}
+        \hspace{0.03\textwidth}
+        \begin{column}{0.25\textwidth}
+            \centering
+            % Reemplazar el recuadro por el QR, por ejemplo:
+            % \includegraphics[height=2.2cm]{qr_web.png}\par {\scriptsize Escaneá para ver la página}
+            \fcolorbox{gray!60}{white}{\parbox[c][2.2cm][c]{2.2cm}{\centering\scriptsize\color{gray} QR de la\\ página web}}
+        \end{column}
+    \end{columns}
     \porhacer{Objetivo 4}
 \end{frame}

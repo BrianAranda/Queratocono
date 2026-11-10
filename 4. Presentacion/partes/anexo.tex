@@ -2,34 +2,10 @@
 % Anexo: diapositivas de respaldo, solo se muestran si preguntan
 
 % ===============================================================
-% R1. Glosario
-% ===============================================================
-\begin{frame}{Respaldo: glosario}
-    \begin{tabla}{colspec = {Q[l,m,4.4cm] X[l,m]}, rows = {font=\footnotesize}, rowsep = 1pt}
-        Término & Qué significa \\
-        Conjunto de datos (\textit{dataset}) & Estudios ya diagnosticados con los que aprende el modelo. \\
-        Multimodal & Que combina distintos tipos de datos, en este caso imágenes y números. \\
-        Red neuronal convolucional (CNN) & Tipo de modelo de IA que aprende a reconocer formas en imágenes. \\
-        Grad-CAM & Marca qué zonas de la imagen pesaron más en el resultado. \\
-        Falso negativo & Un ojo con queratocono que el modelo da como normal. Es el error a evitar. \\
-        Sensibilidad & Porcentaje de ojos con queratocono que el modelo detecta. \\
-        Validación & Probar el modelo con estudios que nunca vio. \\
-    \end{tabla}
-\end{frame}
-
-% ===============================================================
-% R2. Qué mide el equipo de la córnea
-% ===============================================================
-\begin{frame}{Respaldo: qué mide el equipo}
-    \centering
-    \resizebox{\linewidth}{!}{\input{img/esquema_parametros_cornea}}
-\end{frame}
-
-% ===============================================================
-% R3. Detalle del análisis exploratorio
+% R. Detalle del análisis exploratorio
 % ===============================================================
 \begin{frame}{Respaldo: datos clínicos por grupo}
     \centering
-    \includegraphics[width=0.82\linewidth]{eda/eda_variables_clinicas.png}\par
+    \includegraphics[width=\linewidth]{eda/eda_variables_clinicas.pdf}\par
     {\small Cada caja muestra la mitad central de los valores de cada grupo, normal y con queratocono.}
 \end{frame}
