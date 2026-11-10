@@ -12,8 +12,8 @@
                   rows = {font=\footnotesize}, rowsep = 1pt}
         Obj. & Qué nos propusimos & Qué logramos & Estado \\
         1 & Analizar un conjunto de datos público & CornOrb seleccionado y revisado, con los datos a corregir identificados & \etiq{verde}{Alcanzado} \\
-        2 & Construir el modelo de IA & Diseño definido y comparación de redes base programada, sin resultados todavía & \etiq{azul}{En proceso} \\
-        3 & Integrar la explicación visual & Prevista con Grad-CAM, al cierre del modelado & \etiq{gray}{Por empezar} \\
+        2 & Construir el modelo de IA & Modelo con los mapas evaluado: detecta el 92\,\% de los queratoconos sin falsas alarmas. Falta la fusión con los datos clínicos & \etiq{azul}{En proceso} \\
+        3 & Integrar la explicación visual & Grad-CAM funcionando sobre los mapas. Falta mostrarlo en el informe & \etiq{azul}{En proceso} \\
         4 & Desarrollar la aplicación web & Partes y herramientas definidas (React y FastAPI) & \etiq{gray}{Por empezar} \\
         --- & Conseguir datos locales para validar & 9 centros contactados, charla con Roberto Albertazzi y trámites en curso & \etiq{azul}{En proceso} \\
     \end{tabla}
@@ -30,9 +30,9 @@
         \begin{column}{0.48\textwidth}
             \begin{block}{Noviembre}
                 \begin{itemize}
-                    \item Corregir los datos según la revisión.
-                    \item Entrenar y evaluar el modelo, priorizando no pasar por alto casos de queratocono.
-                    \item Integrar el mapa de calor.
+                    \item Combinar los mapas con los datos clínicos en un solo modelo.
+                    \item Ajustarlo para detectar al menos el 95\,\% de los queratoconos.
+                    \item Sumar el mapa de calor al informe.
                     \item Empezar la aplicación web.
                 \end{itemize}
             \end{block}

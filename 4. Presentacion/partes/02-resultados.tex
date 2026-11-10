@@ -135,34 +135,67 @@
 \end{frame}
 
 % ===============================================================
-% 10. Fase 2: avance del modelado
+% 10. Fase 2: primeros resultados del modelo de imágenes
 % ===============================================================
-\begin{frame}{Fase 2: avance del modelado}
+\begin{frame}{Fase 2: primeros resultados}
     \begin{columns}[T]
         \begin{column}{0.5\textwidth}
             \small
-            Se armó la comparación de \textbf{redes base}, modelos ya entrenados con millones de imágenes que se reutilizan para los mapas corneales.
+            Se compararon tres \textbf{redes base}, modelos ya entrenados con millones de imágenes que se adaptan a los mapas corneales. La mejor fue MobileNetV2, la más liviana.
+            \vspace{0.2cm}
+
+            Resultado con 279 ojos que el modelo nunca vio:
             \begin{itemize}
-                \item Se prueban tres redes: MobileNetV2, EfficientNet-B3 y ConvNeXt-Tiny.
-                \item Se usa como referencia un modelo simple con los datos clínicos. Las imágenes tienen que superarlo.
-                \item El umbral se fija para detectar al menos el 95\,\% de los queratoconos.
-                \item Grad-CAM revisa que el modelo mire la córnea y no los números impresos en el mapa.
+                \item Detectó \textbf{95 de 103} ojos con queratocono (92\,\%).
+                \item \textbf{Ninguna falsa alarma} en los 176 ojos sanos.
             \end{itemize}
+            \vspace{0.1cm}
+            Un modelo solo con los datos clínicos da resultados parecidos. Por eso el siguiente paso es combinar ambos.
         \end{column}
         \begin{column}{0.46\textwidth}
             \centering
             \begin{tikzpicture}[node distance=0.3cm]
                 \node[caja=4.4cm, draw=verde] (a) {Datos limpios y separados por paciente};
-                \node[caja=4.4cm, draw=verde, below=of a] (b) {Comparación de redes base programada};
-                \node[caja=4.4cm, fill=azul!15, very thick, below=of b] (c) {\textbf{Primera corrida y revisión}\\ \footnotesize estamos acá};
-                \node[caja=4.4cm, draw=gray!60, text=gray, below=of c] (d) {Ajuste fino y fusión con los datos clínicos};
+                \node[caja=4.4cm, draw=verde, below=of a] (b) {Modelo con los mapas corneales entrenado y evaluado};
+                \node[caja=4.4cm, fill=azul!15, very thick, below=of b] (c) {\textbf{Fusión con los datos clínicos}\\ \footnotesize estamos acá};
+                \node[caja=4.4cm, draw=gray!60, text=gray, below=of c] (d) {Ajuste para llegar al 95\,\% de detección};
                 \draw[flecha] (a) -- (b);
                 \draw[flecha] (b) -- (c);
                 \draw[flecha, gray!60] (c) -- (d);
             \end{tikzpicture}
         \end{column}
     \end{columns}
-    \enproceso{Objetivos 2 y 3}
+    \enproceso{Objetivo 2}
+\end{frame}
+
+% ===============================================================
+% 11. Fase 2: explicación visual con Grad-CAM
+% ===============================================================
+\begin{frame}{Fase 2: el modelo muestra dónde miró}
+    \begin{columns}[c]
+        \begin{column}{0.56\textwidth}
+            \centering
+            \begin{tabular}{@{}c@{\hspace{0.15cm}}c@{\hspace{0.15cm}}c@{}}
+                & {\scriptsize Mapa de la córnea} & {\scriptsize Mapa de calor} \\
+                \rotatebox{90}{\scriptsize\hspace{0.4cm}Con queratocono} &
+                \includegraphics[width=0.36\linewidth]{gradcam/qc_mapa.png} &
+                \includegraphics[width=0.36\linewidth]{gradcam/qc_gc.png} \\
+                \rotatebox{90}{\scriptsize\hspace{0.9cm}Sano} &
+                \includegraphics[width=0.36\linewidth]{gradcam/sano_mapa.png} &
+                \includegraphics[width=0.36\linewidth]{gradcam/sano_gc.png} \\
+            \end{tabular}
+        \end{column}
+        \begin{column}{0.42\textwidth}
+            \small
+            Mapas de la cara posterior de dos ojos de prueba.
+            \begin{itemize}
+                \item En el ojo con queratocono, el calor cae sobre la zona deformada. El modelo lo dio como queratocono con total confianza.
+                \item En el ojo sano no marca la córnea central y lo dio como sano.
+            \end{itemize}
+            Así el oftalmólogo puede comprobar en qué se basó cada resultado.
+        \end{column}
+    \end{columns}
+    \enproceso{Objetivo 3}
 \end{frame}
 
 % ===============================================================
