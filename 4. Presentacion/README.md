@@ -15,7 +15,7 @@ El `.latexmkrc` ya indica el archivo principal (`main.tex`). Genera **`Presentac
 Criterio: **0 advertencias**. En Beamer, un `Overfull` casi siempre es algo que se sale de la hoja aunque no se note.
 
 ## Diseño
-Sigue la plantilla de las presentaciones de IdS2 y PDS, explicada en `Plantilla_beamer.md`. `Beamer_guia.md` explica Beamer en general.
+Sigue la plantilla de las presentaciones de IdS2 y PDS: colores, pie de página y macros en `config/formato.tex`.
 
 ## Estructura
 | Archivo | Contenido |
@@ -27,6 +27,7 @@ Sigue la plantilla de las presentaciones de IdS2 y PDS, explicada en `Plantilla_
 | `config/tikz.tex` | Estilos `caja` y `flecha` para los diagramas |
 | `partes/` | `00-portada`, `01-proyecto`, `02-resultados`, `03-balance`, `04-final` y `anexo` (diapositivas de respaldo) |
 | `img/` | Logos, figuras del EDA y esquemas TikZ, como el de parámetros corneales copiado del informe |
+| `Guion/guion.md` | Qué decir en cada diapositiva y cuánto tiempo darle |
 | `.latexmkrc` | Salida `Presentacion.pdf`, auxiliares en `build/` |
 
 ## Macros propias
