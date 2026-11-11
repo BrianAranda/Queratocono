@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>KERALYTIX · Detección temprana de queratocono</title>
+  <meta name="description" content="KERALYTIX: sistema de soporte a la decisión clínica que asiste al oftalmólogo en la detección temprana del queratocono a partir de mapas corneales, con inteligencia artificial explicable.">
+  <meta name="theme-color" content="#0d2742">
+  <link rel="icon" href="assets/icono/favicon.ico" sizes="any">
+  <link rel="icon" href="assets/icono/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icono/apple-touch-icon.png">
+  <link href="vendor/fuentes/fuentes.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css?v=5">
+</head>
+<body>
+  <div class="halos" aria-hidden="true"></div>
+
+  <!-- ===================== ENCABEZADO ===================== -->
+  <header class="barra">
+    <div class="contenedor">
+      <a href="#/" class="marca" data-ir="inicio" aria-label="KERALYTIX, inicio">
+        <span class="marca-icono"><img src="assets/icono/icono.svg" alt=""></span>
+        KERALYTIX
+      </a>
+      <nav class="nav" id="nav">
+        <a href="#queratocono" data-seccion>El queratocono</a>
+        <a href="#keralytix" data-seccion>KERALYTIX</a>
+        <a href="#ofrecemos" data-seccion>Qué ofrecemos</a>
+        <a href="#validacion" data-seccion>Validación</a>
+        <a href="#/analisis" class="btn btn-primario btn-chico" data-ir="analisis">Empezá ya</a>
+      </nav>
+      <button class="menu-btn" id="menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===================== VISTA: INICIO ===================== -->
+  <main id="vista-inicio" class="vista">
+    <section class="hero">
+      <div class="contenedor">
+        <div>
+          <span class="etiqueta"><i></i>Soporte a la decisión clínica · IA explicable</span>
+          <h1>Ver el queratocono <em>antes</em> de que avance.</h1>
+          <p class="bajada">KERALYTIX analiza los mapas corneales que ya exporta tu topógrafo y entrega, en segundos, una probabilidad diagnóstica calibrada para no dejar pasar casos, junto con la evidencia visual de por qué.</p>
+          <div class="acciones">
+            <a href="#/analisis" class="btn btn-primario" data-ir="analisis">
+              Empezá ya
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="#queratocono" class="btn btn-fantasma">¿Qué es el queratocono?</a>
+          </div>
+          <div class="datos">
+            <div class="dato"><b class="num">1.407</b><span>ojos de entrenamiento</span></div>
+            <div class="dato"><b class="num">4</b><span>mapas por estudio</span></div>
+            <div class="dato"><b class="num">≥ 95 %</b><span>sensibilidad objetivo</span></div>
+          </div>
+        </div>
+        <div class="escena-hero" aria-hidden="true">
+          <div class="lienzo3d" id="hero-3d"></div>
+          <div class="rotulo-hero">Reconstrucción 3D del estudio OD · relieve ×8</div>
+          <div class="flotante f1">
+            <div class="t"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></i>K máx. anterior</div>
+            <div class="v num" id="hero-kmax">104,4<small>D</small></div>
+          </div>
+          <div class="flotante f2">
+            <div class="t"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 3v18M7 8l5-5 5 5M7 16l5 5 5-5"/></svg></i>Paquimetría mín.</div>
+            <div class="v num" id="hero-paq">227<small>µm</small></div>
+          </div>
+          <div class="flotante f3">
+            <div class="t"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></i>Tiempo de análisis</div>
+            <div class="v num">&lt; 10<small>s</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- Queratocono ---------- -->
+    <section class="seccion blanca" id="queratocono">
+      <div class="contenedor dos-col">
+        <div>
+          <span class="antetitulo">La patología</span>
+          <h2>¿Qué es el <em>queratocono</em>?</h2>
+          <p class="intro">Es una enfermedad de la córnea, la lente transparente del frente del ojo. La córnea se adelgaza de forma progresiva y pierde su curvatura regular hasta adoptar la forma de un cono, lo que distorsiona la imagen que llega a la retina.</p>
+          <div class="lista-hechos">
+            <div class="hecho">
+              <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4"/></svg></i>
+              <div><b>Aparece en jóvenes</b><span>Suele comenzar en la adolescencia y avanzar durante la segunda y la tercera década de vida.</span></div>
+            </div>
+            <div class="hecho">
+              <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></i>
+              <div><b>Al principio se confunde</b><span>En los estadios iniciales imita una miopía o un astigmatismo común, y el diagnóstico depende de interpretar mapas topográficos complejos.</span></div>
+            </div>
+            <div class="hecho">
+              <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></i>
+              <div><b>Detectarlo a tiempo cambia el pronóstico</b><span>El entrecruzamiento corneal (<i>crosslinking</i>) puede frenar la progresión. En los casos avanzados puede ser necesario un trasplante de córnea.</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="ilustracion">
+          <div class="pares">
+            <figure>
+              <svg viewBox="0 0 220 170" role="img" aria-label="Corte de una córnea sana">
+                <defs>
+                  <linearGradient id="gc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7fb0dd"/><stop offset="1" stop-color="#2c6aa0"/></linearGradient>
+                  <linearGradient id="gr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e48b80"/><stop offset="1" stop-color="#b03a2e"/></linearGradient>
+                </defs>
+                <ellipse cx="110" cy="166" rx="54" ry="20" fill="#eef4fa"/>
+                <path d="M36 150h40M144 150h40" stroke="#5f6f82" stroke-width="5" stroke-linecap="round"/>
+                <path d="M28 152 C44 52 176 52 192 152 L183 152 C168 66 52 66 37 152 Z" fill="url(#gc)" opacity=".92"/>
+                <path d="M110 18v26" stroke="#c7d3e0" stroke-dasharray="3 4"/>
+              </svg>
+              <figcaption><b>Córnea sana</b>Curvatura regular y grosor uniforme</figcaption>
+            </figure>
+            <figure>
+              <svg viewBox="0 0 220 170" role="img" aria-label="Corte de una córnea con queratocono">
+                <ellipse cx="110" cy="166" rx="54" ry="20" fill="#eef4fa"/>
+                <path d="M36 150h40M144 150h40" stroke="#5f6f82" stroke-width="5" stroke-linecap="round"/>
+                <path d="M28 152 C42 92 78 30 116 26 C150 30 178 88 192 152 L183 152 C170 96 146 42 117 37 C88 42 52 98 37 152 Z" fill="url(#gr)" opacity=".92"/>
+                <circle cx="116" cy="31" r="4" fill="#fff" stroke="#b03a2e" stroke-width="2"/>
+                <path d="M126 31 h44" stroke="#b03a2e" stroke-width="1.2"/>
+                <text x="172" y="35" font-size="11" fill="#b03a2e" font-family="Plus Jakarta Sans, sans-serif" font-weight="700">ápice</text>
+              </svg>
+              <figcaption><b>Queratocono</b>Protrusión cónica y adelgazamiento</figcaption>
+            </figure>
+          </div>
+          <p class="nota">Esquema ilustrativo. En los mapas corneales se ve como una zona de curvatura alta (rojo) que coincide con la zona más delgada de la paquimetría.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- KERALYTIX ---------- -->
+    <section class="seccion" id="keralytix">
+      <div class="contenedor marco-kx">
+        <div>
+          <span class="antetitulo">El sistema</span>
+          <h2>¿Qué es <em>KERALYTIX</em>?</h2>
+          <p class="intro">Es un software como producto médico (SaMD) que funciona como sistema de soporte a la decisión clínica. Procesa los mapas que exportan los equipos de topografía y tomografía, y los analiza con redes neuronales convolucionales entrenadas para reconocer los patrones del queratocono, incluso los sutiles.</p>
+          <p class="intro" style="margin-top:14px">No reemplaza al oftalmólogo. Le da una <b>segunda opinión objetiva y explicable</b> que estandariza la lectura de los estudios y ayuda a derivar a tiempo.</p>
+        </div>
+        <div class="panel-oscuro">
+          <h3>Pensado para el consultorio real</h3>
+          <p>Funciona en el navegador, en la computadora o en el celular, y no exige equipos nuevos: lee el PDF que ya genera el topógrafo.</p>
+          <div class="fila-kpi">
+            <div class="kpi"><b>4</b><span>mapas: curvatura, elevaciones y paquimetría</span></div>
+            <div class="kpi"><b>Grad-CAM</b><span>dónde miró el modelo para decidir</span></div>
+            <div class="kpi"><b>τ calibrado</b><span>umbral elegido para no perder casos</span></div>
+            <div class="kpi"><b>3D</b><span>reconstrucción de la superficie corneal</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- Qué ofrecemos ---------- -->
+    <section class="seccion blanca" id="ofrecemos">
+      <div class="contenedor">
+        <span class="antetitulo">Qué ofrecemos</span>
+        <h2>De un PDF a una <em>segunda opinión</em> en segundos</h2>
+        <p class="intro">Todo lo que necesitás para incorporar la IA a la evaluación corneal, sin cambiar tu forma de trabajar.</p>
+        <div class="tarjetas">
+          <article class="tarjeta">
+            <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></i>
+            <h3>Análisis de los 4 mapas</h3>
+            <p>Curvatura sagital, elevación anterior, paquimetría y elevación posterior, cada uno evaluado y después combinados en una única decisión.</p>
+          </article>
+          <article class="tarjeta">
+            <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></i>
+            <h3>Prioridad: no perder casos</h3>
+            <p>El umbral de decisión se calibra para alcanzar al menos un 95 % de sensibilidad en validación, porque un queratocono no detectado cuesta mucho más que una consulta extra.</p>
+          </article>
+          <article class="tarjeta">
+            <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></i>
+            <h3>Explicabilidad visual</h3>
+            <p>Mapas de calor Grad-CAM sobre cada estudio que muestran qué regiones de la córnea pesaron en la predicción, para validarla con tu criterio.</p>
+          </article>
+          <article class="tarjeta">
+            <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg></i>
+            <h3>Córnea en 3D</h3>
+            <p>Reconstrucción interactiva de la superficie con los datos del estudio, con el ápice del cono, el punto más delgado y el K máximo marcados.</p>
+          </article>
+          <article class="tarjeta">
+            <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg></i>
+            <h3>Informe para la historia clínica</h3>
+            <p>Un resumen imprimible con la probabilidad, los mapas de explicabilidad y los índices del estudio, listo para adjuntar.</p>
+          </article>
+          <article class="tarjeta">
+            <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></i>
+            <h3>Sin hardware nuevo</h3>
+            <p>Suscripción por centro, acceso desde el navegador y estudios anonimizados, según la normativa de protección de datos de salud.</p>
+          </article>
+        </div>
+
+        <div class="pasos">
+          <div class="paso"><h3>Exportá el estudio</h3><p>Generá el PDF desde el topógrafo o el tomógrafo, como hacés siempre.</p></div>
+          <div class="paso"><h3>Arrastralo</h3><p>Soltá el PDF en KERALYTIX. Se aceptan uno o los dos ojos.</p></div>
+          <div class="paso"><h3>La IA lo analiza</h3><p>Se extraen los 4 mapas, se consultan los modelos y se fusionan las predicciones.</p></div>
+          <div class="paso"><h3>Revisá y decidí</h3><p>Probabilidad, Grad-CAM y vista 3D para respaldar tu diagnóstico.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- Validación ---------- -->
+    <section class="seccion" id="validacion">
+      <div class="contenedor dos-col">
+        <div>
+          <span class="antetitulo">Rigor</span>
+          <h2>Cómo lo <em>validamos</em></h2>
+          <p class="intro">El modelo se desarrolla sobre CornOrb, un dataset abierto de estudios Orbscan, con una metodología pensada para no sobreestimar el rendimiento.</p>
+          <div class="lista-hechos">
+            <div class="hecho"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></i><div><b>1.407 ojos de 744 pacientes</b><span>886 sanos y 521 con queratocono, con 13 variables clínicas.</span></div></div>
+            <div class="hecho"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M14.5 20c0-2.5 1.2-4.5 4-4.5 1.7 0 2.5.8 2.5.8"/></svg></i><div><b>Separación por paciente</b><span>Validación cruzada de 5 folds y test del 20 %: los dos ojos de una persona nunca quedan en lados distintos.</span></div></div>
+            <div class="hecho"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></i><div><b>Métricas honestas</b><span>Evaluación balanceada, sensibilidad con IC de Wilson y AUC con bootstrap por paciente.</span></div></div>
+          </div>
+        </div>
+        <div class="ilustracion">
+          <span class="antetitulo">Modelos evaluados</span>
+          <div class="tarjetas" style="grid-template-columns:1fr;gap:12px;margin-top:16px">
+            <div class="tarjeta" style="padding:18px"><h3>Transfer learning</h3><p>MobileNetV2, ResNet50 y EfficientNet-B7 preentrenadas en ImageNet, por mapa y con fusión.</p></div>
+            <div class="tarjeta" style="padding:18px"><h3>Fine-tuning</h3><p>Ajuste del 15 % final de las capas del mejor backbone, con aumento de datos leve.</p></div>
+            <div class="tarjeta" style="padding:18px"><h3>Embeddings + ML clásico</h3><p>Regresión logística, SVM, Random Forest, XGBoost y MLP sobre las características de las redes.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-final">
+      <div class="contenedor">
+        <div class="caja">
+          <span class="antetitulo">Demo interactiva</span>
+          <h2>Probalo con un estudio real</h2>
+          <p>Cargá un estudio Pentacam anonimizado y recorré el flujo completo: carga, análisis, explicabilidad y reconstrucción 3D.</p>
+          <a href="#/analisis" class="btn btn-primario" data-ir="analisis">Empezá ya</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== VISTA: ANÁLISIS ===================== -->
+  <main id="vista-analisis" class="vista analisis oculto">
+    <div class="contenedor">
+      <div class="solo-impresion" id="cab-impresion"></div>
+      <div class="cabecera-analisis">
+        <div>
+          <h1 id="titulo-analisis">Nuevo análisis</h1>
+          <p id="sub-analisis">Subí el PDF del estudio corneal de uno o ambos ojos.</p>
+        </div>
+        <div class="pasador" aria-label="Progreso">
+          <span id="p1" class="activo"><b>1</b>Cargar</span>
+          <span id="p2"><b>2</b>Analizar</span>
+          <span id="p3"><b>3</b>Resultados</span>
+        </div>
+      </div>
+
+      <!-- ---- etapa 1: carga ---- -->
+      <section id="etapa-carga">
+        <div class="carga">
+          <div>
+            <div class="zona-drop" id="zona-drop" tabindex="0" role="button" aria-label="Seleccionar o arrastrar archivos PDF">
+              <div>
+                <div class="icono-drop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M12 18v-6M9 15l3-3 3 3"/></svg></div>
+                <h3>Arrastrá el PDF del estudio</h3>
+                <p>o <b style="color:var(--azul)">tocá para elegirlo</b> desde tu equipo</p>
+                <p class="formatos">PDF exportado por Pentacam · uno por ojo · hasta 2 archivos</p>
+              </div>
+              <input type="file" id="entrada-archivo" accept="application/pdf,.pdf" multiple hidden>
+            </div>
+            <div class="archivos" id="lista-archivos" style="margin-top:14px"></div>
+            <div class="error-carga oculto" id="error-carga" role="alert"></div>
+          </div>
+          <aside class="panel lado-carga">
+            <div>
+              <h3>Estudios de ejemplo</h3>
+              <p class="ayuda" style="margin-top:6px">Para esta demo hay dos estudios Pentacam reales, de una misma paciente con queratocono, anonimizados. Por privacidad no se pueden descargar: analizalos con el botón.</p>
+            </div>
+            <div class="ejemplo">
+              <div class="pdf">PDF</div>
+              <div class="info"><b>Ojo derecho (OD)</b><span>OCULUS Pentacam · 12 pág.</span></div>
+            </div>
+            <div class="ejemplo">
+              <div class="pdf">PDF</div>
+              <div class="info"><b>Ojo izquierdo (OS)</b><span>OCULUS Pentacam · 12 pág.</span></div>
+            </div>
+            <button class="btn btn-fantasma" id="usar-ejemplos">Usar los dos estudios de ejemplo</button>
+            <div class="privacidad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>En la demo el archivo no sale de tu navegador.</div>
+          </aside>
+        </div>
+        <div class="barra-accion">
+          <button class="btn-texto" data-ir="inicio">← Volver al inicio</button>
+          <button class="btn btn-primario" id="btn-analizar" disabled>
+            Analizar estudio
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- ---- etapa 2: procesamiento ---- -->
+      <section id="etapa-proc" class="oculto">
+        <div class="procesando">
+          <div class="panel proc-mapas">
+            <h3 style="font-size:15px" id="proc-titulo">Mapas extraídos</h3>
+            <div class="grilla" id="proc-grilla"></div>
+          </div>
+          <div class="panel proc-pasos" aria-live="polite">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+              <h3 style="font-size:15px">Procesando</h3>
+              <span class="chip num" id="proc-pct">0 %</span>
+            </div>
+            <div class="progreso"><i id="proc-barra"></i></div>
+            <ul class="lista-pasos" id="proc-lista"></ul>
+            <div class="consola" id="consola"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---- etapa 3: resultados ---- -->
+      <section id="etapa-res" class="oculto">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap">
+          <div class="selector-ojo" id="selector-ojo" role="tablist"></div>
+          <span class="chip ambar oculto" id="chip-placeholder">Resultados ilustrativos: falta la inferencia de Colab</span>
+        </div>
+        <div class="resultados">
+          <div class="col-izq">
+            <div class="panel veredicto" id="veredicto"></div>
+            <div class="panel panel-t">
+              <h3>Probabilidad por mapa <small>línea = umbral τ</small></h3>
+              <div class="barras-mapa" id="barras-mapa"></div>
+            </div>
+            <div class="panel panel-t">
+              <h3>Datos del estudio <small>Pentacam</small></h3>
+              <table class="tabla-clinica" id="tabla-clinica"></table>
+            </div>
+          </div>
+          <div class="panel visor" id="visor">
+            <div class="titulo-visor">
+              <h3>Córnea <span id="visor-ojo">OD</span></h3>
+              <p id="visor-capa-desc">Superficie anterior reconstruida · color: curvatura sagital</p>
+            </div>
+            <div class="ayuda-3d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M9 5l3-3 3 3M2 12h6M5 9l-3 3 3 3M16 12h6M19 9l3 3-3 3"/></svg>Arrastrá para rotar · pasá el cursor para leer valores</div>
+            <div class="leyenda-3d" id="leyenda-3d"></div>
+            <div class="lienzo3d" id="res-3d"></div>
+            <img class="captura oculto" id="captura-3d" alt="Captura de la vista 3D">
+            <div class="lectura-3d oculto" id="lectura-3d"></div>
+            <div class="flotante fa">
+              <div class="t"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></i>P(queratocono)</div>
+              <div class="v num" id="fl-prob">–</div>
+            </div>
+            <div class="flotante fb">
+              <div class="t"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></i>Belin ABCD</div>
+              <div class="v num" id="fl-abcd" style="font-size:22px">–</div>
+            </div>
+            <div class="controles-3d" role="toolbar" aria-label="Controles de la vista 3D">
+              <select id="sel-capa" aria-label="Mapa que colorea la superficie">
+                <option value="Axial">Curvatura sagital</option>
+                <option value="Anterior">Elevación anterior</option>
+                <option value="Pachymetry">Paquimetría</option>
+                <option value="Posterior">Elevación posterior</option>
+              </select>
+              <button id="btn-cam" aria-pressed="false">Grad-CAM</button>
+              <button id="btn-valores" aria-pressed="false">Valores</button>
+              <span class="sep"></span>
+              <button data-vista="frontal">Frontal</button>
+              <button data-vista="perfil">Perfil</button>
+              <button data-vista="oblicua">3/4</button>
+              <button id="btn-rotar" aria-pressed="false">Girar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel mapas-res">
+          <div class="cab">
+            <div>
+              <h3>Mapas del estudio y explicabilidad (Grad-CAM)</h3>
+              <p>Rojo: regiones que más influyeron en la predicción; azul: no influyeron. Es lo que miró el modelo, no una medida clínica. Tocá un mapa para ampliarlo.</p>
+            </div>
+            <label class="ctrl">Intensidad del calor <input type="range" id="rng-cam" min="0" max="1" step="0.05" value="0.65"></label>
+          </div>
+          <div class="grilla-mapas" id="grilla-mapas"></div>
+          <div class="leyenda-cam"><i></i>0: no influyó · 1: más influyó</div>
+        </div>
+
+        <div class="inferior">
+          <div class="panel panel-t modelo">
+            <h3>Modelo consultado <span class="chip" id="chip-fuente">–</span></h3>
+            <dl id="dl-modelo"></dl>
+          </div>
+          <div class="panel panel-t">
+            <h3>Importante</h3>
+            <div class="descargo" style="margin-top:12px">
+              <p>KERALYTIX es un <b>prototipo académico</b> (Proyecto Final Integrador, UNaM). No es un producto médico registrado ante la ANMAT y no reemplaza el juicio clínico del oftalmólogo.</p>
+              <p>Los estudios de la demo son Pentacam y el modelo se entrena con Orbscan, así que hay un cambio de dominio entre equipos. Los resultados muestran el flujo de trabajo y no constituyen una validación.</p>
+            </div>
+          </div>
+        </div>
+        <div class="acciones-res">
+          <button class="btn btn-fantasma" id="btn-nuevo">Nuevo análisis</button>
+          <button class="btn btn-primario" id="btn-informe">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v7H6z"/></svg>
+            Imprimir informe
+          </button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor">
+      <div>
+        <b>KERALYTIX</b> · Proyecto Final Integrador [IC-522] · Grupo N.º 7<br>
+        Facultad de Ingeniería · Universidad Nacional de Misiones · Oberá, Misiones
+      </div>
+      <p class="aviso-legal">Demostración con fines académicos. Las imágenes provienen de estudios anonimizados. El entrenamiento usa el dataset abierto CornOrb (Zenodo).</p>
+    </div>
+  </footer>
+
+  <div id="modal" class="modal oculto" role="dialog" aria-modal="true" aria-label="Mapa ampliado"></div>
+
+  <script src="vendor/three/three.min.js"></script>
+  <script src="vendor/three/OrbitControls.js"></script>
+  <script src="vendor/three/RoomEnvironment.js"></script>
+  <script src="assets/datos_estudio.js?v=5"></script>
+  <script src="assets/resultados_demo.js?v=5"></script>
+  <script src="js/cornea3d.js?v=5"></script>
+  <script src="js/app.js?v=5"></script>
+</body>
+</html>

@@ -11,20 +11,20 @@ El guion está pensado para unos 16 minutos de exposición. Así quedan unos 4 m
 |---|---|---|---|
 | 1 | Portada | 0:20 | Brian |
 | 2 | El problema | 1:20 | Brian |
-| 3 | Qué mide el equipo | 1:15 | Brian |
-| 4 | Qué es KERALYTIX | 1:15 | Brian |
+| 3 | Qué mide el equipo | 1:15 | Fabricio |
+| 4 | Qué es KERALYTIX | 1:15 | Fabricio |
 | 5 | Objetivos | 0:45 | Brian |
 | 6 | Fases y estado actual | 0:45 | Brian |
-| 7 | Fase 1: selección del conjunto de datos | 0:50 | Brian |
-| 8 | Fase 1: revisión de los datos | 1:00 | Brian |
-| 9 | Fase 1: qué dicen los datos clínicos | 0:50 | Brian |
+| 7 | Fase 1: selección del conjunto de datos | 0:50 | Fabricio |
+| 8 | Fase 1: revisión de los datos | 1:00 | Fabricio |
+| 9 | Fase 1: qué dicen los datos clínicos | 0:50 | Fabricio |
 | 10 | Datos locales para la validación | 1:00 | Brian |
-| 11 | Fase 2: cómo funciona el modelo | 1:20 | Fabricio |
+| 11 | Fase 2: cómo funciona el modelo | 1:20 | Brian |
 | 12 | Fase 2: primeros resultados | 1:20 | Fabricio |
-| 13 | Fase 2: el modelo muestra dónde miró | 1:00 | Fabricio |
+| 13 | Fase 2: el modelo muestra dónde miró | 1:00 | Brian |
 | 14 | Fase 3: la aplicación web | 0:50 | Fabricio |
-| 15 | Lo que nos propusimos y lo que logramos | 1:00 | Fabricio |
-| 16 | Próximos pasos | 0:40 | Fabricio |
+| 15 | Lo que nos propusimos y lo que logramos | 1:00 | Brian |
+| 16 | Próximos pasos | 0:40 | Brian |
 | 17 | Preguntas | 0:10 | Fabricio |
 | | **Total** | **15:40** | |
 
