@@ -1,0 +1,47 @@
+% Esquema del pipeline de imágenes evaluado: TL, FT, clasificadores clásicos y Grad-CAM (sección Análisis de modelos)
+\begin{tikzpicture}[
+    node distance = 1.1cm and 0.5cm,
+    caja/.style = {draw, align=center, font=\small,
+                   text width=1.95cm, minimum height=1.75cm, inner sep=3pt,
+                   execute at begin node={\setstretch{1}\hyphenpenalty=10000}},
+    entrada/.style = {caja, fill=gray!10},
+    proceso/.style = {caja, fill=gray!25},
+    pila/.style = {draw, fill=gray!10, minimum width=2.1cm, minimum height=1.75cm, inner sep=0pt},
+    rotulo/.style = {font=\scriptsize, align=center, execute at begin node={\setstretch{1}}},
+    etiqueta/.style = {font=\scriptsize, fill=white, inner sep=1pt, align=center,
+                       execute at begin node={\setstretch{1}}},
+    flecha/.style = {-{Stealth[length=2.2mm]}, thick},
+    alterna/.style = {flecha, dashed}
+  ]
+  % Entrada: pila que sugiere los 4 mapas, cada uno por separado
+  \node[pila] at (0.2,0.2) {};
+  \node[pila] at (0.1,0.1) {};
+  \node[entrada, minimum width=2.1cm, text width=1.85cm] (mapa) at (0,0) {\textbf{Mapa}\\ \footnotesize sin T/N, OS espejado};
+  \node[rotulo, below=0.1cm of mapa] {se procesa cada\\uno de los 4 mapas};
+
+  % Red base preentrenada, partida en dos bloques de la misma altura
+  \node[entrada, right=0.75cm of mapa, text width=1.75cm] (base1) {Capas iniciales\\ \scriptsize congeladas};
+  \node[proceso, right=0cm of base1, text width=1.95cm] (base2) {15\,\% final\\ \scriptsize congeladas en TL, liberadas en FT};
+  \node[rotulo, font=\scriptsize\bfseries, above=0.06cm] at (base1.north east) {Red base preentrenada en ImageNet};
+
+  \node[entrada, right=of base2] (vec) {\textbf{Vector}\\ \footnotesize 2.048 valores en ResNet50};
+  \node[proceso, right=of vec] (cab) {\textbf{Cabeza}\\ \footnotesize Dropout y capa lineal};
+  \node[entrada, right=of cab] (prob) {\textbf{Probabilidad}\\ \footnotesize de queratocono del mapa};
+
+  \draw[flecha] (mapa) -- (base1);
+  \draw[flecha] (base2) -- (vec);
+  \draw[flecha] (vec) -- (cab);
+  \draw[flecha] (cab) -- (prob);
+
+  % Segunda fila: explicación, alternativa clásica, decisión y fusión
+  \node[proceso, text width=2.6cm, minimum height=1.4cm, anchor=north] (gc) at ($(base1.south east)+(0,-1.1cm)$) {\textbf{Grad-CAM}\\ \footnotesize mapa de calor de las zonas que influyeron};
+  \node[entrada, below=of vec, text width=2.6cm, minimum height=1.4cm] (clas) {\textbf{Clasificador clásico}\\ \footnotesize regresión logística, SVM, bosque aleatorio, XGBoost o MLP};
+  \node[proceso, below=of cab, minimum height=1.4cm] (dec) {\textbf{Decisión}\\ \footnotesize queratocono si $P \geq \tau$};
+  \node[proceso, below=of prob, minimum height=1.4cm] (fus) {\textbf{Fusión}\\ \footnotesize promedio de los 4 mapas};
+
+  \draw[flecha] (base1.south east) -- node[etiqueta, right=3pt, align=left] {gradientes de la\\última capa} (gc.north);
+  \draw[alterna] (vec.south) -- node[etiqueta, right=2pt, align=left] {4 vectores\\concatenados} (vec.south |- clas.north);
+  \draw[alterna] (clas) -- (dec);
+  \draw[flecha] (prob) -- node[etiqueta, left=2pt, align=right] {4 mapas} (fus);
+  \draw[flecha] (fus) -- (dec);
+\end{tikzpicture}

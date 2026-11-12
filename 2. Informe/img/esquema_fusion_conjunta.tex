@@ -1,0 +1,32 @@
+% Esquema de la arquitectura multimodal propuesta con fusión conjunta (sección Análisis de modelos)
+% Adaptado del diagrama "Fase 2: cómo funciona el modelo" de la presentación
+\begin{tikzpicture}[
+    node distance = 0.5cm and 0.6cm,
+    caja/.style = {draw, align=center, font=\small,
+                   text width=2.4cm, minimum height=1.3cm, inner sep=4pt,
+                   execute at begin node={\setstretch{1}\hyphenpenalty=10000}},
+    entrada/.style = {caja, fill=gray!10},
+    proceso/.style = {caja, fill=gray!25},
+    etiqueta/.style = {font=\scriptsize, fill=white, inner sep=1pt, align=center,
+                       execute at begin node={\setstretch{1}}},
+    flecha/.style = {-{Stealth[length=2.2mm]}, thick}
+  ]
+  \node[entrada, text width=2.1cm] (mapas) {\textbf{4 mapas corneales}};
+  \node[entrada, text width=2.1cm, below=1.1cm of mapas] (datos) {\textbf{13 variables clínicas}};
+  \node[proceso, right=of mapas, text width=3cm] (cnn) {\textbf{Rama de imágenes}\\ \footnotesize red base preentrenada, un vector por mapa};
+  \node[proceso, right=of datos, text width=3cm] (densa) {\textbf{Rama de datos}\\ \footnotesize capas densas sobre las variables estandarizadas};
+
+  % Las dos ramas se unen en (j) y de ahí sale una sola flecha hasta la fusión
+  \coordinate (m2) at ($(cnn.east)!0.5!(densa.east)$);
+  \coordinate (j) at ($(m2)+(0.55cm,0)$);
+  \node[proceso, very thick, right=0.45cm of j, text width=2.5cm] (fus) {\textbf{Fusión}\\ \footnotesize concatenación y capas densas};
+  \node[entrada, right=of fus, text width=2.5cm] (res) {\textbf{Resultado}\\ \footnotesize probabilidad de queratocono y decisión con $\tau$};
+  \node[entrada, above=0.45cm of res, text width=2.5cm] (gc) {\textbf{Mapa de calor}\\ \footnotesize zonas que influyeron};
+
+  \draw[flecha] (mapas) -- (cnn);
+  \draw[flecha] (datos) -- (densa);
+  \draw[flecha] (cnn.east) -- ++(0.35cm,0) |- (fus.west);
+  \draw[flecha] (densa.east) -- ++(0.35cm,0) |- (fus.west);
+  \draw[flecha] (fus) -- (res);
+  \draw[flecha] (cnn.north) |- node[etiqueta, pos=0.75, above] {Grad-CAM} (gc.west);
+\end{tikzpicture}

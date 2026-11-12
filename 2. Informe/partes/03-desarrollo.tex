@@ -52,7 +52,7 @@
     \phantomsection
     \subsection{Conjunto de datos de trabajo}
 
-        Mientras se concretan las solicitudes de muestras locales, el análisis se realiza sobre el \textit{dataset} CornOrb~\cite{zenodo}. Este recurso reúne 1.454 registros correspondientes a ojos de 744 pacientes, estudiados con un equipo \Orbscan{}~3 en centros de oftalmología de Argelia. Para cada ojo se proporcionan cuatro mapas corneales (axial, anterior, posterior y paquimetría) en formato de imagen, junto con un archivo de datos clínicos que incluye la etiqueta diagnóstica: normal o queratocono. Según la documentación del \textit{dataset}, las etiquetas fueron asignadas por oftalmólogos, y los datos se encuentran anonimizados.
+        Mientras se concretan las solicitudes de muestras locales, el análisis se realiza sobre el \textit{dataset} CornOrb~\cite{zenodo}. Este recurso reúne 1.454 registros correspondientes a ojos de 744 pacientes, estudiados con un equipo \Orbscan{}~3 en centros de oftalmología de Argelia. Para cada ojo se proporcionan cuatro mapas corneales en formato de imagen. El axial muestra la curvatura de la cara anterior de la córnea, en dioptrías. El anterior y el posterior muestran la elevación de cada cara respecto de una esfera de referencia, en µm. La paquimetría muestra el espesor de la córnea en cada punto, también en µm. Los mapas vienen junto con un archivo de datos clínicos que incluye la etiqueta diagnóstica: normal o queratocono. Según la documentación del \textit{dataset}, las etiquetas fueron asignadas por oftalmólogos, y los datos se encuentran anonimizados.
 
         El \textit{dataset} incluye además una partición predefinida de los registros: el 80\,\% se destina al entrenamiento del modelo y el 20\,\% restante se reserva para su evaluación final. A su vez, la porción de entrenamiento está dividida en cinco subconjuntos (\textit{folds}) para realizar validación cruzada, es decir, entrenar y evaluar el modelo cinco veces rotando la porción que se deja afuera, de modo de obtener una estimación más estable de su desempeño.
 
@@ -181,3 +181,241 @@
 
                 \item Transformar las variables de orientación (ejes en grados) antes de utilizarlas, ya que, por ejemplo, 1° y 179° representan orientaciones casi idénticas pese a la diferencia numérica (Figura~\ref{fig:parametros_cornea}b).
             \end{itemize}
+
+\phantomsection
+\section{Análisis de modelos y resultados preliminares}
+\label{sec:modelos}
+
+    En la fase de modelado se busca clasificar cada ojo como normal o con queratocono a partir de sus cuatro mapas, sin dejar pasar queratoconos: hasta el 88\,\% de las ectasias posteriores a una cirugía refractiva se atribuyen a casos no detectados~\cite{falsos_negativos_ectasia}. Las pruebas son preliminares. Se usó el 20\,\% de los pacientes y se priorizaron pruebas rápidas, que tardaron en total 25~min~29~s en una GPU\footnote{Por sus siglas en inglés, \textit{Graphics Processing Unit}: unidad de procesamiento gráfico.} NVIDIA T4, para descartar modelos y llegar a un flujo de procesamiento (\textit{pipeline}) ganador al que después se le dedicarán todos los datos. La hipótesis es que lo aprendido por las redes con millones de fotografías se transfiere a los mapas, y que estos aportan información además de las variables clínicas.
+
+    \phantomsection
+    \subsection{Preparación de los datos y esquema de evaluación}
+
+        La unidad de análisis es el ojo. Los 1.454 registros corresponden a 1.407 ojos, porque las mediciones repetidas de los 46 ojos detectados en el EDA comparten imágenes, y para ellos se promediaron las variables clínicas. Se aplicaron las correcciones del EDA: el código \texttt{3E+132}, los tres K~max imposibles, reemplazados por la mediana del entrenamiento, y los ejes, codificados como $\sin(2\theta)$ y $\cos(2\theta)$ para que 1° y 179° queden próximos. El sexo no se usó como entrada.
+
+        Se respetó la partición predefinida del \textit{dataset} y se sorteó el 20\,\% de los pacientes dentro de cada combinación de partición, \textit{fold} y clase, de modo que los dos ojos de una persona quedan juntos y se conservan el 80/20, los cinco \textit{folds} y la proporción de clases. El subconjunto tiene 148 pacientes y 284 ojos: 225 de entrenamiento (86 con queratocono) y 59 de evaluación (23 con queratocono), con entre 44 y 46 ojos y entre 36,4 y 40,0\,\% de queratocono por \textit{fold} (Figura~\ref{fig:esquema_particion}).
+
+        Los \textit{folds} se usan solo dentro del entrenamiento, en una validación cruzada de cinco rondas: en cada una, el modelo se entrena con cuatro \textit{folds} y se valida con el restante. Así, cada ojo de entrenamiento recibe una predicción de un modelo que no lo vio, llamada OOF\footnote{Por sus siglas en inglés, \textit{Out-Of-Fold}: fuera del \textit{fold}.}, y la época, el modelo y el umbral se eligen sobre 225 ojos y no sobre un único grupo de unos 45, con una estimación más estable. La validación cruzada estratificada es el método recomendado para elegir modelos~\cite{kfold_kohavi}, y son cinco \textit{folds} porque así viene la partición, agrupada por paciente. El conjunto de evaluación, en adelante test, se predice con el promedio de los cinco modelos y solo sirve para informar.
+
+        \begin{figure}[!htbp] \centering
+            \input{img/esquema_particion}
+            \caption{Partición de los datos y validación cruzada con los cinco \textit{folds} del \textit{dataset}.}
+            \label{fig:esquema_particion}
+        \end{figure}
+
+        El desbalance (61\,\% de ojos normales y 39\,\% con queratocono) se compensó ponderando la pérdida: la entropía cruzada binaria (BCE\footnote{Por sus siglas en inglés, \textit{Binary Cross-Entropy}: entropía cruzada binaria.}) de las redes da a la clase positiva un peso igual al cociente entre ojos normales y con queratocono de cada ronda, alrededor de 1,6, y los clasificadores clásicos usan el ajuste equivalente. La evaluación, en cambio, se hizo sobre un subconjunto balanceado, con toda la clase minoritaria y un sorteo de igual cantidad de la otra, para que la clase mayoritaria no infle los aciertos: 172 ojos OOF y 46 de test. Además, los ojos izquierdos (OS\footnote{Del latín \textit{oculus sinister} y \textit{oculus dexter}: ojo izquierdo y ojo derecho.}) se espejaron para que tengan la orientación de los derechos (OD).
+
+        \subsubsection*{Eliminación de las marcas de lateralidad}
+
+            Las letras T (temporal) y N (nasal) de las esquinas inferiores indican el lado del ojo, y al espejar los OS la N queda invertida. No dicen nada del diagnóstico, pero una red puede usarlas como atajo, es decir, como una pista que funciona en el entrenamiento sin relación con la enfermedad~\cite{shortcut_learning}. Por eso se generó una copia del \textit{dataset} con las esquinas inferiores tapadas por un rectángulo blanco fijo del 10\,\% del ancho y el 11\,\% del alto, ya que en las 5.628 imágenes las letras llegan hasta alrededor del 9,3\,\% del ancho y el último 10\,\% del alto (Figura~\ref{fig:tn}). En una muestra de 160 imágenes, la mayor mancha oscura en las esquinas pasó de un mínimo de 468 a un máximo de 19~píxeles. Los valores impresos en los mapas axial y de paquimetría se conservaron, y son un posible atajo que se revisa con la explicabilidad.
+
+            \begin{figure}[!htbp] \centering
+                \begin{subfigure}{0.72\linewidth} \centering
+                    \includegraphics[width=\linewidth]{img/modelos/tn_original.png}
+                    \caption{Mapas originales, con la zona que se tapa marcada en rojo.}
+                \end{subfigure}
+
+                \begin{subfigure}{0.72\linewidth} \centering
+                    \includegraphics[width=\linewidth]{img/modelos/tn_modificado.png}
+                    \caption{Mapas que usa el modelo.}
+                \end{subfigure}
+                \caption{Mapas de un ojo derecho con queratocono antes y después de tapar las letras de lateralidad.}
+                \label{fig:tn}
+            \end{figure}
+
+        \subsubsection*{Métricas y umbral de decisión}
+
+            Se usan tres métricas adimensionales, de 0 a 1, en las que conviene un valor alto, calculadas con los verdaderos positivos (VP, queratoconos detectados), los falsos negativos (FN, queratoconos no detectados), los verdaderos negativos (VN) y los falsos positivos (FP). La sensibilidad, $\mathrm{VP}/(\mathrm{VP}+\mathrm{FN})$, es la prioritaria. La especificidad, $\mathrm{VN}/(\mathrm{VN}+\mathrm{FP})$, es la proporción de ojos normales bien clasificados. El AUC\footnote{Por sus siglas en inglés, \textit{Area Under the Curve}: área bajo la curva ROC.} mide la capacidad de ordenar los ojos según su probabilidad de queratocono en todos los umbrales: vale 0,5 al azar y 1 en un clasificador perfecto.
+
+            El ojo se clasifica como queratocono si su probabilidad alcanza un umbral $\tau$, el mayor que logra una sensibilidad OOF de al menos 0,95, porque es el de mayor especificidad entre los que cumplen esa meta. La meta se ubica entre la sensibilidad de los sistemas actuales en casos subclínicos (90\,\%) y manifiestos (98,6\,\%)~\cite{sensibilidad_ia_subclinica}. Cada modelo se elige por su AUC OOF redondeado a tres decimales, que no depende del umbral ni de la proporción de clases, y en caso de empate por su especificidad OOF. Al test se le aplica el umbral sin modificarlo, y por tener pocos ojos se informa el intervalo de confianza (IC) de Wilson del 95\,\% de la sensibilidad~\cite{wilson_ic} y el IC del AUC con 1.000 remuestreos por paciente (\textit{bootstrap}).
+
+    \phantomsection
+    \subsection{Modelo de referencia con datos clínicos y propuesta multimodal}
+
+        Como referencia se entrenó una regresión logística, que asigna un peso a cada variable y devuelve una probabilidad, con 13 variables clínicas estandarizadas (edad, astigmatismo, K~max, espesores central y mínimo, ubicación del punto más delgado, asfericidades y ejes), regularización L2, que penaliza los pesos grandes, y los mismos \textit{folds}, umbral y evaluación. Si las redes no la superan, las imágenes no aportarían información nueva. Alcanzó un AUC OOF de 0,993 y, en test, un AUC de 0,966 (IC 95\,\%: 0,887--1,000), con 20 de 23 queratoconos detectados (sensibilidad de 0,870, IC 95\,\%: 0,679--0,955) y ningún falso positivo. Los mayores pesos estandarizados fueron los del astigmatismo (\textminus{}1,97), el K~max (1,72), el espesor mínimo (\textminus{}1,48) y la edad (\textminus{}1,48). Es una vara exigente, porque el \Orbscan{} calcula esas variables a partir de los mismos mapas.
+
+        Como los mapas superan apenas a esta referencia, se propone que el modelo final decida con ambas fuentes mediante la fusión conjunta del marco teórico~\cite{huang_fusion} (Figura~\ref{fig:esquema_fusion}), por cuatro motivos: la planilla ya es fuerte y puede compensar errores de las imágenes; la imagen conserva dónde está la deformación y cuán asimétrica es; el promedio simple diluyó a los mapas más informativos, y una fusión aprendida puede ponderarlos; y el \Pentacam{} de los centros locales también informa estas variables, lo que ayuda ante el cambio de equipo. Es el siguiente paso del modelado.
+
+        \begin{figure}[!htbp] \centering
+            \input{img/esquema_fusion_conjunta}
+            \caption{Arquitectura multimodal propuesta, con fusión conjunta de mapas y variables clínicas.}
+            \label{fig:esquema_fusion}
+        \end{figure}
+
+    \phantomsection
+    \subsection{Comparación de redes base preentrenadas}
+
+        Como primer paneo, con vistas a probar más arquitecturas, se compararon tres redes convolucionales muy usadas que difieren en tamaño, costo y exactitud: MobileNetV2~\cite{mobilenetv2}, ResNet50~\cite{resnet} y EfficientNet-B7~\cite{efficientnet} (Tabla~\ref{tabla:redes_base}). Sus autores las entrenaron con ImageNet, una base de millones de fotografías de objetos cotidianos~\cite{imagenet}.
+
+        \begin{table}[!htbp] \centering \setstretch{1.1}
+        \begin{talltblr}[
+            caption = Características de las redes base comparadas,
+            label = tabla:redes_base,
+            remark{Nota} = {La exactitud top-1 es el porcentaje de fotografías de ImageNet cuya categoría más probable es la correcta, según los autores (para ResNet50, con 10 recortes por imagen). La extracción es el tiempo de calcular los vectores de los 4 mapas de los 284 ojos en la GPU T4.}
+            ]{
+                colspec = {X[l,m] Q[c,m,1.85cm] Q[c,m,1.6cm] Q[c,m,1.4cm] Q[c,m,1.6cm] Q[c,m,2.1cm] Q[c,m,1.7cm]},
+                cells = {font=\small},
+                row{1} = {bg=gray!15, font=\small\bfseries, halign=c},
+                hlines, vlines,
+                rowsep = 2pt, colsep = 4pt
+            }
+
+            Red base & Parámetros (millones) & Entrada (píxeles) & Pesos (MB) & Tamaño del vector & Exactitud top-1 en ImageNet (\%) & Extracción (s) \\
+
+            MobileNetV2 & 3,5 & 224 & 14,2 & 1.280 & 72,0 & 22 \\
+
+            ResNet50 & 25,6 & 224 & 102 & 2.048 & 77,2 & 22 \\
+
+            EfficientNet-B7 & 66 & 600 & 267 & 2.560 & 84,3 & 75 \\
+
+        \end{talltblr}
+        \end{table}
+
+        Se aplicó aprendizaje por transferencia (TL\footnote{Por sus siglas en inglés, \textit{Transfer Learning}: aprendizaje por transferencia.}), que reutiliza una red entrenada en otra tarea (Figura~\ref{fig:esquema_pipeline}): la red base (\textit{backbone}) queda congelada, porque las capas que reconocen bordes, texturas y formas sirven también para otras imágenes~\cite{transfer_yosinski}, y solo se entrena una cabeza de clasificación nueva para el criterio normal o queratocono. La red produce para cada mapa un vector de características con el promedio de cada mapa de activación final, que se calcula una sola vez y sobre el que se entrena la cabeza, con el mismo resultado que pasar las imágenes en cada época, pero mucho más rápido. La cabeza tiene una capa de \textit{dropout}, que apaga al azar el 30\,\% de las entradas en cada paso para no depender de unas pocas, y una capa lineal con una salida. Se entrenó con el optimizador Adam, tasa de aprendizaje de $10^{-3}$, lotes de 32 ojos y hasta 60 épocas, con parada temprana tras 10 épocas sin mejora del AUC de validación. Hay un modelo por ronda y por mapa, y la fusión promedia las probabilidades de los cuatro mapas. La figura incluye las variantes evaluadas después: el ajuste fino (FT\footnote{Por sus siglas en inglés, \textit{Fine-Tuning}: ajuste fino.}) y los clasificadores clásicos.
+
+        \begin{figure}[!htbp] \centering
+            \input{img/esquema_pipeline_imagenes}
+            \caption{\textit{Pipeline} de imágenes evaluado y sus variantes (líneas punteadas).}
+            \label{fig:esquema_pipeline}
+        \end{figure}
+
+        La Tabla~\ref{tabla:auc_oof} resume el AUC OOF y la Figura~\ref{fig:matrices} muestra las matrices de confusión en test, donde cada celda indica cuántos de los 23 ojos de una clase real (filas) cayeron en cada clase predicha (columnas), QC abrevia queratocono, la última fila corresponde al ajuste fino y el recuadro grueso marca el modelo elegido. En las tres redes, la paquimetría fue el mapa más débil, con un AUC OOF de entre 0,933 y 0,960 y de 1 a 6 falsos positivos en test, y los demás mapas superaron 0,96. La fusión tuvo el mejor AUC OOF en las tres redes, y en test las tres fusiones detectaron 21 de 23 queratoconos (sensibilidad de 0,913, IC 95\,\%: 0,732--0,976) sin falsos positivos. El axial y el posterior de EfficientNet-B7 acertaron solos los 46 ojos del test, aunque en validación quedaron debajo de la fusión (0,998 y 0,984): el promedio simple mezcla a los mapas más informativos con los más débiles, en particular la paquimetría.
+
+        \begin{table}[!htbp] \centering \setstretch{1.1}
+        \begin{talltblr}[
+            caption = {AUC OOF de cada red base y mapa},
+            label = tabla:auc_oof
+            ]{
+                colspec = {X[l,m] Q[c,m,2.3cm] Q[c,m,2.3cm] Q[c,m,2.3cm] Q[c,m,2.3cm]},
+                cells = {font=\small},
+                row{1} = {bg=gray!15, font=\small\bfseries, halign=c},
+                cell{6}{3} = {font=\small\bfseries},
+                hlines, vlines,
+                rowsep = 1pt, colsep = 5pt
+            }
+
+            Mapa & MobileNetV2 & ResNet50 & EfficientNet-B7 & ResNet50 con FT \\
+
+            Elevación anterior & 0,9893 & 0,9932 & 0,9876 & 0,9930 \\
+
+            Curvatura axial & 0,9947 & 0,9655 & 0,9978 & 0,9838 \\
+
+            Paquimetría & 0,9471 & 0,9331 & 0,9602 & 0,9383 \\
+
+            Elevación posterior & 0,9780 & 0,9928 & 0,9842 & 0,9873 \\
+
+            Fusión de los 4 mapas & 0,9976 & 0,9986 & 0,9986 & 0,9972 \\
+
+        \end{talltblr}
+        \end{table}
+
+        \begin{figure}[!htbp] \centering
+            \includegraphics[width=0.92\linewidth]{img/modelos/matrices_confusion_test.pdf}
+            \caption{Matrices de confusión en test por red base y mapa.}
+            \label{fig:matrices}
+        \end{figure}
+
+        ResNet50 y EfficientNet-B7 empataron con la regla de elección, con un AUC OOF de 0,999 y una especificidad OOF de 1,000. Se eligió ResNet50 porque, con igual desempeño, tiene 2,6 veces menos parámetros, usa imágenes de 224 en lugar de 600~píxeles, sus pesos ocupan 102 en lugar de 267~MB y calcula los vectores en 22 en lugar de 75~s, así que responde más rápido en la aplicación y es más barato de reentrenar.
+
+    \phantomsection
+    \subsection{Ajuste fino de ResNet50}
+
+        El ajuste fino continúa el entrenamiento de una parte de la red base, además de la cabeza, para adaptarla a los mapas, y se aplicó a ResNet50 para intentar mejorarla. No se descongeló toda la red porque las primeras capas detectan bordes y texturas útiles para casi cualquier imagen~\cite{transfer_yosinski}, y porque liberar sus 23,5 millones de parámetros con unos 180 ojos por ronda favorecería que memorice los ejemplos. Se liberó el 15\,\% final de las capas con parámetros, 16 de 106 desde la tercera convolución del primer bloque de la última etapa, que reúnen 12,1 millones de parámetros (el 51,4\,\% de la red, porque las capas profundas son las más grandes). Se partió de la cabeza ya entrenada, con el optimizador AdamW, tasas de aprendizaje de $10^{-4}$ en la red y $3\cdot10^{-4}$ en la cabeza, hasta 15 épocas y paciencia de 5. Solo aquí se usó aumento de datos: cada imagen de entrenamiento se recortó entre el 85 y el 100\,\% de su área, se rotó hasta 5° y se desplazó hasta un 3\,\%, sin volteos, porque la asimetría entre las mitades superior e inferior es un signo de queratocono, ni cambios de color, que codifica el valor medido.
+
+        El ajuste fino no mejoró al modelo (última columna de la Tabla~\ref{tabla:auc_oof} y última fila de la Figura~\ref{fig:matrices}). La fusión bajó de 0,9986 a 0,9972 de AUC OOF y en test mantuvo la misma matriz. El axial subió de 0,9655 a 0,9838 y la paquimetría de 0,9331 a 0,9383, con dos detecciones más en test (de 19 a 21) y un falso positivo más (de 6 a 7). Hay tres explicaciones posibles: un efecto techo, porque con un AUC OOF cercano a 1 las diferencias caen dentro del ruido; demasiados parámetros libres para unos 180 ojos, ya que en 7 de los 20 entrenamientos (4 mapas por 5 rondas) la mejor época fue la primera, es decir, el punto de partida ya era casi óptimo; y probabilidades más bajas para los queratoconos, con un umbral de la fusión que pasó de 0,641 a 0,317. Con todos los datos podría rendir más, por lo que se volverá a evaluar.
+
+    \phantomsection
+    \subsection{Clasificadores clásicos sobre los vectores de características}
+
+        Como la red congelada ya entrega un vector por mapa, se evaluó si un clasificador clásico de aprendizaje automático (ML\footnote{Por sus siglas en inglés, \textit{Machine Learning}: aprendizaje automático.}) lo aprovecha mejor que la cabeza lineal (líneas punteadas de la Figura~\ref{fig:esquema_pipeline}). Se probaron 100 combinaciones: vectores de las tres redes congeladas y de ResNet50 con ajuste fino (del modelo de cada ronda, para no filtrar información), cada mapa o los cuatro concatenados como entrada, y cinco clasificadores. Estos fueron la regresión logística, una máquina de vectores de soporte (SVM\footnote{Por sus siglas en inglés, \textit{Support Vector Machine}: máquina de vectores de soporte.}), un bosque aleatorio de 300 árboles, XGBoost\footnote{Por sus siglas en inglés, \textit{eXtreme Gradient Boosting}: potenciación extrema del gradiente, un conjunto de árboles de decisión entrenados en secuencia.} y un perceptrón multicapa (MLP\footnote{Por sus siglas en inglés, \textit{Multilayer Perceptron}: perceptrón multicapa, una red de capas densas.}) de 256 neuronas. Para los tres últimos, el vector se redujo a 128 componentes con PCA\footnote{Por sus siglas en inglés, \textit{Principal Component Analysis}: análisis de componentes principales.}, ajustado solo con el entrenamiento de cada ronda. La mejor combinación fue la regresión logística sobre los vectores concatenados de EfficientNet-B7, con un AUC OOF de 1,000, que en test repitió la matriz de las fusiones (Tabla~\ref{tabla:ml_clasico}, ordenada por la regla de elección).
+
+        \begin{table}[!htbp] \centering \setstretch{1.1}
+        \begin{talltblr}[
+            caption = {Las cinco mejores combinaciones de vectores y clasificador clásico},
+            label = tabla:ml_clasico
+            ]{
+                colspec = {X[l,m] Q[l,m,2.45cm] Q[l,m,2.25cm] Q[c,m,1.4cm] Q[c,m,2.15cm] Q[c,m,2cm] Q[c,m,1.6cm]},
+                cells = {font=\small},
+                row{1} = {bg=gray!15, font=\small\bfseries, halign=c},
+                hlines, vlines,
+                rowsep = 1pt, colsep = 4pt
+            }
+
+            Clasificador & Vectores de & Entrada & AUC OOF $\uparrow$ & Especificidad OOF $\uparrow$ & Queratocono en test & Normales en test \\
+
+            Regresión logística & EfficientNet-B7 & Concatenación & 1,000 & 1,000 & 21/23 & 23/23 \\
+
+            Bosque aleatorio & MobileNetV2 & Concatenación & 0,999 & 1,000 & 23/23 & 23/23 \\
+
+            Regresión logística & ResNet50 & Concatenación & 0,999 & 1,000 & 21/23 & 23/23 \\
+
+            Regresión logística & EfficientNet-B7 & Curvatura axial & 0,999 & 0,988 & 23/23 & 23/23 \\
+
+            Bosque aleatorio & EfficientNet-B7 & Curvatura axial & 0,999 & 0,988 & 23/23 & 23/23 \\
+
+        \end{talltblr}
+        \end{table}
+
+        Los vectores de ImageNet, sin ajuste, ya separan las clases casi por completo con un clasificador lineal, así que en este subconjunto el problema está cerca del techo. Las diferencias entre los mejores, menores a 0,002 de AUC OOF, quedan dentro de la incertidumbre: con 23 queratoconos en test, el IC 95\,\% de una sensibilidad de 21 sobre 23 va de 0,732 a 0,976. Por eso la ventaja de la regresión logística sobre EfficientNet-B7 no es concluyente y queda como candidata para la corrida completa. Concatenar los vectores rindió levemente más que promediar probabilidades, lo que respalda una fusión aprendida. En el otro extremo, el MLP ocupó los seis últimos lugares (mínimo de 0,804), la paquimetría fue la entrada más débil en 18 de las 20 combinaciones de clasificador y fuente, y los vectores con ajuste fino no pasaron de 0,997.
+
+    \phantomsection
+    \subsection{Explicabilidad con Grad-CAM}
+
+        Un acierto no alcanza si el modelo llega a él por un motivo equivocado. Por eso se aplicó Grad-CAM~\cite{gradcam}, que pondera cada mapa de activación de la última capa convolucional según cuánto cambia la salida de la clase predicha, suma los aportes a favor de esa clase y normaliza el resultado entre 0 y 1 en cada imagen. El rojo y el amarillo marcan lo que más empujó la predicción, el verde y el celeste una contribución intermedia, y el azul oscuro lo que casi no influyó. El rojo es la evidencia de la clase predicha, sea queratocono o normal, y como cada imagen se normaliza a su propio máximo siempre aparece algo rojo, así que se compara la ubicación del calor y no su intensidad. Si el rojo cae fuera de la córnea o sobre los números impresos, el modelo usa un atajo.
+
+        Se aplicó a los modelos de ResNet50 de la primera ronda, con y sin ajuste fino, en cuatro ojos de test (dos por clase) y sus cuatro mapas: 16 casos. Cada fila de la Figura~\ref{fig:gradcam} muestra el mapa con su clase real y, sin ajuste fino (TL) y con él (\textit{fine-tuning}), el calor solo y superpuesto, con la clase predicha (\textit{pred}) y la probabilidad de queratocono, P(QC). En el ojo con queratocono de la Figura~\ref{fig:gradcam}a, el calor cae sobre la zona central más delgada (entre 411 y 429~µm), con una probabilidad de queratocono de 0,98 sin ajuste fino y de 0,89 con él. En el ojo normal (b), cae en los bordes y las esquinas, fuera de la córnea: el modelo acierta, con probabilidades de 0,07 y 0,02, pero por un motivo sin relación con la córnea.
+
+        \begin{figure}[!htbp] \centering
+            \begin{subfigure}{\linewidth} \centering
+                \includegraphics[width=\linewidth]{img/modelos/gradcam_bueno.png}
+                \caption{Ojo con queratocono: el calor cae sobre la zona más delgada de la córnea.}
+            \end{subfigure}
+
+            \begin{subfigure}{\linewidth} \centering
+                \includegraphics[width=\linewidth]{img/modelos/gradcam_atajo.png}
+                \caption{Ojo normal: el calor cae en los bordes de la imagen, fuera de la córnea.}
+            \end{subfigure}
+            \caption{Grad-CAM sobre la paquimetría de dos ojos de test, sin y con ajuste fino.}
+            \label{fig:gradcam}
+        \end{figure}
+
+        Este comportamiento es minoritario, el calor se concentró fuera de la córnea en 2 de los 16 casos, ambos en paquimetría y en ojos normales, y en un tercero apareció una zona secundaria en el borde. En el resto cayó sobre la córnea y, en los queratoconos, sobre la zona deformada. Que los fallos se den en la paquimetría concuerda con que es el mapa más débil, y un ojo normal no tiene una lesión que marcar. Como salvedad, en la paquimetría los valores impresos coinciden con la zona central, así que no se descarta que el modelo los lea. Son fallos esperables en una etapa tan preliminar, que se espera reducir con todos los datos, más pruebas, un conjunto de validación local y enmascarando lo que queda fuera de la córnea.
+
+    \phantomsection
+    \subsection{Conclusiones de las pruebas preliminares}
+
+        La Tabla~\ref{tabla:resumen_modelos} resume los modelos principales en el test de 23 ojos por clase, donde ningún modelo tuvo falsos positivos, es decir, todos tuvieron una especificidad de 1,000. Los mapas superaron levemente al modelo clínico (21 frente a 20 queratoconos detectados), lo que respalda su uso, pero la diferencia es chica y justifica combinarlos. ResNet50 y EfficientNet-B7 empataron, y se eligió ResNet50 por ser más liviana. El ajuste fino no mejoró con esta cantidad de datos, y un clasificador lineal sobre los vectores congelados ya roza el techo, así que las diferencias entre los mejores modelos no son concluyentes. La paquimetría fue el mapa más débil y el único en el que Grad-CAM mostró atención fuera de la córnea.
+
+        \begin{table}[!htbp] \centering \setstretch{1.1}
+        \begin{talltblr}[
+            caption = {Resumen de los modelos principales en test},
+            label = tabla:resumen_modelos
+            ]{
+                colspec = {X[l,m] Q[c,m,1.3cm] Q[c,m,1.3cm] Q[c,m,3.4cm] Q[c,m,0.8cm] Q[c,m,0.8cm]},
+                cells = {font=\small},
+                row{1} = {bg=gray!15, font=\small\bfseries, halign=c},
+                row{4} = {font=\small\bfseries},
+                hlines, vlines,
+                rowsep = 1pt, colsep = 4pt
+            }
+
+            Modelo y entrada & AUC OOF $\uparrow$ & AUC test $\uparrow$ & Sensibilidad test $\uparrow$ (IC 95\,\%) & FN $\downarrow$ & FP $\downarrow$ \\
+
+            Regresión logística, 13 variables clínicas & 0,993 & 0,966 & 0,870 (0,679--0,955) & 3 & 0 \\
+
+            TL MobileNetV2, fusión de 4 mapas & 0,998 & 1,000 & 0,913 (0,732--0,976) & 2 & 0 \\
+
+            TL ResNet50, fusión de 4 mapas (elegido) & 0,999 & 1,000 & 0,913 (0,732--0,976) & 2 & 0 \\
+
+            TL EfficientNet-B7, fusión de 4 mapas & 0,999 & 1,000 & 0,913 (0,732--0,976) & 2 & 0 \\
+
+            FT ResNet50, fusión de 4 mapas & 0,997 & 1,000 & 0,913 (0,732--0,976) & 2 & 0 \\
+
+            Regresión logística, vectores de EfficientNet-B7 concatenados & 1,000 & 1,000 & 0,913 (0,732--0,976) & 2 & 0 \\
+
+        \end{talltblr}
+        \end{table}
+
+        Las limitaciones son el 20\,\% de los pacientes, un test con 23 queratoconos, una sola corrida por experimento y una revisión de Grad-CAM cualitativa de cuatro ojos. Los próximos pasos son repetir la comparación con todos los datos, implementar la fusión conjunta, informar el desempeño por sexo, como recomendó el EDA, evaluar el enmascarado fuera de la córnea y de los valores impresos, y medir el desempeño con los estudios locales cuando se obtengan.
+
+        En paralelo se armó una demostración web, para computadoras y celulares, con el flujo previsto: el usuario carga el PDF del estudio y ve la probabilidad de queratocono de cada mapa y de la fusión, el mapa de calor de Grad-CAM y una reconstrucción 3D de la córnea. Por ahora los resultados son ilustrativos, y la inferencia real se hará con el \textit{pipeline} de ResNet50. Los estudios de ejemplo son de un \Pentacam{} y el modelo se entrena con el \Orbscan{}, así que hay un mapeo de los colores usamos por los mapas de calor dados por el primero.

@@ -17,6 +17,7 @@ build/
 *.synctex(busy).gz
 2. Informe/main.pdf
 4. Presentacion/Presentacion.pdf
+4. Presentacion/main.pdf
 *.nav
 *.snm
 *.vrb

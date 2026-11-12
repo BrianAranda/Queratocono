@@ -160,13 +160,13 @@
         % \hspace*{0.065\textwidth}
         \begin{column}{0.6\textwidth}
             \small
-            Se compararon tres \textbf{redes base}, modelos ya entrenados con millones de imágenes que se adaptan a los mapas corneales. En esta primera prueba la que mejor funcionó fue MobileNetV2, la más liviana. Todavía se siguen probando otras redes y estrategias.
+            Se compararon tres \textbf{redes base}, modelos ya entrenados con millones de imágenes que se adaptan a los mapas corneales. En esta primera prueba, con el 20\,\% de los datos, ResNet50 y EfficientNet-B7 empataron y se eligió ResNet50, que es más liviana. Todavía se siguen probando otras redes y estrategias.
             \vspace{0.2cm}
 
-            Resultado de prueba con 279 ojos que el modelo nunca vio:
+            Resultado de prueba con 46 ojos que el modelo nunca vio (23 sanos y 23 con queratocono):
             \begin{itemize}
-                \item Detectó \textbf{95 de 103} ojos con queratocono (92\,\%).
-                \item \textbf{Ninguna falsa alarma} en los 176 ojos sanos.
+                \item Detectó \textbf{21 de 23} ojos con queratocono (91\,\%).
+                \item \textbf{Ningun falso positivo} en los 23 ojos sanos.
             \end{itemize}
             \vspace{0.1cm}
             Un modelo solo con los datos clínicos da resultados parecidos. Por eso el siguiente paso es combinar ambos.
@@ -255,8 +255,7 @@
         \begin{column}{0.25\textwidth}
             \centering
             % Reemplazar el recuadro por el QR, por ejemplo:
-            % \includegraphics[height=2.2cm]{qr_web.png}\par {\scriptsize Escaneá para ver la página}
-            \fcolorbox{gray!60}{white}{\parbox[c][2.2cm][c]{2.2cm}{\centering\scriptsize\color{gray} QR de la\\ página web}}
+            \includegraphics[height=2.2cm]{img/qr_keralytix.png}\par {\scriptsize Escaneá para ver la página}
         \end{column}
     \end{columns}
     \porhacer{Objetivo 4}

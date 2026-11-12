@@ -1,0 +1,53 @@
+% Esquema de la partición de los datos y de la validación cruzada (sección Análisis de modelos)
+\begin{tikzpicture}[
+    node distance = 0.45cm and 0.6cm,
+    caja/.style = {draw, align=center, font=\small,
+                   text width=3cm, minimum height=1.2cm, inner sep=4pt,
+                   execute at begin node={\setstretch{1}\hyphenpenalty=10000}},
+    entrada/.style = {caja, fill=gray!10},
+    proceso/.style = {caja, fill=gray!25},
+    celda/.style = {draw, minimum width=1.1cm, minimum height=0.46cm, inner sep=0pt, font=\scriptsize},
+    entrena/.style = {celda, fill=gray!10},
+    valida/.style = {celda, fill=gray!55, font=\scriptsize\bfseries},
+    rotulo/.style = {font=\scriptsize, align=center, execute at begin node={\setstretch{1}}},
+    flecha/.style = {-{Stealth[length=2.2mm]}, thick}
+  ]
+  % Datos de partida y subconjunto
+  \node[entrada] (cornorb) at (0,0.55) {\textbf{CornOrb}\\ \footnotesize 744 pacientes, 1.407 ojos};
+  \node[proceso, below=of cornorb] (subset) {\textbf{Subconjunto del 20\,\%}\\ \footnotesize pacientes sorteados por partición, fold y clase: 148 pacientes, 284 ojos};
+  \draw[flecha] (cornorb) -- (subset);
+
+  % Grilla de la validación cruzada: 5 rondas x 5 folds
+  \def\xg{5.6}  % abscisa del fold 1
+  \def\yg{1.1}  % ordenada de la ronda 1
+  \foreach \f/\n in {1/45, 2/44, 3/46, 4/45, 5/45} {
+    \node[rotulo] at ({\xg + (\f-1)*1.15}, {\yg + 0.62}) {Fold \f\\(\n{} ojos)};
+  }
+  \foreach \r in {1,...,5} {
+    \node[rotulo, anchor=east] at ({\xg - 0.65}, {\yg - (\r-1)*0.52}) {Ronda \r};
+    \foreach \f in {1,...,5} {
+      \ifnum\f=\r
+        \node[valida] at ({\xg + (\f-1)*1.15}, {\yg - (\r-1)*0.52}) {valida};
+      \else
+        \node[entrena] at ({\xg + (\f-1)*1.15}, {\yg - (\r-1)*0.52}) {entrena};
+      \fi
+    }
+  }
+  \node[rotulo, font=\scriptsize\bfseries] at ({\xg + 2*1.15}, {\yg + 1.25}) {Entrenamiento oficial (80\,\%): 225 ojos};
+
+  % Salida de la validación cruzada
+  \node[proceso, text width=2.6cm, anchor=west] (oof) at ({\xg + 4*1.15 + 0.95}, {\yg - 2*0.52}) {\textbf{Predicciones OOF}\\ \footnotesize eligen la época, el modelo y el umbral $\tau$};
+  \draw[flecha] ({\xg + 4*1.15 + 0.58}, {\yg - 2*0.52}) -- (oof.west);
+
+  % Test oficial
+  \node[entrada, text width=5.4cm, anchor=north] (test) at ({\xg + 2*1.15}, {\yg - 4*0.52 - 0.65}) {\textbf{Test oficial (20\,\%): 59 ojos}\\ \footnotesize no participa del entrenamiento ni de la elección};
+  \node[proceso, text width=2.6cm] (informe) at (oof |- test) {\textbf{Promedio de los 5 modelos}\\ \footnotesize solo para informar};
+  \draw[flecha] (test) -- (informe);
+
+  % Del subconjunto a cada partición
+  \draw[flecha] (subset.east) -- ++(0.35cm,0) |- ({\xg - 1.75}, {\yg - 2*0.52});
+  \draw[flecha] (subset.east) -- ++(0.35cm,0) |- (test.west);
+
+  % Nota de la evaluación balanceada
+  \node[rotulo, anchor=north] at ($(test.south)!0.5!(informe.south)+(0,-0.15)$) {Evaluación balanceada: 172 ojos en el OOF (86 + 86) y 46 en test (23 + 23)};
+\end{tikzpicture}
